@@ -15,7 +15,7 @@ class FoodsListPage extends StatelessWidget {
       create:
           (_) => FoodsBloc(
             GetSortedFoodsByNutrient(FoodRepositoryImpl(FoodLocalDataSource())),
-          )..add(LoadFoodsByNutrient('303')),
+          )..add(LoadFoodsByNutrient('203')),
       child: Scaffold(
         appBar: AppBar(title: const Text('Foods sorted by Iron (Fe)')),
         body: BlocBuilder<FoodsBloc, FoodsState>(
@@ -28,10 +28,11 @@ class FoodsListPage extends StatelessWidget {
                 itemCount: state.foods.length,
                 itemBuilder: (context, index) {
                   final food = state.foods[index];
+
                   final ironAmount =
                       food.foodNutrients
                           .firstWhere(
-                            (n) => n.nutrient.number == '303',
+                            (n) => n.nutrient.number == '203',
                             orElse: () => food.foodNutrients.first,
                           )
                           .amount;
