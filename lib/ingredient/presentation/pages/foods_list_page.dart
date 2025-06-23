@@ -5,7 +5,7 @@ import '../bloc/foods_event.dart';
 import '../bloc/foods_state.dart';
 import '../../data/service/asset_json_service.dart';
 import '../../data/repository/app_food_repository.dart';
-import '../../../domain/usecases/get_sorted_foods_by_nutrient.dart';
+import '../../domain/usecases/get_sorted_foods_by_nutrient.dart';
 
 class FoodsListPage extends StatelessWidget {
   const FoodsListPage({super.key});

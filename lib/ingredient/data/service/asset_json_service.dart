@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/services.dart';
-import 'package:nutrivita_demo_v2/domain/entities/food_entity.dart';
+import 'package:nutrivita_demo_v2/ingredient/domain/entities/food_entity.dart';
 import '../models/final_food.dart';
 
 class AssetJsonService {
