@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../controllers/foods_bloc.dart';
-import '../controllers/foods_event.dart';
-import '../controllers/foods_state.dart';
-import '../../../data/datasources/food_local_datasource.dart';
-import '../../../data/repositories_impl/food_repository_impl.dart';
+import '../bloc/foods_bloc.dart';
+import '../bloc/foods_event.dart';
+import '../bloc/foods_state.dart';
+import '../../data/service/asset_json_service.dart';
+import '../../data/repository/app_food_repository.dart';
 import '../../../domain/usecases/get_sorted_foods_by_nutrient.dart';
 
 class FoodsListPage extends StatelessWidget {
-  const FoodsListPage({Key? key}) : super(key: key);
+  const FoodsListPage({super.key});
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create:
           (_) => FoodsBloc(
-            GetSortedFoodsByNutrient(FoodRepositoryImpl(FoodLocalDataSource())),
-          )..add(LoadFoodsByNutrient('203')),
+            GetSortedFoodsByNutrient(AppFoodRepository(AssetJsonService())),
+          )..add(LoadFoodsByNutrient('303')),
       child: Scaffold(
         appBar: AppBar(title: const Text('Foods sorted by Iron (Fe)')),
         body: BlocBuilder<FoodsBloc, FoodsState>(
@@ -32,7 +32,7 @@ class FoodsListPage extends StatelessWidget {
                   final ironAmount =
                       food.foodNutrients
                           .firstWhere(
-                            (n) => n.nutrient.number == '203',
+                            (n) => n.nutrient.number == '303',
                             orElse: () => food.foodNutrients.first,
                           )
                           .amount;
