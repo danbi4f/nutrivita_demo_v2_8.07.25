@@ -1,73 +1,81 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:nutrivita_demo_v2/ingredient/presentation/bloc/foods_bloc.dart';
+import 'package:nutrivita_demo_v2/ingredient/presentation/bloc/foods_event.dart';
+import 'package:nutrivita_demo_v2/ingredient/presentation/bloc/foods_state.dart';
 import 'package:nutrivita_demo_v2/number/presentation/Bloc/number_bloc.dart';
-import '../bloc/foods_bloc.dart';
-import '../bloc/foods_event.dart';
-import '../bloc/foods_state.dart';
-import '../../data/service/asset_json_service.dart';
-import '../../data/repository/app_food_repository.dart';
-import '../../domain/usecases/get_sorted_foods_by_nutrient.dart';
 
-class FoodsListPage extends StatelessWidget {
+class FoodsListPage extends StatefulWidget {
   const FoodsListPage({super.key});
 
   @override
+  State<FoodsListPage> createState() => _FoodsListPageState();
+}
+
+class _FoodsListPageState extends State<FoodsListPage> {
+  @override
   Widget build(BuildContext context) {
-    return BlocBuilder<NumberBloc, NumberState>(
-      builder: (context, numberState) {
-        if (numberState is NumberLoaded) {
-          final selectedNumber = numberState.numberSelected;
-          final selectedNumberName = numberState.numberName;
+    final selectedNumber =
+        context.watch<NumberBloc>().state.numberSelected.number;
 
-          return BlocProvider(
-            create:
-                (_) => FoodsBloc(
-                  GetSortedFoodsByNutrient(
-                    AppFoodRepository(AssetJsonService()),
-                  ),
-                )..add(LoadFoodsByNutrient(selectedNumber)),
-            child: Scaffold(
-              appBar: AppBar(title: Text('Foods sorted $selectedNumberName')),
-              body: BlocBuilder<FoodsBloc, FoodsState>(
-                builder: (context, foodsState) {
-                  if (foodsState is FoodsLoading) {
-                    return const Center(child: CircularProgressIndicator());
-                  } else if (foodsState is FoodsLoaded) {
-                    return ListView.builder(
-                      padding: const EdgeInsets.all(8),
-                      itemCount: foodsState.foods.length,
-                      itemBuilder: (context, index) {
-                        final food = foodsState.foods[index];
-                        final ironAmount =
-                            food.foodNutrients
-                                .firstWhere(
-                                  (n) => n.nutrient.number == selectedNumber,
-                                  orElse: () => food.foodNutrients.first,
-                                )
-                                .amount;
-                        return Card(
-                          child: ListTile(
-                            title: Text(food.description),
-                            subtitle: Text(
-                              '$selectedNumberName: ${ironAmount.toStringAsFixed(2)} mg',
-                            ),
-                          ),
-                        );
-                      },
-                    );
-                  } else if (foodsState is FoodsError) {
-                    return Center(child: Text('Error: ${foodsState.message}'));
-                  }
-                  return const Center(child: Text('No data'));
-                },
-              ),
+    return Column(
+      children: [
+        ElevatedButton(
+          onPressed: () {
+            setState(() {
+              context.read<FoodsBloc>().add(
+                LoadFoodsByNutrient(selectedNumber),
+              );
+            });
+          },
+          child: Text('Refresh Foods List'),
+        ),
+        const SizedBox(height: 16),
+        Container(
+          padding: const EdgeInsets.all(16.0),
+          child: Center(
+            child: Text(
+              'Foods List Page: selected number: $selectedNumber',
+              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
-          );
-        }
+          ),
+        ),
+        Expanded(
+          child: BlocBuilder<FoodsBloc, FoodsState>(
+            builder: (context, state) {
+              final result = state.delayedResult;
 
-        // Jeśli NumberBloc nie załadował jeszcze danych:
-        return const Center(child: CircularProgressIndicator());
-      },
+              if (result.isInProgress) {
+                return const Center(child: CircularProgressIndicator());
+              } else if (result.isSuccessful) {
+                return ListView.builder(
+                  itemCount: state.foods.length,
+                  itemBuilder: (context, index) {
+                    final food = state.foods[index];
+                    final ironNutrient = food.foodNutrients.firstWhere(
+                      (n) => n.nutrient.number == selectedNumber,
+                    );
+                    final ironAmount = ironNutrient.amount;
+                    final ironAmountName = ironNutrient.nutrient.name;
+                    return ListTile(
+                      title: Text(food.description),
+                      subtitle: Text(
+                        '${ironAmountName}: ${ironAmount.toStringAsFixed(2)} mg',
+                      ),
+                    );
+                  },
+                );
+              } else if (result.isError) {
+                return Center(
+                  child: Text('Error: ${state.delayedResult.error}'),
+                );
+              } else {
+                return const Center(child: Text('No data available'));
+              }
+            },
+          ),
+        ),
+      ],
     );
   }
 }

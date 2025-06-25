@@ -1,48 +1,28 @@
 part of 'number_bloc.dart';
 
-sealed class NumberState extends Equatable {
-  const NumberState();
-
-  @override
-  List<Object> get props => [];
-}
-
-final class NumberInitial extends NumberState {}
-
-class NumberLoading extends NumberState {}
-
-final class NumberLoaded extends NumberState {
-  const NumberLoaded({
-    List<Number>? numbers,
-    this.numberSelected = '0',
-    this.numberName = '',
-  }) : numbers = numbers ?? const [];
+class NumbersState extends Equatable {
+  const NumbersState({
+    this.numbers = const [],
+    this.numberSelected = const Number.empty(),
+    this.delayedResult = const DelayedResult.idle(),
+  });
 
   final List<Number> numbers;
-  final String numberSelected;
-  final String numberName;
+  final Number numberSelected;
+  final DelayedResult<String> delayedResult;
 
-  @override
-  List<Object> get props => [numbers, numberSelected];
-
-  NumberLoaded copyWith({
+  NumbersState copyWith({
     List<Number>? numbers,
-    String? numberSelected,
-    String? numberName,
+    Number? numberSelected,
+    DelayedResult<String>? delayedResult,
   }) {
-    return NumberLoaded(
+    return NumbersState(
       numbers: numbers ?? this.numbers,
       numberSelected: numberSelected ?? this.numberSelected,
-      numberName: numberName ?? this.numberName,
+      delayedResult: delayedResult ?? this.delayedResult,
     );
   }
-}
-
-final class NumberError extends NumberState {
-  final String message;
-
-  const NumberError(this.message);
 
   @override
-  List<Object> get props => [message];
+  List<Object> get props => [numbers, numberSelected, delayedResult];
 }

@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:nutrivita_demo_v2/number/data/model/number.dart';
 
 class NumberEvent extends Equatable {
   const NumberEvent();
@@ -15,10 +16,9 @@ class GetNumbersEvent extends NumberEvent {
 }
 
 class SelectNumber extends NumberEvent {
-  final String numberSelected;
-  final String numberName;
+  final Number numberSelected;
 
-  const SelectNumber({required this.numberSelected, required this.numberName});
+  const SelectNumber({required this.numberSelected});
 
   @override
   List<Object> get props => [numberSelected];

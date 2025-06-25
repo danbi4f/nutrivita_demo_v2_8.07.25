@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:nutrivita_demo_v2/ingredient/presentation/bloc/foods_bloc.dart';
+import 'package:nutrivita_demo_v2/ingredient/presentation/bloc/foods_event.dart';
 import 'package:nutrivita_demo_v2/number/presentation/Bloc/number_bloc.dart';
 import 'package:nutrivita_demo_v2/number/presentation/Bloc/number_event.dart';
 import 'package:nutrivita_demo_v2/number/data/model/number.dart';
@@ -9,11 +11,14 @@ class MyDropdownButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<NumberBloc, NumberState>(
+    return BlocBuilder<NumberBloc, NumbersState>(
       builder: (context, state) {
-        if (state is NumberLoading) {
+        final result = state.delayedResult;
+        final isProgress = result.isInProgress;
+
+        if (isProgress) {
           return const Center(child: CircularProgressIndicator());
-        } else if (state is NumberLoaded) {
+        } else if (result.isSuccessful) {
           return DropdownButtonFormField<Number>(
             value: state.numbers.firstWhere(
               (n) => n.number == state.numberSelected,
@@ -29,10 +34,7 @@ class MyDropdownButton extends StatelessWidget {
             onChanged: (selectedNumber) {
               if (selectedNumber != null) {
                 context.read<NumberBloc>().add(
-                  SelectNumber(
-                    numberSelected: selectedNumber.number,
-                    numberName: selectedNumber.name,
-                  ),
+                  SelectNumber(numberSelected: selectedNumber),
                 );
 
                 print(
@@ -45,8 +47,8 @@ class MyDropdownButton extends StatelessWidget {
               border: OutlineInputBorder(),
             ),
           );
-        } else if (state is NumberError) {
-          return Center(child: Text('Error: ${state.message}'));
+        } else if (result.isError) {
+          return Center(child: Text('Error: ${state.delayedResult.error}'));
         }
 
         return const Center(child: Text('No data available'));
