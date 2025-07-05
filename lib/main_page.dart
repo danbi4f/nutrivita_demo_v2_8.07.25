@@ -4,7 +4,6 @@ import 'package:nutrivita_demo_v2/ingredient/data/repository/app_food_repository
 import 'package:nutrivita_demo_v2/ingredient/data/service/asset_json_service.dart';
 import 'package:nutrivita_demo_v2/ingredient/domain/usecases/get_sorted_foods_by_nutrient.dart';
 import 'package:nutrivita_demo_v2/ingredient/presentation/bloc/foods_bloc.dart';
-import 'package:nutrivita_demo_v2/ingredient/presentation/bloc/foods_event.dart';
 import 'package:nutrivita_demo_v2/ingredient/presentation/pages/foods_list_page.dart';
 import 'package:nutrivita_demo_v2/number/data/repository/number_repository.dart';
 import 'package:nutrivita_demo_v2/number/data/service/asset_number_service.dart';
@@ -42,9 +41,7 @@ class _MainPageState extends State<MainPage> {
           listener: (context, state) {},
           child: Column(
             children: const [
-              SizedBox(height: 50),
               MyDropdownButton(),
-              SizedBox(height: 50),
               Expanded(child: FoodsListPage()),
             ],
           ),

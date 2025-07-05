@@ -23,3 +23,5 @@ flutter:
   assets:
     - assets/FoodData_Central_foundation_food_json_2025-04-24.json
     - assets/nutrient_number.json
+    - assets/nutrient_number_3.json
+    - assets/nutrient_number_4.json

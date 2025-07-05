@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nutrivita_demo_v2/ingredient/presentation/bloc/foods_bloc.dart';
 import 'package:nutrivita_demo_v2/ingredient/presentation/bloc/foods_event.dart';
 import 'package:nutrivita_demo_v2/ingredient/presentation/bloc/foods_state.dart';
+import 'package:nutrivita_demo_v2/ingredient/presentation/widget/my_list_view.dart';
 import 'package:nutrivita_demo_v2/number/presentation/Bloc/number_bloc.dart';
 
 class FoodsListPage extends StatefulWidget {
@@ -15,31 +16,31 @@ class FoodsListPage extends StatefulWidget {
 class _FoodsListPageState extends State<FoodsListPage> {
   @override
   Widget build(BuildContext context) {
-    final selectedNumber =
-        context.watch<NumberBloc>().state.numberSelected.number;
+    // final selectedNumber =
+    //     context.watch<NumberBloc>().state.numberSelected.number;
 
     return Column(
       children: [
-        ElevatedButton(
-          onPressed: () {
-            setState(() {
-              context.read<FoodsBloc>().add(
-                LoadFoodsByNutrient(selectedNumber),
-              );
-            });
-          },
-          child: Text('Refresh Foods List'),
-        ),
+        // ElevatedButton(
+        //   onPressed: () {
+        //     setState(() {
+        //       context.read<FoodsBloc>().add(
+        //         LoadFoodsByNutrient(selectedNumber),
+        //       );
+        //     });
+        //   },
+        //   child: const Text('Refresh Foods List'),
+        // ),
         const SizedBox(height: 16),
-        Container(
-          padding: const EdgeInsets.all(16.0),
-          child: Center(
-            child: Text(
-              'Foods List Page: selected number: $selectedNumber',
-              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-            ),
-          ),
-        ),
+        // Container(
+        //   padding: const EdgeInsets.all(16.0),
+        //   child: Center(
+        //     child: Text(
+        //       'test - selected number: $selectedNumber',
+        //       style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+        //     ),
+        //   ),
+        // ),
         Expanded(
           child: BlocBuilder<FoodsBloc, FoodsState>(
             builder: (context, state) {
@@ -48,23 +49,7 @@ class _FoodsListPageState extends State<FoodsListPage> {
               if (result.isInProgress) {
                 return const Center(child: CircularProgressIndicator());
               } else if (result.isSuccessful) {
-                return ListView.builder(
-                  itemCount: state.foods.length,
-                  itemBuilder: (context, index) {
-                    final food = state.foods[index];
-                    final ironNutrient = food.foodNutrients.firstWhere(
-                      (n) => n.nutrient.number == selectedNumber,
-                    );
-                    final ironAmount = ironNutrient.amount;
-                    final ironAmountName = ironNutrient.nutrient.name;
-                    return ListTile(
-                      title: Text(food.description),
-                      subtitle: Text(
-                        '${ironAmountName}: ${ironAmount.toStringAsFixed(2)} mg',
-                      ),
-                    );
-                  },
-                );
+                return MyListView(state: state);
               } else if (result.isError) {
                 return Center(
                   child: Text('Error: ${state.delayedResult.error}'),
