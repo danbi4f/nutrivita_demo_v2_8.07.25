@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nutrivita_demo_v2/common/model/theme/simple_theme.dart';
+import 'package:nutrivita_demo_v2/common/theme/simple_theme.dart';
 import 'package:nutrivita_demo_v2/main_page.dart';
 
 void main() {

@@ -29,10 +29,40 @@ class MyListView extends StatelessWidget {
           final ironAmount = ironNutrient.amount;
           final ironAmountName = ironNutrient.nutrient.name;
 
-          return ListTile(
-            title: Text(food.description),
-            subtitle: Text(
-              '$ironAmountName: ${ironAmount.toStringAsFixed(2)} mg',
+          return Container(
+            margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+            decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.surfaceContainerLow,
+              borderRadius: BorderRadius.all(Radius.circular(8)),
+              border: Border(
+                bottom: BorderSide(
+                  color: Theme.of(context).colorScheme.outline,
+                  width: 0.5,
+                ),
+              ),
+              boxShadow: [
+                // dark
+                BoxShadow(
+                  color: Theme.of(context).colorScheme.surfaceContainerLowest,
+                  offset: const Offset(4, 4),
+                  blurRadius: 20,
+                  spreadRadius: 5,
+                ),
+
+                // light
+                BoxShadow(
+                  color: Colors.white24,
+                  offset: const Offset(-4, -4),
+                  blurRadius: 20,
+                  spreadRadius: -5,
+                ),
+              ],
+            ),
+            child: ListTile(
+              title: Text(food.description),
+              subtitle: Text(
+                '$ironAmountName: ${ironAmount.toStringAsFixed(2)} mg',
+              ),
             ),
           );
         } else {
@@ -43,6 +73,5 @@ class MyListView extends StatelessWidget {
         }
       },
     );
-    ;
   }
 }

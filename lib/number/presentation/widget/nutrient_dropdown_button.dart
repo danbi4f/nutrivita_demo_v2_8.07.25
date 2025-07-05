@@ -37,18 +37,13 @@ class NutrientDropdownButton extends StatelessWidget {
             context.read<FoodsBloc>().add(
               LoadFoodsByNutrient(selectedNumber.number),
             );
-
-            print(
-              'Selected number: ${selectedNumber.number} (${selectedNumber.name})',
-            );
           }
         },
         decoration: const InputDecoration(
           labelText: 'Select Number',
-          border: OutlineInputBorder(),
+          // border: UnderlineInputBorder(),
         ),
       ),
     );
-    ;
   }
 }

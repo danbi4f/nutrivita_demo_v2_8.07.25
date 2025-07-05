@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nutrivita_demo_v2/number/presentation/Bloc/number_bloc.dart';
-import 'package:nutrivita_demo_v2/number/presentation/widget/nutrient_dropdown_button.dart';
+import 'package:nutrivita_demo_v2/number/presentation/widget/nutrient_dropdown_button_2.dart';
 
 class MyDropdownButton extends StatelessWidget {
   const MyDropdownButton({super.key});
@@ -15,7 +15,7 @@ class MyDropdownButton extends StatelessWidget {
         if (isProgress) {
           return const Center(child: CircularProgressIndicator());
         } else if (result.isSuccessful) {
-          return NutrientDropdownButton(state: state);
+          return NutrientDropdownButton2(state: state);
         } else if (result.isError) {
           return Center(child: Text('Error: ${state.delayedResult.error}'));
         }

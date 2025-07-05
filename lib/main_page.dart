@@ -37,6 +37,7 @@ class _MainPageState extends State<MainPage> {
         ),
       ],
       child: Scaffold(
+        backgroundColor: Theme.of(context).colorScheme.surfaceContainerHigh,
         body: BlocListener<NumberBloc, NumbersState>(
           listener: (context, state) {},
           child: Column(

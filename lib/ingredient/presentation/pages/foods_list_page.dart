@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nutrivita_demo_v2/ingredient/presentation/bloc/foods_bloc.dart';
-import 'package:nutrivita_demo_v2/ingredient/presentation/bloc/foods_event.dart';
 import 'package:nutrivita_demo_v2/ingredient/presentation/bloc/foods_state.dart';
 import 'package:nutrivita_demo_v2/ingredient/presentation/widget/my_list_view.dart';
-import 'package:nutrivita_demo_v2/number/presentation/Bloc/number_bloc.dart';
 
 class FoodsListPage extends StatefulWidget {
   const FoodsListPage({super.key});
