@@ -13,65 +13,74 @@ class MyListView extends StatelessWidget {
     final selectedNumber =
         context.watch<NumberBloc>().state.numberSelected.number;
 
-    return ListView.builder(
-      itemCount: state.foods.length,
-      itemBuilder: (context, index) {
-        final food = state.foods[index];
+    return SizedBox(
+      height: MediaQuery.of(context).size.height * 0.7,
+      child: ListView.builder(
+        itemCount: state.foods.length,
+        itemBuilder: (context, index) {
+          final food = state.foods[index];
 
-        final hasNutrient = food.foodNutrients.any(
-          (n) => n.nutrient.number == selectedNumber,
-        );
-
-        if (hasNutrient) {
-          final ironNutrient = food.foodNutrients.firstWhere(
+          final hasNutrient = food.foodNutrients.any(
             (n) => n.nutrient.number == selectedNumber,
           );
-          final ironAmount = ironNutrient.amount;
-          final ironAmountName = ironNutrient.nutrient.name;
 
-          return Container(
-            margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-            decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.surfaceContainerLow,
-              borderRadius: BorderRadius.all(Radius.circular(8)),
-              border: Border(
-                bottom: BorderSide(
-                  color: Theme.of(context).colorScheme.outline,
-                  width: 0.5,
+          if (hasNutrient) {
+            final ironNutrient = food.foodNutrients.firstWhere(
+              (n) => n.nutrient.number == selectedNumber,
+            );
+            final ironAmount = ironNutrient.amount;
+            final ironAmountName = ironNutrient.nutrient.name;
+            final unitName = ironNutrient.nutrient.unitName;
+
+            return Container(
+              margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+              decoration: BoxDecoration(
+                color: Theme.of(context).colorScheme.surfaceContainerLow,
+                borderRadius: BorderRadius.all(Radius.circular(8)),
+                border: Border(
+                  bottom: BorderSide(
+                    color: Theme.of(context).colorScheme.outline,
+                    width: 0.5,
+                  ),
                 ),
+                boxShadow: [
+                  // dark
+                  BoxShadow(
+                    color: Theme.of(context).colorScheme.surfaceContainerLowest,
+                    offset: const Offset(4, 4),
+                    blurRadius: 20,
+                    spreadRadius: 5,
+                  ),
+
+                  // light
+                  BoxShadow(
+                    color: Colors.white24,
+                    offset: const Offset(-4, -4),
+                    blurRadius: 20,
+                    spreadRadius: -5,
+                  ),
+                ],
               ),
-              boxShadow: [
-                // dark
-                BoxShadow(
-                  color: Theme.of(context).colorScheme.surfaceContainerLowest,
-                  offset: const Offset(4, 4),
-                  blurRadius: 20,
-                  spreadRadius: 5,
-                ),
-
-                // light
-                BoxShadow(
-                  color: Colors.white24,
-                  offset: const Offset(-4, -4),
-                  blurRadius: 20,
-                  spreadRadius: -5,
-                ),
-              ],
-            ),
-            child: ListTile(
+              child: ListTile(
+                title: SelectableText(food.description),
+                subtitle: SelectableText(() {
+                  if (unitName == 'µg' && ironAmount >= 1000) {
+                    final mgValue = (ironAmount / 1000).toStringAsFixed(2);
+                    return '$ironAmountName: $mgValue mg';
+                  } else {
+                    return '$ironAmountName: $ironAmount $unitName';
+                  }
+                }()),
+              ),
+            );
+          } else {
+            return ListTile(
               title: Text(food.description),
-              subtitle: Text(
-                '$ironAmountName: ${ironAmount.toStringAsFixed(2)} mg',
-              ),
-            ),
-          );
-        } else {
-          return ListTile(
-            title: Text(food.description),
-            subtitle: const Text('Składnik nie występuje w tym produkcie'),
-          );
-        }
-      },
+              subtitle: const Text('Składnik nie występuje w tym produkcie'),
+            );
+          }
+        },
+      ),
     );
   }
 }

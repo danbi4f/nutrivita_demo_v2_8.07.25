@@ -8,7 +8,7 @@ import 'package:nutrivita_demo_v2/number/presentation/Bloc/number_event.dart';
 part 'number_state.dart';
 
 class NumberBloc extends Bloc<NumberEvent, NumbersState> {
-  NumberBloc(this.numberRepository) : super(NumbersState()) {
+  NumberBloc({required this.numberRepository}) : super(const NumbersState()) {
     on<GetNumbersEvent>(_mapGetNumbersEventToState);
     on<SelectNumber>(_mapSelectNumberEventToState);
   }
@@ -22,9 +22,13 @@ class NumberBloc extends Bloc<NumberEvent, NumbersState> {
     emit(state.copyWith(delayedResult: const DelayedResult.inProgress()));
     try {
       final numbers = await numberRepository.loadListNumbers();
-      emit(state.copyWith(numbers: numbers));
+
       emit(
-        state.copyWith(delayedResult: const DelayedResult.fromValue('Success')),
+        state.copyWith(
+          numbers: numbers,
+          allNumbers: numbers, // <-- zapamiętaj pełną listę
+          delayedResult: const DelayedResult.fromValue('Success'),
+        ),
       );
     } on Exception catch (ex) {
       emit(state.copyWith(delayedResult: DelayedResult.fromError(ex)));

@@ -15,6 +15,7 @@ class NumbersState extends Equatable {
     List<Number>? numbers,
     Number? numberSelected,
     DelayedResult<String>? delayedResult,
+    List<Number>? allNumbers,
   }) {
     return NumbersState(
       numbers: numbers ?? this.numbers,

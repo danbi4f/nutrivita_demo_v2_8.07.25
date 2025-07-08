@@ -81,7 +81,7 @@ class NutrientDropdownButton2 extends StatelessWidget {
             iconSize: 24,
           ),
           dropdownStyleData: DropdownStyleData(
-            maxHeight: 300,
+            maxHeight: 500,
             width: 350,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(14),

@@ -23,6 +23,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/FoodData_Central_foundation_food_json_2025-04-24.json
-    - assets/nutrient_number.json
-    - assets/nutrient_number_3.json
-    - assets/nutrient_number_4.json
+    - assets/pl.json
+    - assets/grouped_nutrients_v5.json
+    - assets/nutrient_number_all_119.json
+    - assets/category_group.json

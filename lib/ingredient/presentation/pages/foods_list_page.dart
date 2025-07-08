@@ -39,24 +39,20 @@ class _FoodsListPageState extends State<FoodsListPage> {
         //     ),
         //   ),
         // ),
-        Expanded(
-          child: BlocBuilder<FoodsBloc, FoodsState>(
-            builder: (context, state) {
-              final result = state.delayedResult;
+        BlocBuilder<FoodsBloc, FoodsState>(
+          builder: (context, state) {
+            final result = state.delayedResult;
 
-              if (result.isInProgress) {
-                return const Center(child: CircularProgressIndicator());
-              } else if (result.isSuccessful) {
-                return MyListView(state: state);
-              } else if (result.isError) {
-                return Center(
-                  child: Text('Error: ${state.delayedResult.error}'),
-                );
-              } else {
-                return const Center(child: Text('No data available'));
-              }
-            },
-          ),
+            if (result.isInProgress) {
+              return const Center(child: CircularProgressIndicator());
+            } else if (result.isSuccessful) {
+              return MyListView(state: state);
+            } else if (result.isError) {
+              return Center(child: Text('Error: ${state.delayedResult.error}'));
+            } else {
+              return const Center(child: Text('No data available'));
+            }
+          },
         ),
       ],
     );

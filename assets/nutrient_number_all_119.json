@@ -1,0 +1,480 @@
+{
+  "numbers": [
+    {
+      "name": "Nitrogen",
+      "number": "202"
+    },
+    {
+      "name": "Protein",
+      "number": "203"
+    },
+    {
+      "name": "Total lipid (fat)",
+      "number": "204"
+    },
+    {
+      "name": "Carbohydrate, by difference",
+      "number": "205"
+    },
+    {
+      "name": "Carbohydrate, by summation",
+      "number": "205.2"
+    },
+    {
+      "name": "Ash",
+      "number": "207"
+    },
+    {
+      "name": "Energy",
+      "number": "208"
+    },
+    {
+      "name": "Starch",
+      "number": "209"
+    },
+    {
+      "name": "Sucrose",
+      "number": "210"
+    },
+    {
+      "name": "Glucose",
+      "number": "211"
+    },
+    {
+      "name": "Fructose",
+      "number": "212"
+    },
+    {
+      "name": "Lactose",
+      "number": "213"
+    },
+    {
+      "name": "Maltose",
+      "number": "214"
+    },
+    {
+      "name": "Water",
+      "number": "255"
+    },
+    {
+      "name": "Energy",
+      "number": "268"
+    },
+    {
+      "name": "Sugars, Total",
+      "number": "269.3"
+    },
+    {
+      "name": "Galactose",
+      "number": "287"
+    },
+    {
+      "name": "Fiber, total dietary",
+      "number": "291"
+    },
+    {
+      "name": "Total fat (NLEA)",
+      "number": "298"
+    },
+    {
+      "name": "Calcium, Ca",
+      "number": "301"
+    },
+    {
+      "name": "Iron, Fe",
+      "number": "303"
+    },
+    {
+      "name": "Magnesium, Mg",
+      "number": "304"
+    },
+    {
+      "name": "Phosphorus, P",
+      "number": "305"
+    },
+    {
+      "name": "Potassium, K",
+      "number": "306"
+    },
+    {
+      "name": "Sodium, Na",
+      "number": "307"
+    },
+    {
+      "name": "Zinc, Zn",
+      "number": "309"
+    },
+    {
+      "name": "Copper, Cu",
+      "number": "312"
+    },
+    {
+      "name": "Manganese, Mn",
+      "number": "315"
+    },
+    {
+      "name": "Selenium, Se",
+      "number": "317"
+    },
+    {
+      "name": "Vitamin A, RAE",
+      "number": "320"
+    },
+    {
+      "name": "Carotene, beta",
+      "number": "321"
+    },
+    {
+      "name": "Carotene, alpha",
+      "number": "322"
+    },
+    {
+      "name": "Vitamin E (alpha-tocopherol)",
+      "number": "323"
+    },
+    {
+      "name": "Cryptoxanthin, beta",
+      "number": "334"
+    },
+    {
+      "name": "Lycopene",
+      "number": "337"
+    },
+    {
+      "name": "Lutein + zeaxanthin",
+      "number": "338"
+    },
+    {
+      "name": "Tocopherol, beta",
+      "number": "341"
+    },
+    {
+      "name": "Tocopherol, gamma",
+      "number": "342"
+    },
+    {
+      "name": "Tocopherol, delta",
+      "number": "343"
+    },
+    {
+      "name": "Tocotrienol, alpha",
+      "number": "344"
+    },
+    {
+      "name": "Tocotrienol, beta",
+      "number": "345"
+    },
+    {
+      "name": "Tocotrienol, gamma",
+      "number": "346"
+    },
+    {
+      "name": "Tocotrienol, delta",
+      "number": "347"
+    },
+    {
+      "name": "Vitamin C, total ascorbic acid",
+      "number": "401"
+    },
+    {
+      "name": "Thiamin",
+      "number": "404"
+    },
+    {
+      "name": "Riboflavin",
+      "number": "405"
+    },
+    {
+      "name": "Niacin",
+      "number": "406"
+    },
+    {
+      "name": "Pantothenic acid",
+      "number": "410"
+    },
+    {
+      "name": "Vitamin B-6",
+      "number": "415"
+    },
+    {
+      "name": "Folate, total",
+      "number": "417"
+    },
+    {
+      "name": "Choline, total",
+      "number": "421"
+    },
+    {
+      "name": "Vitamin K (Menaquinone-4)",
+      "number": "428"
+    },
+    {
+      "name": "Vitamin K (Dihydrophylloquinone)",
+      "number": "429"
+    },
+    {
+      "name": "Vitamin K (phylloquinone)",
+      "number": "430"
+    },
+    {
+      "name": "Choline, free",
+      "number": "450"
+    },
+    {
+      "name": "Choline, from phosphocholine",
+      "number": "451"
+    },
+    {
+      "name": "Choline, from phosphotidyl choline",
+      "number": "452"
+    },
+    {
+      "name": "Choline, from glycerophosphocholine",
+      "number": "453"
+    },
+    {
+      "name": "Betaine",
+      "number": "454"
+    },
+    {
+      "name": "Choline, from sphingomyelin",
+      "number": "455"
+    },
+    {
+      "name": "Fatty acids, total trans",
+      "number": "605"
+    },
+    {
+      "name": "Fatty acids, total saturated",
+      "number": "606"
+    },
+    {
+      "name": "SFA 4:0",
+      "number": "607"
+    },
+    {
+      "name": "SFA 6:0",
+      "number": "608"
+    },
+    {
+      "name": "SFA 8:0",
+      "number": "609"
+    },
+    {
+      "name": "SFA 10:0",
+      "number": "610"
+    },
+    {
+      "name": "SFA 12:0",
+      "number": "611"
+    },
+    {
+      "name": "SFA 14:0",
+      "number": "612"
+    },
+    {
+      "name": "SFA 16:0",
+      "number": "613"
+    },
+    {
+      "name": "SFA 18:0",
+      "number": "614"
+    },
+    {
+      "name": "SFA 20:0",
+      "number": "615"
+    },
+    {
+      "name": "PUFA 20:4",
+      "number": "620"
+    },
+    {
+      "name": "PUFA 22:6 n-3 (DHA)",
+      "number": "621"
+    },
+    {
+      "name": "SFA 22:0",
+      "number": "624"
+    },
+    {
+      "name": "PUFA 18:4",
+      "number": "627"
+    },
+    {
+      "name": "PUFA 20:5 n-3 (EPA)",
+      "number": "629"
+    },
+    {
+      "name": "PUFA 22:5 n-3 (DPA)",
+      "number": "631"
+    },
+    {
+      "name": "Fatty acids, total monounsaturated",
+      "number": "645"
+    },
+    {
+      "name": "Fatty acids, total polyunsaturated",
+      "number": "646"
+    },
+    {
+      "name": "SFA 15:0",
+      "number": "652"
+    },
+    {
+      "name": "SFA 17:0",
+      "number": "653"
+    },
+    {
+      "name": "SFA 24:0",
+      "number": "654"
+    },
+    {
+      "name": "TFA 16:1 t",
+      "number": "662"
+    },
+    {
+      "name": "TFA 18:1 t",
+      "number": "663"
+    },
+    {
+      "name": "TFA 22:1 t",
+      "number": "664"
+    },
+    {
+      "name": "TFA 18:2 t not further defined",
+      "number": "665"
+    },
+    {
+      "name": "PUFA 18:2 CLAs",
+      "number": "670"
+    },
+    {
+      "name": "MUFA 24:1 c",
+      "number": "671"
+    },
+    {
+      "name": "PUFA 20:2 n-6 c,c",
+      "number": "672"
+    },
+    {
+      "name": "MUFA 16:1 c",
+      "number": "673"
+    },
+    {
+      "name": "MUFA 18:1 c",
+      "number": "674"
+    },
+    {
+      "name": "PUFA 18:2 n-6 c,c",
+      "number": "675"
+    },
+    {
+      "name": "MUFA 22:1 c",
+      "number": "676"
+    },
+    {
+      "name": "MUFA 22:1 n-9",
+      "number": "676.1"
+    },
+    {
+      "name": "PUFA 18:3 n-6 c,c,c",
+      "number": "685"
+    },
+    {
+      "name": "MUFA 17:1",
+      "number": "687"
+    },
+    {
+      "name": "Fatty acids, total trans-monoenoic",
+      "number": "693"
+    },
+    {
+      "name": "Fatty acids, total trans-dienoic",
+      "number": "694"
+    },
+    {
+      "name": "Fatty acids, total trans-polyenoic",
+      "number": "695"
+    },
+    {
+      "name": "MUFA 15:1",
+      "number": "697"
+    },
+    {
+      "name": "PUFA 22:2",
+      "number": "698"
+    },
+    {
+      "name": "SFA 11:0",
+      "number": "699"
+    },
+    {
+      "name": "MUFA 14:1 c",
+      "number": "822"
+    },
+    {
+      "name": "MUFA 17:1 c",
+      "number": "825"
+    },
+    {
+      "name": "MUFA 20:1 c",
+      "number": "829"
+    },
+    {
+      "name": "PUFA 18:2 c",
+      "number": "831"
+    },
+    {
+      "name": "PUFA 18:3 c",
+      "number": "833"
+    },
+    {
+      "name": "TFA 18:3 t",
+      "number": "834"
+    },
+    {
+      "name": "PUFA 20:3 c",
+      "number": "835"
+    },
+    {
+      "name": "PUFA 20:4c",
+      "number": "836"
+    },
+    {
+      "name": "PUFA 20:5c",
+      "number": "837"
+    },
+    {
+      "name": "PUFA 22:5 c",
+      "number": "838"
+    },
+    {
+      "name": "PUFA 22:6 c",
+      "number": "839"
+    },
+    {
+      "name": "PUFA 20:2 c",
+      "number": "840"
+    },
+    {
+      "name": "PUFA 18:3 n-3 c,c,c (ALA)",
+      "number": "851"
+    },
+    {
+      "name": "PUFA 20:3 n-3",
+      "number": "852"
+    },
+    {
+      "name": "PUFA 20:3 n-6",
+      "number": "853"
+    },
+    {
+      "name": "PUFA 22:4",
+      "number": "858"
+    },
+    {
+      "name": "PUFA 20:3 n-9",
+      "number": "861"
+    }
+  ]
+}

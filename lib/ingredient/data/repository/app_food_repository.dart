@@ -1,5 +1,5 @@
-import 'package:nutrivita_demo_v2/ingredient/data/models/food_nutrient_model.dart';
-import 'package:nutrivita_demo_v2/ingredient/data/models/nutrient_model.dart';
+import 'package:nutrivita_demo_v2/ingredient/data/model/food_nutrient_model.dart';
+import 'package:nutrivita_demo_v2/ingredient/data/model/nutrient_model.dart';
 
 import '../../domain/entities/food_entity.dart';
 import '../../domain/repositories/food_repository.dart';
