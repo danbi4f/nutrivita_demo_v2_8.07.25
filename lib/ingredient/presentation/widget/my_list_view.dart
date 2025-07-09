@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:nutrivita_demo_v2/ingredient/presentation/bloc/foods_bloc.dart';
 import 'package:nutrivita_demo_v2/ingredient/presentation/bloc/foods_state.dart';
 import 'package:nutrivita_demo_v2/number/presentation/Bloc/number_bloc.dart';
 
 class MyListView extends StatelessWidget {
-  const MyListView({super.key, required this.state});
-
-  final FoodsState state;
+  const MyListView({super.key});
 
   @override
   Widget build(BuildContext context) {
     final selectedNumber =
         context.watch<NumberBloc>().state.numberSelected.number;
+
+    final state = context.read<FoodsBloc>().state;
 
     return SizedBox(
       height: MediaQuery.of(context).size.height * 0.7,

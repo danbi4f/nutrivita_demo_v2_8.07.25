@@ -12,12 +12,20 @@ class HeaderTitle extends StatelessWidget {
           children: [
             Text(
               'Welcome DanBi 👋',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25.0),
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 25.0,
+                color: Theme.of(context).colorScheme.tertiary,
+              ),
             ),
             const SizedBox(height: 8.0),
             Text(
               'What would you like to eat?  ',
-              style: TextStyle(fontWeight: FontWeight.w400, fontSize: 14.0),
+              style: TextStyle(
+                fontWeight: FontWeight.w400,
+                fontSize: 14.0,
+                color: Theme.of(context).colorScheme.tertiary,
+              ),
             ),
           ],
         ),

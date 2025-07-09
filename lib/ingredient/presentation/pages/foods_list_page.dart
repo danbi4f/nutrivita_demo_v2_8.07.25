@@ -46,7 +46,7 @@ class _FoodsListPageState extends State<FoodsListPage> {
             if (result.isInProgress) {
               return const Center(child: CircularProgressIndicator());
             } else if (result.isSuccessful) {
-              return MyListView(state: state);
+              return MyListView();
             } else if (result.isError) {
               return Center(child: Text('Error: ${state.delayedResult.error}'));
             } else {

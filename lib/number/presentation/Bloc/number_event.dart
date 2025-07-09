@@ -23,3 +23,12 @@ class SelectNumber extends NumberEvent {
   @override
   List<Object> get props => [numberSelected];
 }
+
+class SelectNumberGroup extends NumberEvent {
+  final int numberSelected;
+
+  const SelectNumberGroup({required this.numberSelected});
+
+  @override
+  List<Object> get props => [numberSelected];
+}

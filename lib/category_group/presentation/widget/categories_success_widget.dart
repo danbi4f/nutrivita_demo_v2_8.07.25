@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nutrivita_demo_v2/category_group/data/model/category_group.dart';
 import 'package:nutrivita_demo_v2/category_group/presentation/bloc/category_group_bloc.dart';
-import 'package:nutrivita_demo_v2/category_group/presentation/widget/category_item.dart';
 
 class CategoriesSuccessWidget extends StatelessWidget {
   const CategoriesSuccessWidget({super.key});
@@ -23,12 +22,13 @@ class CategoriesSuccessWidget extends StatelessWidget {
             separatorBuilder: (context, index) => const SizedBox(height: 20),
             itemBuilder: (context, index) {
               final category = categories[index];
-              return CategoryItem(
-                categoryName: category.categoryName,
-                onTap: () {
-                  print('Category $index tapped ${category.categoryName}');
-                },
-              );
+              return Placeholder();
+              // CategoryItem(
+              //   categoryName: category.categoryName,
+              //   onTap: () {
+              //     print('Category $index tapped ${category.categoryName}');
+              //   },
+              // );
             },
           ),
         ),
