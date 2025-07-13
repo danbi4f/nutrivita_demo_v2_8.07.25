@@ -1,5 +1,5 @@
-class NutrientGroupNumber {
-  NutrientGroupNumber({
+class CategoryGroupNutrientNumber {
+  CategoryGroupNutrientNumber({
     required this.name,
     required this.number,
     required this.id,
@@ -9,8 +9,8 @@ class NutrientGroupNumber {
   final String number;
   final int id;
 
-  factory NutrientGroupNumber.fromJson(Map<String, dynamic> json) {
-    return NutrientGroupNumber(
+  factory CategoryGroupNutrientNumber.fromJson(Map<String, dynamic> json) {
+    return CategoryGroupNutrientNumber(
       name: json['name'],
       number: json['number'],
       id: json['id'],

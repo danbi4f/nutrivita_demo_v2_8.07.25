@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nutrivita_demo_v2/category_group/data/model/category_group.dart';
-import 'package:nutrivita_demo_v2/ingredient/presentation/bloc/foods_bloc.dart';
-import 'package:nutrivita_demo_v2/ingredient/presentation/bloc/foods_event.dart';
-import 'package:nutrivita_demo_v2/ingredient/presentation/widget/my_list_view.dart';
+import 'package:nutrivita_demo_v2/ingredient/presentation/widget/ingredient_by_category_success_widget.dart';
+import 'package:nutrivita_demo_v2/ingredient/presentation/widget/ingredient_by_category_widget.dart';
 
-class NumberNutrientGroupView extends StatelessWidget {
-  const NumberNutrientGroupView({super.key, required this.category});
+class CategoryGroupNutrientNumberItem extends StatelessWidget {
+  const CategoryGroupNutrientNumberItem({super.key, required this.category});
 
   final CategoryGroup category;
 
@@ -18,11 +16,17 @@ class NumberNutrientGroupView extends StatelessWidget {
         final item = category.nutrientsGroup[index];
         return GestureDetector(
           onTap: () {
-            print('klik');
-            // context.read<FoodsBloc>().add(LoadFoodsByNutrient(item.number));
-            // Navigator.of(
-            //   context,
-            // ).push(MaterialPageRoute(builder: (context) => MyListView()));
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder:
+                    (context) => Scaffold(
+                      appBar: AppBar(),
+                      body: IngredientByCategoryWidget(
+                        nutrientNumber: item.number,
+                      ),
+                    ),
+              ),
+            );
           },
           child: Card(
             color: Theme.of(context).colorScheme.surfaceBright,

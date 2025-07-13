@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:nutrivita_demo_v2/category_group/presentation/widget/my_grid_view.dart';
-import 'package:nutrivita_demo_v2/number/presentation/Bloc/number_bloc.dart';
+import 'package:nutrivita_demo_v2/category_group/presentation/widget/category_group_widget.dart';
 import 'package:nutrivita_demo_v2/widget/header_title.dart';
 
-class MainPayout extends StatefulWidget {
-  const MainPayout({super.key});
+class MainLayout extends StatefulWidget {
+  const MainLayout({super.key});
 
   @override
-  State<MainPayout> createState() => _MainPayoutState();
+  State<MainLayout> createState() => _MainPayoutState();
 }
 
-class _MainPayoutState extends State<MainPayout> {
+class _MainPayoutState extends State<MainLayout> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -38,17 +36,8 @@ class _MainPayoutState extends State<MainPayout> {
           ),
         ),
         backgroundColor: Theme.of(context).colorScheme.surfaceContainerHigh,
-        body: BlocListener<NumberBloc, NumbersState>(
-          listener: (context, state) {},
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(height: 20.0),
-              HeaderTitle(),
-              const SizedBox(height: 30.0),
-              Expanded(child: MyGridView()),
-            ],
-          ),
+        body: Column(
+          children: [HeaderTitle(), Expanded(child: CategoryGroupWidget())],
         ),
       ),
     );

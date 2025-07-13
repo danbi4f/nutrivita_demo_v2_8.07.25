@@ -26,6 +26,7 @@ class FoodsBloc extends Bloc<FoodsEvent, FoodsState> {
           ),
         ),
       );
+      print('fetching data success');
     } on Exception catch (ex) {
       emit(state.copyWith(delayedResult: DelayedResult.fromError(ex)));
     }

@@ -1,35 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nutrivita_demo_v2/category_group/data/model/category_group.dart';
-import 'package:nutrivita_demo_v2/category_group/presentation/widget/number_nutrient_group_view.dart';
-import 'package:nutrivita_demo_v2/ingredient/presentation/bloc/foods_bloc.dart';
+import 'package:nutrivita_demo_v2/category_group/presentation/widget/category_group_nutrient_number_item.dart';
 
-class CategoryItem extends StatelessWidget {
-  const CategoryItem({super.key, this.onTap, required this.category});
+class CategoryGroupItem extends StatelessWidget {
+  const CategoryGroupItem({super.key, required this.category});
 
-  final void Function()? onTap;
   final CategoryGroup category;
 
   @override
   Widget build(BuildContext context) {
-    void _onTap() {
+    void onTap() {
       showModalBottomSheet(
         context: context,
-        builder: (_) {
-          return BlocProvider.value(
-            value: context.read<FoodsBloc>(),
-            child: SizedBox(
-              height: MediaQuery.of(context).size.height,
-              width: MediaQuery.of(context).size.width,
-              child: NumberNutrientGroupView(category: category),
-            ),
-          );
+        builder: (context) {
+          return CategoryGroupNutrientNumberItem(category: category);
         },
       );
     }
 
     return GestureDetector(
-      onTap: onTap ?? _onTap,
+      onTap: onTap,
       child: Container(
         height: 120,
         width: 200,
