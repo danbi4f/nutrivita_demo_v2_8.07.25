@@ -20,13 +20,13 @@ class FoodsBloc extends Bloc<FoodsEvent, FoodsState> {
       final foods = await getSortedFoodsByNutrient(event.nutrientNumber);
       emit(
         state.copyWith(
+          nutrientNumber: event.nutrientNumber,
           foods: foods,
           delayedResult: const DelayedResult.fromValue(
             'Foods loaded successfully',
           ),
         ),
       );
-      print('fetching data success');
     } on Exception catch (ex) {
       emit(state.copyWith(delayedResult: DelayedResult.fromError(ex)));
     }

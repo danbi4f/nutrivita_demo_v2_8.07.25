@@ -6,8 +6,9 @@ abstract class FoodsEvent extends Equatable {
 }
 
 class LoadFoodsByNutrient extends FoodsEvent {
-  final String nutrientNumber;
   LoadFoodsByNutrient(this.nutrientNumber);
+
+  final String nutrientNumber;
   @override
   List<Object?> get props => [nutrientNumber];
 }

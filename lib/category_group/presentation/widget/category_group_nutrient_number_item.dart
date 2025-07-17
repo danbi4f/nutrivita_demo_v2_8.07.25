@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:nutrivita_demo_v2/category_group/data/model/category_group.dart';
-import 'package:nutrivita_demo_v2/ingredient/presentation/widget/ingredient_by_category_success_widget.dart';
 import 'package:nutrivita_demo_v2/ingredient/presentation/widget/ingredient_by_category_widget.dart';
 
 class CategoryGroupNutrientNumberItem extends StatelessWidget {

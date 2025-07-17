@@ -22,8 +22,6 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - assets/FoodData_Central_foundation_food_json_2025-04-24.json
+    - assets/en.json
     - assets/pl.json
-    - assets/grouped_nutrients_v5.json
-    - assets/nutrient_number_all_119.json
     - assets/category_group.json

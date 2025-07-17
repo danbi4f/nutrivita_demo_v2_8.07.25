@@ -1,156 +1,6 @@
 {
     "category": [
         {
-            "categoryName": "proteins",
-            "nutrients": [
-                {
-                    "name": "Nitrogen",
-                    "number": "202",
-                    "id": 1
-                },
-                {
-                    "name": "Protein",
-                    "number": "203",
-                    "id": 2
-                }
-            ]
-        },
-        {
-            "categoryName": "energy",
-            "nutrients": [
-                {
-                    "name": "Energy",
-                    "number": "208",
-                    "id": 3
-                },
-                {
-                    "name": "Energy",
-                    "number": "268",
-                    "id": 4
-                }
-            ]
-        },
-        {
-            "categoryName": "carbohydrates",
-            "nutrients": [
-                {
-                    "name": "Carbohydrate, by difference",
-                    "number": "205",
-                    "id": 5
-                },
-                {
-                    "name": "Carbohydrate, by summation",
-                    "number": "205.2",
-                    "id": 6
-                },
-                {
-                    "name": "Starch",
-                    "number": "209",
-                    "id": 7
-                },
-                {
-                    "name": "Fiber, total dietary",
-                    "number": "291",
-                    "id": 8
-                }
-            ]
-        },
-        {
-            "categoryName": "sugars",
-            "nutrients": [
-                {
-                    "name": "Sucrose",
-                    "number": "210",
-                    "id": 9
-                },
-                {
-                    "name": "Glucose",
-                    "number": "211",
-                    "id": 10
-                },
-                {
-                    "name": "Fructose",
-                    "number": "212",
-                    "id": 11
-                },
-                {
-                    "name": "Lactose",
-                    "number": "213",
-                    "id": 12
-                },
-                {
-                    "name": "Maltose",
-                    "number": "214",
-                    "id": 13
-                },
-                {
-                    "name": "Sugars, Total",
-                    "number": "269.3",
-                    "id": 14
-                },
-                {
-                    "name": "Galactose",
-                    "number": "287",
-                    "id": 15
-                }
-            ]
-        },
-        {
-            "categoryName": "minerals",
-            "nutrients": [
-                {
-                    "name": "Calcium, Ca",
-                    "number": "301",
-                    "id": 16
-                },
-                {
-                    "name": "Iron, Fe",
-                    "number": "303",
-                    "id": 17
-                },
-                {
-                    "name": "Magnesium, Mg",
-                    "number": "304",
-                    "id": 18
-                },
-                {
-                    "name": "Phosphorus, P",
-                    "number": "305",
-                    "id": 19
-                },
-                {
-                    "name": "Potassium, K",
-                    "number": "306",
-                    "id": 20
-                },
-                {
-                    "name": "Sodium, Na",
-                    "number": "307",
-                    "id": 21
-                },
-                {
-                    "name": "Zinc, Zn",
-                    "number": "309",
-                    "id": 22
-                },
-                {
-                    "name": "Copper, Cu",
-                    "number": "312",
-                    "id": 23
-                },
-                {
-                    "name": "Manganese, Mn",
-                    "number": "315",
-                    "id": 24
-                },
-                {
-                    "name": "Selenium, Se",
-                    "number": "317",
-                    "id": 25
-                }
-            ]
-        },
-        {
             "categoryName": "vitamins",
             "nutrients": [
                 {
@@ -292,6 +142,61 @@
                     "name": "Choline, from sphingomyelin",
                     "number": "455",
                     "id": 53
+                }
+            ]
+        },
+        {
+            "categoryName": "minerals",
+            "nutrients": [
+                {
+                    "name": "Calcium, Ca",
+                    "number": "301",
+                    "id": 16
+                },
+                {
+                    "name": "Iron, Fe",
+                    "number": "303",
+                    "id": 17
+                },
+                {
+                    "name": "Magnesium, Mg",
+                    "number": "304",
+                    "id": 18
+                },
+                {
+                    "name": "Phosphorus, P",
+                    "number": "305",
+                    "id": 19
+                },
+                {
+                    "name": "Potassium, K",
+                    "number": "306",
+                    "id": 20
+                },
+                {
+                    "name": "Sodium, Na",
+                    "number": "307",
+                    "id": 21
+                },
+                {
+                    "name": "Zinc, Zn",
+                    "number": "309",
+                    "id": 22
+                },
+                {
+                    "name": "Copper, Cu",
+                    "number": "312",
+                    "id": 23
+                },
+                {
+                    "name": "Manganese, Mn",
+                    "number": "315",
+                    "id": 24
+                },
+                {
+                    "name": "Selenium, Se",
+                    "number": "317",
+                    "id": 25
                 }
             ]
         },
@@ -592,6 +497,101 @@
                     "name": "PUFA 20:3 n-9",
                     "number": "861",
                     "id": 112
+                }
+            ]
+        },
+        {
+            "categoryName": "proteins",
+            "nutrients": [
+                {
+                    "name": "Nitrogen",
+                    "number": "202",
+                    "id": 1
+                },
+                {
+                    "name": "Protein",
+                    "number": "203",
+                    "id": 2
+                }
+            ]
+        },
+        {
+            "categoryName": "energy",
+            "nutrients": [
+                {
+                    "name": "Energy",
+                    "number": "208",
+                    "id": 3
+                },
+                {
+                    "name": "Energy",
+                    "number": "268",
+                    "id": 4
+                }
+            ]
+        },
+        {
+            "categoryName": "carbohydrates",
+            "nutrients": [
+                {
+                    "name": "Carbohydrate, by difference",
+                    "number": "205",
+                    "id": 5
+                },
+                {
+                    "name": "Carbohydrate, by summation",
+                    "number": "205.2",
+                    "id": 6
+                },
+                {
+                    "name": "Starch",
+                    "number": "209",
+                    "id": 7
+                },
+                {
+                    "name": "Fiber, total dietary",
+                    "number": "291",
+                    "id": 8
+                }
+            ]
+        },
+        {
+            "categoryName": "sugars",
+            "nutrients": [
+                {
+                    "name": "Sucrose",
+                    "number": "210",
+                    "id": 9
+                },
+                {
+                    "name": "Glucose",
+                    "number": "211",
+                    "id": 10
+                },
+                {
+                    "name": "Fructose",
+                    "number": "212",
+                    "id": 11
+                },
+                {
+                    "name": "Lactose",
+                    "number": "213",
+                    "id": 12
+                },
+                {
+                    "name": "Maltose",
+                    "number": "214",
+                    "id": 13
+                },
+                {
+                    "name": "Sugars, Total",
+                    "number": "269.3",
+                    "id": 14
+                },
+                {
+                    "name": "Galactose",
+                    "number": "287",
+                    "id": 15
                 }
             ]
         },

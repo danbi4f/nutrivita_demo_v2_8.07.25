@@ -12,12 +12,6 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        // BlocProvider(
-        //   create:
-        //       (_) => FoodsBloc(
-        //         GetSortedFoodsByNutrient(AppFoodRepository(AssetJsonService())),
-        //       ),
-        // ),
         BlocProvider(
           create:
               (_) => CategoryGroupBloc(
