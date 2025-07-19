@@ -26,3 +26,4 @@ flutter:
     - assets/pl.json
     - assets/category_group.json
     - assets/surveyFoods.json
+    - assets/USDA.png

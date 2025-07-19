@@ -10,16 +10,19 @@ class SurveyByCategorySuccessWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<SurveyFoodsBloc, SurveyFoodsState>(
       builder: (context, state) {
-        return ListView.builder(
-          itemCount: state.foods.length,
-          itemBuilder: (context, index) {
-            final item = state.foods[index];
-            final nutrientNumber = state.nutrientNumber;
-            return SurveyByCategoryItem(
-              item: item,
-              nutrientNumber: nutrientNumber,
-            );
-          },
+        return Scaffold(
+          appBar: AppBar(),
+          body: ListView.builder(
+            itemCount: state.foods.length,
+            itemBuilder: (context, index) {
+              final item = state.foods[index];
+              final nutrientNumber = state.nutrientNumber;
+              return SurveyByCategoryItem(
+                item: item,
+                nutrientNumber: nutrientNumber,
+              );
+            },
+          ),
         );
       },
     );

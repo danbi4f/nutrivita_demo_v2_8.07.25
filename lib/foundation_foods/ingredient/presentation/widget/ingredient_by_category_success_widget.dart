@@ -11,16 +11,19 @@ class IngredientByCategorySuccessWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<FoodsBloc, FoodsState>(
       builder: (context, state) {
-        return ListView.builder(
-          itemCount: state.foods.length,
-          itemBuilder: (context, index) {
-            final item = state.foods[index];
-            final nutrientNumber = state.nutrientNumber;
-            return IngredientByCategoryItem(
-              item: item,
-              nutrientNumber: nutrientNumber,
-            );
-          },
+        return Scaffold(
+          appBar: AppBar(),
+          body: ListView.builder(
+            itemCount: state.foods.length,
+            itemBuilder: (context, index) {
+              final item = state.foods[index];
+              final nutrientNumber = state.nutrientNumber;
+              return IngredientByCategoryItem(
+                item: item,
+                nutrientNumber: nutrientNumber,
+              );
+            },
+          ),
         );
       },
     );

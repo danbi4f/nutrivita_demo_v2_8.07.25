@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nutrivita_demo_v2/category_group/data/model/category_group.dart';
+import 'package:nutrivita_demo_v2/category_group/presentation/screen/category_group_nutrient_number_screen.dart';
 import 'package:nutrivita_demo_v2/category_group/presentation/widget/category_group_nutrient_number_item.dart';
 
 class CategoryGroupItem extends StatelessWidget {
@@ -15,14 +16,23 @@ class CategoryGroupItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     void onTap() {
-      showModalBottomSheet(
-        context: context,
-        builder: (context) {
-          return CategoryGroupNutrientNumberItem(
-            category: category,
-            flag: flag,
-          );
-        },
+      // showModalBottomSheet(
+      //   context: context,
+      //   builder: (context) {
+      //     return CategoryGroupNutrientNumberItem(
+      //       category: category,
+      //       flag: flag,
+      //     );
+      //   },
+      // );
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder:
+              (context) => CategoryGroupNutrientNumberScreen(
+                category: category,
+                flag: flag,
+              ),
+        ),
       );
     }
 

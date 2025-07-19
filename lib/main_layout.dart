@@ -26,6 +26,12 @@ class _MainPayoutState extends State<MainLayout> {
               color: Theme.of(context).colorScheme.secondary,
             ),
           ),
+          actions: [
+            Padding(
+              padding: const EdgeInsets.only(right: 12.0),
+              child: Image.asset('assets/USDA.png', height: 40, width: 40),
+            ),
+          ],
           backgroundColor: Theme.of(context).colorScheme.surfaceContainerHigh,
         ),
         drawer: Drawer(
