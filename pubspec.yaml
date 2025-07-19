@@ -25,3 +25,4 @@ flutter:
     - assets/en.json
     - assets/pl.json
     - assets/category_group.json
+    - assets/surveyFoods.json

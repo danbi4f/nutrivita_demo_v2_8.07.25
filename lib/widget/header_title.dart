@@ -15,7 +15,7 @@ class HeaderTitle extends StatelessWidget {
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 25.0,
-                color: Theme.of(context).colorScheme.tertiary,
+                color: Theme.of(context).colorScheme.secondary,
               ),
             ),
             const SizedBox(height: 8.0),
@@ -24,7 +24,7 @@ class HeaderTitle extends StatelessWidget {
               style: TextStyle(
                 fontWeight: FontWeight.w400,
                 fontSize: 14.0,
-                color: Theme.of(context).colorScheme.tertiary,
+                color: Theme.of(context).colorScheme.secondary,
               ),
             ),
           ],

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:nutrivita_demo_v2/ingredient/presentation/bloc_en/foods_bloc_en.dart';
-import 'package:nutrivita_demo_v2/ingredient/presentation/bloc_en/foods_state_en.dart';
+import 'package:nutrivita_demo_v2/foundation_foods/ingredient/presentation/bloc_en/foods_bloc_en.dart';
+import 'package:nutrivita_demo_v2/foundation_foods/ingredient/presentation/bloc_en/foods_state_en.dart';
 
 class TestWidget extends StatelessWidget {
   const TestWidget({super.key});

@@ -3,9 +3,14 @@ import 'package:nutrivita_demo_v2/category_group/data/model/category_group.dart'
 import 'package:nutrivita_demo_v2/category_group/presentation/widget/category_group_nutrient_number_item.dart';
 
 class CategoryGroupItem extends StatelessWidget {
-  const CategoryGroupItem({super.key, required this.category});
+  const CategoryGroupItem({
+    super.key,
+    required this.category,
+    required this.flag,
+  });
 
   final CategoryGroup category;
+  final bool flag;
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +18,10 @@ class CategoryGroupItem extends StatelessWidget {
       showModalBottomSheet(
         context: context,
         builder: (context) {
-          return CategoryGroupNutrientNumberItem(category: category);
+          return CategoryGroupNutrientNumberItem(
+            category: category,
+            flag: flag,
+          );
         },
       );
     }
@@ -55,7 +63,7 @@ class CategoryGroupItem extends StatelessWidget {
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 25.0,
-              color: Theme.of(context).colorScheme.tertiary,
+              color: Theme.of(context).colorScheme.secondary,
             ),
           ),
         ),

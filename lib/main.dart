@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: simpleTheme,
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: SafeArea(child: HomePage()),
     );
   }
 }

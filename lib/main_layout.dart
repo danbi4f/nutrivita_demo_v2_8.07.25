@@ -15,7 +15,7 @@ class _MainPayoutState extends State<MainLayout> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          foregroundColor: Theme.of(context).colorScheme.tertiary,
+          foregroundColor: Theme.of(context).colorScheme.secondary,
           centerTitle: true,
           title: Text(
             'NutriVita',
@@ -23,7 +23,7 @@ class _MainPayoutState extends State<MainLayout> {
               fontStyle: FontStyle.italic,
               fontWeight: FontWeight.bold,
               fontSize: 40,
-              color: Theme.of(context).colorScheme.tertiary,
+              color: Theme.of(context).colorScheme.secondary,
             ),
           ),
           backgroundColor: Theme.of(context).colorScheme.surfaceContainerHigh,
