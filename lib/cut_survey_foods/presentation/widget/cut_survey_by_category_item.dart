@@ -26,12 +26,17 @@ class CutSurveyByCategoryItem extends StatelessWidget {
         child: Column(
           children: [
             Text(
-              item.description,
+              item.descriptionPL,
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 10),
-            //IngredientByCategoryEn(item: item),
+            Text(
+              item.description,
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.normal),
+            ),
+
             SizedBox(height: 20),
             Padding(
               padding: const EdgeInsets.only(right: 10, bottom: 10),
@@ -40,7 +45,9 @@ class CutSurveyByCategoryItem extends StatelessWidget {
                 children: [
                   SizedBox(width: 10),
                   Text(
-                    '${item.nutrients} ${item.foodClass}',
+                    '${item.nameNutrients[nutrientNumber]} '
+                    '${item.nutrients[nutrientNumber]?.toStringAsFixed(2)} '
+                    '${item.unitNameNutrients[nutrientNumber]}',
                     style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
                   ),
                 ],

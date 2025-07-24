@@ -26,17 +26,23 @@ class ConvertToCutSurveyJson {
 
     for (final food in surveyfoods) {
       final Map<String, double> nutrientsMap = {};
+      final Map<String, String> nameNutrientsMap = {};
+      final Map<String, String> unitNameNutrientsMap = {};
 
       final List<dynamic> nutrients = food['foodNutrients'] ?? [];
       for (final nutrientEntry in nutrients) {
         final nutrient = nutrientEntry['nutrient'] ?? {};
         final number = nutrient['number'];
+        final nameNutrient = nutrient['name'];
+        final unitNameNutrient = nutrient['unitName'];
         final amount = nutrientEntry['amount'];
 
         if (number != null && amount != null) {
           try {
             final nutrientId = number.toString().trim();
             nutrientsMap[nutrientId] = (amount as num).toDouble();
+            nameNutrientsMap[nutrientId] = (nameNutrient);
+            unitNameNutrientsMap[nutrientId] = (unitNameNutrient);
           } catch (e) {
             print('⚠️ Błąd parsowania składnika: $number, $amount: $e');
           }
@@ -48,6 +54,8 @@ class ConvertToCutSurveyJson {
         'foodClass': food['foodClass'],
         'fdcId': food['fdcId'],
         'nutrients': nutrientsMap,
+        'nameNutrient': nameNutrientsMap,
+        'unitNameNutrient': unitNameNutrientsMap,
       });
     }
 

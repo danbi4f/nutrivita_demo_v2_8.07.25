@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:nutrivita_demo_v2/category_group/data/model/category_group.dart';
 import 'package:nutrivita_demo_v2/cut_survey_foods/presentation/widget/cut_survey_by_category_widget.dart';
 import 'package:nutrivita_demo_v2/foundation_foods/ingredient/presentation/widget/ingredient_by_category_widget.dart';
-import 'package:nutrivita_demo_v2/survey_foods/presentation/widget/survey_by_category_widget.dart';
 
 class CategoryGroupNutrientNumberScreen extends StatelessWidget {
   const CategoryGroupNutrientNumberScreen({

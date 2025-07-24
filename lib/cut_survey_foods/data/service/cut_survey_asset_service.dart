@@ -5,7 +5,7 @@ import 'package:nutrivita_demo_v2/cut_survey_foods/data/model/cut_survey_model.d
 class CutSurveyAssetService {
   Future<List<CutSurveyModel>> fetchCutSurveyFoods() async {
     final jsonString = await rootBundle.loadString(
-      'assets/cut_survey_foods.json',
+      'assets/cut_survey_foods_pl.json',
     );
     final List<dynamic> jsonData = jsonDecode(jsonString);
     return jsonData.map((map) => CutSurveyModel.fromJson(map)).toList();
