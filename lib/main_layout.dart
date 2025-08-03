@@ -15,7 +15,7 @@ class _MainPayoutState extends State<MainLayout> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          foregroundColor: Theme.of(context).colorScheme.secondary,
+          backgroundColor: Theme.of(context).colorScheme.onSurfaceVariant,
           centerTitle: true,
           title: Text(
             'NutriVita',
@@ -23,16 +23,15 @@ class _MainPayoutState extends State<MainLayout> {
               fontStyle: FontStyle.italic,
               fontWeight: FontWeight.bold,
               fontSize: 40,
-              color: Theme.of(context).colorScheme.secondary,
+              color: Theme.of(context).colorScheme.surfaceBright,
             ),
           ),
           actions: [
             Padding(
               padding: const EdgeInsets.only(right: 12.0),
-              child: Image.asset('assets/USDA.png', height: 40, width: 40),
+              child: Image.asset('assets/USDA3.png', height: 40, width: 40),
             ),
           ],
-          backgroundColor: Theme.of(context).colorScheme.surfaceContainerHigh,
         ),
         drawer: Drawer(
           backgroundColor: Theme.of(context).colorScheme.surfaceContainerHigh,
@@ -42,8 +41,16 @@ class _MainPayoutState extends State<MainLayout> {
           ),
         ),
         backgroundColor: Theme.of(context).colorScheme.surfaceContainerHigh,
-        body: Column(
-          children: [HeaderTitle(), Expanded(child: CategoryGroupWidget())],
+        body: Container(
+          color: Theme.of(context).colorScheme.onSurfaceVariant,
+          child: Column(
+            children: [
+              SizedBox(height: 10),
+              HeaderTitle(),
+
+              Expanded(child: CategoryGroupWidget()),
+            ],
+          ),
         ),
       ),
     );

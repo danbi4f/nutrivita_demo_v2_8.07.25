@@ -14,6 +14,7 @@ dependencies:
   equatable: ^2.0.7
   dropdown_button2: ^2.3.9
   path_provider: ^2.1.5
+  flutter_inset_box_shadow: ^1.0.8
 
 dev_dependencies:
   flutter_test:
@@ -28,5 +29,6 @@ flutter:
     - assets/category_group.json
     - assets/surveyFoods.json
     - assets/USDA.png
+    - assets/USDA3.png
     - assets/cut_survey_foods.json
     - assets/cut_survey_foods_pl.json

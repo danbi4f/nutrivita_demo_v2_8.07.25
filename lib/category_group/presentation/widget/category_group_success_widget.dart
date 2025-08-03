@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nutrivita_demo_v2/category_group/data/model/category_group.dart';
 import 'package:nutrivita_demo_v2/category_group/presentation/bloc/category_group_bloc.dart';
 import 'package:nutrivita_demo_v2/category_group/presentation/widget/category_group_item.dart';
-import 'package:nutrivita_demo_v2/widget/my_custom_button.dart';
+import 'package:nutrivita_demo_v2/widget/my_custom_button_2.dart';
 
 class CategoryGroupSuccessWidget extends StatefulWidget {
   const CategoryGroupSuccessWidget({super.key});
@@ -22,49 +22,45 @@ class _CategoryGroupSuccessWidgetState
     final List<CategoryGroup> categories =
         context.watch<CategoryGroupBloc>().state.categories;
 
-    return Column(
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            MyCustomButton(
-              nameButton: 'Foundation Foods',
-              onTap: () {
-                if (!flag) {
-                  setState(() {
-                    flag = true;
-                  });
-                }
-              },
-              selectedIndex: flag,
-            ),
-            MyCustomButton(
-              nameButton: 'Survey Foods',
-              onTap: () {
-                if (flag) {
-                  setState(() {
-                    flag = false;
-                  });
-                }
-              },
-              selectedIndex: !flag,
-            ),
-          ],
+    return Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: [Colors.white.withOpacity(0.1), Color(0xFFD0F0C0)],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
         ),
-        Expanded(
-          child: GridView.builder(
-            itemCount: categories.length,
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisSpacing: 10,
-              crossAxisCount: 2,
-              childAspectRatio: 4 / 3,
-            ),
-            itemBuilder: (context, index) {
-              return CategoryGroupItem(category: categories[index], flag: flag);
+      ),
+      child: Column(
+        children: [
+          MyCustomButton2(
+            surveyFoodsSelected: flag,
+            onToggle: (value) {
+              if (flag != value) {
+                setState(() {
+                  flag = value;
+                });
+              }
             },
           ),
-        ),
-      ],
+          SizedBox(height: 10),
+          Expanded(
+            child: GridView.builder(
+              itemCount: categories.length,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisSpacing: 10,
+                crossAxisCount: 2,
+                childAspectRatio: 2 / 1.45,
+              ),
+              itemBuilder: (context, index) {
+                return CategoryGroupItem(
+                  category: categories[index],
+                  flag: flag,
+                );
+              },
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

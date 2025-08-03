@@ -29,13 +29,11 @@ class CategoryGroupItem extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        height: 120,
-        width: 200,
         margin: const EdgeInsets.all(10),
         //padding: const EdgeInsets.all(50),
         decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.surfaceContainerHigh,
-          borderRadius: BorderRadius.circular(12),
+          color: Theme.of(context).colorScheme.onSurfaceVariant,
+          borderRadius: BorderRadius.circular(20),
           boxShadow: [
             // dark
             BoxShadow(
@@ -63,7 +61,7 @@ class CategoryGroupItem extends StatelessWidget {
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 25.0,
-              color: Theme.of(context).colorScheme.secondary,
+              color: Theme.of(context).colorScheme.surfaceBright,
             ),
           ),
         ),
