@@ -32,23 +32,23 @@ class CategoryGroupItem extends StatelessWidget {
         margin: const EdgeInsets.all(10),
         //padding: const EdgeInsets.all(50),
         decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.onSurfaceVariant,
-          borderRadius: BorderRadius.circular(20),
+          color: Colors.white70,
+          borderRadius: BorderRadius.circular(12),
           boxShadow: [
             // dark
             BoxShadow(
               color: Theme.of(context).colorScheme.surfaceContainerLowest,
-              offset: const Offset(4, 4),
-              blurRadius: 20,
-              spreadRadius: 5,
+              offset: const Offset(7, 7),
+              blurRadius: 25,
+              spreadRadius: 2,
             ),
 
             // light
             BoxShadow(
-              color: Colors.white24,
+              color: Colors.white.withOpacity(0.4),
               offset: const Offset(-4, -4),
               blurRadius: 20,
-              spreadRadius: -5,
+              spreadRadius: 0,
             ),
 
             //

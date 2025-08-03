@@ -22,14 +22,8 @@ class _CategoryGroupSuccessWidgetState
     final List<CategoryGroup> categories =
         context.watch<CategoryGroupBloc>().state.categories;
 
-    return Container(
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [Colors.white.withOpacity(0.1), Color(0xFFD0F0C0)],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
-      ),
+    return ColoredBox(
+      color: Colors.transparent,
       child: Column(
         children: [
           MyCustomButton2(
@@ -51,6 +45,9 @@ class _CategoryGroupSuccessWidgetState
                 crossAxisCount: 2,
                 childAspectRatio: 2 / 1.45,
               ),
+              padding: EdgeInsets.zero,
+              shrinkWrap: true,
+              physics: BouncingScrollPhysics(),
               itemBuilder: (context, index) {
                 return CategoryGroupItem(
                   category: categories[index],

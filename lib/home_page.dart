@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nutrivita_demo_v2/category_group/data/repository/category_group_repository.dart';
 import 'package:nutrivita_demo_v2/category_group/data/service/category_group_service.dart';
 import 'package:nutrivita_demo_v2/category_group/presentation/bloc/category_group_bloc.dart';
-import 'package:nutrivita_demo_v2/main_layout.dart';
+import 'package:nutrivita_demo_v2/screen/main_layout/main_layout.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});

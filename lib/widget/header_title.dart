@@ -10,9 +10,12 @@ class HeaderTitle extends StatelessWidget {
       height: 120,
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.onSurfaceVariant,
+
         boxShadow: [
           BoxShadow(
-            color: Theme.of(context).colorScheme.surfaceContainerLowest,
+            color: Theme.of(
+              context,
+            ).colorScheme.onPrimaryContainer.withOpacity(0.1),
             offset: const Offset(4, 4),
             blurRadius: 30,
             spreadRadius: 1,
@@ -33,21 +36,27 @@ class HeaderTitle extends StatelessWidget {
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
-                'Welcome DanBi 👋',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 28.0,
-                  color: Theme.of(context).colorScheme.surfaceBright,
+              Padding(
+                padding: const EdgeInsets.only(left: 20),
+                child: Text(
+                  'Welcome DanBi 👋',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 28.0,
+                    color: Theme.of(context).colorScheme.surfaceBright,
+                  ),
                 ),
               ),
               const SizedBox(height: 8.0),
-              Text(
-                'What would you like to eat?  ',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18.0,
-                  color: Theme.of(context).colorScheme.surfaceBright,
+              Padding(
+                padding: const EdgeInsets.only(left: 20),
+                child: Text(
+                  'What would you like to eat?  ',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18.0,
+                    color: Theme.of(context).colorScheme.surfaceBright,
+                  ),
                 ),
               ),
             ],
