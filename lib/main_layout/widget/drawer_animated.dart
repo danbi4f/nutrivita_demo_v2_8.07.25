@@ -1,8 +1,6 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:nutrivita_demo_v2/home_page.dart';
-import 'package:nutrivita_demo_v2/main_layout/main_layout.dart';
 import 'package:nutrivita_demo_v2/setting_page.dart';
 
 class DrawerAnimated extends StatelessWidget {
