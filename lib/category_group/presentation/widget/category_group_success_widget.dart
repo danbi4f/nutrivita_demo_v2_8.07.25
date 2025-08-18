@@ -15,49 +15,41 @@ class CategoryGroupSuccessWidget extends StatefulWidget {
 
 class _CategoryGroupSuccessWidgetState
     extends State<CategoryGroupSuccessWidget> {
-  bool flag = true;
+  bool flag = false;
 
   @override
   Widget build(BuildContext context) {
     final List<CategoryGroup> categories =
         context.watch<CategoryGroupBloc>().state.categories;
 
-    return ColoredBox(
-      color: Colors.transparent,
-      child: Column(
-        children: [
-          MyCustomButton2(
-            surveyFoodsSelected: flag,
-            onToggle: (value) {
-              if (flag != value) {
-                setState(() {
-                  flag = value;
-                });
-              }
+    return Column(
+      children: [
+        MyCustomButton2(
+          foodsSelected: flag,
+          onToggle: (value) {
+            if (flag != value) {
+              setState(() {
+                flag = value;
+              });
+            }
+          },
+        ),
+        SizedBox(height: 10),
+        Expanded(
+          child: GridView.builder(
+            itemCount: categories.length,
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisSpacing: 10,
+              crossAxisCount: 2,
+              childAspectRatio: 2 / 1,
+            ),
+            padding: EdgeInsets.zero,
+            itemBuilder: (context, index) {
+              return CategoryGroupItem(category: categories[index], flag: flag);
             },
           ),
-          SizedBox(height: 10),
-          Expanded(
-            child: GridView.builder(
-              itemCount: categories.length,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisSpacing: 10,
-                crossAxisCount: 2,
-                childAspectRatio: 2 / 1.45,
-              ),
-              padding: EdgeInsets.zero,
-              shrinkWrap: true,
-              physics: BouncingScrollPhysics(),
-              itemBuilder: (context, index) {
-                return CategoryGroupItem(
-                  category: categories[index],
-                  flag: flag,
-                );
-              },
-            ),
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

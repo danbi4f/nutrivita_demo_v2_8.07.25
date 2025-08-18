@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:nutrivita_demo_v2/screen/main_layout/widget/background_animated.dart';
-import 'package:nutrivita_demo_v2/screen/main_layout/widget/column_animated.dart';
-import 'package:nutrivita_demo_v2/screen/main_layout/widget/drawer_animated.dart';
-import 'package:nutrivita_demo_v2/screen/main_layout/widget/main_app_bar.dart';
+import 'package:nutrivita_demo_v2/main_layout/widget/background_animated.dart';
+import 'package:nutrivita_demo_v2/main_layout/widget/column_animated.dart';
+import 'package:nutrivita_demo_v2/main_layout/widget/drawer_animated.dart';
+import 'package:nutrivita_demo_v2/main_layout/widget/main_app_bar.dart';
 
 class MainLayout extends StatefulWidget {
   const MainLayout({super.key});
@@ -19,7 +19,7 @@ class MainLayoutState extends State<MainLayout>
   void initState() {
     super.initState();
     _controller = AnimationController(
-      duration: Duration(milliseconds: 130),
+      duration: Duration(milliseconds: 100),
       vsync: this,
     );
   }
@@ -36,7 +36,6 @@ class MainLayoutState extends State<MainLayout>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: MainAppBar(toggleDrawer: toggleDrawer),
-
       body: Stack(
         children: [
           //background

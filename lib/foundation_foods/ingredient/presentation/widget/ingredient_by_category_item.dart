@@ -29,22 +29,44 @@ class IngredientByCategoryItem extends StatelessWidget {
           ),
     );
 
-    return Card(
-      color: Theme.of(context).colorScheme.surfaceBright,
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white70,
+        borderRadius: BorderRadius.circular(12),
+        boxShadow: [
+          // dark
+          BoxShadow(
+            color: Theme.of(context).colorScheme.surfaceContainerLowest,
+            offset: const Offset(7, 7),
+            blurRadius: 25,
+            spreadRadius: 2,
+          ),
+
+          // light
+          BoxShadow(
+            color: Colors.white.withOpacity(0.4),
+            offset: const Offset(-4, -4),
+            blurRadius: 20,
+            spreadRadius: 0,
+          ),
+
+          //
+        ],
+      ),
+      width: MediaQuery.of(context).size.width,
       margin: EdgeInsets.all(10),
-      child: Container(
-        decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.primaryContainer,
-          borderRadius: BorderRadius.circular(5),
-        ),
-        width: MediaQuery.of(context).size.width,
-        margin: EdgeInsets.all(20),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 20.0),
         child: Column(
           children: [
-            Text(
+            SelectableText(
               item.description,
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: Theme.of(context).colorScheme.surfaceBright,
+              ),
             ),
             SizedBox(height: 10),
             IngredientByCategoryEn(item: item),
@@ -56,12 +78,20 @@ class IngredientByCategoryItem extends StatelessWidget {
                 children: [
                   Text(
                     nutrient.nutrient.name,
-                    style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                      fontSize: 17,
+                      fontWeight: FontWeight.bold,
+                      color: Theme.of(context).colorScheme.surfaceBright,
+                    ),
                   ),
                   SizedBox(width: 10),
                   Text(
                     '${nutrient.amount} ${nutrient.nutrient.unitName}',
-                    style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                      fontSize: 17,
+                      fontWeight: FontWeight.bold,
+                      color: Theme.of(context).colorScheme.surfaceBright,
+                    ),
                   ),
                 ],
               ),

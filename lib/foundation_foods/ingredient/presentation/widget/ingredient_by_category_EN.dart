@@ -21,7 +21,15 @@ class IngredientByCategoryEn extends StatelessWidget {
               () =>
                   FinalFoodEN(description: 'null', foodNutrients: [], fdcId: 0),
         );
-        return Text(itemEN.description, textAlign: TextAlign.center);
+        return SelectableText(
+          itemEN.description,
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            fontSize: 18,
+            color: Theme.of(context).colorScheme.surfaceBright,
+            fontWeight: FontWeight.w600,
+          ),
+        );
       },
     );
   }

@@ -1,15 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:nutrivita_demo_v2/cut_survey_foods/data/model/cut_survey_model.dart';
+import 'package:nutrivita_demo_v2/search_engine/data/model/search_engine_model.dart';
 
-class CutSurveyByCategoryItem extends StatelessWidget {
-  const CutSurveyByCategoryItem({
-    super.key,
-    required this.item,
-    required this.nutrientNumber,
-  });
+class SearchEngineItem extends StatelessWidget {
+  const SearchEngineItem({super.key, required this.item});
 
-  final CutSurveyModel item;
-  final String nutrientNumber;
+  final SearchEngineModel item;
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +35,7 @@ class CutSurveyByCategoryItem extends StatelessWidget {
       width: MediaQuery.of(context).size.width,
       margin: EdgeInsets.all(10),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 20.0),
+        padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
             Text(
@@ -60,27 +55,6 @@ class CutSurveyByCategoryItem extends StatelessWidget {
                 fontSize: 16,
                 fontWeight: FontWeight.normal,
                 color: Theme.of(context).colorScheme.surfaceBright,
-              ),
-            ),
-
-            SizedBox(height: 20),
-            Padding(
-              padding: const EdgeInsets.only(right: 10, bottom: 10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  SizedBox(width: 10),
-                  Text(
-                    '${item.nameNutrients[nutrientNumber]} '
-                    '${item.nutrients[nutrientNumber]?.toStringAsFixed(2)} '
-                    '${item.unitNameNutrients[nutrientNumber]}',
-                    style: TextStyle(
-                      fontSize: 17,
-                      fontWeight: FontWeight.bold,
-                      color: Theme.of(context).colorScheme.surfaceBright,
-                    ),
-                  ),
-                ],
               ),
             ),
           ],

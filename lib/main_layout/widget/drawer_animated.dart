@@ -1,6 +1,9 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:nutrivita_demo_v2/home_page.dart';
+import 'package:nutrivita_demo_v2/main_layout/main_layout.dart';
+import 'package:nutrivita_demo_v2/setting_page.dart';
 
 class DrawerAnimated extends StatelessWidget {
   const DrawerAnimated({super.key, required this.controller});
@@ -62,21 +65,18 @@ class DrawerAnimated extends StatelessWidget {
                             ),
                           ),
                         ),
+
                         ListTile(
-                          leading: Icon(Icons.home, color: Colors.black),
-                          title: Text(
-                            "Strona główna",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                        ListTile(
+                          onTap: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => SettingPage(),
+                              ),
+                            );
+                          },
                           leading: Icon(Icons.settings, color: Colors.black),
                           title: Text(
                             "Ustawienia",
-
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                               color: Colors.black,

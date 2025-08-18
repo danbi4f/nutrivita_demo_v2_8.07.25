@@ -12,17 +12,59 @@ class IngredientByCategorySuccessWidget extends StatelessWidget {
     return BlocBuilder<FoodsBloc, FoodsState>(
       builder: (context, state) {
         return Scaffold(
-          appBar: AppBar(),
-          body: ListView.builder(
-            itemCount: state.foods.length,
-            itemBuilder: (context, index) {
-              final item = state.foods[index];
-              final nutrientNumber = state.nutrientNumber;
-              return IngredientByCategoryItem(
-                item: item,
-                nutrientNumber: nutrientNumber,
-              );
-            },
+          appBar: AppBar(
+            leading: IconButton(
+              icon: Icon(Icons.arrow_back, color: Colors.black),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            backgroundColor: Theme.of(context).colorScheme.onSurfaceVariant,
+            title: Text(
+              'List of Foundation Foods',
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+                color: Theme.of(context).colorScheme.surfaceBright,
+              ),
+            ),
+          ),
+          body: Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  Colors.white.withOpacity(0.2),
+
+                  Theme.of(
+                    context,
+                  ).colorScheme.onPrimaryContainer.withOpacity(0.3),
+                ],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
+              border: Border.all(
+                color: Theme.of(
+                  context,
+                ).colorScheme.onSurfaceVariant.withOpacity(0.1),
+              ),
+              boxShadow: [
+                BoxShadow(
+                  color: Theme.of(context).colorScheme.onSurfaceVariant,
+                  blurRadius: 20,
+                ),
+              ],
+            ),
+            child: ListView.builder(
+              itemCount: state.foods.length,
+              itemBuilder: (context, index) {
+                final item = state.foods[index];
+                final nutrientNumber = state.nutrientNumber;
+                return IngredientByCategoryItem(
+                  item: item,
+                  nutrientNumber: nutrientNumber,
+                );
+              },
+            ),
           ),
         );
       },

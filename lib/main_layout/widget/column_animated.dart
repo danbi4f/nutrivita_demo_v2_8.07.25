@@ -36,7 +36,7 @@ class ColumnAnimated extends StatelessWidget {
                   gradient: LinearGradient(
                     colors: [
                       Colors.white.withOpacity(0.2),
-                      Theme.of(context).colorScheme.onPrimaryContainer,
+
                       Theme.of(
                         context,
                       ).colorScheme.onPrimaryContainer.withOpacity(0.3),

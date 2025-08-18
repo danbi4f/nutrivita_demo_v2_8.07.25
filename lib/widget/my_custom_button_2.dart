@@ -4,11 +4,11 @@ import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
 class MyCustomButton2 extends StatelessWidget {
   const MyCustomButton2({
     super.key,
-    required this.surveyFoodsSelected,
+    required this.foodsSelected,
     required this.onToggle,
   });
 
-  final bool surveyFoodsSelected;
+  final bool foodsSelected;
   final void Function(bool value) onToggle;
 
   @override
@@ -30,7 +30,7 @@ class MyCustomButton2 extends StatelessWidget {
       ],
       color: Theme.of(context).colorScheme.surfaceContainerHigh,
       borderRadius:
-          surveyFoodsSelected
+          foodsSelected
               ? BorderRadius.only(bottomRight: Radius.circular(40))
               : BorderRadius.only(bottomLeft: Radius.circular(40)),
     );
@@ -46,18 +46,18 @@ class MyCustomButton2 extends StatelessWidget {
           Expanded(
             child: GestureDetector(
               onTap: () {
-                if (surveyFoodsSelected) onToggle(false);
+                if (foodsSelected) onToggle(false);
               },
               child: Container(
-                decoration: surveyFoodsSelected ? boxDecoration : null,
+                decoration: foodsSelected ? boxDecoration : null,
                 height: 50,
                 width: widthApp / 2,
                 child: Center(
                   child: Text(
-                    'Foundation Foods',
+                    'Survey Foods',
                     style: TextStyle(
                       color:
-                          !surveyFoodsSelected
+                          !foodsSelected
                               ? Theme.of(context).colorScheme.surfaceBright
                               : Theme.of(context).colorScheme.onSurfaceVariant,
                       fontSize: 20,
@@ -71,18 +71,18 @@ class MyCustomButton2 extends StatelessWidget {
           Expanded(
             child: GestureDetector(
               onTap: () {
-                if (!surveyFoodsSelected) onToggle(true);
+                if (!foodsSelected) onToggle(true);
               },
               child: Container(
-                decoration: !surveyFoodsSelected ? boxDecoration : null,
+                decoration: !foodsSelected ? boxDecoration : null,
                 height: 50,
                 width: widthApp / 2,
                 child: Center(
                   child: Text(
-                    'Survey Foods',
+                    'Foundation Foods',
                     style: TextStyle(
                       color:
-                          surveyFoodsSelected
+                          foodsSelected
                               ? Theme.of(context).colorScheme.surfaceBright
                               : Theme.of(context).colorScheme.onSurfaceVariant,
                       fontSize: 20,
