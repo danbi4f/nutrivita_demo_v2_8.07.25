@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nutrivita_demo_v2/common/theme/simple_theme.dart';
-import 'package:nutrivita_demo_v2/home_page.dart';
+import 'package:nutrivita_demo_v2/pages/home/home_page.dart';
 
 void main() async {
   // WidgetsFlutterBinding.ensureInitialized();
