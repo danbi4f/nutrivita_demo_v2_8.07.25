@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:nutrivita_demo_v2/common/theme/app_text_style.dart';
 import 'package:nutrivita_demo_v2/pages/b_search_engine_page/presentation/bloc/search_engine_bloc.dart';
 import 'package:nutrivita_demo_v2/pages/b_search_engine_page/presentation/widget/search_engine_item.dart';
 
@@ -39,11 +40,7 @@ class _SearchEngineSuccessWidgetState extends State<SearchEngineSuccessWidget> {
         centerTitle: true,
         title: Text(
           'Search Results',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 30,
-            color: Theme.of(context).colorScheme.surfaceBright,
-          ),
+          style: AppTextStyles.body(context, size: 30),
         ),
       ),
       body: Column(

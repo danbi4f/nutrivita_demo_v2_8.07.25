@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:nutrivita_demo_v2/pages/a_categories_page/category_group/data/repository/category_group_repository.dart';
-import 'package:nutrivita_demo_v2/pages/a_categories_page/category_group/data/service/category_group_service.dart';
-import 'package:nutrivita_demo_v2/pages/a_categories_page/category_group/presentation/bloc/category_group_bloc.dart';
-import 'package:nutrivita_demo_v2/pages/a_categories_page/categories_page.dart';
+import 'package:nutrivita_demo_v2/pages/a_categories_page/mod/category_group/data/repository/category_group_repository.dart';
+import 'package:nutrivita_demo_v2/pages/a_categories_page/mod/category_group/data/service/category_group_service.dart';
+import 'package:nutrivita_demo_v2/pages/a_categories_page/mod/category_group/bloc/category_group_bloc.dart';
+import 'package:nutrivita_demo_v2/pages/a_categories_page/main/categories_page.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:nutrivita_demo_v2/pages/b_search_engine_page/data/repository/search_engine_repository.dart';
 import 'package:nutrivita_demo_v2/pages/b_search_engine_page/data/service/search_engine_asset_service.dart';
@@ -62,7 +62,7 @@ class _HomePageState extends State<HomePage> {
                 });
               },
               tabs: const [
-                GButton(icon: Icons.home, text: 'Home', iconSize: 35),
+                GButton(icon: Icons.category, text: 'Categories', iconSize: 35),
                 GButton(
                   icon: Icons.search_outlined,
                   text: 'Search',

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nutrivita_demo_v2/common/theme/app_text_style.dart';
 import 'package:nutrivita_demo_v2/pages/b_search_engine_page/data/model/search_engine_model.dart';
 
 class SearchEngineItem extends StatelessWidget {
@@ -41,21 +42,13 @@ class SearchEngineItem extends StatelessWidget {
             Text(
               item.descriptionPL,
               textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                color: Theme.of(context).colorScheme.surfaceBright,
-              ),
+              style: AppTextStyles.subheading(context),
             ),
             SizedBox(height: 10),
             Text(
               item.description,
               textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.normal,
-                color: Theme.of(context).colorScheme.surfaceBright,
-              ),
+              style: AppTextStyles.body(context),
             ),
           ],
         ),
