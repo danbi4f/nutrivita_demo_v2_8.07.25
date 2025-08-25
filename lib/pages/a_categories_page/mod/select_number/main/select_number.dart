@@ -18,30 +18,12 @@ class SelectNumber extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-<<<<<<< HEAD:lib/pages/a_categories_page/mod/select_number/select_number.dart
-    return CustomContainer(
-      isGradient: true,
-      child: Column(
-        children: [
-          AppBar(
-            leading: IconButton(
-              icon: const Icon(Icons.arrow_back, color: Colors.black),
-              onPressed: onBack,
-            ),
-            backgroundColor: Theme.of(context).colorScheme.onSurfaceVariant,
-            title: Text(
-              category.categoryName,
-              style: AppTextStyles.heading(context, size: 40),
-            ),
-            centerTitle: true,
-=======
     return Column(
       children: [
         AppBar(
           leading: IconButton(
             icon: const Icon(Icons.arrow_back, color: Colors.black),
             onPressed: onBack,
->>>>>>> master:lib/pages/a_categories_page/mod/select_number/main/select_number.dart
           ),
           backgroundColor: Theme.of(context).colorScheme.onSurfaceVariant,
           title: Text(
