@@ -8,7 +8,12 @@ part 'cut_survey_foods_state.dart';
 
 class CutSurveyFoodsBloc
     extends Bloc<LoadCutSurveyFoodsByNutrient, CutSurveyFoodsState> {
-  CutSurveyFoodsBloc(this.surveyRepository2) : super(CutSurveyFoodsState()) {
+  CutSurveyFoodsBloc(this.surveyRepository2)
+    : super(
+        CutSurveyFoodsState().copyWith(
+          delayedResult: const DelayedResult.inProgress(),
+        ),
+      ) {
     on<LoadCutSurveyFoodsByNutrient>(_onLoadFoodsByNutrient);
   }
 

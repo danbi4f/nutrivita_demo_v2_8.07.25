@@ -2,30 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:nutrivita_demo_v2/common/theme/app_text_style.dart';
 import 'package:nutrivita_demo_v2/common/mod/custom_container.dart';
 import 'package:nutrivita_demo_v2/pages/a_categories_page/mod/category_group/data/model/category_group_nutrient_number.dart';
-import 'package:nutrivita_demo_v2/pages/a_categories_page/mod/survey_foods/main/cut_survey_by_category_widget.dart';
 
 class SelectNumberItem extends StatelessWidget {
-  const SelectNumberItem({super.key, required this.nutrientByGroup});
-
   final CategoryGroupNutrientNumber nutrientByGroup;
+  final ValueChanged<String> onTapItem; // callback
+
+  const SelectNumberItem({
+    super.key,
+    required this.nutrientByGroup,
+    required this.onTapItem,
+  });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        Navigator.of(context).push(
-          MaterialPageRoute(
-            builder:
-                (context) => CutSurveyByCategoryWidget(
-                  nutrientNumber: nutrientByGroup.number,
-                ),
-          ),
-        );
-      },
+      onTap: () => onTapItem(nutrientByGroup.number),
       child: CustomContainer(
         child: Column(
           children: [
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Text(
               nutrientByGroup.name,
               style: AppTextStyles.subheading(context),
