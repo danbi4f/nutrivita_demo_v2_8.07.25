@@ -6,7 +6,7 @@ import 'package:nutrivita_demo_v2/pages/a_categories_page/mod/category_group/dat
 import 'package:nutrivita_demo_v2/pages/a_categories_page/mod/category_group/bloc/category_group_bloc.dart';
 import 'package:nutrivita_demo_v2/pages/a_categories_page/main/categories_page.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:nutrivita_demo_v2/pages/a_categories_page/mod/select_number/select_number.dart';
+import 'package:nutrivita_demo_v2/pages/a_categories_page/mod/select_number/main/select_number.dart';
 import 'package:nutrivita_demo_v2/pages/a_categories_page/mod/survey_foods/main/cut_survey_by_category_widget.dart';
 import 'package:nutrivita_demo_v2/pages/b_search_engine_page/data/repository/search_engine_repository.dart';
 import 'package:nutrivita_demo_v2/pages/b_search_engine_page/data/service/search_engine_asset_service.dart';
