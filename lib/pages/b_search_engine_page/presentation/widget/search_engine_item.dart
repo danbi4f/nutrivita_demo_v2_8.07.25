@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nutrivita_demo_v2/common/theme/app_text_style.dart';
+import 'package:nutrivita_demo_v2/common/mod/custom_container.dart';
 import 'package:nutrivita_demo_v2/pages/b_search_engine_page/data/model/search_engine_model.dart';
 
 class SearchEngineItem extends StatelessWidget {
@@ -9,32 +10,7 @@ class SearchEngineItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white70,
-        borderRadius: BorderRadius.circular(12),
-        boxShadow: [
-          // dark
-          BoxShadow(
-            color: Theme.of(context).colorScheme.surfaceContainerLowest,
-            offset: const Offset(7, 7),
-            blurRadius: 25,
-            spreadRadius: 2,
-          ),
-
-          // light
-          BoxShadow(
-            color: Colors.white.withOpacity(0.4),
-            offset: const Offset(-4, -4),
-            blurRadius: 20,
-            spreadRadius: 0,
-          ),
-
-          //
-        ],
-      ),
-      width: MediaQuery.of(context).size.width,
-      margin: EdgeInsets.all(10),
+    return CustomContainer(
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(

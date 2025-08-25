@@ -2,83 +2,84 @@ digraph "" {
   graph [style=rounded fontname="Arial Black" fontsize=13 penwidth=2.6];
   node [shape=rect style="filled,rounded" fontname=Arial fontsize=15 fillcolor=Lavender penwidth=1.3];
   edge [penwidth=1.3];
-  "/lib/common/model/delayed_result.dart" [label="delayed_result"];
+  "/lib/archives/cut_survey_foods/data/model/cut_survey_model.dart" [label="cut_survey_model"];
+  "/lib/archives/cut_survey_foods/data/repository/cut_survey_repository.dart" [label="cut_survey_repository"];
+  "/lib/archives/cut_survey_foods/data/service/convert_to_cut_survey_json.dart" [label="convert_to_cut_survey_json"];
+  "/lib/archives/cut_survey_foods/data/service/cut_survey_asset_service.dart" [label="cut_survey_asset_service"];
+  "/lib/archives/foundation_foods/ingredient/data/model/en/final_food_en.dart" [label="final_food_en"];
+  "/lib/archives/foundation_foods/ingredient/data/model/en/food_nutrient_model_en.dart" [label="food_nutrient_model_en"];
+  "/lib/archives/foundation_foods/ingredient/data/model/en/nutrient_model_en.dart" [label="nutrient_model_en"];
+  "/lib/archives/foundation_foods/ingredient/data/model/final_food.dart" [label="final_food"];
+  "/lib/archives/foundation_foods/ingredient/data/model/food_nutrient_model.dart" [label="food_nutrient_model"];
+  "/lib/archives/foundation_foods/ingredient/data/model/nutrient_model.dart" [label="nutrient_model"];
+  "/lib/archives/foundation_foods/ingredient/data/repository/app_food_repository.dart" [label="app_food_repository"];
+  "/lib/archives/foundation_foods/ingredient/data/repository/app_food_repository_en.dart" [label="app_food_repository_en"];
+  "/lib/archives/foundation_foods/ingredient/data/service/asset_json_service.dart" [label="asset_json_service"];
+  "/lib/archives/foundation_foods/ingredient/data/service/asset_json_service_en.dart" [label="asset_json_service_en"];
+  "/lib/archives/foundation_foods/ingredient/domain/entities/food_entity.dart" [label="food_entity"];
+  "/lib/archives/foundation_foods/ingredient/domain/entities/food_nutrient_entity.dart" [label="food_nutrient_entity"];
+  "/lib/archives/foundation_foods/ingredient/domain/entities/nutrient_entity.dart" [label="nutrient_entity"];
+  "/lib/archives/foundation_foods/ingredient/domain/repositories/food_repository.dart" [label="food_repository"];
+  "/lib/archives/foundation_foods/ingredient/domain/usecases/get_sorted_foods_by_nutrient.dart" [label="get_sorted_foods_by_nutrient"];
+  "/lib/archives/foundation_foods/ingredient/presentation/bloc/foods_bloc.dart" [label="foods_bloc"];
+  "/lib/archives/foundation_foods/ingredient/presentation/bloc/foods_event.dart" [label="foods_event"];
+  "/lib/archives/foundation_foods/ingredient/presentation/bloc/foods_state.dart" [label="foods_state"];
+  "/lib/archives/foundation_foods/ingredient/presentation/bloc_en/foods_bloc_en.dart" [label="foods_bloc_en"];
+  "/lib/archives/foundation_foods/ingredient/presentation/bloc_en/foods_event_en.dart" [label="foods_event_en"];
+  "/lib/archives/foundation_foods/ingredient/presentation/bloc_en/foods_state_en.dart" [label="foods_state_en"];
+  "/lib/archives/foundation_foods/ingredient/presentation/widget/ingredient_by_category_EN.dart" [label="ingredient_by_category_EN"];
+  "/lib/archives/foundation_foods/ingredient/presentation/widget/ingredient_by_category_item.dart" [label="ingredient_by_category_item"];
+  "/lib/archives/foundation_foods/ingredient/presentation/widget/ingredient_by_category_success_widget.dart" [label="ingredient_by_category_success_widget"];
+  "/lib/archives/foundation_foods/ingredient/presentation/widget/ingredient_by_category_widget.dart" [label="ingredient_by_category_widget"];
+  "/lib/archives/survey_foods/data/model/survey_food_nutrient_model.dart" [label="survey_food_nutrient_model"];
+  "/lib/archives/survey_foods/data/model/survey_model.dart" [label="survey_model"];
+  "/lib/archives/survey_foods/data/model/survey_nutrient_model.dart" [label="survey_nutrient_model"];
+  "/lib/archives/survey_foods/data/repository/survey_repository.dart" [label="survey_repository"];
+  "/lib/archives/survey_foods/data/service/asset_survey_service.dart" [label="asset_survey_service"];
+  "/lib/archives/survey_foods/presentation/bloc/survey_foods_bloc.dart" [label="survey_foods_bloc"];
+  "/lib/archives/survey_foods/presentation/bloc/survey_foods_event.dart" [label="survey_foods_event"];
+  "/lib/archives/survey_foods/presentation/bloc/survey_foods_state.dart" [label="survey_foods_state"];
+  "/lib/archives/survey_foods/presentation/widget/survey_by_category_item.dart" [label="survey_by_category_item"];
+  "/lib/archives/survey_foods/presentation/widget/survey_by_category_success_widget.dart" [label="survey_by_category_success_widget"];
+  "/lib/archives/survey_foods/presentation/widget/survey_by_category_widget.dart" [label="survey_by_category_widget"];
+  "/lib/common/theme/app_text_style.dart" [label="app_text_style"];
   "/lib/common/theme/simple_theme.dart" [label="simple_theme"];
   "/lib/common/widget/card_container.dart" [label="card_container"];
   "/lib/custom_features/convert_json/convert_json.dart" [label="convert_json"];
   "/lib/custom_features/convert_json/convert_json_2.dart" [label="convert_json_2"];
   "/lib/main.dart" [label="main"];
-  "/lib/pages/a_categories_page/categories_page.dart" [label="categories_page"];
-  "/lib/pages/a_categories_page/category_group/data/model/category_group.dart" [label="category_group"];
-  "/lib/pages/a_categories_page/category_group/data/model/category_group_nutrient_number.dart" [label="category_group_nutrient_number"];
-  "/lib/pages/a_categories_page/category_group/data/repository/category_group_repository.dart" [label="category_group_repository"];
-  "/lib/pages/a_categories_page/category_group/data/service/category_group_service.dart" [label="category_group_service"];
-  "/lib/pages/a_categories_page/category_group/presentation/bloc/category_group_bloc.dart" [label="category_group_bloc"];
-  "/lib/pages/a_categories_page/category_group/presentation/bloc/category_group_event.dart" [label="category_group_event"];
-  "/lib/pages/a_categories_page/category_group/presentation/bloc/category_group_state.dart" [label="category_group_state"];
-  "/lib/pages/a_categories_page/category_group/presentation/screen/select_number_screen/category_group_nutrient_number_screen.dart" [label="category_group_nutrient_number_screen"];
-  "/lib/pages/a_categories_page/category_group/presentation/screen/select_number_screen/widget/category_group_nutrient_number_item.dart" [label="category_group_nutrient_number_item"];
-  "/lib/pages/a_categories_page/category_group/presentation/widgets/category_group_widget/category_group_widget.dart" [label="category_group_widget"];
-  "/lib/pages/a_categories_page/category_group/presentation/widgets/category_group_widget/widget/category_group_item.dart" [label="category_group_item"];
-  "/lib/pages/a_categories_page/category_group/presentation/widgets/category_group_widget/widget/category_group_success_widget.dart" [label="category_group_success_widget"];
-  "/lib/pages/a_categories_page/category_group/presentation/widgets/category_group_widget/widget/my_custom_button_2.dart" [label="my_custom_button_2"];
-  "/lib/pages/a_categories_page/category_group/presentation/widgets/column_animated.dart" [label="column_animated"];
-  "/lib/pages/a_categories_page/category_group/presentation/widgets/header_title.dart" [label="header_title"];
-  "/lib/pages/a_categories_page/cut_survey_foods/data/model/cut_survey_model.dart" [label="cut_survey_model"];
-  "/lib/pages/a_categories_page/cut_survey_foods/data/repository/cut_survey_repository.dart" [label="cut_survey_repository"];
-  "/lib/pages/a_categories_page/cut_survey_foods/data/service/convert_to_cut_survey_json.dart" [label="convert_to_cut_survey_json"];
-  "/lib/pages/a_categories_page/cut_survey_foods/data/service/cut_survey_asset_service.dart" [label="cut_survey_asset_service"];
-  "/lib/pages/a_categories_page/cut_survey_foods/presentation/bloc/cut_survey_foods_bloc.dart" [label="cut_survey_foods_bloc"];
-  "/lib/pages/a_categories_page/cut_survey_foods/presentation/bloc/cut_survey_foods_event.dart" [label="cut_survey_foods_event"];
-  "/lib/pages/a_categories_page/cut_survey_foods/presentation/bloc/cut_survey_foods_state.dart" [label="cut_survey_foods_state"];
-  "/lib/pages/a_categories_page/cut_survey_foods/presentation/widget/cut_survey_by_category_item.dart" [label="cut_survey_by_category_item"];
-  "/lib/pages/a_categories_page/cut_survey_foods/presentation/widget/cut_survey_by_category_success_widget.dart" [label="cut_survey_by_category_success_widget"];
-  "/lib/pages/a_categories_page/cut_survey_foods/presentation/widget/cut_survey_by_category_widget.dart" [label="cut_survey_by_category_widget"];
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/data/model/en/final_food_en.dart" [label="final_food_en"];
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/data/model/en/food_nutrient_model_en.dart" [label="food_nutrient_model_en"];
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/data/model/en/nutrient_model_en.dart" [label="nutrient_model_en"];
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/data/model/final_food.dart" [label="final_food"];
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/data/model/food_nutrient_model.dart" [label="food_nutrient_model"];
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/data/model/nutrient_model.dart" [label="nutrient_model"];
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/data/repository/app_food_repository.dart" [label="app_food_repository"];
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/data/repository/app_food_repository_en.dart" [label="app_food_repository_en"];
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/data/service/asset_json_service.dart" [label="asset_json_service"];
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/data/service/asset_json_service_en.dart" [label="asset_json_service_en"];
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/domain/entities/food_entity.dart" [label="food_entity"];
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/domain/entities/food_nutrient_entity.dart" [label="food_nutrient_entity"];
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/domain/entities/nutrient_entity.dart" [label="nutrient_entity"];
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/domain/repositories/food_repository.dart" [label="food_repository"];
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/domain/usecases/get_sorted_foods_by_nutrient.dart" [label="get_sorted_foods_by_nutrient"];
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/presentation/bloc/foods_bloc.dart" [label="foods_bloc"];
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/presentation/bloc/foods_event.dart" [label="foods_event"];
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/presentation/bloc/foods_state.dart" [label="foods_state"];
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/presentation/bloc_en/foods_bloc_en.dart" [label="foods_bloc_en"];
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/presentation/bloc_en/foods_event_en.dart" [label="foods_event_en"];
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/presentation/bloc_en/foods_state_en.dart" [label="foods_state_en"];
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/presentation/widget/ingredient_by_category_EN.dart" [label="ingredient_by_category_EN"];
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/presentation/widget/ingredient_by_category_item.dart" [label="ingredient_by_category_item"];
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/presentation/widget/ingredient_by_category_success_widget.dart" [label="ingredient_by_category_success_widget"];
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/presentation/widget/ingredient_by_category_widget.dart" [label="ingredient_by_category_widget"];
-  "/lib/pages/a_categories_page/survey_foods/data/model/survey_food_nutrient_model.dart" [label="survey_food_nutrient_model"];
-  "/lib/pages/a_categories_page/survey_foods/data/model/survey_model.dart" [label="survey_model"];
-  "/lib/pages/a_categories_page/survey_foods/data/model/survey_nutrient_model.dart" [label="survey_nutrient_model"];
-  "/lib/pages/a_categories_page/survey_foods/data/repository/survey_repository.dart" [label="survey_repository"];
-  "/lib/pages/a_categories_page/survey_foods/data/service/asset_survey_service.dart" [label="asset_survey_service"];
-  "/lib/pages/a_categories_page/survey_foods/presentation/bloc/survey_foods_bloc.dart" [label="survey_foods_bloc"];
-  "/lib/pages/a_categories_page/survey_foods/presentation/bloc/survey_foods_event.dart" [label="survey_foods_event"];
-  "/lib/pages/a_categories_page/survey_foods/presentation/bloc/survey_foods_state.dart" [label="survey_foods_state"];
-  "/lib/pages/a_categories_page/survey_foods/presentation/widget/survey_by_category_item.dart" [label="survey_by_category_item"];
-  "/lib/pages/a_categories_page/survey_foods/presentation/widget/survey_by_category_success_widget.dart" [label="survey_by_category_success_widget"];
-  "/lib/pages/a_categories_page/survey_foods/presentation/widget/survey_by_category_widget.dart" [label="survey_by_category_widget"];
-  "/lib/pages/a_categories_page/widgets/background_animated.dart" [label="background_animated"];
-  "/lib/pages/a_categories_page/widgets/drawer_animated.dart" [label="drawer_animated"];
-  "/lib/pages/a_categories_page/widgets/main_app_bar.dart" [label="main_app_bar"];
+  "/lib/pages/a_categories_page/main/categories_page.dart" [label="categories_page"];
+  "/lib/pages/a_categories_page/main/mod/drawer_animated.dart" [label="drawer_animated"];
+  "/lib/pages/a_categories_page/main/mod/header_title.dart" [label="header_title"];
+  "/lib/pages/a_categories_page/main/mod/_background_animated.dart" [label="_background_animated"];
+  "/lib/pages/a_categories_page/main/mod/_column_animated.dart" [label="_column_animated"];
+  "/lib/pages/a_categories_page/main/mod/_main_app_bar.dart" [label="_main_app_bar"];
+  "/lib/pages/a_categories_page/mod/category_group/bloc/category_group_bloc.dart" [label="category_group_bloc"];
+  "/lib/pages/a_categories_page/mod/category_group/bloc/category_group_event.dart" [label="category_group_event"];
+  "/lib/pages/a_categories_page/mod/category_group/bloc/category_group_state.dart" [label="category_group_state"];
+  "/lib/pages/a_categories_page/mod/category_group/category_group_widget.dart" [label="category_group_widget"];
+  "/lib/pages/a_categories_page/mod/category_group/data/model/category_group.dart" [label="category_group"];
+  "/lib/pages/a_categories_page/mod/category_group/data/model/category_group_nutrient_number.dart" [label="category_group_nutrient_number"];
+  "/lib/pages/a_categories_page/mod/category_group/data/repository/category_group_repository.dart" [label="category_group_repository"];
+  "/lib/pages/a_categories_page/mod/category_group/data/service/category_group_service.dart" [label="category_group_service"];
+  "/lib/pages/a_categories_page/mod/category_group/mod/category_group_item.dart" [label="category_group_item"];
+  "/lib/pages/a_categories_page/mod/category_group/mod/category_group_success_widget.dart" [label="category_group_success_widget"];
+  "/lib/pages/a_categories_page/mod/category_group/mod/my_custom_button.dart" [label="my_custom_button"];
+  "/lib/pages/a_categories_page/mod/select_number/mod/select_number_item.dart" [label="select_number_item"];
+  "/lib/pages/a_categories_page/mod/select_number/select_number.dart" [label="select_number"];
+  "/lib/pages/a_categories_page/mod/survey_foods/bloc/cut_survey_foods_bloc.dart" [label="cut_survey_foods_bloc"];
+  "/lib/pages/a_categories_page/mod/survey_foods/bloc/cut_survey_foods_event.dart" [label="cut_survey_foods_event"];
+  "/lib/pages/a_categories_page/mod/survey_foods/bloc/cut_survey_foods_state.dart" [label="cut_survey_foods_state"];
+  "/lib/pages/a_categories_page/mod/survey_foods/main/cut_survey_by_category_widget.dart" [label="cut_survey_by_category_widget"];
+  "/lib/pages/a_categories_page/mod/survey_foods/mod/cut_survey_by_category_item.dart" [label="cut_survey_by_category_item"];
+  "/lib/pages/a_categories_page/mod/survey_foods/mod/cut_survey_by_category_success_widget.dart" [label="cut_survey_by_category_success_widget"];
   "/lib/pages/b_search_engine_page/data/model/search_engine_model.dart" [label="search_engine_model"];
   "/lib/pages/b_search_engine_page/data/repository/search_engine_repository.dart" [label="search_engine_repository"];
   "/lib/pages/b_search_engine_page/data/service/search_engine_asset_service.dart" [label="search_engine_asset_service"];
   "/lib/pages/b_search_engine_page/presentation/bloc/search_engine_bloc.dart" [label="search_engine_bloc"];
   "/lib/pages/b_search_engine_page/presentation/bloc/search_engine_event.dart" [label="search_engine_event"];
   "/lib/pages/b_search_engine_page/presentation/bloc/search_engine_state.dart" [label="search_engine_state"];
+  "/lib/pages/b_search_engine_page/presentation/widget/my_text_field.dart" [label="my_text_field"];
   "/lib/pages/b_search_engine_page/presentation/widget/search_engine_item.dart" [label="search_engine_item"];
   "/lib/pages/b_search_engine_page/presentation/widget/search_engine_success_widget.dart" [label="search_engine_success_widget"];
   "/lib/pages/c_favorite_foods/presentation/bloc/favorite_foods_bloc.dart" [label="favorite_foods_bloc"];
@@ -86,6 +87,11 @@ digraph "" {
   "/lib/pages/c_favorite_foods/presentation/bloc/favorite_foods_state.dart" [label="favorite_foods_state"];
   "/lib/pages/f_setting_page/setting_page.dart" [label="setting_page"];
   "/lib/pages/home/home_page.dart" [label="home_page"];
+  "/lib/shared/models/delayed_result.dart" [label="delayed_result"];
+  "/lib/shared/models/survey_foods_2.dart" [label="survey_foods_2"];
+  "/lib/shared/survey_foods_2/repository/survey_foods_repository_2.dart" [label="survey_foods_repository_2"];
+  "/lib/shared/survey_foods_2/services/database_service/database_service.dart" [label="database_service"];
+  "/lib/shared/survey_foods_2/services/survey_foods_service_2/survey_foods_service_2.dart" [label="survey_foods_service_2"];
   "/lib/test/backdropFilter.dart" [label="backdropFilter"];
   "/lib/test/demo.dart" [label="demo"];
   "/lib/test/DrawerPushExample.dart" [label="DrawerPushExample"];
@@ -94,14 +100,138 @@ digraph "" {
     subgraph "cluster~/lib" {
       label="lib";
       "/lib/main.dart";
+      subgraph "cluster~/lib/archives" {
+        label="archives";
+        subgraph "cluster~/lib/archives/cut_survey_foods" {
+          label="cut_survey_foods";
+          subgraph "cluster~/lib/archives/cut_survey_foods/data" {
+            label="data";
+            subgraph "cluster~/lib/archives/cut_survey_foods/data/model" {
+              label="model";
+              "/lib/archives/cut_survey_foods/data/model/cut_survey_model.dart";
+            }
+            subgraph "cluster~/lib/archives/cut_survey_foods/data/repository" {
+              label="repository";
+              "/lib/archives/cut_survey_foods/data/repository/cut_survey_repository.dart";
+            }
+            subgraph "cluster~/lib/archives/cut_survey_foods/data/service" {
+              label="service";
+              "/lib/archives/cut_survey_foods/data/service/convert_to_cut_survey_json.dart";
+              "/lib/archives/cut_survey_foods/data/service/cut_survey_asset_service.dart";
+            }
+          }
+        }
+        subgraph "cluster~/lib/archives/foundation_foods" {
+          label="foundation_foods";
+          subgraph "cluster~/lib/archives/foundation_foods/ingredient" {
+            label="ingredient";
+            subgraph "cluster~/lib/archives/foundation_foods/ingredient/data" {
+              label="data";
+              subgraph "cluster~/lib/archives/foundation_foods/ingredient/data/model" {
+                label="model";
+                "/lib/archives/foundation_foods/ingredient/data/model/final_food.dart";
+                "/lib/archives/foundation_foods/ingredient/data/model/food_nutrient_model.dart";
+                "/lib/archives/foundation_foods/ingredient/data/model/nutrient_model.dart";
+                subgraph "cluster~/lib/archives/foundation_foods/ingredient/data/model/en" {
+                  label="en";
+                  "/lib/archives/foundation_foods/ingredient/data/model/en/final_food_en.dart";
+                  "/lib/archives/foundation_foods/ingredient/data/model/en/food_nutrient_model_en.dart";
+                  "/lib/archives/foundation_foods/ingredient/data/model/en/nutrient_model_en.dart";
+                }
+              }
+              subgraph "cluster~/lib/archives/foundation_foods/ingredient/data/repository" {
+                label="repository";
+                "/lib/archives/foundation_foods/ingredient/data/repository/app_food_repository.dart";
+                "/lib/archives/foundation_foods/ingredient/data/repository/app_food_repository_en.dart";
+              }
+              subgraph "cluster~/lib/archives/foundation_foods/ingredient/data/service" {
+                label="service";
+                "/lib/archives/foundation_foods/ingredient/data/service/asset_json_service.dart";
+                "/lib/archives/foundation_foods/ingredient/data/service/asset_json_service_en.dart";
+              }
+            }
+            subgraph "cluster~/lib/archives/foundation_foods/ingredient/domain" {
+              label="domain";
+              subgraph "cluster~/lib/archives/foundation_foods/ingredient/domain/entities" {
+                label="entities";
+                "/lib/archives/foundation_foods/ingredient/domain/entities/food_entity.dart";
+                "/lib/archives/foundation_foods/ingredient/domain/entities/food_nutrient_entity.dart";
+                "/lib/archives/foundation_foods/ingredient/domain/entities/nutrient_entity.dart";
+              }
+              subgraph "cluster~/lib/archives/foundation_foods/ingredient/domain/repositories" {
+                label="repositories";
+                "/lib/archives/foundation_foods/ingredient/domain/repositories/food_repository.dart";
+              }
+              subgraph "cluster~/lib/archives/foundation_foods/ingredient/domain/usecases" {
+                label="usecases";
+                "/lib/archives/foundation_foods/ingredient/domain/usecases/get_sorted_foods_by_nutrient.dart";
+              }
+            }
+            subgraph "cluster~/lib/archives/foundation_foods/ingredient/presentation" {
+              label="presentation";
+              subgraph "cluster~/lib/archives/foundation_foods/ingredient/presentation/bloc" {
+                label="bloc";
+                "/lib/archives/foundation_foods/ingredient/presentation/bloc/foods_bloc.dart";
+                "/lib/archives/foundation_foods/ingredient/presentation/bloc/foods_event.dart";
+                "/lib/archives/foundation_foods/ingredient/presentation/bloc/foods_state.dart";
+              }
+              subgraph "cluster~/lib/archives/foundation_foods/ingredient/presentation/bloc_en" {
+                label="bloc_en";
+                "/lib/archives/foundation_foods/ingredient/presentation/bloc_en/foods_bloc_en.dart";
+                "/lib/archives/foundation_foods/ingredient/presentation/bloc_en/foods_event_en.dart";
+                "/lib/archives/foundation_foods/ingredient/presentation/bloc_en/foods_state_en.dart";
+              }
+              subgraph "cluster~/lib/archives/foundation_foods/ingredient/presentation/widget" {
+                label="widget";
+                "/lib/archives/foundation_foods/ingredient/presentation/widget/ingredient_by_category_EN.dart";
+                "/lib/archives/foundation_foods/ingredient/presentation/widget/ingredient_by_category_item.dart";
+                "/lib/archives/foundation_foods/ingredient/presentation/widget/ingredient_by_category_success_widget.dart";
+                "/lib/archives/foundation_foods/ingredient/presentation/widget/ingredient_by_category_widget.dart";
+              }
+            }
+          }
+        }
+        subgraph "cluster~/lib/archives/survey_foods" {
+          label="survey_foods";
+          subgraph "cluster~/lib/archives/survey_foods/data" {
+            label="data";
+            subgraph "cluster~/lib/archives/survey_foods/data/model" {
+              label="model";
+              "/lib/archives/survey_foods/data/model/survey_food_nutrient_model.dart";
+              "/lib/archives/survey_foods/data/model/survey_model.dart";
+              "/lib/archives/survey_foods/data/model/survey_nutrient_model.dart";
+            }
+            subgraph "cluster~/lib/archives/survey_foods/data/repository" {
+              label="repository";
+              "/lib/archives/survey_foods/data/repository/survey_repository.dart";
+            }
+            subgraph "cluster~/lib/archives/survey_foods/data/service" {
+              label="service";
+              "/lib/archives/survey_foods/data/service/asset_survey_service.dart";
+            }
+          }
+          subgraph "cluster~/lib/archives/survey_foods/presentation" {
+            label="presentation";
+            subgraph "cluster~/lib/archives/survey_foods/presentation/bloc" {
+              label="bloc";
+              "/lib/archives/survey_foods/presentation/bloc/survey_foods_bloc.dart";
+              "/lib/archives/survey_foods/presentation/bloc/survey_foods_event.dart";
+              "/lib/archives/survey_foods/presentation/bloc/survey_foods_state.dart";
+            }
+            subgraph "cluster~/lib/archives/survey_foods/presentation/widget" {
+              label="widget";
+              "/lib/archives/survey_foods/presentation/widget/survey_by_category_item.dart";
+              "/lib/archives/survey_foods/presentation/widget/survey_by_category_success_widget.dart";
+              "/lib/archives/survey_foods/presentation/widget/survey_by_category_widget.dart";
+            }
+          }
+        }
+      }
       subgraph "cluster~/lib/common" {
         label="common";
-        subgraph "cluster~/lib/common/model" {
-          label="model";
-          "/lib/common/model/delayed_result.dart";
-        }
         subgraph "cluster~/lib/common/theme" {
           label="theme";
+          "/lib/common/theme/app_text_style.dart";
           "/lib/common/theme/simple_theme.dart";
         }
         subgraph "cluster~/lib/common/widget" {
@@ -121,205 +251,78 @@ digraph "" {
         label="pages";
         subgraph "cluster~/lib/pages/a_categories_page" {
           label="a_categories_page";
-          "/lib/pages/a_categories_page/categories_page.dart";
-          subgraph "cluster~/lib/pages/a_categories_page/category_group" {
-            label="category_group";
-            subgraph "cluster~/lib/pages/a_categories_page/category_group/data" {
-              label="data";
-              subgraph "cluster~/lib/pages/a_categories_page/category_group/data/model" {
-                label="model";
-                "/lib/pages/a_categories_page/category_group/data/model/category_group.dart";
-                "/lib/pages/a_categories_page/category_group/data/model/category_group_nutrient_number.dart";
-              }
-              subgraph "cluster~/lib/pages/a_categories_page/category_group/data/repository" {
-                label="repository";
-                "/lib/pages/a_categories_page/category_group/data/repository/category_group_repository.dart";
-              }
-              subgraph "cluster~/lib/pages/a_categories_page/category_group/data/service" {
-                label="service";
-                "/lib/pages/a_categories_page/category_group/data/service/category_group_service.dart";
-              }
-            }
-            subgraph "cluster~/lib/pages/a_categories_page/category_group/presentation" {
-              label="presentation";
-              subgraph "cluster~/lib/pages/a_categories_page/category_group/presentation/bloc" {
-                label="bloc";
-                "/lib/pages/a_categories_page/category_group/presentation/bloc/category_group_bloc.dart";
-                "/lib/pages/a_categories_page/category_group/presentation/bloc/category_group_event.dart";
-                "/lib/pages/a_categories_page/category_group/presentation/bloc/category_group_state.dart";
-              }
-              subgraph "cluster~/lib/pages/a_categories_page/category_group/presentation/screen" {
-                label="screen";
-                subgraph "cluster~/lib/pages/a_categories_page/category_group/presentation/screen/select_number_screen" {
-                  label="select_number_screen";
-                  "/lib/pages/a_categories_page/category_group/presentation/screen/select_number_screen/category_group_nutrient_number_screen.dart";
-                  subgraph "cluster~/lib/pages/a_categories_page/category_group/presentation/screen/select_number_screen/widget" {
-                    label="widget";
-                    "/lib/pages/a_categories_page/category_group/presentation/screen/select_number_screen/widget/category_group_nutrient_number_item.dart";
-                  }
-                }
-              }
-              subgraph "cluster~/lib/pages/a_categories_page/category_group/presentation/widgets" {
-                label="widgets";
-                "/lib/pages/a_categories_page/category_group/presentation/widgets/column_animated.dart";
-                "/lib/pages/a_categories_page/category_group/presentation/widgets/header_title.dart";
-                subgraph "cluster~/lib/pages/a_categories_page/category_group/presentation/widgets/category_group_widget" {
-                  label="category_group_widget";
-                  "/lib/pages/a_categories_page/category_group/presentation/widgets/category_group_widget/category_group_widget.dart";
-                  subgraph "cluster~/lib/pages/a_categories_page/category_group/presentation/widgets/category_group_widget/widget" {
-                    label="widget";
-                    "/lib/pages/a_categories_page/category_group/presentation/widgets/category_group_widget/widget/category_group_item.dart";
-                    "/lib/pages/a_categories_page/category_group/presentation/widgets/category_group_widget/widget/category_group_success_widget.dart";
-                    "/lib/pages/a_categories_page/category_group/presentation/widgets/category_group_widget/widget/my_custom_button_2.dart";
-                  }
-                }
-              }
+          subgraph "cluster~/lib/pages/a_categories_page/main" {
+            label="main";
+            "/lib/pages/a_categories_page/main/categories_page.dart";
+            subgraph "cluster~/lib/pages/a_categories_page/main/mod" {
+              label="mod";
+              "/lib/pages/a_categories_page/main/mod/drawer_animated.dart";
+              "/lib/pages/a_categories_page/main/mod/header_title.dart";
+              "/lib/pages/a_categories_page/main/mod/_background_animated.dart";
+              "/lib/pages/a_categories_page/main/mod/_column_animated.dart";
+              "/lib/pages/a_categories_page/main/mod/_main_app_bar.dart";
             }
           }
-          subgraph "cluster~/lib/pages/a_categories_page/cut_survey_foods" {
-            label="cut_survey_foods";
-            subgraph "cluster~/lib/pages/a_categories_page/cut_survey_foods/data" {
-              label="data";
-              subgraph "cluster~/lib/pages/a_categories_page/cut_survey_foods/data/model" {
-                label="model";
-                "/lib/pages/a_categories_page/cut_survey_foods/data/model/cut_survey_model.dart";
-              }
-              subgraph "cluster~/lib/pages/a_categories_page/cut_survey_foods/data/repository" {
-                label="repository";
-                "/lib/pages/a_categories_page/cut_survey_foods/data/repository/cut_survey_repository.dart";
-              }
-              subgraph "cluster~/lib/pages/a_categories_page/cut_survey_foods/data/service" {
-                label="service";
-                "/lib/pages/a_categories_page/cut_survey_foods/data/service/convert_to_cut_survey_json.dart";
-                "/lib/pages/a_categories_page/cut_survey_foods/data/service/cut_survey_asset_service.dart";
-              }
-            }
-            subgraph "cluster~/lib/pages/a_categories_page/cut_survey_foods/presentation" {
-              label="presentation";
-              subgraph "cluster~/lib/pages/a_categories_page/cut_survey_foods/presentation/bloc" {
+          subgraph "cluster~/lib/pages/a_categories_page/mod" {
+            label="mod";
+            subgraph "cluster~/lib/pages/a_categories_page/mod/category_group" {
+              label="category_group";
+              "/lib/pages/a_categories_page/mod/category_group/category_group_widget.dart";
+              subgraph "cluster~/lib/pages/a_categories_page/mod/category_group/bloc" {
                 label="bloc";
-                "/lib/pages/a_categories_page/cut_survey_foods/presentation/bloc/cut_survey_foods_bloc.dart";
-                "/lib/pages/a_categories_page/cut_survey_foods/presentation/bloc/cut_survey_foods_event.dart";
-                "/lib/pages/a_categories_page/cut_survey_foods/presentation/bloc/cut_survey_foods_state.dart";
+                "/lib/pages/a_categories_page/mod/category_group/bloc/category_group_bloc.dart";
+                "/lib/pages/a_categories_page/mod/category_group/bloc/category_group_event.dart";
+                "/lib/pages/a_categories_page/mod/category_group/bloc/category_group_state.dart";
               }
-              subgraph "cluster~/lib/pages/a_categories_page/cut_survey_foods/presentation/widget" {
-                label="widget";
-                "/lib/pages/a_categories_page/cut_survey_foods/presentation/widget/cut_survey_by_category_item.dart";
-                "/lib/pages/a_categories_page/cut_survey_foods/presentation/widget/cut_survey_by_category_success_widget.dart";
-                "/lib/pages/a_categories_page/cut_survey_foods/presentation/widget/cut_survey_by_category_widget.dart";
-              }
-            }
-          }
-          subgraph "cluster~/lib/pages/a_categories_page/foundation_foods" {
-            label="foundation_foods";
-            subgraph "cluster~/lib/pages/a_categories_page/foundation_foods/ingredient" {
-              label="ingredient";
-              subgraph "cluster~/lib/pages/a_categories_page/foundation_foods/ingredient/data" {
+              subgraph "cluster~/lib/pages/a_categories_page/mod/category_group/data" {
                 label="data";
-                subgraph "cluster~/lib/pages/a_categories_page/foundation_foods/ingredient/data/model" {
+                subgraph "cluster~/lib/pages/a_categories_page/mod/category_group/data/model" {
                   label="model";
-                  "/lib/pages/a_categories_page/foundation_foods/ingredient/data/model/final_food.dart";
-                  "/lib/pages/a_categories_page/foundation_foods/ingredient/data/model/food_nutrient_model.dart";
-                  "/lib/pages/a_categories_page/foundation_foods/ingredient/data/model/nutrient_model.dart";
-                  subgraph "cluster~/lib/pages/a_categories_page/foundation_foods/ingredient/data/model/en" {
-                    label="en";
-                    "/lib/pages/a_categories_page/foundation_foods/ingredient/data/model/en/final_food_en.dart";
-                    "/lib/pages/a_categories_page/foundation_foods/ingredient/data/model/en/food_nutrient_model_en.dart";
-                    "/lib/pages/a_categories_page/foundation_foods/ingredient/data/model/en/nutrient_model_en.dart";
-                  }
+                  "/lib/pages/a_categories_page/mod/category_group/data/model/category_group.dart";
+                  "/lib/pages/a_categories_page/mod/category_group/data/model/category_group_nutrient_number.dart";
                 }
-                subgraph "cluster~/lib/pages/a_categories_page/foundation_foods/ingredient/data/repository" {
+                subgraph "cluster~/lib/pages/a_categories_page/mod/category_group/data/repository" {
                   label="repository";
-                  "/lib/pages/a_categories_page/foundation_foods/ingredient/data/repository/app_food_repository.dart";
-                  "/lib/pages/a_categories_page/foundation_foods/ingredient/data/repository/app_food_repository_en.dart";
+                  "/lib/pages/a_categories_page/mod/category_group/data/repository/category_group_repository.dart";
                 }
-                subgraph "cluster~/lib/pages/a_categories_page/foundation_foods/ingredient/data/service" {
+                subgraph "cluster~/lib/pages/a_categories_page/mod/category_group/data/service" {
                   label="service";
-                  "/lib/pages/a_categories_page/foundation_foods/ingredient/data/service/asset_json_service.dart";
-                  "/lib/pages/a_categories_page/foundation_foods/ingredient/data/service/asset_json_service_en.dart";
+                  "/lib/pages/a_categories_page/mod/category_group/data/service/category_group_service.dart";
                 }
               }
-              subgraph "cluster~/lib/pages/a_categories_page/foundation_foods/ingredient/domain" {
-                label="domain";
-                subgraph "cluster~/lib/pages/a_categories_page/foundation_foods/ingredient/domain/entities" {
-                  label="entities";
-                  "/lib/pages/a_categories_page/foundation_foods/ingredient/domain/entities/food_entity.dart";
-                  "/lib/pages/a_categories_page/foundation_foods/ingredient/domain/entities/food_nutrient_entity.dart";
-                  "/lib/pages/a_categories_page/foundation_foods/ingredient/domain/entities/nutrient_entity.dart";
-                }
-                subgraph "cluster~/lib/pages/a_categories_page/foundation_foods/ingredient/domain/repositories" {
-                  label="repositories";
-                  "/lib/pages/a_categories_page/foundation_foods/ingredient/domain/repositories/food_repository.dart";
-                }
-                subgraph "cluster~/lib/pages/a_categories_page/foundation_foods/ingredient/domain/usecases" {
-                  label="usecases";
-                  "/lib/pages/a_categories_page/foundation_foods/ingredient/domain/usecases/get_sorted_foods_by_nutrient.dart";
-                }
-              }
-              subgraph "cluster~/lib/pages/a_categories_page/foundation_foods/ingredient/presentation" {
-                label="presentation";
-                subgraph "cluster~/lib/pages/a_categories_page/foundation_foods/ingredient/presentation/bloc" {
-                  label="bloc";
-                  "/lib/pages/a_categories_page/foundation_foods/ingredient/presentation/bloc/foods_bloc.dart";
-                  "/lib/pages/a_categories_page/foundation_foods/ingredient/presentation/bloc/foods_event.dart";
-                  "/lib/pages/a_categories_page/foundation_foods/ingredient/presentation/bloc/foods_state.dart";
-                }
-                subgraph "cluster~/lib/pages/a_categories_page/foundation_foods/ingredient/presentation/bloc_en" {
-                  label="bloc_en";
-                  "/lib/pages/a_categories_page/foundation_foods/ingredient/presentation/bloc_en/foods_bloc_en.dart";
-                  "/lib/pages/a_categories_page/foundation_foods/ingredient/presentation/bloc_en/foods_event_en.dart";
-                  "/lib/pages/a_categories_page/foundation_foods/ingredient/presentation/bloc_en/foods_state_en.dart";
-                }
-                subgraph "cluster~/lib/pages/a_categories_page/foundation_foods/ingredient/presentation/widget" {
-                  label="widget";
-                  "/lib/pages/a_categories_page/foundation_foods/ingredient/presentation/widget/ingredient_by_category_EN.dart";
-                  "/lib/pages/a_categories_page/foundation_foods/ingredient/presentation/widget/ingredient_by_category_item.dart";
-                  "/lib/pages/a_categories_page/foundation_foods/ingredient/presentation/widget/ingredient_by_category_success_widget.dart";
-                  "/lib/pages/a_categories_page/foundation_foods/ingredient/presentation/widget/ingredient_by_category_widget.dart";
-                }
+              subgraph "cluster~/lib/pages/a_categories_page/mod/category_group/mod" {
+                label="mod";
+                "/lib/pages/a_categories_page/mod/category_group/mod/category_group_item.dart";
+                "/lib/pages/a_categories_page/mod/category_group/mod/category_group_success_widget.dart";
+                "/lib/pages/a_categories_page/mod/category_group/mod/my_custom_button.dart";
               }
             }
-          }
-          subgraph "cluster~/lib/pages/a_categories_page/survey_foods" {
-            label="survey_foods";
-            subgraph "cluster~/lib/pages/a_categories_page/survey_foods/data" {
-              label="data";
-              subgraph "cluster~/lib/pages/a_categories_page/survey_foods/data/model" {
-                label="model";
-                "/lib/pages/a_categories_page/survey_foods/data/model/survey_food_nutrient_model.dart";
-                "/lib/pages/a_categories_page/survey_foods/data/model/survey_model.dart";
-                "/lib/pages/a_categories_page/survey_foods/data/model/survey_nutrient_model.dart";
-              }
-              subgraph "cluster~/lib/pages/a_categories_page/survey_foods/data/repository" {
-                label="repository";
-                "/lib/pages/a_categories_page/survey_foods/data/repository/survey_repository.dart";
-              }
-              subgraph "cluster~/lib/pages/a_categories_page/survey_foods/data/service" {
-                label="service";
-                "/lib/pages/a_categories_page/survey_foods/data/service/asset_survey_service.dart";
+            subgraph "cluster~/lib/pages/a_categories_page/mod/select_number" {
+              label="select_number";
+              "/lib/pages/a_categories_page/mod/select_number/select_number.dart";
+              subgraph "cluster~/lib/pages/a_categories_page/mod/select_number/mod" {
+                label="mod";
+                "/lib/pages/a_categories_page/mod/select_number/mod/select_number_item.dart";
               }
             }
-            subgraph "cluster~/lib/pages/a_categories_page/survey_foods/presentation" {
-              label="presentation";
-              subgraph "cluster~/lib/pages/a_categories_page/survey_foods/presentation/bloc" {
+            subgraph "cluster~/lib/pages/a_categories_page/mod/survey_foods" {
+              label="survey_foods";
+              subgraph "cluster~/lib/pages/a_categories_page/mod/survey_foods/bloc" {
                 label="bloc";
-                "/lib/pages/a_categories_page/survey_foods/presentation/bloc/survey_foods_bloc.dart";
-                "/lib/pages/a_categories_page/survey_foods/presentation/bloc/survey_foods_event.dart";
-                "/lib/pages/a_categories_page/survey_foods/presentation/bloc/survey_foods_state.dart";
+                "/lib/pages/a_categories_page/mod/survey_foods/bloc/cut_survey_foods_bloc.dart";
+                "/lib/pages/a_categories_page/mod/survey_foods/bloc/cut_survey_foods_event.dart";
+                "/lib/pages/a_categories_page/mod/survey_foods/bloc/cut_survey_foods_state.dart";
               }
-              subgraph "cluster~/lib/pages/a_categories_page/survey_foods/presentation/widget" {
-                label="widget";
-                "/lib/pages/a_categories_page/survey_foods/presentation/widget/survey_by_category_item.dart";
-                "/lib/pages/a_categories_page/survey_foods/presentation/widget/survey_by_category_success_widget.dart";
-                "/lib/pages/a_categories_page/survey_foods/presentation/widget/survey_by_category_widget.dart";
+              subgraph "cluster~/lib/pages/a_categories_page/mod/survey_foods/main" {
+                label="main";
+                "/lib/pages/a_categories_page/mod/survey_foods/main/cut_survey_by_category_widget.dart";
+              }
+              subgraph "cluster~/lib/pages/a_categories_page/mod/survey_foods/mod" {
+                label="mod";
+                "/lib/pages/a_categories_page/mod/survey_foods/mod/cut_survey_by_category_item.dart";
+                "/lib/pages/a_categories_page/mod/survey_foods/mod/cut_survey_by_category_success_widget.dart";
               }
             }
-          }
-          subgraph "cluster~/lib/pages/a_categories_page/widgets" {
-            label="widgets";
-            "/lib/pages/a_categories_page/widgets/background_animated.dart";
-            "/lib/pages/a_categories_page/widgets/drawer_animated.dart";
-            "/lib/pages/a_categories_page/widgets/main_app_bar.dart";
           }
         }
         subgraph "cluster~/lib/pages/b_search_engine_page" {
@@ -349,6 +352,7 @@ digraph "" {
             }
             subgraph "cluster~/lib/pages/b_search_engine_page/presentation/widget" {
               label="widget";
+              "/lib/pages/b_search_engine_page/presentation/widget/my_text_field.dart";
               "/lib/pages/b_search_engine_page/presentation/widget/search_engine_item.dart";
               "/lib/pages/b_search_engine_page/presentation/widget/search_engine_success_widget.dart";
             }
@@ -375,6 +379,32 @@ digraph "" {
           "/lib/pages/home/home_page.dart";
         }
       }
+      subgraph "cluster~/lib/shared" {
+        label="shared";
+        subgraph "cluster~/lib/shared/models" {
+          label="models";
+          "/lib/shared/models/delayed_result.dart";
+          "/lib/shared/models/survey_foods_2.dart";
+        }
+        subgraph "cluster~/lib/shared/survey_foods_2" {
+          label="survey_foods_2";
+          subgraph "cluster~/lib/shared/survey_foods_2/repository" {
+            label="repository";
+            "/lib/shared/survey_foods_2/repository/survey_foods_repository_2.dart";
+          }
+          subgraph "cluster~/lib/shared/survey_foods_2/services" {
+            label="services";
+            subgraph "cluster~/lib/shared/survey_foods_2/services/database_service" {
+              label="database_service";
+              "/lib/shared/survey_foods_2/services/database_service/database_service.dart";
+            }
+            subgraph "cluster~/lib/shared/survey_foods_2/services/survey_foods_service_2" {
+              label="survey_foods_service_2";
+              "/lib/shared/survey_foods_2/services/survey_foods_service_2/survey_foods_service_2.dart";
+            }
+          }
+        }
+      }
       subgraph "cluster~/lib/test" {
         label="test";
         "/lib/test/backdropFilter.dart";
@@ -383,150 +413,163 @@ digraph "" {
       }
     }
   }
+  "/lib/archives/cut_survey_foods/data/repository/cut_survey_repository.dart" -> "/lib/archives/cut_survey_foods/data/model/cut_survey_model.dart";
+  "/lib/archives/cut_survey_foods/data/repository/cut_survey_repository.dart" -> "/lib/archives/cut_survey_foods/data/service/cut_survey_asset_service.dart";
+  "/lib/archives/cut_survey_foods/data/service/cut_survey_asset_service.dart" -> "/lib/archives/cut_survey_foods/data/model/cut_survey_model.dart";
+  "/lib/archives/foundation_foods/ingredient/data/model/en/final_food_en.dart" -> "/lib/archives/foundation_foods/ingredient/data/model/en/food_nutrient_model_en.dart";
+  "/lib/archives/foundation_foods/ingredient/data/model/en/food_nutrient_model_en.dart" -> "/lib/archives/foundation_foods/ingredient/data/model/en/nutrient_model_en.dart";
+  "/lib/archives/foundation_foods/ingredient/data/model/final_food.dart" -> "/lib/archives/foundation_foods/ingredient/domain/entities/food_entity.dart";
+  "/lib/archives/foundation_foods/ingredient/data/model/final_food.dart" -> "/lib/archives/foundation_foods/ingredient/domain/entities/food_nutrient_entity.dart";
+  "/lib/archives/foundation_foods/ingredient/data/model/final_food.dart" -> "/lib/archives/foundation_foods/ingredient/data/model/food_nutrient_model.dart";
+  "/lib/archives/foundation_foods/ingredient/data/model/food_nutrient_model.dart" -> "/lib/archives/foundation_foods/ingredient/domain/entities/food_nutrient_entity.dart";
+  "/lib/archives/foundation_foods/ingredient/data/model/food_nutrient_model.dart" -> "/lib/archives/foundation_foods/ingredient/data/model/nutrient_model.dart";
+  "/lib/archives/foundation_foods/ingredient/data/model/nutrient_model.dart" -> "/lib/archives/foundation_foods/ingredient/domain/entities/nutrient_entity.dart";
+  "/lib/archives/foundation_foods/ingredient/data/repository/app_food_repository.dart" -> "/lib/archives/foundation_foods/ingredient/data/model/food_nutrient_model.dart";
+  "/lib/archives/foundation_foods/ingredient/data/repository/app_food_repository.dart" -> "/lib/archives/foundation_foods/ingredient/data/model/nutrient_model.dart";
+  "/lib/archives/foundation_foods/ingredient/data/repository/app_food_repository.dart" -> "/lib/archives/foundation_foods/ingredient/domain/entities/food_entity.dart";
+  "/lib/archives/foundation_foods/ingredient/data/repository/app_food_repository.dart" -> "/lib/archives/foundation_foods/ingredient/domain/repositories/food_repository.dart";
+  "/lib/archives/foundation_foods/ingredient/data/repository/app_food_repository.dart" -> "/lib/archives/foundation_foods/ingredient/data/service/asset_json_service.dart";
+  "/lib/archives/foundation_foods/ingredient/data/repository/app_food_repository_en.dart" -> "/lib/archives/foundation_foods/ingredient/data/model/en/final_food_en.dart";
+  "/lib/archives/foundation_foods/ingredient/data/repository/app_food_repository_en.dart" -> "/lib/archives/foundation_foods/ingredient/data/service/asset_json_service_en.dart";
+  "/lib/archives/foundation_foods/ingredient/data/service/asset_json_service.dart" -> "/lib/archives/foundation_foods/ingredient/domain/entities/food_entity.dart";
+  "/lib/archives/foundation_foods/ingredient/data/service/asset_json_service.dart" -> "/lib/archives/foundation_foods/ingredient/data/model/final_food.dart";
+  "/lib/archives/foundation_foods/ingredient/data/service/asset_json_service_en.dart" -> "/lib/archives/foundation_foods/ingredient/data/model/en/final_food_en.dart";
+  "/lib/archives/foundation_foods/ingredient/domain/entities/food_entity.dart" -> "/lib/archives/foundation_foods/ingredient/domain/entities/food_nutrient_entity.dart";
+  "/lib/archives/foundation_foods/ingredient/domain/entities/food_nutrient_entity.dart" -> "/lib/archives/foundation_foods/ingredient/domain/entities/nutrient_entity.dart";
+  "/lib/archives/foundation_foods/ingredient/domain/repositories/food_repository.dart" -> "/lib/archives/foundation_foods/ingredient/domain/entities/food_entity.dart";
+  "/lib/archives/foundation_foods/ingredient/domain/usecases/get_sorted_foods_by_nutrient.dart" -> "/lib/archives/foundation_foods/ingredient/domain/entities/food_entity.dart";
+  "/lib/archives/foundation_foods/ingredient/domain/usecases/get_sorted_foods_by_nutrient.dart" -> "/lib/archives/foundation_foods/ingredient/domain/repositories/food_repository.dart";
+  "/lib/archives/foundation_foods/ingredient/presentation/bloc/foods_bloc.dart" -> "/lib/shared/models/delayed_result.dart";
+  "/lib/archives/foundation_foods/ingredient/presentation/bloc/foods_bloc.dart" -> "/lib/archives/foundation_foods/ingredient/presentation/bloc/foods_event.dart";
+  "/lib/archives/foundation_foods/ingredient/presentation/bloc/foods_bloc.dart" -> "/lib/archives/foundation_foods/ingredient/presentation/bloc/foods_state.dart";
+  "/lib/archives/foundation_foods/ingredient/presentation/bloc/foods_bloc.dart" -> "/lib/archives/foundation_foods/ingredient/domain/usecases/get_sorted_foods_by_nutrient.dart";
+  "/lib/archives/foundation_foods/ingredient/presentation/bloc/foods_state.dart" -> "/lib/shared/models/delayed_result.dart";
+  "/lib/archives/foundation_foods/ingredient/presentation/bloc/foods_state.dart" -> "/lib/archives/foundation_foods/ingredient/domain/entities/food_entity.dart";
+  "/lib/archives/foundation_foods/ingredient/presentation/bloc_en/foods_bloc_en.dart" -> "/lib/shared/models/delayed_result.dart";
+  "/lib/archives/foundation_foods/ingredient/presentation/bloc_en/foods_bloc_en.dart" -> "/lib/archives/foundation_foods/ingredient/data/repository/app_food_repository_en.dart";
+  "/lib/archives/foundation_foods/ingredient/presentation/bloc_en/foods_bloc_en.dart" -> "/lib/archives/foundation_foods/ingredient/presentation/bloc_en/foods_event_en.dart";
+  "/lib/archives/foundation_foods/ingredient/presentation/bloc_en/foods_bloc_en.dart" -> "/lib/archives/foundation_foods/ingredient/presentation/bloc_en/foods_state_en.dart";
+  "/lib/archives/foundation_foods/ingredient/presentation/bloc_en/foods_state_en.dart" -> "/lib/shared/models/delayed_result.dart";
+  "/lib/archives/foundation_foods/ingredient/presentation/bloc_en/foods_state_en.dart" -> "/lib/archives/foundation_foods/ingredient/data/model/en/final_food_en.dart";
+  "/lib/archives/foundation_foods/ingredient/presentation/widget/ingredient_by_category_EN.dart" -> "/lib/common/theme/app_text_style.dart";
+  "/lib/archives/foundation_foods/ingredient/presentation/widget/ingredient_by_category_EN.dart" -> "/lib/archives/foundation_foods/ingredient/data/model/en/final_food_en.dart";
+  "/lib/archives/foundation_foods/ingredient/presentation/widget/ingredient_by_category_EN.dart" -> "/lib/archives/foundation_foods/ingredient/domain/entities/food_entity.dart";
+  "/lib/archives/foundation_foods/ingredient/presentation/widget/ingredient_by_category_EN.dart" -> "/lib/archives/foundation_foods/ingredient/presentation/bloc_en/foods_bloc_en.dart";
+  "/lib/archives/foundation_foods/ingredient/presentation/widget/ingredient_by_category_EN.dart" -> "/lib/archives/foundation_foods/ingredient/presentation/bloc_en/foods_state_en.dart";
+  "/lib/archives/foundation_foods/ingredient/presentation/widget/ingredient_by_category_item.dart" -> "/lib/common/theme/app_text_style.dart";
+  "/lib/archives/foundation_foods/ingredient/presentation/widget/ingredient_by_category_item.dart" -> "/lib/common/widget/card_container.dart";
+  "/lib/archives/foundation_foods/ingredient/presentation/widget/ingredient_by_category_item.dart" -> "/lib/archives/foundation_foods/ingredient/data/model/food_nutrient_model.dart";
+  "/lib/archives/foundation_foods/ingredient/presentation/widget/ingredient_by_category_item.dart" -> "/lib/archives/foundation_foods/ingredient/data/model/nutrient_model.dart";
+  "/lib/archives/foundation_foods/ingredient/presentation/widget/ingredient_by_category_item.dart" -> "/lib/archives/foundation_foods/ingredient/domain/entities/food_entity.dart";
+  "/lib/archives/foundation_foods/ingredient/presentation/widget/ingredient_by_category_item.dart" -> "/lib/archives/foundation_foods/ingredient/presentation/widget/ingredient_by_category_EN.dart";
+  "/lib/archives/foundation_foods/ingredient/presentation/widget/ingredient_by_category_success_widget.dart" -> "/lib/common/theme/app_text_style.dart";
+  "/lib/archives/foundation_foods/ingredient/presentation/widget/ingredient_by_category_success_widget.dart" -> "/lib/archives/foundation_foods/ingredient/presentation/bloc/foods_bloc.dart";
+  "/lib/archives/foundation_foods/ingredient/presentation/widget/ingredient_by_category_success_widget.dart" -> "/lib/archives/foundation_foods/ingredient/presentation/bloc/foods_state.dart";
+  "/lib/archives/foundation_foods/ingredient/presentation/widget/ingredient_by_category_success_widget.dart" -> "/lib/archives/foundation_foods/ingredient/presentation/widget/ingredient_by_category_item.dart";
+  "/lib/archives/foundation_foods/ingredient/presentation/widget/ingredient_by_category_widget.dart" -> "/lib/archives/foundation_foods/ingredient/data/repository/app_food_repository.dart";
+  "/lib/archives/foundation_foods/ingredient/presentation/widget/ingredient_by_category_widget.dart" -> "/lib/archives/foundation_foods/ingredient/data/service/asset_json_service.dart";
+  "/lib/archives/foundation_foods/ingredient/presentation/widget/ingredient_by_category_widget.dart" -> "/lib/archives/foundation_foods/ingredient/domain/usecases/get_sorted_foods_by_nutrient.dart";
+  "/lib/archives/foundation_foods/ingredient/presentation/widget/ingredient_by_category_widget.dart" -> "/lib/archives/foundation_foods/ingredient/presentation/bloc/foods_bloc.dart";
+  "/lib/archives/foundation_foods/ingredient/presentation/widget/ingredient_by_category_widget.dart" -> "/lib/archives/foundation_foods/ingredient/presentation/bloc/foods_event.dart";
+  "/lib/archives/foundation_foods/ingredient/presentation/widget/ingredient_by_category_widget.dart" -> "/lib/archives/foundation_foods/ingredient/presentation/bloc/foods_state.dart";
+  "/lib/archives/foundation_foods/ingredient/presentation/widget/ingredient_by_category_widget.dart" -> "/lib/archives/foundation_foods/ingredient/presentation/widget/ingredient_by_category_success_widget.dart";
+  "/lib/archives/foundation_foods/ingredient/presentation/widget/ingredient_by_category_widget.dart" -> "/lib/archives/foundation_foods/ingredient/presentation/bloc_en/foods_bloc_en.dart";
+  "/lib/archives/foundation_foods/ingredient/presentation/widget/ingredient_by_category_widget.dart" -> "/lib/archives/foundation_foods/ingredient/presentation/bloc_en/foods_event_en.dart";
+  "/lib/archives/foundation_foods/ingredient/presentation/widget/ingredient_by_category_widget.dart" -> "/lib/archives/foundation_foods/ingredient/data/repository/app_food_repository_en.dart";
+  "/lib/archives/foundation_foods/ingredient/presentation/widget/ingredient_by_category_widget.dart" -> "/lib/archives/foundation_foods/ingredient/data/service/asset_json_service_en.dart";
+  "/lib/archives/survey_foods/data/model/survey_food_nutrient_model.dart" -> "/lib/archives/survey_foods/data/model/survey_nutrient_model.dart";
+  "/lib/archives/survey_foods/data/model/survey_model.dart" -> "/lib/archives/survey_foods/data/model/survey_food_nutrient_model.dart";
+  "/lib/archives/survey_foods/data/repository/survey_repository.dart" -> "/lib/archives/survey_foods/data/model/survey_food_nutrient_model.dart";
+  "/lib/archives/survey_foods/data/repository/survey_repository.dart" -> "/lib/archives/survey_foods/data/model/survey_model.dart";
+  "/lib/archives/survey_foods/data/repository/survey_repository.dart" -> "/lib/archives/survey_foods/data/model/survey_nutrient_model.dart";
+  "/lib/archives/survey_foods/data/repository/survey_repository.dart" -> "/lib/archives/survey_foods/data/service/asset_survey_service.dart";
+  "/lib/archives/survey_foods/data/service/asset_survey_service.dart" -> "/lib/archives/survey_foods/data/model/survey_model.dart";
+  "/lib/archives/survey_foods/presentation/bloc/survey_foods_bloc.dart" -> "/lib/shared/models/delayed_result.dart";
+  "/lib/archives/survey_foods/presentation/bloc/survey_foods_bloc.dart" -> "/lib/archives/survey_foods/data/model/survey_food_nutrient_model.dart";
+  "/lib/archives/survey_foods/presentation/bloc/survey_foods_bloc.dart" -> "/lib/archives/survey_foods/data/model/survey_model.dart";
+  "/lib/archives/survey_foods/presentation/bloc/survey_foods_bloc.dart" -> "/lib/archives/survey_foods/data/model/survey_nutrient_model.dart";
+  "/lib/archives/survey_foods/presentation/bloc/survey_foods_bloc.dart" -> "/lib/archives/survey_foods/data/repository/survey_repository.dart";
+  "/lib/archives/survey_foods/presentation/bloc/survey_foods_bloc.dart" -> "/lib/archives/survey_foods/presentation/bloc/survey_foods_event.dart";
+  "/lib/archives/survey_foods/presentation/widget/survey_by_category_item.dart" -> "/lib/archives/survey_foods/data/model/survey_food_nutrient_model.dart";
+  "/lib/archives/survey_foods/presentation/widget/survey_by_category_item.dart" -> "/lib/archives/survey_foods/data/model/survey_model.dart";
+  "/lib/archives/survey_foods/presentation/widget/survey_by_category_item.dart" -> "/lib/archives/survey_foods/data/model/survey_nutrient_model.dart";
+  "/lib/archives/survey_foods/presentation/widget/survey_by_category_success_widget.dart" -> "/lib/archives/survey_foods/presentation/bloc/survey_foods_bloc.dart";
+  "/lib/archives/survey_foods/presentation/widget/survey_by_category_success_widget.dart" -> "/lib/archives/survey_foods/presentation/widget/survey_by_category_item.dart";
+  "/lib/archives/survey_foods/presentation/widget/survey_by_category_widget.dart" -> "/lib/archives/survey_foods/data/repository/survey_repository.dart";
+  "/lib/archives/survey_foods/presentation/widget/survey_by_category_widget.dart" -> "/lib/archives/survey_foods/data/service/asset_survey_service.dart";
+  "/lib/archives/survey_foods/presentation/widget/survey_by_category_widget.dart" -> "/lib/archives/survey_foods/presentation/bloc/survey_foods_bloc.dart";
+  "/lib/archives/survey_foods/presentation/widget/survey_by_category_widget.dart" -> "/lib/archives/survey_foods/presentation/bloc/survey_foods_event.dart";
+  "/lib/archives/survey_foods/presentation/widget/survey_by_category_widget.dart" -> "/lib/archives/survey_foods/presentation/widget/survey_by_category_success_widget.dart";
   "/lib/main.dart" -> "/lib/common/theme/simple_theme.dart";
   "/lib/main.dart" -> "/lib/pages/home/home_page.dart";
-  "/lib/pages/a_categories_page/categories_page.dart" -> "/lib/pages/a_categories_page/widgets/background_animated.dart";
-  "/lib/pages/a_categories_page/categories_page.dart" -> "/lib/pages/a_categories_page/category_group/presentation/widgets/column_animated.dart";
-  "/lib/pages/a_categories_page/categories_page.dart" -> "/lib/pages/a_categories_page/widgets/drawer_animated.dart";
-  "/lib/pages/a_categories_page/categories_page.dart" -> "/lib/pages/a_categories_page/widgets/main_app_bar.dart";
-  "/lib/pages/a_categories_page/category_group/data/model/category_group.dart" -> "/lib/pages/a_categories_page/category_group/data/model/category_group_nutrient_number.dart";
-  "/lib/pages/a_categories_page/category_group/data/repository/category_group_repository.dart" -> "/lib/pages/a_categories_page/category_group/data/model/category_group.dart";
-  "/lib/pages/a_categories_page/category_group/data/repository/category_group_repository.dart" -> "/lib/pages/a_categories_page/category_group/data/service/category_group_service.dart";
-  "/lib/pages/a_categories_page/category_group/data/service/category_group_service.dart" -> "/lib/pages/a_categories_page/category_group/data/model/category_group.dart";
-  "/lib/pages/a_categories_page/category_group/presentation/bloc/category_group_bloc.dart" -> "/lib/pages/a_categories_page/category_group/data/model/category_group.dart";
-  "/lib/pages/a_categories_page/category_group/presentation/bloc/category_group_bloc.dart" -> "/lib/pages/a_categories_page/category_group/data/repository/category_group_repository.dart";
-  "/lib/pages/a_categories_page/category_group/presentation/bloc/category_group_bloc.dart" -> "/lib/common/model/delayed_result.dart";
-  "/lib/pages/a_categories_page/category_group/presentation/screen/select_number_screen/category_group_nutrient_number_screen.dart" -> "/lib/pages/a_categories_page/category_group/data/model/category_group.dart";
-  "/lib/pages/a_categories_page/category_group/presentation/screen/select_number_screen/category_group_nutrient_number_screen.dart" -> "/lib/pages/a_categories_page/category_group/presentation/screen/select_number_screen/widget/category_group_nutrient_number_item.dart";
-  "/lib/pages/a_categories_page/category_group/presentation/screen/select_number_screen/widget/category_group_nutrient_number_item.dart" -> "/lib/common/widget/card_container.dart";
-  "/lib/pages/a_categories_page/category_group/presentation/screen/select_number_screen/widget/category_group_nutrient_number_item.dart" -> "/lib/pages/a_categories_page/category_group/data/model/category_group_nutrient_number.dart";
-  "/lib/pages/a_categories_page/category_group/presentation/screen/select_number_screen/widget/category_group_nutrient_number_item.dart" -> "/lib/pages/a_categories_page/cut_survey_foods/presentation/widget/cut_survey_by_category_widget.dart";
-  "/lib/pages/a_categories_page/category_group/presentation/screen/select_number_screen/widget/category_group_nutrient_number_item.dart" -> "/lib/pages/a_categories_page/foundation_foods/ingredient/presentation/widget/ingredient_by_category_widget.dart";
-  "/lib/pages/a_categories_page/category_group/presentation/widgets/category_group_widget/category_group_widget.dart" -> "/lib/pages/a_categories_page/category_group/presentation/bloc/category_group_bloc.dart";
-  "/lib/pages/a_categories_page/category_group/presentation/widgets/category_group_widget/category_group_widget.dart" -> "/lib/pages/a_categories_page/category_group/presentation/widgets/category_group_widget/widget/category_group_success_widget.dart";
-  "/lib/pages/a_categories_page/category_group/presentation/widgets/category_group_widget/widget/category_group_item.dart" -> "/lib/common/widget/card_container.dart";
-  "/lib/pages/a_categories_page/category_group/presentation/widgets/category_group_widget/widget/category_group_item.dart" -> "/lib/pages/a_categories_page/category_group/data/model/category_group.dart";
-  "/lib/pages/a_categories_page/category_group/presentation/widgets/category_group_widget/widget/category_group_item.dart" -> "/lib/pages/a_categories_page/category_group/presentation/screen/select_number_screen/category_group_nutrient_number_screen.dart";
-  "/lib/pages/a_categories_page/category_group/presentation/widgets/category_group_widget/widget/category_group_success_widget.dart" -> "/lib/pages/a_categories_page/category_group/data/model/category_group.dart";
-  "/lib/pages/a_categories_page/category_group/presentation/widgets/category_group_widget/widget/category_group_success_widget.dart" -> "/lib/pages/a_categories_page/category_group/presentation/bloc/category_group_bloc.dart";
-  "/lib/pages/a_categories_page/category_group/presentation/widgets/category_group_widget/widget/category_group_success_widget.dart" -> "/lib/pages/a_categories_page/category_group/presentation/widgets/category_group_widget/widget/category_group_item.dart";
-  "/lib/pages/a_categories_page/category_group/presentation/widgets/category_group_widget/widget/category_group_success_widget.dart" -> "/lib/pages/a_categories_page/category_group/presentation/widgets/category_group_widget/widget/my_custom_button_2.dart";
-  "/lib/pages/a_categories_page/category_group/presentation/widgets/column_animated.dart" -> "/lib/pages/a_categories_page/category_group/presentation/widgets/category_group_widget/category_group_widget.dart";
-  "/lib/pages/a_categories_page/category_group/presentation/widgets/column_animated.dart" -> "/lib/pages/a_categories_page/category_group/presentation/widgets/header_title.dart";
-  "/lib/pages/a_categories_page/cut_survey_foods/data/repository/cut_survey_repository.dart" -> "/lib/pages/a_categories_page/cut_survey_foods/data/model/cut_survey_model.dart";
-  "/lib/pages/a_categories_page/cut_survey_foods/data/repository/cut_survey_repository.dart" -> "/lib/pages/a_categories_page/cut_survey_foods/data/service/cut_survey_asset_service.dart";
-  "/lib/pages/a_categories_page/cut_survey_foods/data/service/cut_survey_asset_service.dart" -> "/lib/pages/a_categories_page/cut_survey_foods/data/model/cut_survey_model.dart";
-  "/lib/pages/a_categories_page/cut_survey_foods/presentation/bloc/cut_survey_foods_bloc.dart" -> "/lib/common/model/delayed_result.dart";
-  "/lib/pages/a_categories_page/cut_survey_foods/presentation/bloc/cut_survey_foods_bloc.dart" -> "/lib/pages/a_categories_page/cut_survey_foods/data/model/cut_survey_model.dart";
-  "/lib/pages/a_categories_page/cut_survey_foods/presentation/bloc/cut_survey_foods_bloc.dart" -> "/lib/pages/a_categories_page/cut_survey_foods/data/repository/cut_survey_repository.dart";
-  "/lib/pages/a_categories_page/cut_survey_foods/presentation/bloc/cut_survey_foods_bloc.dart" -> "/lib/pages/a_categories_page/cut_survey_foods/presentation/bloc/cut_survey_foods_event.dart";
-  "/lib/pages/a_categories_page/cut_survey_foods/presentation/widget/cut_survey_by_category_item.dart" -> "/lib/common/widget/card_container.dart";
-  "/lib/pages/a_categories_page/cut_survey_foods/presentation/widget/cut_survey_by_category_item.dart" -> "/lib/pages/a_categories_page/cut_survey_foods/data/model/cut_survey_model.dart";
-  "/lib/pages/a_categories_page/cut_survey_foods/presentation/widget/cut_survey_by_category_success_widget.dart" -> "/lib/pages/a_categories_page/cut_survey_foods/presentation/bloc/cut_survey_foods_bloc.dart";
-  "/lib/pages/a_categories_page/cut_survey_foods/presentation/widget/cut_survey_by_category_success_widget.dart" -> "/lib/pages/a_categories_page/cut_survey_foods/presentation/widget/cut_survey_by_category_item.dart";
-  "/lib/pages/a_categories_page/cut_survey_foods/presentation/widget/cut_survey_by_category_widget.dart" -> "/lib/pages/a_categories_page/cut_survey_foods/data/repository/cut_survey_repository.dart";
-  "/lib/pages/a_categories_page/cut_survey_foods/presentation/widget/cut_survey_by_category_widget.dart" -> "/lib/pages/a_categories_page/cut_survey_foods/data/service/cut_survey_asset_service.dart";
-  "/lib/pages/a_categories_page/cut_survey_foods/presentation/widget/cut_survey_by_category_widget.dart" -> "/lib/pages/a_categories_page/cut_survey_foods/presentation/bloc/cut_survey_foods_bloc.dart";
-  "/lib/pages/a_categories_page/cut_survey_foods/presentation/widget/cut_survey_by_category_widget.dart" -> "/lib/pages/a_categories_page/cut_survey_foods/presentation/bloc/cut_survey_foods_event.dart";
-  "/lib/pages/a_categories_page/cut_survey_foods/presentation/widget/cut_survey_by_category_widget.dart" -> "/lib/pages/a_categories_page/cut_survey_foods/presentation/widget/cut_survey_by_category_success_widget.dart";
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/data/model/en/final_food_en.dart" -> "/lib/pages/a_categories_page/foundation_foods/ingredient/data/model/en/food_nutrient_model_en.dart";
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/data/model/en/food_nutrient_model_en.dart" -> "/lib/pages/a_categories_page/foundation_foods/ingredient/data/model/en/nutrient_model_en.dart";
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/data/model/final_food.dart" -> "/lib/pages/a_categories_page/foundation_foods/ingredient/domain/entities/food_entity.dart";
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/data/model/final_food.dart" -> "/lib/pages/a_categories_page/foundation_foods/ingredient/domain/entities/food_nutrient_entity.dart";
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/data/model/final_food.dart" -> "/lib/pages/a_categories_page/foundation_foods/ingredient/data/model/food_nutrient_model.dart";
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/data/model/food_nutrient_model.dart" -> "/lib/pages/a_categories_page/foundation_foods/ingredient/domain/entities/food_nutrient_entity.dart";
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/data/model/food_nutrient_model.dart" -> "/lib/pages/a_categories_page/foundation_foods/ingredient/data/model/nutrient_model.dart";
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/data/model/nutrient_model.dart" -> "/lib/pages/a_categories_page/foundation_foods/ingredient/domain/entities/nutrient_entity.dart";
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/data/repository/app_food_repository.dart" -> "/lib/pages/a_categories_page/foundation_foods/ingredient/data/model/food_nutrient_model.dart";
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/data/repository/app_food_repository.dart" -> "/lib/pages/a_categories_page/foundation_foods/ingredient/data/model/nutrient_model.dart";
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/data/repository/app_food_repository.dart" -> "/lib/pages/a_categories_page/foundation_foods/ingredient/domain/entities/food_entity.dart";
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/data/repository/app_food_repository.dart" -> "/lib/pages/a_categories_page/foundation_foods/ingredient/domain/repositories/food_repository.dart";
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/data/repository/app_food_repository.dart" -> "/lib/pages/a_categories_page/foundation_foods/ingredient/data/service/asset_json_service.dart";
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/data/repository/app_food_repository_en.dart" -> "/lib/pages/a_categories_page/foundation_foods/ingredient/data/model/en/final_food_en.dart";
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/data/repository/app_food_repository_en.dart" -> "/lib/pages/a_categories_page/foundation_foods/ingredient/data/service/asset_json_service_en.dart";
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/data/service/asset_json_service.dart" -> "/lib/pages/a_categories_page/foundation_foods/ingredient/domain/entities/food_entity.dart";
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/data/service/asset_json_service.dart" -> "/lib/pages/a_categories_page/foundation_foods/ingredient/data/model/final_food.dart";
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/data/service/asset_json_service_en.dart" -> "/lib/pages/a_categories_page/foundation_foods/ingredient/data/model/en/final_food_en.dart";
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/domain/entities/food_entity.dart" -> "/lib/pages/a_categories_page/foundation_foods/ingredient/domain/entities/food_nutrient_entity.dart";
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/domain/entities/food_nutrient_entity.dart" -> "/lib/pages/a_categories_page/foundation_foods/ingredient/domain/entities/nutrient_entity.dart";
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/domain/repositories/food_repository.dart" -> "/lib/pages/a_categories_page/foundation_foods/ingredient/domain/entities/food_entity.dart";
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/domain/usecases/get_sorted_foods_by_nutrient.dart" -> "/lib/pages/a_categories_page/foundation_foods/ingredient/domain/entities/food_entity.dart";
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/domain/usecases/get_sorted_foods_by_nutrient.dart" -> "/lib/pages/a_categories_page/foundation_foods/ingredient/domain/repositories/food_repository.dart";
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/presentation/bloc/foods_bloc.dart" -> "/lib/common/model/delayed_result.dart";
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/presentation/bloc/foods_bloc.dart" -> "/lib/pages/a_categories_page/foundation_foods/ingredient/presentation/bloc/foods_event.dart";
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/presentation/bloc/foods_bloc.dart" -> "/lib/pages/a_categories_page/foundation_foods/ingredient/presentation/bloc/foods_state.dart";
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/presentation/bloc/foods_bloc.dart" -> "/lib/pages/a_categories_page/foundation_foods/ingredient/domain/usecases/get_sorted_foods_by_nutrient.dart";
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/presentation/bloc/foods_state.dart" -> "/lib/common/model/delayed_result.dart";
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/presentation/bloc/foods_state.dart" -> "/lib/pages/a_categories_page/foundation_foods/ingredient/domain/entities/food_entity.dart";
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/presentation/bloc_en/foods_bloc_en.dart" -> "/lib/common/model/delayed_result.dart";
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/presentation/bloc_en/foods_bloc_en.dart" -> "/lib/pages/a_categories_page/foundation_foods/ingredient/data/repository/app_food_repository_en.dart";
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/presentation/bloc_en/foods_bloc_en.dart" -> "/lib/pages/a_categories_page/foundation_foods/ingredient/presentation/bloc_en/foods_event_en.dart";
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/presentation/bloc_en/foods_bloc_en.dart" -> "/lib/pages/a_categories_page/foundation_foods/ingredient/presentation/bloc_en/foods_state_en.dart";
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/presentation/bloc_en/foods_state_en.dart" -> "/lib/common/model/delayed_result.dart";
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/presentation/bloc_en/foods_state_en.dart" -> "/lib/pages/a_categories_page/foundation_foods/ingredient/data/model/en/final_food_en.dart";
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/presentation/widget/ingredient_by_category_EN.dart" -> "/lib/pages/a_categories_page/foundation_foods/ingredient/data/model/en/final_food_en.dart";
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/presentation/widget/ingredient_by_category_EN.dart" -> "/lib/pages/a_categories_page/foundation_foods/ingredient/domain/entities/food_entity.dart";
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/presentation/widget/ingredient_by_category_EN.dart" -> "/lib/pages/a_categories_page/foundation_foods/ingredient/presentation/bloc_en/foods_bloc_en.dart";
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/presentation/widget/ingredient_by_category_EN.dart" -> "/lib/pages/a_categories_page/foundation_foods/ingredient/presentation/bloc_en/foods_state_en.dart";
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/presentation/widget/ingredient_by_category_item.dart" -> "/lib/common/widget/card_container.dart";
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/presentation/widget/ingredient_by_category_item.dart" -> "/lib/pages/a_categories_page/foundation_foods/ingredient/data/model/food_nutrient_model.dart";
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/presentation/widget/ingredient_by_category_item.dart" -> "/lib/pages/a_categories_page/foundation_foods/ingredient/data/model/nutrient_model.dart";
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/presentation/widget/ingredient_by_category_item.dart" -> "/lib/pages/a_categories_page/foundation_foods/ingredient/domain/entities/food_entity.dart";
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/presentation/widget/ingredient_by_category_item.dart" -> "/lib/pages/a_categories_page/foundation_foods/ingredient/presentation/widget/ingredient_by_category_EN.dart";
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/presentation/widget/ingredient_by_category_success_widget.dart" -> "/lib/pages/a_categories_page/foundation_foods/ingredient/presentation/bloc/foods_bloc.dart";
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/presentation/widget/ingredient_by_category_success_widget.dart" -> "/lib/pages/a_categories_page/foundation_foods/ingredient/presentation/bloc/foods_state.dart";
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/presentation/widget/ingredient_by_category_success_widget.dart" -> "/lib/pages/a_categories_page/foundation_foods/ingredient/presentation/widget/ingredient_by_category_item.dart";
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/presentation/widget/ingredient_by_category_widget.dart" -> "/lib/pages/a_categories_page/foundation_foods/ingredient/data/repository/app_food_repository.dart";
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/presentation/widget/ingredient_by_category_widget.dart" -> "/lib/pages/a_categories_page/foundation_foods/ingredient/data/service/asset_json_service.dart";
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/presentation/widget/ingredient_by_category_widget.dart" -> "/lib/pages/a_categories_page/foundation_foods/ingredient/domain/usecases/get_sorted_foods_by_nutrient.dart";
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/presentation/widget/ingredient_by_category_widget.dart" -> "/lib/pages/a_categories_page/foundation_foods/ingredient/presentation/bloc/foods_bloc.dart";
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/presentation/widget/ingredient_by_category_widget.dart" -> "/lib/pages/a_categories_page/foundation_foods/ingredient/presentation/bloc/foods_event.dart";
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/presentation/widget/ingredient_by_category_widget.dart" -> "/lib/pages/a_categories_page/foundation_foods/ingredient/presentation/bloc/foods_state.dart";
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/presentation/widget/ingredient_by_category_widget.dart" -> "/lib/pages/a_categories_page/foundation_foods/ingredient/presentation/widget/ingredient_by_category_success_widget.dart";
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/presentation/widget/ingredient_by_category_widget.dart" -> "/lib/pages/a_categories_page/foundation_foods/ingredient/presentation/bloc_en/foods_bloc_en.dart";
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/presentation/widget/ingredient_by_category_widget.dart" -> "/lib/pages/a_categories_page/foundation_foods/ingredient/presentation/bloc_en/foods_event_en.dart";
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/presentation/widget/ingredient_by_category_widget.dart" -> "/lib/pages/a_categories_page/foundation_foods/ingredient/data/repository/app_food_repository_en.dart";
-  "/lib/pages/a_categories_page/foundation_foods/ingredient/presentation/widget/ingredient_by_category_widget.dart" -> "/lib/pages/a_categories_page/foundation_foods/ingredient/data/service/asset_json_service_en.dart";
-  "/lib/pages/a_categories_page/survey_foods/data/model/survey_food_nutrient_model.dart" -> "/lib/pages/a_categories_page/survey_foods/data/model/survey_nutrient_model.dart";
-  "/lib/pages/a_categories_page/survey_foods/data/model/survey_model.dart" -> "/lib/pages/a_categories_page/survey_foods/data/model/survey_food_nutrient_model.dart";
-  "/lib/pages/a_categories_page/survey_foods/data/repository/survey_repository.dart" -> "/lib/pages/a_categories_page/survey_foods/data/model/survey_food_nutrient_model.dart";
-  "/lib/pages/a_categories_page/survey_foods/data/repository/survey_repository.dart" -> "/lib/pages/a_categories_page/survey_foods/data/model/survey_model.dart";
-  "/lib/pages/a_categories_page/survey_foods/data/repository/survey_repository.dart" -> "/lib/pages/a_categories_page/survey_foods/data/model/survey_nutrient_model.dart";
-  "/lib/pages/a_categories_page/survey_foods/data/repository/survey_repository.dart" -> "/lib/pages/a_categories_page/survey_foods/data/service/asset_survey_service.dart";
-  "/lib/pages/a_categories_page/survey_foods/data/service/asset_survey_service.dart" -> "/lib/pages/a_categories_page/survey_foods/data/model/survey_model.dart";
-  "/lib/pages/a_categories_page/survey_foods/presentation/bloc/survey_foods_bloc.dart" -> "/lib/common/model/delayed_result.dart";
-  "/lib/pages/a_categories_page/survey_foods/presentation/bloc/survey_foods_bloc.dart" -> "/lib/pages/a_categories_page/survey_foods/data/model/survey_food_nutrient_model.dart";
-  "/lib/pages/a_categories_page/survey_foods/presentation/bloc/survey_foods_bloc.dart" -> "/lib/pages/a_categories_page/survey_foods/data/model/survey_model.dart";
-  "/lib/pages/a_categories_page/survey_foods/presentation/bloc/survey_foods_bloc.dart" -> "/lib/pages/a_categories_page/survey_foods/data/model/survey_nutrient_model.dart";
-  "/lib/pages/a_categories_page/survey_foods/presentation/bloc/survey_foods_bloc.dart" -> "/lib/pages/a_categories_page/survey_foods/data/repository/survey_repository.dart";
-  "/lib/pages/a_categories_page/survey_foods/presentation/bloc/survey_foods_bloc.dart" -> "/lib/pages/a_categories_page/survey_foods/presentation/bloc/survey_foods_event.dart";
-  "/lib/pages/a_categories_page/survey_foods/presentation/widget/survey_by_category_item.dart" -> "/lib/pages/a_categories_page/survey_foods/data/model/survey_food_nutrient_model.dart";
-  "/lib/pages/a_categories_page/survey_foods/presentation/widget/survey_by_category_item.dart" -> "/lib/pages/a_categories_page/survey_foods/data/model/survey_model.dart";
-  "/lib/pages/a_categories_page/survey_foods/presentation/widget/survey_by_category_item.dart" -> "/lib/pages/a_categories_page/survey_foods/data/model/survey_nutrient_model.dart";
-  "/lib/pages/a_categories_page/survey_foods/presentation/widget/survey_by_category_success_widget.dart" -> "/lib/pages/a_categories_page/survey_foods/presentation/bloc/survey_foods_bloc.dart";
-  "/lib/pages/a_categories_page/survey_foods/presentation/widget/survey_by_category_success_widget.dart" -> "/lib/pages/a_categories_page/survey_foods/presentation/widget/survey_by_category_item.dart";
-  "/lib/pages/a_categories_page/survey_foods/presentation/widget/survey_by_category_widget.dart" -> "/lib/pages/a_categories_page/survey_foods/data/repository/survey_repository.dart";
-  "/lib/pages/a_categories_page/survey_foods/presentation/widget/survey_by_category_widget.dart" -> "/lib/pages/a_categories_page/survey_foods/data/service/asset_survey_service.dart";
-  "/lib/pages/a_categories_page/survey_foods/presentation/widget/survey_by_category_widget.dart" -> "/lib/pages/a_categories_page/survey_foods/presentation/bloc/survey_foods_bloc.dart";
-  "/lib/pages/a_categories_page/survey_foods/presentation/widget/survey_by_category_widget.dart" -> "/lib/pages/a_categories_page/survey_foods/presentation/bloc/survey_foods_event.dart";
-  "/lib/pages/a_categories_page/survey_foods/presentation/widget/survey_by_category_widget.dart" -> "/lib/pages/a_categories_page/survey_foods/presentation/widget/survey_by_category_success_widget.dart";
-  "/lib/pages/a_categories_page/widgets/drawer_animated.dart" -> "/lib/pages/f_setting_page/setting_page.dart";
+  "/lib/pages/a_categories_page/main/categories_page.dart" -> "/lib/pages/a_categories_page/main/mod/drawer_animated.dart";
+  "/lib/pages/a_categories_page/main/categories_page.dart" -> "/lib/common/theme/app_text_style.dart";
+  "/lib/pages/a_categories_page/main/categories_page.dart" -> "/lib/pages/a_categories_page/mod/category_group/category_group_widget.dart";
+  "/lib/pages/a_categories_page/main/categories_page.dart" -> "/lib/pages/a_categories_page/main/mod/header_title.dart";
+  "/lib/pages/a_categories_page/main/mod/drawer_animated.dart" -> "/lib/pages/f_setting_page/setting_page.dart";
+  "/lib/pages/a_categories_page/main/mod/header_title.dart" -> "/lib/common/theme/app_text_style.dart";
+  "/lib/pages/a_categories_page/mod/category_group/bloc/category_group_bloc.dart" -> "/lib/pages/a_categories_page/mod/category_group/data/model/category_group.dart";
+  "/lib/pages/a_categories_page/mod/category_group/bloc/category_group_bloc.dart" -> "/lib/pages/a_categories_page/mod/category_group/data/repository/category_group_repository.dart";
+  "/lib/pages/a_categories_page/mod/category_group/bloc/category_group_bloc.dart" -> "/lib/shared/models/delayed_result.dart";
+  "/lib/pages/a_categories_page/mod/category_group/category_group_widget.dart" -> "/lib/pages/a_categories_page/mod/category_group/bloc/category_group_bloc.dart";
+  "/lib/pages/a_categories_page/mod/category_group/category_group_widget.dart" -> "/lib/pages/a_categories_page/mod/category_group/mod/category_group_success_widget.dart";
+  "/lib/pages/a_categories_page/mod/category_group/data/model/category_group.dart" -> "/lib/pages/a_categories_page/mod/category_group/data/model/category_group_nutrient_number.dart";
+  "/lib/pages/a_categories_page/mod/category_group/data/repository/category_group_repository.dart" -> "/lib/pages/a_categories_page/mod/category_group/data/model/category_group.dart";
+  "/lib/pages/a_categories_page/mod/category_group/data/repository/category_group_repository.dart" -> "/lib/pages/a_categories_page/mod/category_group/data/service/category_group_service.dart";
+  "/lib/pages/a_categories_page/mod/category_group/data/service/category_group_service.dart" -> "/lib/pages/a_categories_page/mod/category_group/data/model/category_group.dart";
+  "/lib/pages/a_categories_page/mod/category_group/mod/category_group_item.dart" -> "/lib/common/theme/app_text_style.dart";
+  "/lib/pages/a_categories_page/mod/category_group/mod/category_group_item.dart" -> "/lib/common/widget/card_container.dart";
+  "/lib/pages/a_categories_page/mod/category_group/mod/category_group_item.dart" -> "/lib/pages/a_categories_page/mod/category_group/data/model/category_group.dart";
+  "/lib/pages/a_categories_page/mod/category_group/mod/category_group_item.dart" -> "/lib/pages/a_categories_page/mod/select_number/select_number.dart";
+  "/lib/pages/a_categories_page/mod/category_group/mod/category_group_success_widget.dart" -> "/lib/pages/a_categories_page/mod/category_group/data/model/category_group.dart";
+  "/lib/pages/a_categories_page/mod/category_group/mod/category_group_success_widget.dart" -> "/lib/pages/a_categories_page/mod/category_group/bloc/category_group_bloc.dart";
+  "/lib/pages/a_categories_page/mod/category_group/mod/category_group_success_widget.dart" -> "/lib/pages/a_categories_page/mod/category_group/mod/category_group_item.dart";
+  "/lib/pages/a_categories_page/mod/category_group/mod/category_group_success_widget.dart" -> "/lib/pages/a_categories_page/mod/category_group/mod/my_custom_button.dart";
+  "/lib/pages/a_categories_page/mod/select_number/mod/select_number_item.dart" -> "/lib/common/theme/app_text_style.dart";
+  "/lib/pages/a_categories_page/mod/select_number/mod/select_number_item.dart" -> "/lib/common/widget/card_container.dart";
+  "/lib/pages/a_categories_page/mod/select_number/mod/select_number_item.dart" -> "/lib/pages/a_categories_page/mod/category_group/data/model/category_group_nutrient_number.dart";
+  "/lib/pages/a_categories_page/mod/select_number/mod/select_number_item.dart" -> "/lib/pages/a_categories_page/mod/survey_foods/main/cut_survey_by_category_widget.dart";
+  "/lib/pages/a_categories_page/mod/select_number/mod/select_number_item.dart" -> "/lib/archives/foundation_foods/ingredient/presentation/widget/ingredient_by_category_widget.dart";
+  "/lib/pages/a_categories_page/mod/select_number/select_number.dart" -> "/lib/common/theme/app_text_style.dart";
+  "/lib/pages/a_categories_page/mod/select_number/select_number.dart" -> "/lib/pages/a_categories_page/mod/category_group/data/model/category_group.dart";
+  "/lib/pages/a_categories_page/mod/select_number/select_number.dart" -> "/lib/pages/a_categories_page/mod/select_number/mod/select_number_item.dart";
+  "/lib/pages/a_categories_page/mod/survey_foods/bloc/cut_survey_foods_bloc.dart" -> "/lib/shared/models/delayed_result.dart";
+  "/lib/pages/a_categories_page/mod/survey_foods/bloc/cut_survey_foods_bloc.dart" -> "/lib/pages/a_categories_page/mod/survey_foods/bloc/cut_survey_foods_event.dart";
+  "/lib/pages/a_categories_page/mod/survey_foods/bloc/cut_survey_foods_bloc.dart" -> "/lib/shared/models/survey_foods_2.dart";
+  "/lib/pages/a_categories_page/mod/survey_foods/bloc/cut_survey_foods_bloc.dart" -> "/lib/shared/survey_foods_2/repository/survey_foods_repository_2.dart";
+  "/lib/pages/a_categories_page/mod/survey_foods/main/cut_survey_by_category_widget.dart" -> "/lib/pages/a_categories_page/mod/survey_foods/bloc/cut_survey_foods_bloc.dart";
+  "/lib/pages/a_categories_page/mod/survey_foods/main/cut_survey_by_category_widget.dart" -> "/lib/pages/a_categories_page/mod/survey_foods/bloc/cut_survey_foods_event.dart";
+  "/lib/pages/a_categories_page/mod/survey_foods/main/cut_survey_by_category_widget.dart" -> "/lib/pages/a_categories_page/mod/survey_foods/mod/cut_survey_by_category_success_widget.dart";
+  "/lib/pages/a_categories_page/mod/survey_foods/main/cut_survey_by_category_widget.dart" -> "/lib/shared/survey_foods_2/repository/survey_foods_repository_2.dart";
+  "/lib/pages/a_categories_page/mod/survey_foods/main/cut_survey_by_category_widget.dart" -> "/lib/shared/survey_foods_2/services/survey_foods_service_2/survey_foods_service_2.dart";
+  "/lib/pages/a_categories_page/mod/survey_foods/mod/cut_survey_by_category_item.dart" -> "/lib/common/theme/app_text_style.dart";
+  "/lib/pages/a_categories_page/mod/survey_foods/mod/cut_survey_by_category_item.dart" -> "/lib/common/widget/card_container.dart";
+  "/lib/pages/a_categories_page/mod/survey_foods/mod/cut_survey_by_category_item.dart" -> "/lib/shared/models/survey_foods_2.dart";
+  "/lib/pages/a_categories_page/mod/survey_foods/mod/cut_survey_by_category_success_widget.dart" -> "/lib/common/theme/app_text_style.dart";
+  "/lib/pages/a_categories_page/mod/survey_foods/mod/cut_survey_by_category_success_widget.dart" -> "/lib/pages/a_categories_page/mod/survey_foods/bloc/cut_survey_foods_bloc.dart";
+  "/lib/pages/a_categories_page/mod/survey_foods/mod/cut_survey_by_category_success_widget.dart" -> "/lib/pages/a_categories_page/mod/survey_foods/mod/cut_survey_by_category_item.dart";
   "/lib/pages/b_search_engine_page/data/repository/search_engine_repository.dart" -> "/lib/pages/b_search_engine_page/data/model/search_engine_model.dart";
   "/lib/pages/b_search_engine_page/data/repository/search_engine_repository.dart" -> "/lib/pages/b_search_engine_page/data/service/search_engine_asset_service.dart";
   "/lib/pages/b_search_engine_page/data/service/search_engine_asset_service.dart" -> "/lib/pages/b_search_engine_page/data/model/search_engine_model.dart";
-  "/lib/pages/b_search_engine_page/presentation/bloc/search_engine_bloc.dart" -> "/lib/common/model/delayed_result.dart";
+  "/lib/pages/b_search_engine_page/presentation/bloc/search_engine_bloc.dart" -> "/lib/shared/models/delayed_result.dart";
   "/lib/pages/b_search_engine_page/presentation/bloc/search_engine_bloc.dart" -> "/lib/pages/b_search_engine_page/data/model/search_engine_model.dart";
   "/lib/pages/b_search_engine_page/presentation/bloc/search_engine_bloc.dart" -> "/lib/pages/b_search_engine_page/data/repository/search_engine_repository.dart";
+  "/lib/pages/b_search_engine_page/presentation/widget/my_text_field.dart" -> "/lib/pages/b_search_engine_page/presentation/bloc/search_engine_bloc.dart";
+  "/lib/pages/b_search_engine_page/presentation/widget/search_engine_item.dart" -> "/lib/common/theme/app_text_style.dart";
   "/lib/pages/b_search_engine_page/presentation/widget/search_engine_item.dart" -> "/lib/pages/b_search_engine_page/data/model/search_engine_model.dart";
+  "/lib/pages/b_search_engine_page/presentation/widget/search_engine_success_widget.dart" -> "/lib/common/theme/app_text_style.dart";
   "/lib/pages/b_search_engine_page/presentation/widget/search_engine_success_widget.dart" -> "/lib/pages/b_search_engine_page/presentation/bloc/search_engine_bloc.dart";
+  "/lib/pages/b_search_engine_page/presentation/widget/search_engine_success_widget.dart" -> "/lib/pages/b_search_engine_page/presentation/widget/my_text_field.dart";
   "/lib/pages/b_search_engine_page/presentation/widget/search_engine_success_widget.dart" -> "/lib/pages/b_search_engine_page/presentation/widget/search_engine_item.dart";
-  "/lib/pages/home/home_page.dart" -> "/lib/pages/a_categories_page/category_group/data/repository/category_group_repository.dart";
-  "/lib/pages/home/home_page.dart" -> "/lib/pages/a_categories_page/category_group/data/service/category_group_service.dart";
-  "/lib/pages/home/home_page.dart" -> "/lib/pages/a_categories_page/category_group/presentation/bloc/category_group_bloc.dart";
-  "/lib/pages/home/home_page.dart" -> "/lib/pages/a_categories_page/categories_page.dart";
+  "/lib/pages/home/home_page.dart" -> "/lib/pages/a_categories_page/mod/category_group/data/repository/category_group_repository.dart";
+  "/lib/pages/home/home_page.dart" -> "/lib/pages/a_categories_page/mod/category_group/data/service/category_group_service.dart";
+  "/lib/pages/home/home_page.dart" -> "/lib/pages/a_categories_page/mod/category_group/bloc/category_group_bloc.dart";
+  "/lib/pages/home/home_page.dart" -> "/lib/pages/a_categories_page/main/categories_page.dart";
   "/lib/pages/home/home_page.dart" -> "/lib/pages/b_search_engine_page/data/repository/search_engine_repository.dart";
   "/lib/pages/home/home_page.dart" -> "/lib/pages/b_search_engine_page/data/service/search_engine_asset_service.dart";
   "/lib/pages/home/home_page.dart" -> "/lib/pages/b_search_engine_page/presentation/bloc/search_engine_bloc.dart";
   "/lib/pages/home/home_page.dart" -> "/lib/pages/b_search_engine_page/presentation/widget/search_engine_success_widget.dart";
   "/lib/pages/home/home_page.dart" -> "/lib/pages/f_setting_page/setting_page.dart";
+  "/lib/shared/survey_foods_2/repository/survey_foods_repository_2.dart" -> "/lib/shared/models/survey_foods_2.dart";
+  "/lib/shared/survey_foods_2/repository/survey_foods_repository_2.dart" -> "/lib/shared/survey_foods_2/services/survey_foods_service_2/survey_foods_service_2.dart";
 }

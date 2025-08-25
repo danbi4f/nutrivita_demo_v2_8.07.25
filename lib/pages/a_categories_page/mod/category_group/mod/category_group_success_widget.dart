@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nutrivita_demo_v2/pages/a_categories_page/mod/category_group/data/model/category_group.dart';
 import 'package:nutrivita_demo_v2/pages/a_categories_page/mod/category_group/bloc/category_group_bloc.dart';
 import 'package:nutrivita_demo_v2/pages/a_categories_page/mod/category_group/mod/category_group_item.dart';
-import 'package:nutrivita_demo_v2/pages/a_categories_page/mod/category_group/mod/my_custom_button.dart';
 
 class CategoryGroupSuccessWidget extends StatefulWidget {
   const CategoryGroupSuccessWidget({super.key});
@@ -15,8 +14,6 @@ class CategoryGroupSuccessWidget extends StatefulWidget {
 
 class _CategoryGroupSuccessWidgetState
     extends State<CategoryGroupSuccessWidget> {
-  bool flag = false;
-
   @override
   Widget build(BuildContext context) {
     final List<CategoryGroup> categories =
@@ -24,16 +21,6 @@ class _CategoryGroupSuccessWidgetState
 
     return Column(
       children: [
-        MyCustomButton(
-          foodsSelected: flag,
-          onToggle: (value) {
-            if (flag != value) {
-              setState(() {
-                flag = value;
-              });
-            }
-          },
-        ),
         SizedBox(height: 10),
         Expanded(
           child: GridView.builder(
@@ -45,7 +32,7 @@ class _CategoryGroupSuccessWidgetState
             ),
             padding: EdgeInsets.zero,
             itemBuilder: (context, index) {
-              return CategoryGroupItem(category: categories[index], flag: flag);
+              return CategoryGroupItem(category: categories[index]);
             },
           ),
         ),
