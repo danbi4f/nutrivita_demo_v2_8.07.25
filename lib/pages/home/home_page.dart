@@ -91,15 +91,19 @@ class HomePageState extends State<HomePage> {
   }
 
   // Funkcja otwierająca SelectNumber
+  // callback openSelectNumber
   void openSelectNumber(CategoryGroup category) {
     setState(() {
       selectedPage = SelectNumber(
         category: category,
         onSelectNutrient: (nutrientNumber) {
           setState(() {
-            // zamiast Navigator.push, pokazujemy CutSurveyByCategoryWidget w body
             selectedPage = CutSurveyByCategoryWidget(
               nutrientNumber: nutrientNumber,
+              onBack: () {
+                // wracamy do SelectNumber
+                openSelectNumber(category);
+              },
             );
           });
         },

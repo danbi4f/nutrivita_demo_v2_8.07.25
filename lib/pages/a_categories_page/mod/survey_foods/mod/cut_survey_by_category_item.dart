@@ -41,7 +41,7 @@ class CutSurveyByCategoryItem extends StatelessWidget {
                   '${item.nameNutrients[nutrientNumber]} '
                   '${item.nutrients[nutrientNumber]?.toStringAsFixed(2)} '
                   '${item.unitNameNutrients[nutrientNumber]}',
-                  style: AppTextStyles.subheading(context),
+                  style: AppTextStyles.body(context, isBold: true),
                 ),
               ],
             ),
