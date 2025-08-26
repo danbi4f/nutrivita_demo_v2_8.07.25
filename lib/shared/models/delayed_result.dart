@@ -31,3 +31,7 @@ class DelayedResult<T> extends Equatable {
   @override
   List<Object?> get props => [value, error, isInProgress];
 }
+
+extension DelayedResultX<T> on DelayedResult<T> {
+  T? get valueOrNull => value;
+}

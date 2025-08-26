@@ -2,11 +2,11 @@
     "folder-color.pathColors": [
         {
             "folderPath": "nutrivita_demo_v2\\lib\\pages\\b_search_engine_page\\",
-            "color": "foldercolorizer.color_006699"
+            "color": "foldercolorizer.color_00ffff"
         },
         {
             "folderPath": "nutrivita_demo_v2\\lib\\pages\\c_favorite_foods\\",
-            "color": "foldercolorizer.color_006699"
+            "color": "foldercolorizer.color_00cc33"
         },
         {
             "folderPath": "nutrivita_demo_v2\\lib\\pages\\a_categories_page\\page\\",
@@ -57,6 +57,10 @@
         {
             "folderPath": "nutrivita_demo_v2\\lib\\pages\\a_categories_page\\select_number\\widget\\",
             "color": "foldercolorizer.color_00ccff"
+        },
+        {
+            "folderPath": "nutrivita_demo_v2\\lib\\pages\\a_categories_page\\",
+            "color": "foldercolorizer.color_ffcc00"
         }
     ]
 }

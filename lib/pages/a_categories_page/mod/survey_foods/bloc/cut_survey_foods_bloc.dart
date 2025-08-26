@@ -2,13 +2,13 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:nutrivita_demo_v2/shared/models/delayed_result.dart';
 import 'package:nutrivita_demo_v2/pages/a_categories_page/mod/survey_foods/bloc/cut_survey_foods_event.dart';
-import 'package:nutrivita_demo_v2/shared/models/survey_foods_2.dart';
-import 'package:nutrivita_demo_v2/shared/survey_foods_2/repository/survey_foods_repository_2.dart';
+import 'package:nutrivita_demo_v2/shared/models/survey_foods.dart';
+import 'package:nutrivita_demo_v2/shared/survey_foods/repository/survey_foods_repository.dart';
 part 'cut_survey_foods_state.dart';
 
 class CutSurveyFoodsBloc
     extends Bloc<LoadCutSurveyFoodsByNutrient, CutSurveyFoodsState> {
-  CutSurveyFoodsBloc(this.surveyRepository2)
+  CutSurveyFoodsBloc(this.surveyRepository)
     : super(
         CutSurveyFoodsState().copyWith(
           delayedResult: const DelayedResult.inProgress(),
@@ -17,7 +17,7 @@ class CutSurveyFoodsBloc
     on<LoadCutSurveyFoodsByNutrient>(_onLoadFoodsByNutrient);
   }
 
-  final SurveyRepository2 surveyRepository2;
+  final SurveyRepository surveyRepository;
 
   Future<void> _onLoadFoodsByNutrient(
     LoadCutSurveyFoodsByNutrient event,
@@ -25,7 +25,7 @@ class CutSurveyFoodsBloc
   ) async {
     emit(state.copyWith(delayedResult: const DelayedResult.inProgress()));
     try {
-      final List<SurveyFoods2> foods = await surveyRepository2
+      final List<SurveyFoods> foods = await surveyRepository
           .getSortedSurveyFoods2ByNutrient(event.nutrientNumber);
       emit(
         state.copyWith(

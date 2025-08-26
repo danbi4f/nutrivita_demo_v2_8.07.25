@@ -8,11 +8,11 @@ class CutSurveyFoodsState extends Equatable {
   });
 
   final DelayedResult<String> delayedResult;
-  final List<SurveyFoods2> foods;
+  final List<SurveyFoods> foods;
   final String nutrientNumber;
 
   CutSurveyFoodsState copyWith({
-    List<SurveyFoods2>? foods,
+    List<SurveyFoods>? foods,
     DelayedResult<String>? delayedResult,
     String? nutrientNumber,
   }) {

@@ -4,8 +4,8 @@ import 'package:nutrivita_demo_v2/common/theme/app_text_style.dart';
 import 'package:nutrivita_demo_v2/pages/a_categories_page/mod/survey_foods/bloc/cut_survey_foods_bloc.dart';
 import 'package:nutrivita_demo_v2/pages/a_categories_page/mod/survey_foods/bloc/cut_survey_foods_event.dart';
 import 'package:nutrivita_demo_v2/pages/a_categories_page/mod/survey_foods/mod/cut_survey_by_category_success_widget.dart';
-import 'package:nutrivita_demo_v2/shared/survey_foods_2/repository/survey_foods_repository_2.dart';
-import 'package:nutrivita_demo_v2/shared/survey_foods_2/services/survey_foods_service_2/survey_foods_service_2.dart';
+import 'package:nutrivita_demo_v2/shared/survey_foods/repository/survey_foods_repository.dart';
+import 'package:nutrivita_demo_v2/shared/survey_foods/services/survey_foods_service/survey_foods_service.dart';
 
 class CutSurveyByCategoryWidget extends StatelessWidget {
   final String nutrientNumber;
@@ -40,7 +40,7 @@ class CutSurveyByCategoryWidget extends StatelessWidget {
           child: BlocProvider(
             create:
                 (context) =>
-                    CutSurveyFoodsBloc(SurveyRepository2(SurveyFoodsService2()))
+                    CutSurveyFoodsBloc(SurveyRepository(SurveyFoodsService()))
                       ..add(LoadCutSurveyFoodsByNutrient(nutrientNumber)),
             child: BlocBuilder<CutSurveyFoodsBloc, CutSurveyFoodsState>(
               builder: (context, state) {

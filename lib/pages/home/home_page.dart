@@ -12,6 +12,8 @@ import 'package:nutrivita_demo_v2/pages/b_search_engine_page/data/repository/sea
 import 'package:nutrivita_demo_v2/pages/b_search_engine_page/data/service/search_engine_asset_service.dart';
 import 'package:nutrivita_demo_v2/pages/b_search_engine_page/presentation/bloc/search_engine_bloc.dart';
 import 'package:nutrivita_demo_v2/pages/b_search_engine_page/presentation/widget/search_engine_success_widget.dart';
+import 'package:nutrivita_demo_v2/pages/c_favorite_foods/bloc/favorite_foods_bloc.dart';
+import 'package:nutrivita_demo_v2/pages/c_favorite_foods/mod/favorite_foods_success_widget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -27,7 +29,7 @@ class HomePageState extends State<HomePage> {
   final List<Widget> pages = [
     const CategoriesPage(),
     SearchEngineSuccessWidget(),
-    Placeholder(),
+    FavoriteFoodsSuccessWidget(),
   ];
 
   @override
@@ -46,6 +48,7 @@ class HomePageState extends State<HomePage> {
                 SearchEngineRepository(SearchEngineAssetService()),
               ),
         ),
+        BlocProvider(create: (_) => FavoriteFoodsBloc()..add(LoadFavorites())),
       ],
       child: SafeArea(
         child: Scaffold(

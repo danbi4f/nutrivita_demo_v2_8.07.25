@@ -1,12 +1,12 @@
 import 'dart:convert';
 import 'package:flutter/services.dart' show rootBundle;
 
-class SurveyFoodsService2 {
-  SurveyFoodsService2._internal();
+class SurveyFoodsService {
+  SurveyFoodsService._internal();
 
-  static final SurveyFoodsService2 _instance = SurveyFoodsService2._internal();
+  static final SurveyFoodsService _instance = SurveyFoodsService._internal();
 
-  factory SurveyFoodsService2() => _instance;
+  factory SurveyFoodsService() => _instance;
 
   List<dynamic>? _jsonData;
 

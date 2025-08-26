@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nutrivita_demo_v2/common/theme/app_text_style.dart';
 import 'package:nutrivita_demo_v2/common/mod/custom_container.dart';
-import 'package:nutrivita_demo_v2/pages/c_favorite_foods/bloc/favorite_foods_bloc.dart';
-import 'package:nutrivita_demo_v2/shared/models/delayed_result.dart';
 import 'package:nutrivita_demo_v2/shared/models/survey_foods.dart';
 
 class CutSurveyByCategoryItem extends StatelessWidget {
@@ -18,9 +15,6 @@ class CutSurveyByCategoryItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final favoritesState = context.watch<FavoriteFoodsBloc>().state.favorites;
-    final favoritesList = favoritesState.valueOrNull ?? [];
-    final isFavorite = favoritesList.any((food) => food.fdcId == item.fdcId);
     return CustomContainer(
       child: Column(
         children: [
@@ -53,17 +47,10 @@ class CutSurveyByCategoryItem extends StatelessWidget {
                 child: Align(
                   alignment: Alignment.centerRight,
                   child: IconButton(
-                    onPressed: () {
-                      final bloc = context.read<FavoriteFoodsBloc>();
-                      if (isFavorite) {
-                        bloc.add(RemoveFavoriteFood(item.fdcId));
-                      } else {
-                        bloc.add(AddFavoriteFood(item));
-                      }
-                    },
+                    onPressed: () {},
                     icon: Icon(
-                      isFavorite ? Icons.favorite : Icons.favorite_border,
-                      color: Colors.green,
+                      Icons.favorite,
+                      color: Colors.red[300],
                       size: 30,
                     ),
                   ),
