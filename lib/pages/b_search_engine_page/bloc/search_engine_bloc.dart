@@ -3,6 +3,7 @@ import 'package:equatable/equatable.dart';
 import 'package:nutrivita_demo_v2/shared/models/delayed_result.dart';
 import 'package:nutrivita_demo_v2/pages/b_search_engine_page/data/model/search_engine_model.dart';
 import 'package:nutrivita_demo_v2/pages/b_search_engine_page/data/repository/search_engine_repository.dart';
+import 'package:nutrivita_demo_v2/shared/models/survey_foods.dart';
 
 part 'search_engine_event.dart';
 part 'search_engine_state.dart';
@@ -23,7 +24,7 @@ class SearchEngineBloc extends Bloc<SearchEngineEvent, SearchEngineState> {
   ) async {
     emit(state.copyWith(delayedResult: const DelayedResult.inProgress()));
     try {
-      final List<SearchEngineModel> foods = await searchEngineRepository
+      final List<SurveyFoods> foods = await searchEngineRepository
           .searchFoodsByName(event.searchFoodsByName);
       emit(
         state.copyWith(

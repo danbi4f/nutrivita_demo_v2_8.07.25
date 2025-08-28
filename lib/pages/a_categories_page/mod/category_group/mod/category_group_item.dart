@@ -6,25 +6,27 @@ import 'package:nutrivita_demo_v2/pages/home/home_page.dart';
 
 class CategoryGroupItem extends StatelessWidget {
   const CategoryGroupItem({super.key, required this.category});
-
   final CategoryGroup category;
 
   @override
   Widget build(BuildContext context) {
     void onTap() {
-      // Znajdujemy HomePageState i wywołujemy openSelectNumberPage
       final homeState = context.findAncestorStateOfType<HomePageState>();
       homeState?.openSelectNumber(category);
     }
 
-    return CustomContainer(
-      child: GestureDetector(
+    return Material(
+      // ważne – daje powierzchnię pod InkWell
+      color: Colors.transparent,
+      child: InkWell(
+        borderRadius: BorderRadius.circular(12), // opcjonalnie zaokrąglone rogi
         onTap: onTap,
-        child: Center(
-          child: Text(
-            category.categoryName,
-            //textAlign: TextAlign.center,
-            style: AppTextStyles.heading(context),
+        child: CustomContainer(
+          child: Center(
+            child: Text(
+              category.categoryName,
+              style: AppTextStyles.heading(context),
+            ),
           ),
         ),
       ),

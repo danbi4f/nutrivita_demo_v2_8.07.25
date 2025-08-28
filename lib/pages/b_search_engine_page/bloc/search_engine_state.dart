@@ -8,11 +8,11 @@ class SearchEngineState extends Equatable {
   });
 
   final DelayedResult<String> delayedResult;
-  final List<SearchEngineModel> foods;
+  final List<SurveyFoods> foods;
   final String searchFoodsByName;
 
   SearchEngineState copyWith({
-    List<SearchEngineModel>? foods,
+    List<SurveyFoods>? foods,
     DelayedResult<String>? delayedResult,
     String? searchFoodsByName,
   }) {

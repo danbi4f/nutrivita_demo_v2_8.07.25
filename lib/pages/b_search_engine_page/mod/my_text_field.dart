@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:nutrivita_demo_v2/pages/b_search_engine_page/presentation/bloc/search_engine_bloc.dart';
+import 'package:nutrivita_demo_v2/pages/b_search_engine_page/bloc/search_engine_bloc.dart';
 
 class MyTextField extends StatefulWidget {
   const MyTextField({super.key});

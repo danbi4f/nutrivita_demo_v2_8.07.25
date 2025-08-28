@@ -1,16 +1,16 @@
-import 'package:nutrivita_demo_v2/pages/b_search_engine_page/data/model/search_engine_model.dart';
 import 'package:nutrivita_demo_v2/pages/b_search_engine_page/data/service/search_engine_asset_service.dart';
+import 'package:nutrivita_demo_v2/shared/models/survey_foods.dart';
 
 class SearchEngineRepository {
   const SearchEngineRepository(this.searchEngineAssetService);
 
   final SearchEngineAssetService searchEngineAssetService;
 
-  Future<List<SearchEngineModel>> fetchCutSurveyFoods() {
+  Future<List<SurveyFoods>> fetchCutSurveyFoods() {
     return searchEngineAssetService.fetchCutSurveyFoods();
   }
 
-  Future<List<SearchEngineModel>> searchFoodsByName(String query) async {
+  Future<List<SurveyFoods>> searchFoodsByName(String query) async {
     final allFoods = await fetchCutSurveyFoods();
 
     final normalizedQueryWords = _normalize(query).split(' ');

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nutrivita_demo_v2/common/mod/custom_container.dart';
 import 'package:nutrivita_demo_v2/common/theme/app_text_style.dart';
 import 'package:nutrivita_demo_v2/pages/c_favorite_foods/bloc/favorite_foods_bloc.dart';
+import 'package:nutrivita_demo_v2/pages/c_favorite_foods/mod/favorite_foods_success_item.dart';
 
 class FavoriteFoodsSuccessWidget extends StatelessWidget {
   const FavoriteFoodsSuccessWidget({super.key});
@@ -20,6 +21,7 @@ class FavoriteFoodsSuccessWidget extends StatelessWidget {
           }
 
           if (result.isError) {
+            print(result.error);
             return Center(
               child: Text(
                 'error: ${result.error}',
@@ -42,24 +44,7 @@ class FavoriteFoodsSuccessWidget extends StatelessWidget {
               itemCount: list.length,
               itemBuilder: (context, index) {
                 final food = list[index];
-                return ListTile(
-                  title: Text(
-                    food.descriptionPL,
-                    style: AppTextStyles.body(context),
-                  ),
-                  subtitle: Text(
-                    food.foodClass,
-                    style: AppTextStyles.body(context),
-                  ),
-                  trailing: IconButton(
-                    icon: Icon(Icons.delete, color: Colors.red[300]),
-                    onPressed: () {
-                      context.read<FavoriteFoodsBloc>().add(
-                        RemoveFavoriteFood(food.fdcId),
-                      );
-                    },
-                  ),
-                );
+                return FavoriteFoodsSuccessItem(food: food);
               },
             );
           }

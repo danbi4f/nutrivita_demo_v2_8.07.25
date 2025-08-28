@@ -1,8 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:nutrivita_demo_v2/shared/models/delayed_result.dart';
+import 'package:nutrivita_demo_v2/shared/models/meal.dart';
 import 'package:nutrivita_demo_v2/shared/models/survey_foods.dart';
-import 'package:nutrivita_demo_v2/shared/survey_foods/services/database_service/database_service.dart';
+import 'package:nutrivita_demo_v2/shared/database_service/database_service.dart';
 
 part 'favorite_foods_event.dart';
 part 'favorite_foods_state.dart';
@@ -41,7 +42,6 @@ class FavoriteFoodsBloc extends Bloc<FavoriteFoodsEvent, FavoriteFoodsState> {
     AddFavoriteFood event,
     Emitter<FavoriteFoodsState> emit,
   ) async {
-    print("➡️ AddFavoriteFood: ${event.food.descriptionPL}");
     await _dbService.insertFavorite(event.food);
 
     final current = state.favorites.value ?? [];
@@ -50,8 +50,6 @@ class FavoriteFoodsBloc extends Bloc<FavoriteFoodsEvent, FavoriteFoodsState> {
         favorites: DelayedResult.fromValue([...current, event.food]),
       ),
     );
-
-    add(LoadFavorites()); // odświeżenie z DB
   }
 
   Future<void> _onRemoveFavoriteFood(
@@ -68,8 +66,6 @@ class FavoriteFoodsBloc extends Bloc<FavoriteFoodsEvent, FavoriteFoodsState> {
         ),
       ),
     );
-
-    add(LoadFavorites());
   }
 
   Future<void> _onUpdateFavoriteFood(
@@ -77,6 +73,5 @@ class FavoriteFoodsBloc extends Bloc<FavoriteFoodsEvent, FavoriteFoodsState> {
     Emitter<FavoriteFoodsState> emit,
   ) async {
     await _dbService.updateFavorite(event.food);
-    add(LoadFavorites()); // odśwież listę
   }
 }
