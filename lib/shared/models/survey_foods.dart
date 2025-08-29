@@ -10,9 +10,11 @@ class SurveyFoods {
     required this.unitNameNutrient,
     required this.descriptionPL,
     this.id,
+    this.indexRanking,
+    this.rankingName,
   });
 
-  final int? id; // opcjonalne, bo SQLite autoincrement
+  final int? id;
   final String description;
   final String descriptionPL;
   final String foodClass;
@@ -20,6 +22,8 @@ class SurveyFoods {
   final Map<String, double> nutrients;
   final Map<String, String> nameNutrient;
   final Map<String, String> unitNameNutrient;
+  final int? indexRanking;
+  final String? rankingName;
 
   factory SurveyFoods.fromJson(Map<String, dynamic> json) {
     // funkcja pomocnicza do dekodowania map
@@ -39,6 +43,8 @@ class SurveyFoods {
     }
 
     return SurveyFoods(
+      indexRanking: json['indexRanking'],
+      rankingName: json['rankingName'],
       description: json['description'],
       descriptionPL: json['descriptionPL'],
       foodClass: json['foodClass'],
@@ -61,6 +67,8 @@ class SurveyFoods {
 
   Map<String, dynamic> toMap() {
     return {
+      'indexRanking': indexRanking,
+      'rankingName': rankingName,
       'description': description,
       'descriptionPL': descriptionPL,
       'foodClass': foodClass,
@@ -71,56 +79,30 @@ class SurveyFoods {
       'id': id,
     };
   }
+
+  SurveyFoods copyWith({
+    int? id,
+    String? description,
+    String? descriptionPL,
+    String? foodClass,
+    int? fdcId,
+    Map<String, double>? nutrients,
+    Map<String, String>? nameNutrient,
+    Map<String, String>? unitNameNutrient,
+    int? indexRanking,
+    String? rankingName,
+  }) {
+    return SurveyFoods(
+      id: id ?? this.id,
+      description: description ?? this.description,
+      descriptionPL: descriptionPL ?? this.descriptionPL,
+      foodClass: foodClass ?? this.foodClass,
+      fdcId: fdcId ?? this.fdcId,
+      nutrients: nutrients ?? this.nutrients,
+      nameNutrient: nameNutrient ?? this.nameNutrient,
+      unitNameNutrient: unitNameNutrient ?? this.unitNameNutrient,
+      indexRanking: indexRanking ?? this.indexRanking,
+      rankingName: rankingName ?? this.rankingName,
+    );
+  }
 }
-
-// import 'dart:convert';
-
-// class SurveyFoods {
-//   SurveyFoods({
-//     required this.description,
-//     required this.foodClass,
-//     required this.fdcId,
-//     required this.nutrients,
-//     required this.nameNutrients,
-//     required this.unitNameNutrients,
-//     required this.descriptionPL,
-//     this.id,
-//   });
-
-//   final int? id; // opcjonalne, bo SQLite autoincrement
-//   final String description;
-//   final String descriptionPL;
-//   final String foodClass;
-//   final int fdcId;
-//   final Map<String, double> nutrients;
-//   final Map<String, String> nameNutrients;
-//   final Map<String, String> unitNameNutrients;
-
-//   factory SurveyFoods.fromJson(Map<String, dynamic> json) {
-//     return SurveyFoods(
-//       description: json['description'],
-//       descriptionPL: json['descriptionPL'],
-//       foodClass: json['foodClass'],
-//       fdcId: json['fdcId'],
-//       nutrients: Map<String, double>.from((json['nutrients'] ?? {}) as Map),
-//       nameNutrients: Map<String, String>.from(
-//         (json['nameNutrient'] ?? {}) as Map,
-//       ),
-//       unitNameNutrients: Map<String, String>.from(
-//         (json['unitNameNutrient'] ?? {}) as Map,
-//       ),
-//     );
-//   }
-
-//   Map<String, dynamic> toMap() {
-//     return {
-//       'description': description,
-//       'descriptionPL': descriptionPL,
-//       'foodClass': foodClass,
-//       'fdcId': fdcId,
-//       'nutrients': jsonEncode(nutrients),
-//       'nameNutrients': jsonEncode(nameNutrients),
-//       'unitNameNutrients': jsonEncode(unitNameNutrients),
-//     };
-//   }
-// }

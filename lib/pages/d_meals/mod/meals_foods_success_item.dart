@@ -35,6 +35,5 @@ class MealsFoodsSuccessItem extends StatelessWidget {
         ),
       ),
     );
-    ;
   }
 }

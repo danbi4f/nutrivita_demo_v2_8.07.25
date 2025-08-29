@@ -10,11 +10,13 @@ import 'package:nutrivita_demo_v2/shared/survey_foods/services/survey_foods_serv
 class CutSurveyByCategoryWidget extends StatelessWidget {
   final String nutrientNumber;
   final VoidCallback onBack; // callback do powrotu do SelectNumber
+  final String nameRanking;
 
   const CutSurveyByCategoryWidget({
     super.key,
     required this.nutrientNumber,
     required this.onBack,
+    required this.nameRanking,
   });
 
   @override
@@ -49,7 +51,9 @@ class CutSurveyByCategoryWidget extends StatelessWidget {
                 if (result.isInProgress) {
                   return const Center(child: CircularProgressIndicator());
                 } else if (result.isSuccessful) {
-                  return CutSurveyByCategorySuccessWidget();
+                  return CutSurveyByCategorySuccessWidget(
+                    nameRanking: nameRanking,
+                  );
                 } else if (result.isError) {
                   return Center(
                     child: Text('Error: //${state.delayedResult.error}'),

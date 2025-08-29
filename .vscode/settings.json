@@ -1,14 +1,6 @@
 {
     "folder-color.pathColors": [
         {
-            "folderPath": "nutrivita_demo_v2\\lib\\pages\\b_search_engine_page\\",
-            "color": "foldercolorizer.color_00ffff"
-        },
-        {
-            "folderPath": "nutrivita_demo_v2\\lib\\pages\\c_favorite_foods\\",
-            "color": "foldercolorizer.color_00cc33"
-        },
-        {
             "folderPath": "nutrivita_demo_v2\\lib\\pages\\a_categories_page\\page\\",
             "color": "foldercolorizer.color_cc0000"
         },
@@ -21,18 +13,7 @@
             "color": "foldercolorizer.color_666666"
         },
         {
-            "folderPath": "nutrivita_demo_v2\\lib\\pages\\home\\",
-            "color": "foldercolorizer.color_cc0000"
-        },
-        {
-            "folderPath": "nutrivita_demo_v2\\lib\\pages\\f_setting_page\\",
-            "color": "foldercolorizer.color_006699"
-        },
-        {
             "folderPath": "nutrivita_demo_v2\\lib\\pages\\a_categories_page\\category_group\\widgets\\"
-        },
-        {
-            "folderPath": "nutrivita_demo_v2\\lib\\"
         },
         {
             "folderPath": "nutrivita_demo_v2\\lib\\pages\\a_categories_page\\category_group\\data\\",
@@ -57,10 +38,6 @@
         {
             "folderPath": "nutrivita_demo_v2\\lib\\pages\\a_categories_page\\select_number\\widget\\",
             "color": "foldercolorizer.color_00ccff"
-        },
-        {
-            "folderPath": "nutrivita_demo_v2\\lib\\pages\\a_categories_page\\",
-            "color": "foldercolorizer.color_ffcc00"
         }
     ]
 }

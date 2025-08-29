@@ -264,7 +264,7 @@
                     "id": 65
                 },
                 {
-                    "name": "omega-3 PUFA 22:6 n-3 (DHA)",
+                    "name": "omega-3 (DHA) PUFA 22:6 n-3 ",
                     "number": "621",
                     "id": 66
                 },
@@ -279,12 +279,12 @@
                     "id": 68
                 },
                 {
-                    "name": "omega-3 PUFA 20:5 n-3 (EPA)",
+                    "name": "omega-3 (EPA) PUFA 20:5 n-3 ",
                     "number": "629",
                     "id": 69
                 },
                 {
-                    "name": "omega-3 PUFA 22:5 n-3 (DPA)",
+                    "name": "omega-3 (DPA) PUFA 22:5 n-3 ",
                     "number": "631",
                     "id": 70
                 },

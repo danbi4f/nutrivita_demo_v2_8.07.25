@@ -75,9 +75,15 @@ class HomePageState extends State<HomePage> {
       selectedPage = SelectNumber(
         category: category,
         onSelectNutrient: (nutrientNumber) {
+          // Znajdź odpowiedni element w liście nutrientsGroup
+          final nutrient = category.nutrientsGroup.firstWhere(
+            (n) => n.number == nutrientNumber,
+          );
+
           setState(() {
             selectedPage = CutSurveyByCategoryWidget(
-              nutrientNumber: nutrientNumber,
+              nutrientNumber: nutrient.number,
+              nameRanking: nutrient.name, // <- tu masz teraz dostęp do name
               onBack: () {
                 // wracamy do SelectNumber
                 openSelectNumber(category);

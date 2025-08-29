@@ -5,7 +5,12 @@ import 'package:nutrivita_demo_v2/pages/a_categories_page/mod/survey_foods/bloc/
 import 'package:nutrivita_demo_v2/pages/a_categories_page/mod/survey_foods/mod/cut_survey_by_category_item.dart';
 
 class CutSurveyByCategorySuccessWidget extends StatelessWidget {
-  const CutSurveyByCategorySuccessWidget({super.key});
+  const CutSurveyByCategorySuccessWidget({
+    super.key,
+    required this.nameRanking,
+  });
+
+  final String nameRanking;
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +26,8 @@ class CutSurveyByCategorySuccessWidget extends StatelessWidget {
               return CutSurveyByCategoryItem(
                 item: item,
                 nutrientNumber: nutrientNumber,
+                index: index,
+                nameRanking: nameRanking,
               );
             },
           ),

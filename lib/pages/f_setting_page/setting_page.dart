@@ -9,6 +9,7 @@ class SettingPage extends StatelessWidget {
   Future<void> resetDatabase(BuildContext context) async {
     final db = await DatabaseService.instance.database;
     await db.delete(MealsTable.tableNameMeals);
+    await db.delete(FavoritesTable.tableNameFavorites);
 
     ScaffoldMessenger.of(
       context,

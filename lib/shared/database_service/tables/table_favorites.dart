@@ -10,6 +10,8 @@ class FavoritesTable {
   static const String nutrientsColumnNameFavorites = 'nutrients';
   static const String nameNutrientsColumnNameFavorite = 'nameNutrient';
   static const String unitNameNutrientsColumnNameFavorite = 'unitNameNutrient';
+  static const String indexRankingColumnNameFavorite = 'indexRanking';
+  static const String rankingNameColumnNameFavorite = 'rankingName';
 
   static String get createTableFavorites => '''
     CREATE TABLE IF NOT EXISTS $tableNameFavorites (
@@ -20,7 +22,9 @@ class FavoritesTable {
       $fdcIdColumnNameFavorites INTEGER UNIQUE,
       $nutrientsColumnNameFavorites TEXT,
       $nameNutrientsColumnNameFavorite TEXT,
-      $unitNameNutrientsColumnNameFavorite TEXT
+      $unitNameNutrientsColumnNameFavorite TEXT,
+      $indexRankingColumnNameFavorite INTEGER,
+      $rankingNameColumnNameFavorite TEXT
     )
   ''';
 }
