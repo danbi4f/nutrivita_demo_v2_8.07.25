@@ -1,12 +1,12 @@
 import 'package:nutrivita_demo_v2/shared/models/survey_foods.dart';
-import 'package:nutrivita_demo_v2/shared/survey_foods/services/survey_foods_service/survey_foods_service.dart';
+import 'package:nutrivita_demo_v2/shared/services/survey_foods_service.dart';
 
 class SurveyRepository {
   const SurveyRepository(this.surveyFoodsService);
 
   final SurveyFoodsService surveyFoodsService;
 
-  Future<List<SurveyFoods>> getSurveyFoods2Model() async {
+  Future<List<SurveyFoods>> getSurveyFoods() async {
     var data = await surveyFoodsService.getRawData();
 
     return data
@@ -14,10 +14,10 @@ class SurveyRepository {
         .toList();
   }
 
-  Future<List<SurveyFoods>> getSortedSurveyFoods2ByNutrient(
+  Future<List<SurveyFoods>> getSortedSurveyFoodsByNutrient(
     String nutrientNumberSearch,
   ) async {
-    final List<SurveyFoods> cutSurveyFoods = await getSurveyFoods2Model();
+    final List<SurveyFoods> cutSurveyFoods = await getSurveyFoods();
 
     cutSurveyFoods.sort((a, b) {
       final double aAmount = a.nutrients[nutrientNumberSearch] ?? 0.0;

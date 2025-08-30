@@ -24,10 +24,7 @@ class CustomContainer extends StatelessWidget {
           isGradient
               ? boxDecorationGradient(context)
               : boxDecorationCard(context),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 20.0),
-        child: child,
-      ),
+      child: child,
     );
   }
 

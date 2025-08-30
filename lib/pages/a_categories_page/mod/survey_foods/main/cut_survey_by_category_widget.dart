@@ -4,8 +4,8 @@ import 'package:nutrivita_demo_v2/common/theme/app_text_style.dart';
 import 'package:nutrivita_demo_v2/pages/a_categories_page/mod/survey_foods/bloc/cut_survey_foods_bloc.dart';
 import 'package:nutrivita_demo_v2/pages/a_categories_page/mod/survey_foods/bloc/cut_survey_foods_event.dart';
 import 'package:nutrivita_demo_v2/pages/a_categories_page/mod/survey_foods/mod/cut_survey_by_category_success_widget.dart';
-import 'package:nutrivita_demo_v2/shared/survey_foods/repository/survey_foods_repository.dart';
-import 'package:nutrivita_demo_v2/shared/survey_foods/services/survey_foods_service/survey_foods_service.dart';
+import 'package:nutrivita_demo_v2/shared/repositories/survey_foods_repository.dart';
+import 'package:nutrivita_demo_v2/shared/services/survey_foods_service.dart';
 
 class CutSurveyByCategoryWidget extends StatelessWidget {
   final String nutrientNumber;

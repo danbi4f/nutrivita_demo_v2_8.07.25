@@ -5,6 +5,7 @@ import 'package:nutrivita_demo_v2/common/theme/simple_theme.dart';
 import 'package:nutrivita_demo_v2/pages/a_categories_page/mod/category_group/bloc/category_group_bloc.dart';
 import 'package:nutrivita_demo_v2/pages/a_categories_page/mod/category_group/data/repository/category_group_repository.dart';
 import 'package:nutrivita_demo_v2/pages/a_categories_page/mod/category_group/data/service/category_group_service.dart';
+import 'package:nutrivita_demo_v2/pages/ab_categories_page/bloc/survey_foods_by_category_bloc.dart';
 import 'package:nutrivita_demo_v2/pages/b_search_engine_page/bloc/search_engine_bloc.dart';
 import 'package:nutrivita_demo_v2/pages/b_search_engine_page/data/repository/search_engine_repository.dart';
 import 'package:nutrivita_demo_v2/pages/b_search_engine_page/data/service/search_engine_asset_service.dart';
@@ -12,6 +13,8 @@ import 'package:nutrivita_demo_v2/pages/c_favorite_foods/bloc/favorite_foods_blo
 import 'package:nutrivita_demo_v2/pages/d_meals/bloc/meals_bloc.dart';
 import 'package:nutrivita_demo_v2/pages/d_meals/mod/new_recipe/new_recipe.dart';
 import 'package:nutrivita_demo_v2/pages/home/home_page.dart';
+import 'package:nutrivita_demo_v2/shared/repositories/survey_foods_by_category_repository.dart';
+import 'package:nutrivita_demo_v2/shared/services/survey_foods_by_category_service.dart';
 
 void main() async {
   // WidgetsFlutterBinding.ensureInitialized();
@@ -40,6 +43,12 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(create: (_) => FavoriteFoodsBloc()..add(LoadFavorites())),
         BlocProvider(create: (_) => MealsBloc()..add(LoadMeals())),
+        BlocProvider(
+          create:
+              (context) => SurveyFoodsByCategoryBloc(
+                SurveyFoodsByCategoryRepository(SurveyFoodsByCategoryService()),
+              )..add(LoadSurveyFoodsByCategory()),
+        ),
       ],
       child: MaterialApp(
         routes: {'/new_recipe': (context) => const NewRecipe()},

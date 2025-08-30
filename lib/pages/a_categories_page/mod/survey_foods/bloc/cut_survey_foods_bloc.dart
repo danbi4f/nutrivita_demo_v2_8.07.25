@@ -3,7 +3,7 @@ import 'package:equatable/equatable.dart';
 import 'package:nutrivita_demo_v2/shared/models/delayed_result.dart';
 import 'package:nutrivita_demo_v2/pages/a_categories_page/mod/survey_foods/bloc/cut_survey_foods_event.dart';
 import 'package:nutrivita_demo_v2/shared/models/survey_foods.dart';
-import 'package:nutrivita_demo_v2/shared/survey_foods/repository/survey_foods_repository.dart';
+import 'package:nutrivita_demo_v2/shared/repositories/survey_foods_repository.dart';
 part 'cut_survey_foods_state.dart';
 
 class CutSurveyFoodsBloc
@@ -26,7 +26,7 @@ class CutSurveyFoodsBloc
     emit(state.copyWith(delayedResult: const DelayedResult.inProgress()));
     try {
       final List<SurveyFoods> foods = await surveyRepository
-          .getSortedSurveyFoods2ByNutrient(event.nutrientNumber);
+          .getSortedSurveyFoodsByNutrient(event.nutrientNumber);
       emit(
         state.copyWith(
           nutrientNumber: event.nutrientNumber,
