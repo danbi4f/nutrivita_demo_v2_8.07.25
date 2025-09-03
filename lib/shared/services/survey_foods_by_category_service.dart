@@ -74,15 +74,20 @@ class SurveyFoodsByCategoryService {
     return _categories!;
   }
 
-  /// Pobierz wszystkie TopFood dla konkretnego fdcId przeszukując wszystkie pliki
-  Future<List<TopFood>> getTopFoodsForFdcId(int fdcId) async {
+  /// NOWA metoda – obsługuje listę fdcId
+  Future<List<TopFood>> getTopFoodsForFdcIds(List<int> fdcIds) async {
     await _loadData();
     final List<TopFood> results = [];
+    final Set<int> fdcSet = fdcIds.toSet(); // szybsze wyszukiwanie
+
     for (var category in _categories!) {
       for (var nutrient in category.nutrients) {
-        results.addAll(nutrient.topFoods.where((tf) => tf.fdcId == fdcId));
+        results.addAll(
+          nutrient.topFoods.where((tf) => fdcSet.contains(tf.fdcId)),
+        );
       }
     }
+
     return results;
   }
 

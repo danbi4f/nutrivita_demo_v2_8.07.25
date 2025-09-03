@@ -1,10 +1,12 @@
 import 'package:nutrivita_demo_v2/shared/models/meal.dart';
-import 'package:nutrivita_demo_v2/shared/models/survey_foods.dart';
+import 'package:nutrivita_demo_v2/arc/survey_foods.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
 part 'tables/table_favorites.dart';
 part 'tables/table_meals.dart';
+part 'tables/table_favorites_fdcId.dart';
+part 'tables/table_favorite_food_with_nutrients.dart'; // 🔥 nowa tabela
 
 class DatabaseService {
   static Database? _db;
@@ -24,7 +26,7 @@ class DatabaseService {
 
     return openDatabase(
       path,
-      version: 2,
+      version: 3, // 🔥 podbijamy wersję
       onCreate: _onCreate,
       onUpgrade: _onUpgrade,
     );
@@ -32,14 +34,22 @@ class DatabaseService {
 
   void _onCreate(Database db, int version) async {
     await db.execute(FavoritesTable.createTableFavorites);
+    await db.execute(FavoritesTableFdcId.createTableFavoritesFdcId);
     await db.execute(MealsTable.createTableMeals);
+    await db.execute(
+      FavoriteFoodWithNutrientsTable.createTableFavoriteFoodWithNutrients,
+    ); // 🔥 nowa
   }
 
   void _onUpgrade(Database db, int oldVersion, int newVersion) async {
     if (oldVersion < 2) {
-      // tworzymy brakującą tabelę jeśli jej nie ma
       await db.execute(MealsTable.createTableMeals);
+      await db.execute(FavoritesTableFdcId.createTableFavoritesFdcId);
     }
-    // tutaj możesz dodawać kolejne if (oldVersion < 3) { ... } przy następnych migracjach
+    if (oldVersion < 3) {
+      await db.execute(
+        FavoriteFoodWithNutrientsTable.createTableFavoriteFoodWithNutrients,
+      ); // 🔥 migracja
+    }
   }
 }

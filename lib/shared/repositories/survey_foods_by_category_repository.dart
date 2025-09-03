@@ -17,10 +17,13 @@ class SurveyFoodsByCategoryRepository {
     }
   }
 
-  Future<DelayedResult<List<TopFood>>> getTopFoodsForFdcId(int fdcId) async {
+  /// NOWA metoda – obsługuje listę fdcId
+  Future<DelayedResult<List<TopFood>>> getTopFoodsForFdcIds(
+    List<int> fdcIds,
+  ) async {
     try {
-      final topFoods = await surveyFoodsByCategoryService.getTopFoodsForFdcId(
-        fdcId,
+      final topFoods = await surveyFoodsByCategoryService.getTopFoodsForFdcIds(
+        fdcIds,
       );
       return DelayedResult.fromValue(topFoods);
     } catch (e) {

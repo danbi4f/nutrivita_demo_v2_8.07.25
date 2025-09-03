@@ -45,6 +45,7 @@ flutter:
     - assets/v2/sorted_SF_by_category_desc_nolimit/sugars.json
     - assets/v2/sorted_SF_by_category_desc_nolimit/vitamins.json
     - assets/v2/sorted_SF_by_category_desc_nolimit/fdc_ranking_map.json
+    - assets/v2/sorted_SF_by_category_desc_nolimit/foods_extracted_description.json
     - assets/v2/sorted_SF_by_category_desc_top30/carbohydrates.json
     - assets/v2/sorted_SF_by_category_desc_top30/energy.json
     - assets/v2/sorted_SF_by_category_desc_top30/fatty_acids.json

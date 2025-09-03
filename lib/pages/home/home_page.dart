@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:nutrivita_demo_v2/pages/a_categories_page/mod/category_group/data/model/category_group.dart';
+import 'package:nutrivita_demo_v2/arc/a_categories_page/mod/category_group/data/model/category_group.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:nutrivita_demo_v2/pages/a_categories_page/mod/select_number/main/select_number.dart';
-import 'package:nutrivita_demo_v2/pages/a_categories_page/mod/survey_foods/main/cut_survey_by_category_widget.dart';
+import 'package:nutrivita_demo_v2/arc/a_categories_page/mod/select_number/main/select_number.dart';
+import 'package:nutrivita_demo_v2/arc/a_categories_page/mod/survey_foods/main/cut_survey_by_category_widget.dart';
 import 'package:nutrivita_demo_v2/pages/ab_categories_page/main/categories_page_v2.dart';
-import 'package:nutrivita_demo_v2/pages/b_search_engine_page/mod/search_engine_success_widget.dart';
-import 'package:nutrivita_demo_v2/pages/c_favorite_foods/mod/favorite_foods_success_widget.dart';
+import 'package:nutrivita_demo_v2/pages/bb_search_engine_page/main/search_engine_widget_v2.dart';
+import 'package:nutrivita_demo_v2/pages/cb_favorite_foods/main/favorite_foods_widget_v2.dart';
 import 'package:nutrivita_demo_v2/pages/d_meals/mod/meals_foods_success_widget.dart';
 
 class HomePage extends StatefulWidget {
@@ -21,8 +21,8 @@ class HomePageState extends State<HomePage> {
 
   final List<Widget> pages = [
     const CategoriesPageV2(),
-    SearchEngineSuccessWidget(),
-    FavoriteFoodsSuccessWidget(),
+    SearchEngineWidgetV2(),
+    FavoriteFoodsWidgetV2(),
     MealsFoodsSuccessWidget(),
   ];
 

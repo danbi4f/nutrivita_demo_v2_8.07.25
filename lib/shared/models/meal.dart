@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:nutrivita_demo_v2/shared/models/survey_foods.dart';
+import 'package:nutrivita_demo_v2/arc/survey_foods.dart';
 
 class Meal {
   final int? id; // null przy insert, ustawiane po odczycie z DB

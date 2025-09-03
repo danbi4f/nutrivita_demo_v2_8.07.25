@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nutrivita_demo_v2/common/mod/custom_container.dart';
 import 'package:nutrivita_demo_v2/common/theme/app_text_style.dart';
-import 'package:nutrivita_demo_v2/shared/models/survey_foods.dart';
+import 'package:nutrivita_demo_v2/arc/survey_foods.dart';
 
 class ViewSurveyFoods extends StatelessWidget {
   final SurveyFoods food;
