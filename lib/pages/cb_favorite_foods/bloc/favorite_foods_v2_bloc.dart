@@ -27,9 +27,10 @@ class FavoriteFoodsV2Bloc
     emit(state.copyWith(favorites: const DelayedResult.inProgress()));
     try {
       final List<int> ids = await _dbService.getFavoritesFdcIds();
-      print("BLOC Loaded ids from DB: $ids");
+      print('Loaded favorite FDC IDs: $ids');
+      print('Loaded favorite FDC IDs: ${ids.length}');
+
       final favorites = await repository.getCompleteFoodsByFdcIds(ids);
-      print("BLOC Fetched favorites: $favorites");
 
       emit(state.copyWith(favorites: DelayedResult.fromValue(favorites)));
     } catch (e) {
@@ -46,6 +47,10 @@ class FavoriteFoodsV2Bloc
     Emitter<FavoriteFoodsV2State> emit,
   ) async {
     await _dbService.insertFavoriteFdcId(event.fdcId);
+    // odśwież stan favorites
+    final ids = await _dbService.getFavoritesFdcIds();
+    final favorites = await repository.getCompleteFoodsByFdcIds(ids);
+    emit(state.copyWith(favorites: DelayedResult.fromValue(favorites)));
   }
 
   Future<void> _onRemoveFavoriteFoodFdcId(
@@ -53,5 +58,9 @@ class FavoriteFoodsV2Bloc
     Emitter<FavoriteFoodsV2State> emit,
   ) async {
     await _dbService.deleteFavoriteFdcId(event.fdcId);
+    // odśwież stan favorites
+    final ids = await _dbService.getFavoritesFdcIds();
+    final favorites = await repository.getCompleteFoodsByFdcIds(ids);
+    emit(state.copyWith(favorites: DelayedResult.fromValue(favorites)));
   }
 }

@@ -4,10 +4,9 @@ import 'package:nutrivita_demo_v2/common/mod/custom_container.dart';
 import 'package:nutrivita_demo_v2/common/theme/app_text_style.dart';
 import 'package:nutrivita_demo_v2/pages/cb_favorite_foods/bloc/favorite_foods_v2_bloc.dart';
 import 'package:nutrivita_demo_v2/shared/models/delayed_result.dart';
-import 'package:nutrivita_demo_v2/shared/models/complet_foods/complet_foods.dart';
 import 'package:nutrivita_demo_v2/shared/models/survey_foods_by_category/mod/top_food.dart';
 
-class FoodsByGroupItemV2 extends StatelessWidget {
+class FoodsByGroupItemV2 extends StatefulWidget {
   const FoodsByGroupItemV2({
     super.key,
     required this.topFoodsByGroup,
@@ -18,14 +17,24 @@ class FoodsByGroupItemV2 extends StatelessWidget {
   final String unit;
 
   @override
+  State<FoodsByGroupItemV2> createState() => _FoodsByGroupItemV2State();
+}
+
+class _FoodsByGroupItemV2State extends State<FoodsByGroupItemV2> {
+  bool _isFavorite = false; // lokalny stan
+
+  @override
+  void initState() {
+    super.initState();
+    final favoritesState = context.read<FavoriteFoodsV2Bloc>().state.favorites;
+    final favoritesList = favoritesState.valueOrNull ?? [];
+    _isFavorite = favoritesList.any(
+      (food) => food.fdcId == widget.topFoodsByGroup.fdcId,
+    );
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final DelayedResult<List<CompleteFood>> favoritesState =
-        context.watch<FavoriteFoodsV2Bloc>().state.favorites;
-
-    final List<CompleteFood> favoritesList = favoritesState.valueOrNull ?? [];
-
-    final bool isFavorite = false;
-
     return CustomContainer(
       child: Column(
         children: [
@@ -36,46 +45,52 @@ class FoodsByGroupItemV2 extends StatelessWidget {
               children: [
                 const Icon(Icons.ads_click_rounded, color: Colors.grey),
                 const SizedBox(width: 10),
-
-                /// Tekst (zajmuje całą dostępną przestrzeń oprócz miejsca na ikonę)
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Text(
-                        topFoodsByGroup.descriptionPL,
+                        widget.topFoodsByGroup.descriptionPL,
                         textAlign: TextAlign.center,
                         style: AppTextStyles.subheading(context),
                       ),
                       const SizedBox(height: 10),
                       Text(
-                        topFoodsByGroup.description,
+                        widget.topFoodsByGroup.description,
                         textAlign: TextAlign.center,
                         style: AppTextStyles.body(context),
                       ),
                     ],
                   ),
                 ),
-
-                /// Ikona (stała szerokość -> wszystkie ikony w jednej linii)
                 SizedBox(
-                  width: 60, // możesz dostosować szerokość
+                  width: 60,
                   child: Align(
                     alignment: Alignment.centerRight,
                     child: IconButton(
                       onPressed: () {
                         final bloc = context.read<FavoriteFoodsV2Bloc>();
-                        if (isFavorite) {
+
+                        // natychmiastowa zmiana lokalnego stanu
+                        setState(() {
+                          _isFavorite = !_isFavorite;
+                        });
+
+                        // wywołanie bloc, zapis do DB w tle
+                        if (_isFavorite) {
                           bloc.add(
-                            RemoveFavoriteFoodFdcId(topFoodsByGroup.fdcId),
+                            AddFavoriteFoodFdcId(widget.topFoodsByGroup.fdcId),
                           );
                         } else {
-                          bloc.add(AddFavoriteFoodFdcId(topFoodsByGroup.fdcId));
-                          print('Added to favorites');
+                          bloc.add(
+                            RemoveFavoriteFoodFdcId(
+                              widget.topFoodsByGroup.fdcId,
+                            ),
+                          );
                         }
                       },
                       icon: Icon(
-                        isFavorite ? Icons.favorite : Icons.favorite_border,
+                        _isFavorite ? Icons.favorite : Icons.favorite_border,
                         color: Colors.green,
                         size: 30,
                       ),
@@ -85,10 +100,7 @@ class FoodsByGroupItemV2 extends StatelessWidget {
               ],
             ),
           ),
-
           const SizedBox(height: 20),
-
-          /// Nutrient info
           Padding(
             padding: const EdgeInsets.only(right: 20, bottom: 10, left: 20),
             child: Row(
@@ -97,15 +109,15 @@ class FoodsByGroupItemV2 extends StatelessWidget {
                 CircleAvatar(
                   backgroundColor: Colors.green[300],
                   child: Text(
-                    "${topFoodsByGroup.indexRanking}",
+                    "${widget.topFoodsByGroup.indexRanking}",
                     style: AppTextStyles.body(context, isBold: true),
                   ),
                 ),
-                Spacer(),
+                const Spacer(),
                 Text(
-                  '${topFoodsByGroup.rankingName}    '
-                  '${topFoodsByGroup.nutrientValue.toStringAsFixed(2)} '
-                  '$unit',
+                  '${widget.topFoodsByGroup.rankingName}    '
+                  '${widget.topFoodsByGroup.nutrientValue.toStringAsFixed(2)} '
+                  '${widget.unit}',
                   style: AppTextStyles.body(context, isBold: true),
                 ),
               ],
