@@ -5,8 +5,8 @@ import 'package:nutrivita_demo_v2/common/theme/app_text_style.dart';
 import 'package:nutrivita_demo_v2/pages/d_meals/bloc/meals_bloc.dart';
 import 'package:nutrivita_demo_v2/pages/d_meals/mod/meals_foods_success_item.dart';
 
-class MealsFoodsSuccessWidget extends StatelessWidget {
-  const MealsFoodsSuccessWidget({super.key});
+class MealsFoodsSuccessWidgetV2 extends StatelessWidget {
+  const MealsFoodsSuccessWidgetV2({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class MealsFoodsSuccessWidget extends StatelessWidget {
               if (result.isError) {
                 return Center(
                   child: Text(
-                    'error: ${result.error}',
+                    'Error: ${result.error}',
                     style: AppTextStyles.subheading(context),
                   ),
                 );
@@ -54,13 +54,13 @@ class MealsFoodsSuccessWidget extends StatelessWidget {
 
               return Center(
                 child: Text(
-                  'Nothing downloaded yet',
+                  'Nothing loaded yet',
                   style: AppTextStyles.subheading(context),
                 ),
               );
             },
           ),
-          Spacer(),
+          const Spacer(),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
@@ -71,7 +71,7 @@ class MealsFoodsSuccessWidget extends StatelessWidget {
                   onPressed: () {
                     Navigator.pushNamed(context, '/new_recipe');
                   },
-                  child: Icon(Icons.add, color: Colors.black),
+                  child: const Icon(Icons.add, color: Colors.black),
                 ),
               ),
             ],

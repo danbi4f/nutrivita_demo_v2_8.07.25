@@ -6,7 +6,7 @@ import 'package:nutrivita_demo_v2/arc/a_categories_page/mod/survey_foods/main/cu
 import 'package:nutrivita_demo_v2/pages/ab_categories_page/main/categories_page_v2.dart';
 import 'package:nutrivita_demo_v2/pages/bb_search_engine_page/main/search_engine_widget_v2.dart';
 import 'package:nutrivita_demo_v2/pages/cb_favorite_foods/main/favorite_foods_widget_v2.dart';
-import 'package:nutrivita_demo_v2/pages/d_meals/mod/meals_foods_success_widget.dart';
+import 'package:nutrivita_demo_v2/pages/d_meals/main/meals_foods_success_widget_v2.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -23,7 +23,7 @@ class HomePageState extends State<HomePage> {
     const CategoriesPageV2(),
     SearchEngineWidgetV2(),
     FavoriteFoodsWidgetV2(),
-    MealsFoodsSuccessWidget(),
+    MealsFoodsSuccessWidgetV2(),
   ];
 
   @override

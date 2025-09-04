@@ -40,16 +40,8 @@
             "color": "foldercolorizer.color_00ccff"
         },
         {
-            "folderPath": "nutrivita_demo_v2\\lib\\pages\\cb_favorite_foods\\",
-            "color": "foldercolorizer.color_66ccff"
-        },
-        {
             "folderPath": "nutrivita_demo_v2\\lib\\",
             "color": "foldercolorizer.color_aaaaaa"
-        },
-        {
-            "folderPath": "nutrivita_demo_v2\\lib\\pages\\ab_categories_page\\",
-            "color": "foldercolorizer.color_ffcc00"
         },
         {
             "folderPath": "nutrivita_demo_v2\\lib\\shared\\repositories\\survey_foods_by_category_repository.dart\\",
@@ -98,6 +90,22 @@
         {
             "folderPath": "nutrivita_demo_v2\\lib\\shared\\models\\complet_foods\\",
             "color": "foldercolorizer.color_ff00cc"
+        },
+        {
+            "folderPath": "nutrivita_demo_v2\\lib\\shared\\services\\meals_service.dart\\",
+            "color": "foldercolorizer.color_ff0000"
+        },
+        {
+            "folderPath": "nutrivita_demo_v2\\lib\\shared\\repositories\\meals_repository.dart\\",
+            "color": "foldercolorizer.color_ff3333"
+        },
+        {
+            "folderPath": "nutrivita_demo_v2\\lib\\pages\\d_meals\\",
+            "color": "foldercolorizer.color_ff3333"
+        },
+        {
+            "folderPath": "nutrivita_demo_v2\\lib\\pages\\d_meals\\mod\\new_recipe\\",
+            "color": "foldercolorizer.color_cc33cc"
         }
     ]
 }

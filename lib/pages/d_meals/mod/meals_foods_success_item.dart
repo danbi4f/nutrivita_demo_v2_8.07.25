@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nutrivita_demo_v2/common/mod/custom_container.dart';
 import 'package:nutrivita_demo_v2/common/theme/app_text_style.dart';
 import 'package:nutrivita_demo_v2/pages/d_meals/bloc/meals_bloc.dart';
+import 'package:nutrivita_demo_v2/pages/d_meals/mod/meal_details_page.dart';
 import 'package:nutrivita_demo_v2/shared/models/meal.dart';
 
 class MealsFoodsSuccessItem extends StatelessWidget {
@@ -28,10 +29,22 @@ class MealsFoodsSuccessItem extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: const Icon(Icons.delete, color: Colors.white),
       ),
-      child: CustomContainer(
-        child: ListTile(
-          title: Text(meal.name, style: AppTextStyles.subheading(context)),
-          trailing: const Icon(Icons.play_arrow),
+      child: GestureDetector(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (_) => MealDetailsPage(meal: meal)),
+          );
+        },
+        child: CustomContainer(
+          child: ListTile(
+            title: Text(meal.name, style: AppTextStyles.subheading(context)),
+            subtitle: Text(
+              "Products: ${meal.foods.length}",
+              style: AppTextStyles.body(context),
+            ),
+            trailing: const Icon(Icons.play_arrow),
+          ),
         ),
       ),
     );

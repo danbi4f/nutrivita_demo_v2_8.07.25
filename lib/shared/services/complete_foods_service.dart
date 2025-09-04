@@ -31,6 +31,7 @@ class CompleteFoodService {
           // dodaj/uzupełnij info o składniku
           foodsMap[food.fdcId]!.nutrients[nutrient
               .nutrientNumber] = NutrientInfo(
+            nutrientNumber: nutrient.nutrientNumber,
             nutrientName: nutrient.nutrientName,
             unit: nutrient.unit,
             value: food.nutrientValue,

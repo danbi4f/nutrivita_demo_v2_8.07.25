@@ -26,14 +26,7 @@ class CompleteFood {
       'descriptionPL': descriptionPL,
       'foodClass': foodClass,
       'nutrients': jsonEncode(
-        nutrients.map(
-          (key, value) => MapEntry(key, {
-            'nutrientName': value.nutrientName,
-            'unit': value.unit,
-            'value': value.value,
-            'indexRanking': value.indexRanking,
-          }),
-        ),
+        nutrients.map((key, value) => MapEntry(key, value.toMap())),
       ),
     };
   }
@@ -47,15 +40,7 @@ class CompleteFood {
       descriptionPL: map['descriptionPL'] ?? '',
       foodClass: map['foodClass'] ?? '',
       nutrients: nutrientsJson.map(
-        (key, value) => MapEntry(
-          key,
-          NutrientInfo(
-            nutrientName: value['nutrientName'],
-            unit: value['unit'],
-            value: (value['value'] as num).toDouble(),
-            indexRanking: value['indexRanking'],
-          ),
-        ),
+        (key, value) => MapEntry(key, NutrientInfo.fromMap(value)),
       ),
     );
   }

@@ -24,6 +24,9 @@ class SearchEngineSuccessWidgetV2 extends StatelessWidget {
       separatorBuilder: (_, __) => const Divider(),
       itemBuilder: (context, index) {
         final food = results[index];
+        print(
+          '[DEBUG LIST] index=$index fdcId=${food.fdcId}, desc=${food.descriptionPL}',
+        );
         return SearchEngineSuccessWidgetItemV2(food: food);
       },
     );

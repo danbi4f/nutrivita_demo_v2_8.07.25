@@ -72,31 +72,17 @@ class FavoriteFoodsItemV2 extends StatelessWidget {
                       ),
                       const SizedBox(height: 10),
 
-                      // Text(
-                      //   food.description,
-                      //   textAlign: TextAlign.start,
-                      //   style: AppTextStyles.body(context),
-                      //   softWrap: true,
-                      // ),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Expanded(
-                            child: Text(
-                              "{food.rankingName} |",
-                              style: AppTextStyles.body(context),
-                              softWrap: true,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ),
-                          const SizedBox(width: 5),
-                          Text(
-                            "Ranking: {(food.indexRanking + 1)}",
-                            style: AppTextStyles.body(context),
-                            softWrap: true,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ],
+                      Text(
+                        food.description,
+                        textAlign: TextAlign.start,
+                        style: AppTextStyles.body(context),
+                        softWrap: true,
+                      ),
+                      Text(
+                        food.fdcId.toString(),
+                        textAlign: TextAlign.start,
+                        style: AppTextStyles.body(context),
+                        softWrap: true,
                       ),
                     ],
                   ),

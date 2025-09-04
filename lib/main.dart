@@ -13,12 +13,14 @@ import 'package:nutrivita_demo_v2/pages/bb_search_engine_page/bloc/search_engine
 import 'package:nutrivita_demo_v2/arc/c_favorite_foods/bloc/favorite_foods_bloc.dart';
 import 'package:nutrivita_demo_v2/pages/cb_favorite_foods/bloc/favorite_foods_v2_bloc.dart';
 import 'package:nutrivita_demo_v2/pages/d_meals/bloc/meals_bloc.dart';
-import 'package:nutrivita_demo_v2/pages/d_meals/mod/new_recipe/new_recipe.dart';
+import 'package:nutrivita_demo_v2/pages/d_meals/mod/new_recipe/new_recipe_page.dart';
 import 'package:nutrivita_demo_v2/pages/home/home_page.dart';
 import 'package:nutrivita_demo_v2/shared/repositories/complete_foods_repository.dart';
+import 'package:nutrivita_demo_v2/shared/repositories/meals_repository.dart';
 import 'package:nutrivita_demo_v2/shared/repositories/survey_foods_by_category_repository.dart';
 import 'package:nutrivita_demo_v2/shared/repositories/survey_foods_description_repository.dart';
 import 'package:nutrivita_demo_v2/shared/services/complete_foods_service.dart';
+import 'package:nutrivita_demo_v2/shared/services/meals_service.dart';
 import 'package:nutrivita_demo_v2/shared/services/survey_foods_by_category_service.dart';
 import 'package:nutrivita_demo_v2/shared/services/survey_foods_description_service.dart';
 
@@ -50,7 +52,11 @@ class MyApp extends StatelessWidget {
               ),
         ),
         BlocProvider(create: (_) => FavoriteFoodsBloc()..add(LoadFavorites())),
-        BlocProvider(create: (_) => MealsBloc()..add(LoadMeals())),
+        BlocProvider(
+          create:
+              (_) =>
+                  MealsBloc(MealsRepository(MealsService()))..add(LoadMeals()),
+        ),
         BlocProvider(
           create:
               (context) => SurveyFoodsByCategoryBloc(
@@ -85,7 +91,7 @@ class MyApp extends StatelessWidget {
               }
             },
             child: MaterialApp(
-              routes: {'/new_recipe': (context) => const NewRecipe()},
+              routes: {'/new_recipe': (context) => const NewRecipePage()},
               theme: simpleTheme2,
               debugShowCheckedModeBanner: false,
               home: SafeArea(child: HomePage()),
