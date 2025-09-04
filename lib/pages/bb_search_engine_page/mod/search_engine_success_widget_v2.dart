@@ -19,16 +19,14 @@ class SearchEngineSuccessWidgetV2 extends StatelessWidget {
       );
     }
 
-    return ListView.separated(
-      itemCount: results.length,
-      separatorBuilder: (_, __) => const Divider(),
-      itemBuilder: (context, index) {
-        final food = results[index];
-        print(
-          '[DEBUG LIST] index=$index fdcId=${food.fdcId}, desc=${food.descriptionPL}',
-        );
-        return SearchEngineSuccessWidgetItemV2(food: food);
-      },
+    return ListView.builder(
+  itemCount: foods.length,
+  itemBuilder: (context, index) {
+    final food = foods[index];
+    return SearchEngineSuccessWidgetItemV2(
+      key: ValueKey(food.fdcId), // 🔑 KLUCZ unikalny
+      food: food,
     );
-  }
+  },
+)
 }
