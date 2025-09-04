@@ -11,6 +11,9 @@ class SearchEngineV2Bloc
     extends Bloc<SearchEngineV2Event, SearchEngineV2State> {
   final SurveyFoodsDescriptionRepository repository;
 
+  /// Cache całej listy produktów
+  List<SurveyFoodsDescription>? _allFoodsCache;
+
   SearchEngineV2Bloc(this.repository) : super(SearchEngineV2Initial()) {
     on<SearchFoodsByPhrase>(_onSearchFoodsByPhrase);
   }
@@ -20,42 +23,53 @@ class SearchEngineV2Bloc
     Emitter<SearchEngineV2State> emit,
   ) async {
     final query = event.phrase.trim();
+
     if (query.isEmpty) {
-      emit(SearchEngineV2LoadSuccess(const DelayedResult.fromValue([])));
+      emit(const SearchEngineV2LoadSuccess(DelayedResult.fromValue([])));
       return;
     }
 
     emit(SearchEngineV2LoadInProgress());
 
     try {
-      final delayed = await repository.getDescription();
+      // Jeśli cache jest pusty, pobierz dane z repozytorium
+      if (_allFoodsCache == null) {
+        final delayed = await repository.getDescription();
+        if (delayed.isSuccessful) {
+          _allFoodsCache = delayed.value!;
+        } else if (delayed.isError) {
+          emit(SearchEngineV2LoadFailure(delayed.error!));
+          return;
+        } else {
+          emit(const SearchEngineV2LoadSuccess(DelayedResult.fromValue([])));
+          return;
+        }
+      }
 
-      if (delayed.isSuccessful) {
-        final allFoods = delayed.value!;
-        final normalizedQueryWords = _normalize(query).split(' ');
+      final normalizedQueryWords = _normalize(query).split(' ');
 
-        final seen = <int>{};
-        final List<SurveyFoodsDescription> results = [];
+      final seen = <int>{};
+      final List<SurveyFoodsDescription> results = [];
 
-        for (final food in allFoods) {
-          if (normalizedQueryWords.every(
-            (word) =>
-                food.normalizedDescription.contains(word) ||
-                food.normalizedDescriptionPL.contains(word),
-          )) {
-            if (seen.add(food.fdcId)) {
-              results.add(food);
-            }
+      for (final food in _allFoodsCache!) {
+        if (normalizedQueryWords.every(
+          (word) =>
+              _matches(food.normalizedDescription, word) ||
+              _matches(food.normalizedDescriptionPL, word),
+        )) {
+          if (seen.add(food.fdcId)) {
+            results.add(food);
           }
         }
-
-        emit(SearchEngineV2LoadSuccess(DelayedResult.fromValue(results)));
-      } else if (delayed.isError) {
-        emit(SearchEngineV2LoadFailure(delayed.error!));
-      } else {
-        // np. idle (nie powinno się zdarzyć tutaj, ale dla pewności)
-        emit(const SearchEngineV2LoadSuccess(DelayedResult.fromValue([])));
       }
+
+      /// 🔎 DEBUG LOGI
+      print('[DEBUG BLOC] Query="$query" normalized=$normalizedQueryWords');
+      for (var f in results) {
+        print('[DEBUG BLOC] Found: ${f.fdcId} -> ${f.descriptionPL}');
+      }
+
+      emit(SearchEngineV2LoadSuccess(DelayedResult.fromValue(results)));
     } catch (e, st) {
       emit(SearchEngineV2LoadFailure(Exception('$e\n$st')));
     }
@@ -82,5 +96,10 @@ class SearchEngineV2Bloc
         .replaceAll(RegExp(r'[^\p{L}\p{N}]+', unicode: true), ' ')
         .replaceAll(RegExp(r'\s+'), ' ')
         .trim();
+  }
+
+  /// Dopasowanie całych słów (nie fragmentów)
+  bool _matches(String text, String word) {
+    return RegExp(r'\b' + RegExp.escape(word) + r'\b').hasMatch(text);
   }
 }
