@@ -20,29 +20,31 @@ class _SearchEngineSuccessWidgetItemV2State
     extends State<SearchEngineSuccessWidgetItemV2> {
   bool _isFavorite = false;
 
-  @override
-  void initState() {
-    super.initState();
-
+  void _updateFavoriteFlag() {
     final favoritesState = context.read<FavoriteFoodsV2Bloc>().state.favorites;
     final favoritesList = favoritesState.valueOrNull ?? [];
 
-    /// LOG: zawartość favoritesList
-    print('[DEBUG] Favorites list length: ${favoritesList.length}');
-    for (final f in favoritesList) {
-      print('[DEBUG] Favorite item fdcId: ${f.fdcId}');
+    setState(() {
+      _isFavorite = favoritesList.any((f) => f.fdcId == widget.food.fdcId);
+    });
+
+    print('[DEBUG] Updated _isFavorite=$_isFavorite for fdcId=${widget.food.fdcId}');
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _updateFavoriteFlag();
+  }
+
+  @override
+  void didUpdateWidget(covariant SearchEngineSuccessWidgetItemV2 oldWidget) {
+    super.didUpdateWidget(oldWidget);
+
+    if (oldWidget.food.fdcId != widget.food.fdcId) {
+      print('[DEBUG] didUpdateWidget: fdcId changed from ${oldWidget.food.fdcId} to ${widget.food.fdcId}');
+      _updateFavoriteFlag();
     }
-
-    /// LOG: sprawdzamy aktualny element
-    print('[DEBUG] Checking widget.food fdcId: ${widget.food.fdcId}');
-    print(
-      '[DEBUG] Checking widget.food => fdcId: ${widget.food.fdcId}, '
-      'descriptionPL: ${widget.food.descriptionPL}',
-    );
-
-    _isFavorite = favoritesList.any((food) => food.fdcId == widget.food.fdcId);
-
-    print('[DEBUG] Initial _isFavorite = $_isFavorite');
   }
 
   @override
@@ -73,7 +75,7 @@ class _SearchEngineSuccessWidgetItemV2State
                     style: AppTextStyles.body(context),
                   ),
                   Text(
-                    '${widget.food.descriptionPL} (${widget.food.fdcId})',
+                    widget.food.fdcId.toString(),
                     textAlign: TextAlign.center,
                     style: AppTextStyles.body(context),
                   ),
@@ -90,24 +92,16 @@ class _SearchEngineSuccessWidgetItemV2State
                   onPressed: () {
                     final bloc = context.read<FavoriteFoodsV2Bloc>();
 
-                    print(
-                      '[DEBUG] IconButton pressed for fdcId: ${widget.food.fdcId} | current _isFavorite=$_isFavorite',
-                    );
-
                     setState(() {
                       _isFavorite = !_isFavorite;
                     });
 
                     if (_isFavorite) {
-                      print(
-                        '[DEBUG] Adding to favorites: ${widget.food.fdcId}',
-                      );
                       bloc.add(AddFavoriteFoodFdcId(widget.food.fdcId));
+                      print('[DEBUG] Added to favorites: ${widget.food.fdcId}');
                     } else {
-                      print(
-                        '[DEBUG] Removing from favorites: ${widget.food.fdcId}',
-                      );
                       bloc.add(RemoveFavoriteFoodFdcId(widget.food.fdcId));
+                      print('[DEBUG] Removed from favorites: ${widget.food.fdcId}');
                     }
                   },
                   icon: Icon(
