@@ -35,95 +35,102 @@ class _FoodsByGroupItemV2State extends State<FoodsByGroupItemV2> {
 
   @override
   Widget build(BuildContext context) {
-    return CustomContainer(
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(right: 8.0, left: 8.0, top: 8.0),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Icon(Icons.ads_click_rounded, color: Colors.grey),
-                const SizedBox(width: 10),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(
-                        widget.topFoodsByGroup.descriptionPL,
-                        textAlign: TextAlign.center,
-                        style: AppTextStyles.subheading(context),
-                      ),
-                      const SizedBox(height: 10),
-                      Text(
-                        widget.topFoodsByGroup.description,
-                        textAlign: TextAlign.center,
-                        style: AppTextStyles.body(context),
-                      ),
-                    ],
+    return GestureDetector(
+      onTap: () {
+        print('tap');
+      },
+      child: CustomContainer(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(right: 8.0, left: 8.0, top: 8.0),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Icon(Icons.ads_click_rounded, color: Colors.grey),
+                  const SizedBox(width: 10),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          widget.topFoodsByGroup.descriptionPL,
+                          textAlign: TextAlign.center,
+                          style: AppTextStyles.subheading(context),
+                        ),
+                        const SizedBox(height: 10),
+                        Text(
+                          widget.topFoodsByGroup.description,
+                          textAlign: TextAlign.center,
+                          style: AppTextStyles.body(context),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                SizedBox(
-                  width: 60,
-                  child: Align(
-                    alignment: Alignment.centerRight,
-                    child: IconButton(
-                      onPressed: () {
-                        final bloc = context.read<FavoriteFoodsV2Bloc>();
+                  SizedBox(
+                    width: 60,
+                    child: Align(
+                      alignment: Alignment.centerRight,
+                      child: IconButton(
+                        onPressed: () {
+                          final bloc = context.read<FavoriteFoodsV2Bloc>();
 
-                        // natychmiastowa zmiana lokalnego stanu
-                        setState(() {
-                          _isFavorite = !_isFavorite;
-                        });
+                          // natychmiastowa zmiana lokalnego stanu
+                          setState(() {
+                            _isFavorite = !_isFavorite;
+                          });
 
-                        // wywołanie bloc, zapis do DB w tle
-                        if (_isFavorite) {
-                          bloc.add(
-                            AddFavoriteFoodFdcId(widget.topFoodsByGroup.fdcId),
-                          );
-                        } else {
-                          bloc.add(
-                            RemoveFavoriteFoodFdcId(
-                              widget.topFoodsByGroup.fdcId,
-                            ),
-                          );
-                        }
-                      },
-                      icon: Icon(
-                        _isFavorite ? Icons.favorite : Icons.favorite_border,
-                        color: Colors.green,
-                        size: 30,
+                          // wywołanie bloc, zapis do DB w tle
+                          if (_isFavorite) {
+                            bloc.add(
+                              AddFavoriteFoodFdcId(
+                                widget.topFoodsByGroup.fdcId,
+                              ),
+                            );
+                          } else {
+                            bloc.add(
+                              RemoveFavoriteFoodFdcId(
+                                widget.topFoodsByGroup.fdcId,
+                              ),
+                            );
+                          }
+                        },
+                        icon: Icon(
+                          _isFavorite ? Icons.favorite : Icons.favorite_border,
+                          color: Colors.green,
+                          size: 30,
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-          const SizedBox(height: 20),
-          Padding(
-            padding: const EdgeInsets.only(right: 20, bottom: 10, left: 20),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                CircleAvatar(
-                  backgroundColor: Colors.green[300],
-                  child: Text(
-                    "${widget.topFoodsByGroup.indexRanking}",
+            const SizedBox(height: 20),
+            Padding(
+              padding: const EdgeInsets.only(right: 20, bottom: 10, left: 20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  CircleAvatar(
+                    backgroundColor: Colors.green[300],
+                    child: Text(
+                      "${widget.topFoodsByGroup.indexRanking}",
+                      style: AppTextStyles.body(context, isBold: true),
+                    ),
+                  ),
+                  const Spacer(),
+                  Text(
+                    '${widget.topFoodsByGroup.rankingName}    '
+                    '${widget.topFoodsByGroup.nutrientValue.toStringAsFixed(2)} '
+                    '${widget.unit}',
                     style: AppTextStyles.body(context, isBold: true),
                   ),
-                ),
-                const Spacer(),
-                Text(
-                  '${widget.topFoodsByGroup.rankingName}    '
-                  '${widget.topFoodsByGroup.nutrientValue.toStringAsFixed(2)} '
-                  '${widget.unit}',
-                  style: AppTextStyles.body(context, isBold: true),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

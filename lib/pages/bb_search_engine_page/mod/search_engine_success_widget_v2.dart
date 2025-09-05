@@ -27,7 +27,10 @@ class SearchEngineSuccessWidgetV2 extends StatelessWidget {
         print(
           '[DEBUG LIST] index=$index fdcId=${food.fdcId}, desc=${food.descriptionPL}',
         );
-        return SearchEngineSuccessWidgetItemV2(food: food);
+        return SearchEngineSuccessWidgetItemV2(
+          food: food,
+          key: ValueKey(food.fdcId),
+        );
       },
     );
   }

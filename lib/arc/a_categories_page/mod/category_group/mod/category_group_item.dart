@@ -11,8 +11,8 @@ class CategoryGroupItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     void onTap() {
-      final homeState = context.findAncestorStateOfType<HomePageState>();
-      homeState?.openSelectNumber(category);
+      // final homeState = context.findAncestorStateOfType<HomePageState>();
+      // homeState?.openSelectNumber(category);
     }
 
     return Material(
