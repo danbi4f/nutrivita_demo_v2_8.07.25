@@ -9,20 +9,26 @@ class CompleteFoodRepository {
   });
 
   final SurveyFoodsByCategoryService surveyFoodsByCategoryService;
-
   final CompleteFoodService completFoodService;
 
   /// Pobierz listę FoodWithNutrients na podstawie listy fdcIds
   Future<List<CompleteFood>> getCompleteFoodsByFdcIds(List<int> fdcIds) async {
     final categories = await surveyFoodsByCategoryService.getCategories();
-
     final foods = completFoodService.fromSurveyFoods(categories);
 
     final fdcSet = fdcIds.toSet();
-
     final result = foods.where((f) => fdcSet.contains(f.fdcId)).toList();
 
     return result;
+  }
+
+  /// 🔹 NOWE: Pobierz pojedynczy produkt na podstawie jednego fdcId
+  Future<CompleteFood?> getCompleteFoodByFdcId(int fdcId) async {
+    final foods = await getCompleteFoodsByFdcIds([fdcId]);
+    if (foods.isNotEmpty) {
+      return foods.first;
+    }
+    return null; // brak produktu o podanym fdcId
   }
 
   /// Pobierz wszystkie produkty (np. do cache albo do filtracji)

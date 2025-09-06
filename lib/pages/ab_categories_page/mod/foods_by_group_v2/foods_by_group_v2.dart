@@ -35,6 +35,7 @@ class FoodsByGroupV2 extends StatelessWidget {
             return FoodsByGroupItemV2(
               topFoodsByGroup: topFoodsByGroup,
               unit: nutrientByGroup.unit,
+              nutrientNumber: nutrientByGroup.nutrientNumber,
             );
           },
         ),

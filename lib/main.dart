@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-//import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nutrivita_demo_v2/common/theme/simple_theme.dart';
 import 'package:nutrivita_demo_v2/arc/a_categories_page/mod/category_group/bloc/category_group_bloc.dart';
@@ -26,17 +25,40 @@ import 'package:nutrivita_demo_v2/shared/services/survey_foods_description_servi
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // await ConvertToCutSurveyJson().convertSurveyFoods()/;
-  // debugPaintSizeEnabled = true;
-  runApp(const MyApp());
+
+  final SurveyFoodsByCategoryService surveyService =
+      SurveyFoodsByCategoryService();
+  final CompleteFoodService completeFoodService = CompleteFoodService();
+
+  // Tworzymy repository raz i udostępniamy przez RepositoryProvider
+  final completeFoodRepository = CompleteFoodRepository(
+    surveyFoodsByCategoryService: surveyService,
+    completFoodService: completeFoodService,
+  );
+
+  runApp(
+    RepositoryProvider<CompleteFoodRepository>(
+      create: (_) => completeFoodRepository,
+      child: MyApp(
+        completeFoodRepository: completeFoodRepository,
+        surveyService: surveyService,
+      ),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final CompleteFoodRepository completeFoodRepository;
+  final SurveyFoodsByCategoryService surveyService;
+
+  const MyApp({
+    super.key,
+    required this.completeFoodRepository,
+    required this.surveyService,
+  });
+
   @override
   Widget build(BuildContext context) {
-    final SurveyFoodsByCategoryService surveyService =
-        SurveyFoodsByCategoryService();
     return MultiBlocProvider(
       providers: [
         BlocProvider(
@@ -60,12 +82,14 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create:
               (context) => SurveyFoodsByCategoryBloc(
-                SurveyFoodsByCategoryRepository(surveyService),
+                surveyFoodsByCategoryRepository:
+                    SurveyFoodsByCategoryRepository(surveyService),
+                completeFoodRepository: completeFoodRepository,
               )..add(LoadSurveyFoodsByCategory()),
         ),
         BlocProvider(
           create:
-              (context) => SearchEngineV2Bloc(
+              (_) => SearchEngineV2Bloc(
                 SurveyFoodsDescriptionRepository(
                   SurveyFoodsDescriptionService(),
                 ),
@@ -73,20 +97,13 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create:
-              (context) => FavoriteFoodsV2Bloc(
-                repository: CompleteFoodRepository(
-                  surveyFoodsByCategoryService: surveyService,
-                  completFoodService: CompleteFoodService(),
-                ),
-              ),
+              (_) => FavoriteFoodsV2Bloc(repository: completeFoodRepository),
         ),
       ],
       child:
           BlocListener<SurveyFoodsByCategoryBloc, SurveyFoodsByCategoryState>(
             listener: (context, state) {
-              // Jeśli kategorie zostały pomyślnie załadowane
               if (state.result.isSuccessful) {
-                // Wywołujemy event dla FavoriteFoodsV2Bloc
                 context.read<FavoriteFoodsV2Bloc>().add(LoadFavoritesFdcId());
               }
             },

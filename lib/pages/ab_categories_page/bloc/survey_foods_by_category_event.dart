@@ -8,3 +8,9 @@ sealed class SurveyFoodsByCategoryEvent extends Equatable {
 }
 
 final class LoadSurveyFoodsByCategory extends SurveyFoodsByCategoryEvent {}
+
+final class LoadCompleteFoodByFdcId extends SurveyFoodsByCategoryEvent {
+  const LoadCompleteFoodByFdcId(this.fdcId);
+
+  final int fdcId;
+}
