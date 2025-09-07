@@ -96,10 +96,6 @@
             "color": "foldercolorizer.color_ff0000"
         },
         {
-            "folderPath": "nutrivita_demo_v2\\lib\\shared\\repositories\\meals_repository.dart\\",
-            "color": "foldercolorizer.color_ff3333"
-        },
-        {
             "folderPath": "nutrivita_demo_v2\\lib\\pages\\d_meals\\mod\\new_recipe\\",
             "color": "foldercolorizer.color_cc33cc"
         }

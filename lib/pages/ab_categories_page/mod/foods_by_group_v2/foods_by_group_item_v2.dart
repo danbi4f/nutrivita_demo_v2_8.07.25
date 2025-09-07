@@ -4,9 +4,7 @@ import 'package:nutrivita_demo_v2/common/mod/custom_container.dart';
 import 'package:nutrivita_demo_v2/common/mod/view_food_with_nutrients.dart';
 import 'package:nutrivita_demo_v2/common/theme/app_text_style.dart';
 import 'package:nutrivita_demo_v2/pages/ab_categories_page/bloc/survey_foods_by_category_bloc.dart';
-import 'package:nutrivita_demo_v2/pages/ab_categories_page/mod/foods_by_group_v2/top_food_mapper.dart';
 import 'package:nutrivita_demo_v2/pages/cb_favorite_foods/bloc/favorite_foods_v2_bloc.dart';
-import 'package:nutrivita_demo_v2/shared/models/complet_foods/complet_foods.dart';
 import 'package:nutrivita_demo_v2/shared/models/delayed_result.dart';
 import 'package:nutrivita_demo_v2/shared/models/survey_foods_by_category/mod/top_food.dart';
 import 'package:nutrivita_demo_v2/shared/repositories/complete_foods_repository.dart';
@@ -16,12 +14,10 @@ class FoodsByGroupItemV2 extends StatefulWidget {
     super.key,
     required this.topFoodsByGroup,
     required this.unit,
-    required this.nutrientNumber, // ⬅️ NOWE
   });
 
   final TopFood topFoodsByGroup;
   final String unit;
-  final String nutrientNumber; // ⬅️ NOWE
 
   @override
   State<FoodsByGroupItemV2> createState() => _FoodsByGroupItemV2State();
@@ -29,7 +25,7 @@ class FoodsByGroupItemV2 extends StatefulWidget {
 
 class _FoodsByGroupItemV2State extends State<FoodsByGroupItemV2> {
   bool _isFavorite = false;
-  CompleteFood? completeFood;
+  // bool _navigated = false;
 
   @override
   void initState() {
@@ -43,11 +39,32 @@ class _FoodsByGroupItemV2State extends State<FoodsByGroupItemV2> {
 
   @override
   Widget build(BuildContext context) {
-    // final loadingCompleteFood =
-    //     context.read<SurveyFoodsByCategoryBloc>()
-    //       ..add(LoadCompleteFoodByFdcId(widget.topFoodsByGroup.fdcId));
-
-    return InkWell(
+    return
+    // BlocListener<SurveyFoodsByCategoryBloc, SurveyFoodsByCategoryState>(
+    //   listenWhen: (previous, current) {
+    //     final prevFood = previous.completeFood.valueOrNull;
+    //     final currFood = current.completeFood.valueOrNull;
+    //     return prevFood?.fdcId != currFood?.fdcId;
+    //   },
+    //   listener: (context, state) {
+    //     if (state.completeFood.isSuccessful && !_navigated) {
+    //       print("BlocListener fired: ${state.completeFood}");
+    //       _navigated = true;
+    //       final food = state.completeFood.value!;
+    //       Navigator.pushReplacement(
+    //         context,
+    //         MaterialPageRoute(
+    //           builder: (context) => ViewFoodWithNutrients(food: food),
+    //         ),
+    //       );
+    //     } else if (state.completeFood.isError) {
+    //       ScaffoldMessenger.of(context).showSnackBar(
+    //         SnackBar(content: Text(state.completeFood.error.toString())),
+    //       );
+    //     }
+    //   },
+    //   child:
+    InkWell(
       onTap: () async {
         final repo = context.read<CompleteFoodRepository>();
         final food = await repo.getCompleteFoodByFdcId(
@@ -68,6 +85,11 @@ class _FoodsByGroupItemV2State extends State<FoodsByGroupItemV2> {
           ),
         );
       },
+      // onTap: () {
+      //   context.read<SurveyFoodsByCategoryBloc>().add(
+      //     LoadCompleteFoodByFdcId(widget.topFoodsByGroup.fdcId),
+      //   );
+      // },
       child: CustomContainer(
         child: Column(
           children: [
