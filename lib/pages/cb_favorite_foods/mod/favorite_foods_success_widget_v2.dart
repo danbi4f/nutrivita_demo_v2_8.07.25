@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nutrivita_demo_v2/pages/cb_favorite_foods/mod/favorite_foods_item_v2.dart';
-import 'package:nutrivita_demo_v2/shared/models/complet_foods/complet_foods.dart';
+import 'package:nutrivita_demo_v2/pages/ab_categories_page/domain/model/complet_foods.dart';
 
 class FavoriteFoodsSuccessWidgetV2 extends StatelessWidget {
   const FavoriteFoodsSuccessWidgetV2({super.key, required this.list});

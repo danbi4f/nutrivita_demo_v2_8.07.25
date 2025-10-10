@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
-import 'package:nutrivita_demo_v2/pages/ab_categories_page/main/categories_page_v2.dart';
-import 'package:nutrivita_demo_v2/pages/bb_search_engine_page/main/search_engine_widget_v2.dart';
+import 'package:nutrivita_demo_v2/pages/ab_categories_page/presentation/main/categories_page_v2.dart';
+import 'package:nutrivita_demo_v2/pages/bb_search_engine_page/presentation/main/search_engine_widget_v2.dart';
 import 'package:nutrivita_demo_v2/pages/cb_favorite_foods/main/favorite_foods_widget_v2.dart';
-import 'package:nutrivita_demo_v2/pages/d_meals/main/meals_foods_success_widget_v2.dart';
+import 'package:nutrivita_demo_v2/pages/d_meals/presentation/main/meals_foods_success_widget_v2.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

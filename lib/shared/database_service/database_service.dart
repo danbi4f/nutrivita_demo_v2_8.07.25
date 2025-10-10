@@ -1,4 +1,4 @@
-import 'package:nutrivita_demo_v2/shared/models/meal.dart';
+import 'package:nutrivita_demo_v2/pages/d_meals/domain/model/meal.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 

@@ -2,22 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nutrivita_demo_v2/common/theme/simple_theme.dart';
 
-import 'package:nutrivita_demo_v2/pages/ab_categories_page/bloc/survey_foods_by_category_bloc.dart';
+import 'package:nutrivita_demo_v2/pages/ab_categories_page/presentation/bloc/survey_foods_by_category_bloc.dart';
 
-import 'package:nutrivita_demo_v2/pages/bb_search_engine_page/bloc/search_engine_v2_bloc.dart';
+import 'package:nutrivita_demo_v2/pages/bb_search_engine_page/presentation/bloc/search_engine_v2_bloc.dart';
 
 import 'package:nutrivita_demo_v2/pages/cb_favorite_foods/bloc/favorite_foods_v2_bloc.dart';
-import 'package:nutrivita_demo_v2/pages/d_meals/bloc/meals_bloc.dart';
-import 'package:nutrivita_demo_v2/pages/d_meals/mod/new_recipe/new_recipe_page.dart';
+import 'package:nutrivita_demo_v2/pages/d_meals/presentation/bloc/meals_bloc.dart';
+import 'package:nutrivita_demo_v2/pages/d_meals/presentation/mod/new_recipe/new_recipe_page.dart';
 import 'package:nutrivita_demo_v2/pages/home/home_page.dart';
-import 'package:nutrivita_demo_v2/shared/repositories/complete_foods_repository.dart';
-import 'package:nutrivita_demo_v2/shared/repositories/meals_repository.dart';
-import 'package:nutrivita_demo_v2/shared/repositories/survey_foods_by_category_repository.dart';
-import 'package:nutrivita_demo_v2/shared/repositories/survey_foods_description_repository.dart';
-import 'package:nutrivita_demo_v2/shared/services/complete_foods_service.dart';
-import 'package:nutrivita_demo_v2/shared/services/meals_service.dart';
-import 'package:nutrivita_demo_v2/shared/services/survey_foods_by_category_service.dart';
-import 'package:nutrivita_demo_v2/shared/services/survey_foods_description_service.dart';
+import 'package:nutrivita_demo_v2/pages/ab_categories_page/data/repository/complete_foods_repository.dart';
+import 'package:nutrivita_demo_v2/pages/d_meals/data/repository/meals_repository.dart';
+import 'package:nutrivita_demo_v2/pages/ab_categories_page/data/repository/survey_foods_by_category_repository.dart';
+import 'package:nutrivita_demo_v2/pages/bb_search_engine_page/data/repository/survey_foods_description_repository.dart';
+import 'package:nutrivita_demo_v2/pages/ab_categories_page/data/service/complete_foods_service.dart';
+import 'package:nutrivita_demo_v2/pages/d_meals/data/service/meals_service.dart';
+import 'package:nutrivita_demo_v2/pages/ab_categories_page/data/service/survey_foods_by_category_service.dart';
+import 'package:nutrivita_demo_v2/pages/bb_search_engine_page/data/service/survey_foods_description_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
