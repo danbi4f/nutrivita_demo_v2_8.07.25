@@ -36,7 +36,7 @@ class SurveyFoodsByCategoryBloc
     LoadCompleteFoodByFdcId event,
     Emitter<SurveyFoodsByCategoryState> emit,
   ) async {
-    emit(state.copyWith(result: const DelayedResult.inProgress()));
+    // emit(state.copyWith(result: const DelayedResult.inProgress()));
 
     final completeFood = await completeFoodRepository.getCompleteFoodByFdcId(
       event.fdcId,

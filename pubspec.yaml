@@ -27,14 +27,7 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - assets/en.json
-    - assets/pl.json
-    - assets/category_group.json
-    - assets/surveyFoods.json
-    - assets/USDA.png
     - assets/USDA3.png
-    - assets/cut_survey_foods.json
-    - assets/cut_survey_foods_pl.json
     - assets/v2/category_group_v2.json
     - assets/v2/sorted_SF_by_category_desc_nolimit/carbohydrates.json
     - assets/v2/sorted_SF_by_category_desc_nolimit/energy.json
@@ -46,12 +39,5 @@ flutter:
     - assets/v2/sorted_SF_by_category_desc_nolimit/vitamins.json
     - assets/v2/sorted_SF_by_category_desc_nolimit/fdc_ranking_map.json
     - assets/v2/sorted_SF_by_category_desc_nolimit/foods_extracted_description.json
-    - assets/v2/sorted_SF_by_category_desc_top30/carbohydrates.json
-    - assets/v2/sorted_SF_by_category_desc_top30/energy.json
-    - assets/v2/sorted_SF_by_category_desc_top30/fatty_acids.json
-    - assets/v2/sorted_SF_by_category_desc_top30/minerals.json
-    - assets/v2/sorted_SF_by_category_desc_top30/other.json
-    - assets/v2/sorted_SF_by_category_desc_top30/proteins.json
-    - assets/v2/sorted_SF_by_category_desc_top30/sugars.json
-    - assets/v2/sorted_SF_by_category_desc_top30/vitamins.json
+
     

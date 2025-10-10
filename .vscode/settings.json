@@ -98,6 +98,14 @@
         {
             "folderPath": "nutrivita_demo_v2\\lib\\pages\\d_meals\\mod\\new_recipe\\",
             "color": "foldercolorizer.color_cc33cc"
+        },
+        {
+            "folderPath": "nutrivita_demo_v2\\lib\\pages\\ab_categories_page\\mod\\foods_by_group_v2\\foods_by_group_item_v2.dart\\",
+            "color": "foldercolorizer.color_00ccff"
+        },
+        {
+            "folderPath": "nutrivita_demo_v2\\lib\\pages\\ab_categories_page\\bloc\\survey_foods_by_category_bloc.dart\\",
+            "color": "foldercolorizer.color_00ccff"
         }
     ]
 }

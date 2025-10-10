@@ -1,9 +1,7 @@
 import 'package:nutrivita_demo_v2/shared/models/meal.dart';
-import 'package:nutrivita_demo_v2/arc/survey_foods.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
-part 'tables/table_favorites.dart';
 part 'tables/table_meals.dart';
 part 'tables/table_favorites_fdcId.dart';
 part 'tables/table_favorite_food_with_nutrients.dart'; // 🔥 nowa tabela
@@ -33,7 +31,6 @@ class DatabaseService {
   }
 
   void _onCreate(Database db, int version) async {
-    await db.execute(FavoritesTable.createTableFavorites);
     await db.execute(FavoritesTableFdcId.createTableFavoritesFdcId);
     await db.execute(MealsTable.createTableMeals);
     await db.execute(
