@@ -9,6 +9,13 @@ import 'package:nutrivita_demo_v2/pages/bb_search_engine_page/presentation/mod/s
 class SearchEngineWidgetV2 extends StatelessWidget {
   const SearchEngineWidgetV2({super.key});
 
+  static Widget withBloc() {
+    return BlocProvider(
+      create: (context) => SearchEngineV2Bloc(context.read()),
+      child: const SearchEngineWidgetV2(),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return const _SearchEngineViewV2();

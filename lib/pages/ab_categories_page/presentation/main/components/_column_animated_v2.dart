@@ -34,7 +34,7 @@ class _ColumnAnimatedV2 extends StatelessWidget {
                     SizedBox(height: 20),
                     HeaderTitleV2(),
                     SizedBox(height: 20),
-                    Expanded(child: CategoryGroupWidgetV2()),
+                    Expanded(child: CategoryGroupWidgetV2.withBloc()),
                   ],
                 ),
               ),

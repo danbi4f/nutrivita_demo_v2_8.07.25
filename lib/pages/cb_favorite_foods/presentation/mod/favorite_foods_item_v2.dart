@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nutrivita_demo_v2/common/mod/custom_container.dart';
 import 'package:nutrivita_demo_v2/common/mod/view_food_with_nutrients.dart';
 import 'package:nutrivita_demo_v2/common/theme/app_text_style.dart';
-import 'package:nutrivita_demo_v2/pages/cb_favorite_foods/bloc/favorite_foods_v2_bloc.dart';
+import 'package:nutrivita_demo_v2/pages/cb_favorite_foods/presentation/bloc/favorite_foods_v2_bloc.dart';
 import 'package:nutrivita_demo_v2/pages/ab_categories_page/domain/model/complet_foods.dart';
 
 class FavoriteFoodsItemV2 extends StatelessWidget {

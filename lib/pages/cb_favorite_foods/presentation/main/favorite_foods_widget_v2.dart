@@ -2,12 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nutrivita_demo_v2/common/mod/custom_container.dart';
 import 'package:nutrivita_demo_v2/common/theme/app_text_style.dart';
-import 'package:nutrivita_demo_v2/pages/cb_favorite_foods/bloc/favorite_foods_v2_bloc.dart';
-import 'package:nutrivita_demo_v2/pages/cb_favorite_foods/mod/favorite_foods_success_widget_v2.dart';
+import 'package:nutrivita_demo_v2/pages/ab_categories_page/data/repository/complete_foods_repository.dart';
+import 'package:nutrivita_demo_v2/pages/cb_favorite_foods/presentation/bloc/favorite_foods_v2_bloc.dart';
+import 'package:nutrivita_demo_v2/pages/cb_favorite_foods/presentation/mod/favorite_foods_success_widget_v2.dart';
 import 'package:nutrivita_demo_v2/shared/models/delayed_result.dart';
 
 class FavoriteFoodsWidgetV2 extends StatelessWidget {
   const FavoriteFoodsWidgetV2({super.key});
+
+  static Widget withBloc() {
+    return BlocProvider(
+      create:
+          (context) => FavoriteFoodsV2Bloc(
+            repository: context.read<CompleteFoodRepository>(),
+          )..add(LoadFavoritesFdcId()),
+      child: const FavoriteFoodsWidgetV2(),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {

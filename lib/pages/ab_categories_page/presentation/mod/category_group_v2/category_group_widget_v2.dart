@@ -7,6 +7,17 @@ import 'package:nutrivita_demo_v2/shared/models/delayed_result.dart';
 class CategoryGroupWidgetV2 extends StatelessWidget {
   const CategoryGroupWidgetV2({super.key});
 
+  static Widget withBloc() {
+    return BlocProvider(
+      create:
+          (context) => SurveyFoodsByCategoryBloc(
+            surveyFoodsByCategoryRepository: context.read(),
+            completeFoodRepository: context.read(),
+          )..add(LoadSurveyFoodsByCategory()),
+      child: const CategoryGroupWidgetV2(),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<SurveyFoodsByCategoryBloc, SurveyFoodsByCategoryState>(
