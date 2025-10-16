@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-
 import 'package:nutrivita_demo_v2/pages/ab_categories_page/presentation/main/categories_page_v2.dart';
 import 'package:nutrivita_demo_v2/pages/bb_search_engine_page/presentation/main/search_engine_widget_v2.dart';
-import 'package:nutrivita_demo_v2/pages/cb_favorite_foods/presentation/main/favorite_foods_widget_v2.dart';
 import 'package:nutrivita_demo_v2/pages/d_meals/presentation/main/meals_foods_success_widget_v2.dart';
 
 class HomePage extends StatefulWidget {
@@ -19,8 +17,8 @@ class _HomePageState extends State<HomePage> {
   final List<GlobalKey<NavigatorState>> _navigatorKeys = [
     GlobalKey<NavigatorState>(),
     GlobalKey<NavigatorState>(),
-    // GlobalKey<NavigatorState>(),
     GlobalKey<NavigatorState>(),
+    // GlobalKey<NavigatorState>(),
   ];
 
   void _selectTab(int index) {
@@ -72,7 +70,7 @@ class _HomePageState extends State<HomePage> {
               tabs: const [
                 GButton(icon: Icons.category, text: 'Categories', iconSize: 25),
                 GButton(icon: Icons.restaurant, text: 'Food', iconSize: 25),
-                // GButton(icon: Icons.favorite, text: 'Favorites', iconSize: 25),
+                GButton(icon: Icons.favorite, text: 'Favorites', iconSize: 25),
                 GButton(icon: Icons.menu_book, text: 'Recipes', iconSize: 25),
               ],
             ),

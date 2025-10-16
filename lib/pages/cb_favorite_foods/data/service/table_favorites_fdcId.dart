@@ -1,4 +1,4 @@
-part of '../database_service.dart';
+part of '../../../../shared/services/database_service/database_service.dart';
 
 class FavoritesTableFdcId {
   static const String tableNameFavoritesFdcId = 'favorite_foods';

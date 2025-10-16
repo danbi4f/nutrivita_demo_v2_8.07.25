@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nutrivita_demo_v2/pages/ab_categories_page/presentation/mod/category_group_v2/category_group_item_v2.dart';
+import 'package:nutrivita_demo_v2/pages/ab_categories_page/presentation/mod/a_category_group_v2/category_group_item_v2.dart';
 import 'package:nutrivita_demo_v2/pages/ab_categories_page/domain/model/survey_foods_by_category/survey_foods_by_category.dart';
 
 class CategoryGroupSuccessWidgetV2 extends StatelessWidget {

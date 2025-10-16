@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nutrivita_demo_v2/common/mod/custom_container.dart';
 import 'package:nutrivita_demo_v2/common/theme/app_text_style.dart';
-import 'package:nutrivita_demo_v2/pages/ab_categories_page/presentation/mod/number_group_v2/number_group_item_v2.dart';
+import 'package:nutrivita_demo_v2/pages/ab_categories_page/presentation/mod/b_number_group_v2/number_group_item_v2.dart';
 import 'package:nutrivita_demo_v2/pages/ab_categories_page/domain/model/survey_foods_by_category/survey_foods_by_category.dart';
 
 class NumberGroupV2 extends StatelessWidget {

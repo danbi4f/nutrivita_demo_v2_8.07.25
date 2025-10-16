@@ -1,4 +1,4 @@
-import 'package:nutrivita_demo_v2/shared/database_service/database_service.dart';
+import 'package:nutrivita_demo_v2/shared/services/database_service/database_service.dart';
 import 'package:nutrivita_demo_v2/pages/d_meals/domain/model/meal.dart';
 
 class MealsService {

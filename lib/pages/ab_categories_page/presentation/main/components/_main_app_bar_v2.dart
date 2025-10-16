@@ -1,9 +1,11 @@
 part of '../categories_page_v2.dart';
 
 class _MainAppBarV2 extends StatelessWidget implements PreferredSizeWidget {
-  const _MainAppBarV2({required this.toggleDrawer});
+  const _MainAppBarV2(
+    // {required this.toggleDrawer}
+  );
 
-  final void Function() toggleDrawer;
+  // final void Function() toggleDrawer;
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
@@ -11,10 +13,6 @@ class _MainAppBarV2 extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      leading: IconButton(
-        onPressed: toggleDrawer,
-        icon: const Icon(Icons.menu, color: Colors.black),
-      ),
       backgroundColor: Theme.of(context).colorScheme.onSurfaceVariant,
       centerTitle: true,
       title: Text('NutriVita', style: AppTextStyles.heading(context, size: 40)),

@@ -53,7 +53,7 @@ class SurveyFoodsByCategoryService {
     );
     final rankingData = jsonDecode(rankingJsonString) as Map<String, dynamic>;
 
-    _fdcRankingMap = {};
+    Map<int, Map<String, int>>? _fdcRankingMap = {};
     rankingData.forEach((key, value) {
       final fdcId = int.tryParse(key);
       if (fdcId != null && value is Map<String, dynamic>) {
@@ -61,7 +61,7 @@ class SurveyFoodsByCategoryService {
         value.forEach((nutrientNumber, indexRanking) {
           // zapisujemy tylko int jako ranking
           if (indexRanking is int) {
-            _fdcRankingMap![fdcId]![nutrientNumber] = indexRanking;
+            _fdcRankingMap[fdcId]![nutrientNumber] = indexRanking;
           }
         });
       }

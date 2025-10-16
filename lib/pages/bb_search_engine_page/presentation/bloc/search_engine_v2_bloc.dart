@@ -2,16 +2,17 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:nutrivita_demo_v2/shared/models/delayed_result.dart';
 import 'package:nutrivita_demo_v2/pages/bb_search_engine_page/domain/model/survey_foods_description.dart';
-import 'package:nutrivita_demo_v2/pages/bb_search_engine_page/data/repository/survey_foods_description_repository.dart';
+import 'package:nutrivita_demo_v2/shared/services/combined_data_service.dart';
 
 part 'search_engine_v2_event.dart';
 part 'search_engine_v2_state.dart';
 
 class SearchEngineV2Bloc
     extends Bloc<SearchEngineV2Event, SearchEngineV2State> {
-  final SurveyFoodsDescriptionRepository repository;
+  final CombinedDataService combinedDataService;
 
-  SearchEngineV2Bloc(this.repository) : super(SearchEngineV2Initial()) {
+  SearchEngineV2Bloc({required this.combinedDataService})
+    : super(SearchEngineV2Initial()) {
     on<SearchFoodsByPhrase>(_onSearchFoodsByPhrase);
   }
 
@@ -28,7 +29,8 @@ class SearchEngineV2Bloc
     emit(SearchEngineV2LoadInProgress());
 
     try {
-      final delayed = await repository.getDescription();
+      final delayed =
+          await combinedDataService.appSearchEngineRepository.getDescription();
 
       if (delayed.isSuccessful) {
         final allFoods = delayed.value!;

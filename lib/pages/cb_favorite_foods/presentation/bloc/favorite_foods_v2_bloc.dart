@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:nutrivita_demo_v2/pages/ab_categories_page/data/repository/complete_foods_repository.dart';
-import 'package:nutrivita_demo_v2/shared/database_service/database_service.dart';
+import 'package:nutrivita_demo_v2/shared/services/database_service/database_service.dart';
 import 'package:nutrivita_demo_v2/shared/models/delayed_result.dart';
 import 'package:nutrivita_demo_v2/pages/ab_categories_page/domain/model/complet_foods.dart';
 

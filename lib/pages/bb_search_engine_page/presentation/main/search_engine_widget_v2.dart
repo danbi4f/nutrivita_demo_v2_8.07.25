@@ -11,7 +11,8 @@ class SearchEngineWidgetV2 extends StatelessWidget {
 
   static Widget withBloc() {
     return BlocProvider(
-      create: (context) => SearchEngineV2Bloc(context.read()),
+      create:
+          (context) => SearchEngineV2Bloc(combinedDataService: context.read()),
       child: const SearchEngineWidgetV2(),
     );
   }
