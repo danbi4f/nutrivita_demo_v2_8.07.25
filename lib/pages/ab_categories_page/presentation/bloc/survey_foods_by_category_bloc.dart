@@ -15,18 +15,8 @@ class SurveyFoodsByCategoryBloc
   SurveyFoodsByCategoryBloc({required this.combinedDataService})
     : super(const SurveyFoodsByCategoryState()) {
     on<LoadSurveyFoodsByCategory>(_onLoadSurveyFoodsByCategory);
-    on<LoadCompleteFoodByFdcId>(_onLoadCompleteFoodByFdcId);
   }
 
-  // Future<void> _onLoadSurveyFoodsByCategory(
-  //   LoadSurveyFoodsByCategory event,
-  //   Emitter<SurveyFoodsByCategoryState> emit,
-  // ) async {
-  //   emit(state.copyWith(result: const DelayedResult.inProgress()));
-  //   final DelayedResult<List<SurveyFoodsByCategory>> result =
-  //       await combinedDataService.appFoodRepository.getAllCategories();
-  //   emit(state.copyWith(result: result));
-  // }
   Future<void> _onLoadSurveyFoodsByCategory(
     LoadSurveyFoodsByCategory event,
     Emitter<SurveyFoodsByCategoryState> emit,
@@ -40,24 +30,5 @@ class SurveyFoodsByCategoryBloc
     emit(state.copyWith(result: result));
   }
 
-  Future<void> _onLoadCompleteFoodByFdcId(
-    LoadCompleteFoodByFdcId event,
-    Emitter<SurveyFoodsByCategoryState> emit,
-  ) async {
-    // emit(state.copyWith(result: const DelayedResult.inProgress()));
 
-    final CompleteFood? completeFood = await combinedDataService
-        .appFoodRepository
-        .getCompleteFoodByFdcId(event.fdcId);
-    if (completeFood != null) {
-      emit(state.copyWith(completeFood: DelayedResult.fromValue(completeFood)));
-      print('complete food fdcid: ${completeFood.fdcId}');
-    } else {
-      emit(
-        state.copyWith(
-          completeFood: DelayedResult.fromError(Exception("Food not found")),
-        ),
-      );
-    }
-  }
 }

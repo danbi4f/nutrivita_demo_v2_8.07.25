@@ -8,32 +8,33 @@ import 'package:nutrivita_demo_v2/pages/bb_search_engine_page/data/repository/ap
 import 'package:nutrivita_demo_v2/pages/bb_search_engine_page/data/repository/survey_foods_description_repository.dart';
 import 'package:nutrivita_demo_v2/pages/bb_search_engine_page/data/service/survey_foods_description_service.dart';
 import 'package:nutrivita_demo_v2/pages/cb_favorite_foods/data/repository/app_favorite_repository.dart';
+import 'package:nutrivita_demo_v2/pages/cb_favorite_foods/data/repository/in_memory_favorite_repository%20.dart';
 import 'package:nutrivita_demo_v2/shared/services/combined_data_service.dart';
 import 'package:nutrivita_demo_v2/shared/services/database_service/database_service.dart';
 
 List<RepositoryProvider> buildRepositories({
-  SurveyFoodsByCategoryService? surveyService,
+  SurveyFoodsByCategoryService? surveySvc,
   CompleteFoodService? completeFoodService,
   SurveyFoodsDescriptionService? surveyFoodsDescriptionService,
   DatabaseService? databaseService,
 }) {
   // Jeśli test nie poda mocka, użyj domyślnych instancji
-  final surveySvc = surveyService ?? SurveyFoodsByCategoryService();
-  final completeSvc = completeFoodService ?? CompleteFoodService();
-  final descriptionSvc =
+  final surveyService = surveySvc ?? SurveyFoodsByCategoryService();
+  final completeService = completeFoodService ?? CompleteFoodService();
+  final descriptionService =
       surveyFoodsDescriptionService ?? SurveyFoodsDescriptionService();
-  final dbSvc = databaseService ?? DatabaseService.instance;
+  final dbService = databaseService ?? DatabaseService.instance;
 
   final completeFoodRepository = CompleteFoodRepository(
-    surveyFoodsByCategoryService: surveySvc,
-    completFoodService: completeSvc,
+    surveyFoodsByCategoryService: surveyService,
+    completFoodService: completeService,
   );
 
   final surveyFoodsByCategoryRepository = SurveyFoodsByCategoryRepository(
-    surveySvc,
+    surveyService,
   );
   final surveyFoodsDescriptionRepository = SurveyFoodsDescriptionRepository(
-    descriptionSvc,
+    descriptionService,
   );
   final appFoodRepository = AppFoodRepository(
     surveyFoodsByCategoryRepository: surveyFoodsByCategoryRepository,
@@ -42,10 +43,13 @@ List<RepositoryProvider> buildRepositories({
   final appSearchEngineRepository = AppSearchEngineRepository(
     surveyFoodsDescriptionRepository: surveyFoodsDescriptionRepository,
   );
-  final appFavoriteRepository = AppFavoriteRepository(dbService: dbSvc);
+  final appFavoriteRepository = AppFavoriteRepository(dbService: dbService);
+  final inMemoryFavoriteRepository = InMemoryFavoriteRepository(
+    appFavoriteRepository: appFavoriteRepository,
+  );
 
   final combinedDataService = CombinedDataService(
-    appFavoriteRepository: appFavoriteRepository,
+    inMemoryFavoriteRepository: inMemoryFavoriteRepository,
     appSearchEngineRepository: appSearchEngineRepository,
     appFoodRepository: appFoodRepository,
   );

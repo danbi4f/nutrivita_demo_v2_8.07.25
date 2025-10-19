@@ -3,12 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nutrivita_demo_v2/common/mod/custom_container.dart';
 import 'package:nutrivita_demo_v2/common/mod/view_food_with_nutrients.dart';
 import 'package:nutrivita_demo_v2/common/theme/app_text_style.dart';
-import 'package:nutrivita_demo_v2/pages/cb_favorite_foods/presentation/bloc/favorite_foods_v2_bloc.dart';
-import 'package:nutrivita_demo_v2/shared/models/delayed_result.dart';
 import 'package:nutrivita_demo_v2/pages/ab_categories_page/domain/model/survey_foods_by_category/mod/top_food.dart';
-import 'package:nutrivita_demo_v2/pages/ab_categories_page/data/repository/complete_foods_repository.dart';
+import 'package:nutrivita_demo_v2/pages/ab_categories_page/presentation/bloc/complete_food_bloc.dart';
 
-class FoodsByGroupItemV2 extends StatefulWidget {
+class FoodsByGroupItemV2 extends StatelessWidget {
   const FoodsByGroupItemV2({
     super.key,
     required this.topFoodsByGroup,
@@ -19,76 +17,45 @@ class FoodsByGroupItemV2 extends StatefulWidget {
   final String unit;
 
   @override
-  State<FoodsByGroupItemV2> createState() => _FoodsByGroupItemV2State();
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (_) => CompleteFoodBloc(combinedDataService: context.read())
+        ..add(LoadCompleteFoodByFdcId(topFoodsByGroup.fdcId)),
+      child: _FoodsByGroupItemView(
+        topFoodsByGroup: topFoodsByGroup,
+        unit: unit,
+      ),
+    );
+  }
 }
 
-class _FoodsByGroupItemV2State extends State<FoodsByGroupItemV2> {
-  bool _isFavorite = false;
-  // bool _navigated = false;
 
-  @override
-  void initState() {
-    super.initState();
-    // final favoritesState = context.read<FavoriteFoodsV2Bloc>().state.favorites;
-    // final favoritesList = favoritesState.valueOrNull ?? [];
-    // _isFavorite = favoritesList.any(
-    //   (food) => food.fdcId == widget.topFoodsByGroup.fdcId,
-    // );
-  }
+class _FoodsByGroupItemView extends StatelessWidget {
+  const _FoodsByGroupItemView({
+    required this.topFoodsByGroup,
+    required this.unit,
+  });
+
+  final TopFood topFoodsByGroup;
+  final String unit;
 
   @override
   Widget build(BuildContext context) {
-    return
-    // BlocListener<SurveyFoodsByCategoryBloc, SurveyFoodsByCategoryState>(
-    //   listenWhen: (previous, current) {
-    //     final prevFood = previous.completeFood.valueOrNull;
-    //     final currFood = current.completeFood.valueOrNull;
-    //     return prevFood?.fdcId != currFood?.fdcId;
-    //   },
-    //   listener: (context, state) {
-    //     if (state.completeFood.isSuccessful && !_navigated) {
-    //       print("BlocListener fired: ${state.completeFood}");
-    //       _navigated = true;
-    //       final food = state.completeFood.value!;
-    //       Navigator.pushReplacement(
-    //         context,
-    //         MaterialPageRoute(
-    //           builder: (context) => ViewFoodWithNutrients(food: food),
-    //         ),
-    //       );
-    //     } else if (state.completeFood.isError) {
-    //       ScaffoldMessenger.of(context).showSnackBar(
-    //         SnackBar(content: Text(state.completeFood.error.toString())),
-    //       );
-    //     }
-    //   },
-    //   child:
-    InkWell(
-      onTap: () async {
-        final repo = context.read<CompleteFoodRepository>();
-        final food = await repo.getCompleteFoodByFdcId(
-          widget.topFoodsByGroup.fdcId,
-        );
+    final item = context.select(
+      (CompleteFoodBloc bloc) => bloc.state.completeFood,
+    );
 
-        if (food == null) {
-          ScaffoldMessenger.of(
+    return InkWell(
+      onTap: () {
+        if (item.value != null) {
+          Navigator.push(
             context,
-          ).showSnackBar(const SnackBar(content: Text('No data')));
-          return;
+            MaterialPageRoute(
+              builder: (context) => ViewFoodWithNutrients(food: item.value!),
+            ),
+          );
         }
-
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => ViewFoodWithNutrients(food: food),
-          ),
-        );
       },
-      // onTap: () {
-      //   context.read<SurveyFoodsByCategoryBloc>().add(
-      //     LoadCompleteFoodByFdcId(widget.topFoodsByGroup.fdcId),
-      //   );
-      // },
       child: CustomContainer(
         child: Column(
           children: [
@@ -104,47 +71,17 @@ class _FoodsByGroupItemV2State extends State<FoodsByGroupItemV2> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text(
-                          widget.topFoodsByGroup.descriptionPL,
+                          topFoodsByGroup.descriptionPL,
                           textAlign: TextAlign.center,
                           style: AppTextStyles.subheading(context),
                         ),
                         const SizedBox(height: 10),
                         Text(
-                          widget.topFoodsByGroup.description,
+                          topFoodsByGroup.description,
                           textAlign: TextAlign.center,
                           style: AppTextStyles.body(context),
                         ),
                       ],
-                    ),
-                  ),
-                  SizedBox(
-                    width: 60,
-                    child: Align(
-                      alignment: Alignment.centerRight,
-                      child: IconButton(
-                        onPressed: () {
-                          final bloc = context.read<FavoriteFoodsV2Bloc>();
-                          setState(() => _isFavorite = !_isFavorite);
-                          if (_isFavorite) {
-                            bloc.add(
-                              AddFavoriteFoodFdcId(
-                                widget.topFoodsByGroup.fdcId,
-                              ),
-                            );
-                          } else {
-                            bloc.add(
-                              RemoveFavoriteFoodFdcId(
-                                widget.topFoodsByGroup.fdcId,
-                              ),
-                            );
-                          }
-                        },
-                        icon: Icon(
-                          _isFavorite ? Icons.favorite : Icons.favorite_border,
-                          color: Colors.green,
-                          size: 30,
-                        ),
-                      ),
                     ),
                   ),
                 ],
@@ -159,15 +96,15 @@ class _FoodsByGroupItemV2State extends State<FoodsByGroupItemV2> {
                   CircleAvatar(
                     backgroundColor: Colors.green[300],
                     child: Text(
-                      "${widget.topFoodsByGroup.indexRanking}",
+                      "${topFoodsByGroup.indexRanking}",
                       style: AppTextStyles.body(context, isBold: true),
                     ),
                   ),
                   const Spacer(),
                   Text(
-                    '${widget.topFoodsByGroup.rankingName}    '
-                    '${widget.topFoodsByGroup.nutrientValue.toStringAsFixed(2)} '
-                    '${widget.unit}',
+                    '${topFoodsByGroup.rankingName}    '
+                    '${topFoodsByGroup.nutrientValue.toStringAsFixed(2)} '
+                    '${unit}',
                     style: AppTextStyles.body(context, isBold: true),
                   ),
                 ],
