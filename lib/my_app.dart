@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
         routes: {'/new_recipe': (context) => const NewRecipePage()},
         theme: simpleTheme2,
         debugShowCheckedModeBanner: false,
-        home: SafeArea(child: HomePage()),
+        home: SafeArea(child: HomePage.withBloc()),
       ),
     );
   }

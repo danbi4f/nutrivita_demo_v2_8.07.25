@@ -15,6 +15,13 @@ class SurveyFoodsByCategoryService {
   List<SurveyFoodsByCategory>? _categories;
   Map<int, Map<String, int>>? _fdcRankingMap;
 
+    /// Nowa fabryka async do inicjalizacji
+  static Future<SurveyFoodsByCategoryService> init() async {
+    final service = SurveyFoodsByCategoryService._instance;
+    await service._loadData(); // od razu wczytaj JSONy
+    return service;
+  }
+
   /// Ładuje wszystkie pliki JSON z assets
   Future<void> _loadData() async {
     if (_categories != null) return;
@@ -45,6 +52,7 @@ class SurveyFoodsByCategoryService {
       _categories!.add(
         SurveyFoodsByCategory(category: categoryName, nutrients: nutrients),
       );
+      print(  '🚕 ${_categories!.length}');
     }
 
     // Opcjonalnie wczytaj fdc_ranking_map.json do szybkiego dostępu
@@ -53,15 +61,15 @@ class SurveyFoodsByCategoryService {
     );
     final rankingData = jsonDecode(rankingJsonString) as Map<String, dynamic>;
 
-    Map<int, Map<String, int>>? _fdcRankingMap = {};
+    Map<int, Map<String, int>>? fdcRankingMap = {};
     rankingData.forEach((key, value) {
       final fdcId = int.tryParse(key);
       if (fdcId != null && value is Map<String, dynamic>) {
-        _fdcRankingMap![fdcId] = {};
+        fdcRankingMap[fdcId] = {};
         value.forEach((nutrientNumber, indexRanking) {
           // zapisujemy tylko int jako ranking
           if (indexRanking is int) {
-            _fdcRankingMap[fdcId]![nutrientNumber] = indexRanking;
+            fdcRankingMap[fdcId]![nutrientNumber] = indexRanking;
           }
         });
       }
@@ -70,7 +78,6 @@ class SurveyFoodsByCategoryService {
 
   /// Pobierz wszystkie kategorie z ich nutrientami i topFoods
   Future<List<SurveyFoodsByCategory>> getCategories() async {
-    await _loadData();
     return _categories!;
   }
 

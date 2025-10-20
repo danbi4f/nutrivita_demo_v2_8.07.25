@@ -5,18 +5,19 @@ import 'package:nutrivita_demo_v2/pages/ab_categories_page/domain/model/survey_f
 /// Serwis do konwersji SurveyFoodsByCategory -> FoodWithNutrients
 class CompleteFoodService {
   CompleteFoodService._internal();
-
   static final CompleteFoodService _instance = CompleteFoodService._internal();
-
   factory CompleteFoodService() => _instance;
 
+  // 🔹 Cache w pamięci
+  final Map<int, CompleteFood> _cache = {};
+
+  // 🔹 Konwersja z API (jak wcześniej)
   List<CompleteFood> fromSurveyFoods(List<SurveyFoodsByCategory> categories) {
     final Map<int, CompleteFood> foodsMap = {};
 
     for (var category in categories) {
       for (var nutrient in category.nutrients) {
         for (var food in nutrient.topFoods) {
-          // jeśli produkt jeszcze nie istnieje -> dodaj
           foodsMap.putIfAbsent(
             food.fdcId,
             () => CompleteFood(
@@ -28,9 +29,7 @@ class CompleteFoodService {
             ),
           );
 
-          // dodaj/uzupełnij info o składniku
-          foodsMap[food.fdcId]!.nutrients[nutrient
-              .nutrientNumber] = NutrientInfo(
+          foodsMap[food.fdcId]!.nutrients[nutrient.nutrientNumber] = NutrientInfo(
             nutrientNumber: nutrient.nutrientNumber,
             nutrientName: nutrient.nutrientName,
             unit: nutrient.unit,
@@ -41,6 +40,25 @@ class CompleteFoodService {
       }
     }
 
+    // 🔹 Zapisz wszystko w cache
+    for (final f in foodsMap.values) {
+      _cache[f.fdcId] = f;
+    }
+
     return foodsMap.values.toList();
+  }
+
+  // 🔹 Pobierz z cache
+  List<CompleteFood> getCachedFoodsByIds(List<int> fdcIds) {
+    return fdcIds
+        .map((id) => _cache[id])
+        .where((f) => f != null)
+        .cast<CompleteFood>()
+        .toList();
+  }
+
+  // 🔹 Zapisz pojedynczy produkt do cache
+  void addToCache(CompleteFood food) {
+    _cache[food.fdcId] = food;
   }
 }

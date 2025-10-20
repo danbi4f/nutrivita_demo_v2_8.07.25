@@ -102,6 +102,18 @@
         {
             "folderPath": "nutrivita_demo_v2\\lib\\pages\\ab_categories_page\\bloc\\survey_foods_by_category_bloc.dart\\",
             "color": "foldercolorizer.color_00ccff"
+        },
+        {
+            "folderPath": "nutrivita_demo_v2_8.07.25\\lib\\",
+            "color": "foldercolorizer.color_333333"
+        },
+        {
+            "folderPath": "nutrivita_demo_v2_8.07.25\\lib\\pages\\cb_favorite_foods\\",
+            "color": "foldercolorizer.color_00cccc"
+        },
+        {
+            "folderPath": "nutrivita_demo_v2_8.07.25\\lib\\pages\\ab_categories_page\\",
+            "color": "foldercolorizer.color_cc00ff"
         }
     ]
 }

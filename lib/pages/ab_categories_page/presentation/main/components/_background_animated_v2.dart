@@ -1,7 +1,8 @@
 part of '../categories_page_v2.dart';
 
-class _BackgroundAnimatedV2 extends StatelessWidget {
-  const _BackgroundAnimatedV2({
+class BackgroundAnimatedV2 extends StatelessWidget {
+  const BackgroundAnimatedV2({
+    super.key,
     required this.controller,
     required this.toggleDrawer,
   });

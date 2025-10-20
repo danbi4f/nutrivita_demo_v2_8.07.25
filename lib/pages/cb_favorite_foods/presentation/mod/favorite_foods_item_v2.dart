@@ -14,7 +14,7 @@ class FavoriteFoodsItemV2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Dismissible(
-      key: Key(food.toString()),
+      key: UniqueKey(),
       direction: DismissDirection.horizontal,
       onDismissed: (direction) {
         context.read<FavoriteFoodsV2Bloc>().add(

@@ -1,38 +1,41 @@
 import 'dart:async';
-import 'app_favorite_repository.dart';
+import 'package:nutrivita_demo_v2/pages/ab_categories_page/domain/model/complet_foods.dart';
+import 'package:nutrivita_demo_v2/pages/cb_favorite_foods/data/model/favorite_info.dart';
+
+// import 'app_favorite_repository.dart';
 
 class InMemoryFavoriteRepository {
-  final AppFavoriteRepository appFavoriteRepository;
+  final FavoriteInfo _favoriteInfo = FavoriteInfo(items: {});
 
-  final Set<int> _favorites = {};
-  final StreamController<Set<int>> _favoritesController =
-      StreamController<Set<int>>.broadcast();
+  FavoriteInfo get favoriteInfo => _favoriteInfo;
 
-  Stream<Set<int>> get favoritesStream => _favoritesController.stream;
+  final StreamController<FavoriteInfo> _favoritesController =
+      StreamController<FavoriteInfo>.broadcast();
 
-  InMemoryFavoriteRepository({required this.appFavoriteRepository});
+  Stream<FavoriteInfo> get favoritesStream => _favoritesController.stream;
 
-  Future<void> init() async {
-    final allFavorites = await appFavoriteRepository.getAllFavorites();
-    _favorites.addAll(allFavorites);
-    _favoritesController.add(Set.from(_favorites));
+  Future<FavoriteInfo> get favoritesFuture async =>
+      _favoriteInfo.copyWith(items: Map.unmodifiable(_favoriteInfo.items));
+
+  Future<void> addFavorite(CompleteFood item) async {
+    final favoriteItem = CompleteFood(
+      fdcId: item.fdcId,
+      description: item.description,
+      descriptionPL: item.descriptionPL,
+      foodClass: item.foodClass,
+      nutrients: item.nutrients,
+    );
+    _favoriteInfo.items[item.fdcId] = favoriteItem;
+
+        final favoriteInfo = _favoriteInfo.copyWith(
+      items: Map.unmodifiable(_favoriteInfo.items),
+    );
+
+    _favoritesController.add(favoriteInfo);
+
   }
 
-  Future<void> addFavorite(int fdcId) async {
-    _favorites.add(fdcId);
-    _favoritesController.add(Set.from(_favorites));
-    await appFavoriteRepository.addFavorite(fdcId);
-  }
+  Future<void> removeFavorite(CompleteFood item) async {
 
-  Future<void> removeFavorite(int fdcId) async {
-    _favorites.remove(fdcId);
-    _favoritesController.add(Set.from(_favorites));
-    await appFavoriteRepository.removeFavorite(fdcId);
-  }
-
-  bool isFavorite(int fdcId) => _favorites.contains(fdcId);
-
-  void dispose() {
-    _favoritesController.close();
   }
 }

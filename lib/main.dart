@@ -5,7 +5,8 @@ import 'package:nutrivita_demo_v2/shared/services/injection_container.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(
-    MultiRepositoryProvider(providers: buildRepositories(), child: MyApp()),
-  );
+
+  final repositories = await buildRepositories();
+
+  runApp(MultiRepositoryProvider(providers: repositories, child: MyApp()));
 }

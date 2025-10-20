@@ -14,7 +14,9 @@ class CompleteFoodRepository {
   /// Pobierz listę FoodWithNutrients na podstawie listy fdcIds
   Future<List<CompleteFood>> getCompleteFoodsByFdcIds(List<int> fdcIds) async {
     final categories = await surveyFoodsByCategoryService.getCategories();
+    print(  '🍏 Fetched categories: ${categories.length}');
     final foods = completFoodService.fromSurveyFoods(categories);
+    print(  '🍎 Total CompleteFoods available: ${foods.length}');
 
     final fdcSet = fdcIds.toSet();
     final result = foods.where((f) => fdcSet.contains(f.fdcId)).toList();
@@ -23,12 +25,11 @@ class CompleteFoodRepository {
   }
 
   /// 🔹 NOWE: Pobierz pojedynczy produkt na podstawie jednego fdcId
-  Future<CompleteFood?> getCompleteFoodByFdcId(int fdcId) async {
+  Future<CompleteFood> getCompleteFoodByFdcId(int fdcId) async {
     final foods = await getCompleteFoodsByFdcIds([fdcId]);
-    if (foods.isNotEmpty) {
+
       return foods.first;
-    }
-    return null; // brak produktu o podanym fdcId
+ // brak produktu o podanym fdcId
   }
 
   /// Pobierz wszystkie produkty (np. do cache albo do filtracji)

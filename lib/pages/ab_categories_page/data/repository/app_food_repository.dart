@@ -25,10 +25,13 @@ class AppFoodRepository {
   }
 
   Future<List<CompleteFood>> getCompleteFoodsByFdcIds(List<int> fdcIds) async {
-    return await completeFoodRepository.getCompleteFoodsByFdcIds(fdcIds);
+    final testGetComplete = await completeFoodRepository
+        .getCompleteFoodsByFdcIds(fdcIds);
+    print('testGetComplete: ${testGetComplete.length}');
+    return testGetComplete;
   }
 
-  Future<CompleteFood?> getCompleteFoodByFdcId(int fdcId) async {
+  Future<CompleteFood> getCompleteFoodByFdcId(int fdcId) async {
     return await completeFoodRepository.getCompleteFoodByFdcId(fdcId);
   }
 

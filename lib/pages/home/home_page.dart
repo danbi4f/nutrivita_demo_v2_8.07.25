@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:nutrivita_demo_v2/pages/ab_categories_page/presentation/bloc/complete_food_bloc.dart';
 import 'package:nutrivita_demo_v2/pages/ab_categories_page/presentation/main/categories_page_v2.dart';
 import 'package:nutrivita_demo_v2/pages/bb_search_engine_page/presentation/main/search_engine_widget_v2.dart';
+import 'package:nutrivita_demo_v2/pages/cb_favorite_foods/presentation/bloc/favorite_foods_v2_bloc.dart';
+import 'package:nutrivita_demo_v2/pages/cb_favorite_foods/presentation/main/favorite_foods_widget_v2.dart';
 import 'package:nutrivita_demo_v2/pages/d_meals/presentation/main/meals_foods_success_widget_v2.dart';
 
 class HomePage extends StatefulWidget {
@@ -12,11 +13,13 @@ class HomePage extends StatefulWidget {
   @override
   State<HomePage> createState() => _HomePageState();
 
-    static Widget withBloc() {
-    return BlocProvider<CompleteFoodBloc>(
-      create: (context) => CompleteFoodBloc(
-        combinedDataService: context.read(),
-      ),
+  static Widget withBloc() {
+    return BlocProvider<FavoriteFoodsV2Bloc>(
+      create:
+          (context) =>
+              FavoriteFoodsV2Bloc(combinedDataService: context.read())
+                ..add(LoadFavoritesFdcId()),
+
       child: const HomePage(),
     );
   }
@@ -29,7 +32,7 @@ class _HomePageState extends State<HomePage> {
     GlobalKey<NavigatorState>(),
     GlobalKey<NavigatorState>(),
     GlobalKey<NavigatorState>(),
-    // GlobalKey<NavigatorState>(),
+    GlobalKey<NavigatorState>(),
   ];
 
   void _selectTab(int index) {
@@ -59,11 +62,8 @@ class _HomePageState extends State<HomePage> {
           children: [
             _buildNavigator(_navigatorKeys[0], const CategoriesPageV2()),
             _buildNavigator(_navigatorKeys[1], SearchEngineWidgetV2.withBloc()),
-            // _buildNavigator(
-            //   _navigatorKeys[2],
-            //   FavoriteFoodsWidgetV2.withBloc(),
-            // ),
-            _buildNavigator(_navigatorKeys[2], MealsFoodsSuccessWidgetV2()),
+            _buildNavigator(_navigatorKeys[2], const FavoriteFoodsWidgetV2()),
+            _buildNavigator(_navigatorKeys[3], MealsFoodsSuccessWidgetV2()),
           ],
         ),
         bottomNavigationBar: Container(
@@ -71,7 +71,7 @@ class _HomePageState extends State<HomePage> {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: GNav(
-              gap: 3,
+              gap: 4,
               tabBorderRadius: 16,
               backgroundColor: Theme.of(context).colorScheme.onSurfaceVariant,
               color: Colors.black,

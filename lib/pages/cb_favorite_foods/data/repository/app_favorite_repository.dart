@@ -7,10 +7,13 @@ class AppFavoriteRepository {
 
   Future<int> addFavorite(int fdcId) async {
     return await dbService.insertFavoriteFdcId(fdcId);
+
+    
   }
 
   Future<List<int>> getAllFavorites() async {
     return await dbService.getFavoritesFdcIds();
+    
   }
 
   Future<int> removeFavorite(int fdcId) async {

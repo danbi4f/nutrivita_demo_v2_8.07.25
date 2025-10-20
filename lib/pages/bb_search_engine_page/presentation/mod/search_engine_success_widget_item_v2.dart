@@ -5,7 +5,7 @@ import 'package:nutrivita_demo_v2/common/mod/view_food_with_nutrients.dart';
 import 'package:nutrivita_demo_v2/common/theme/app_text_style.dart';
 import 'package:nutrivita_demo_v2/pages/ab_categories_page/presentation/bloc/complete_food_bloc.dart';
 import 'package:nutrivita_demo_v2/pages/bb_search_engine_page/domain/model/survey_foods_description.dart';
-import 'package:nutrivita_demo_v2/pages/ab_categories_page/data/repository/complete_foods_repository.dart';
+import 'package:nutrivita_demo_v2/pages/cb_favorite_foods/presentation/bloc/favorite_foods_v2_bloc.dart';
 
 class SearchEngineSuccessWidgetItemV2 extends StatelessWidget {
   const SearchEngineSuccessWidgetItemV2({
@@ -92,7 +92,11 @@ class _SearchEngineSuccessWidgetItemV2 extends StatelessWidget {
                 child: Align(
                   alignment: Alignment.centerRight,
                   child: IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      context
+                          .read<FavoriteFoodsV2Bloc>()
+                          .add(AddFavoriteFoodFdcId(foodDescription.fdcId));
+                    },
                     icon: Icon(
                       _isFavorite! ? Icons.favorite : Icons.favorite_border,
                       color: Colors.green,

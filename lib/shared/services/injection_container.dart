@@ -8,18 +8,17 @@ import 'package:nutrivita_demo_v2/pages/bb_search_engine_page/data/repository/ap
 import 'package:nutrivita_demo_v2/pages/bb_search_engine_page/data/repository/survey_foods_description_repository.dart';
 import 'package:nutrivita_demo_v2/pages/bb_search_engine_page/data/service/survey_foods_description_service.dart';
 import 'package:nutrivita_demo_v2/pages/cb_favorite_foods/data/repository/app_favorite_repository.dart';
-import 'package:nutrivita_demo_v2/pages/cb_favorite_foods/data/repository/in_memory_favorite_repository%20.dart';
 import 'package:nutrivita_demo_v2/shared/services/combined_data_service.dart';
 import 'package:nutrivita_demo_v2/shared/services/database_service/database_service.dart';
 
-List<RepositoryProvider> buildRepositories({
+Future<List<RepositoryProvider>> buildRepositories({
   SurveyFoodsByCategoryService? surveySvc,
   CompleteFoodService? completeFoodService,
   SurveyFoodsDescriptionService? surveyFoodsDescriptionService,
   DatabaseService? databaseService,
-}) {
+}) async {
   // Jeśli test nie poda mocka, użyj domyślnych instancji
-  final surveyService = surveySvc ?? SurveyFoodsByCategoryService();
+  final surveyService = surveySvc ?? await SurveyFoodsByCategoryService.init();
   final completeService = completeFoodService ?? CompleteFoodService();
   final descriptionService =
       surveyFoodsDescriptionService ?? SurveyFoodsDescriptionService();
@@ -44,12 +43,9 @@ List<RepositoryProvider> buildRepositories({
     surveyFoodsDescriptionRepository: surveyFoodsDescriptionRepository,
   );
   final appFavoriteRepository = AppFavoriteRepository(dbService: dbService);
-  final inMemoryFavoriteRepository = InMemoryFavoriteRepository(
-    appFavoriteRepository: appFavoriteRepository,
-  );
 
   final combinedDataService = CombinedDataService(
-    inMemoryFavoriteRepository: inMemoryFavoriteRepository,
+    appFavoriteRepository: appFavoriteRepository,
     appSearchEngineRepository: appSearchEngineRepository,
     appFoodRepository: appFoodRepository,
   );

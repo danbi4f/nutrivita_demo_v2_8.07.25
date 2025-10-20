@@ -28,6 +28,8 @@ extension FavoritesFdcIdCrud on DatabaseService {
   Future<List<int>> getFavoritesFdcIds() async {
     final db = await database;
     final maps = await db.query(FavoritesTableFdcId.tableNameFavoritesFdcId);
+    print('📦 DB zawartość (favorites): ${maps.length}'); // 👈 DODAJ TO
+    print('📦 DB zawartość (favorites): $maps'); // 👈 DODAJ TO
     return maps
         .map(
           (map) =>
