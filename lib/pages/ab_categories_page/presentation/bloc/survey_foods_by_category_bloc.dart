@@ -25,7 +25,7 @@ class SurveyFoodsByCategoryBloc
     final DelayedResult<List<SurveyFoodsByCategory>> result =
         await combinedDataService.appFoodRepository.getAllCategories();
 
-    print("DEBUG: fetched categories = ${result.valueOrNull}");
+    print("DEBUG: fetched categories = ${result.valueOrNull} -- SurveyFoodsByCategoryBloc - appFoodRepository.getAllCategories()");
 
     emit(state.copyWith(result: result));
   }

@@ -33,11 +33,11 @@ class FavoriteFoodsV2Bloc
     emit(state.copyWith(favorites: const DelayedResult.inProgress()));
     try {
       final List<int> ids = await appFavoriteRepository.getAllFavorites();
-      print('Loaded favorite FDC IDs: $ids');
-      print('Loaded favorite FDC IDs: ${ids.length}');
+      print('Loaded favorite FDC IDs: $ids -- FavoriteFoodsV2Bloc - appFavoriteRepository.getAllFavorites()');
+      print('Loaded favorite FDC IDs: ${ids.length} -- FavoriteFoodsV2Bloc - appFavoriteRepository.getAllFavorites()');
 
       final List<CompleteFood> favorites = await appFoodRepository.getCompleteFoodsByFdcIds(ids);
-      print('Loaded CompleteFood: ${favorites.length}');
+      print('Loaded CompleteFood: ${favorites.length} -- FavoriteFoodsV2Bloc - appFoodRepository.getCompleteFoodsByFdcIds(ids)');
 
       emit(state.copyWith(favorites: DelayedResult.fromValue(favorites)));
     } catch (e) {

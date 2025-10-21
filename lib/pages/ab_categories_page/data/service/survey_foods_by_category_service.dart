@@ -52,7 +52,7 @@ class SurveyFoodsByCategoryService {
       _categories!.add(
         SurveyFoodsByCategory(category: categoryName, nutrients: nutrients),
       );
-      print(  '🚕 ${_categories!.length}');
+      print(  '🚕 ${_categories!.length} --SurveyFoodsByCategoryService');
     }
 
     // Opcjonalnie wczytaj fdc_ranking_map.json do szybkiego dostępu

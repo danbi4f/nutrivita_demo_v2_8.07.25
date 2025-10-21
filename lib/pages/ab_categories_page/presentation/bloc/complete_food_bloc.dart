@@ -27,7 +27,7 @@ class CompleteFoodBloc
         .getCompleteFoodByFdcId(event.fdcId);
     if (completeFood != null) {
       emit(state.copyWith(completeFood: DelayedResult.fromValue(completeFood)));
-      print('complete food fdcid: ${completeFood.fdcId}');
+      print('complete food fdcid: ${completeFood.fdcId} -- CompleteFoodBloc - appFoodRepository.getCompleteFoodByFdcId(event.fdcId)');
     } else {
       emit(
         state.copyWith(

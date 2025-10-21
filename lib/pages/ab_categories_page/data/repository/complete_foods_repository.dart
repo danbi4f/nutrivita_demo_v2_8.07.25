@@ -10,31 +10,28 @@ class CompleteFoodRepository {
 
   final SurveyFoodsByCategoryService surveyFoodsByCategoryService;
   final CompleteFoodService completFoodService;
+  List<CompleteFood>? _cachedFoods;
+
+    /// Pobierz wszystkie produkty (np. do cache albo do filtracji)
+  Future<List<CompleteFood>> getAllCompleteFoods() async {
+    if (_cachedFoods != null) return _cachedFoods!;
+    final categories = await surveyFoodsByCategoryService.getCategories();
+    _cachedFoods = completFoodService.fromSurveyFoods(categories);
+    return _cachedFoods!;
+  }
 
   /// Pobierz listę FoodWithNutrients na podstawie listy fdcIds
   Future<List<CompleteFood>> getCompleteFoodsByFdcIds(List<int> fdcIds) async {
-    final categories = await surveyFoodsByCategoryService.getCategories();
-    print(  '🍏 Fetched categories: ${categories.length}');
-    final foods = completFoodService.fromSurveyFoods(categories);
-    print(  '🍎 Total CompleteFoods available: ${foods.length}');
-
+    final foods = await getAllCompleteFoods();
     final fdcSet = fdcIds.toSet();
-    final result = foods.where((f) => fdcSet.contains(f.fdcId)).toList();
-
-    return result;
+    return foods.where((f) => fdcSet.contains(f.fdcId)).toList();
   }
 
   /// 🔹 NOWE: Pobierz pojedynczy produkt na podstawie jednego fdcId
   Future<CompleteFood> getCompleteFoodByFdcId(int fdcId) async {
-    final foods = await getCompleteFoodsByFdcIds([fdcId]);
-
-      return foods.first;
- // brak produktu o podanym fdcId
+    final foods = await getAllCompleteFoods();
+    return foods.firstWhere((f) => f.fdcId == fdcId);
   }
 
-  /// Pobierz wszystkie produkty (np. do cache albo do filtracji)
-  Future<List<CompleteFood>> getAllCompleteFoods() async {
-    final categories = await surveyFoodsByCategoryService.getCategories();
-    return completFoodService.fromSurveyFoods(categories);
-  }
+
 }
