@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nutrivita_demo_v2/common/theme/app_text_style.dart';
-import 'package:nutrivita_demo_v2/pages/bb_search_engine_page/presentation/mod/search_item.dart';
-import 'package:nutrivita_demo_v2/pages/bb_search_engine_page/domain/model/survey_foods_description.dart';
+import 'package:nutrivita_demo_v2/pages/bb_search/presentation/mod/search_item.dart';
+import 'package:nutrivita_demo_v2/pages/bb_search/domain/model/survey_foods_description.dart';
 
 class SearchSuccessWidget extends StatelessWidget {
   const SearchSuccessWidget({super.key, required this.results});

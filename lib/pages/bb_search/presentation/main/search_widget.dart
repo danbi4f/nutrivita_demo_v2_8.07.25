@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nutrivita_demo_v2/common/mod/custom_container.dart';
 import 'package:nutrivita_demo_v2/common/theme/app_text_style.dart';
-import 'package:nutrivita_demo_v2/pages/bb_search_engine_page/presentation/bloc/search_bloc.dart';
-import 'package:nutrivita_demo_v2/pages/bb_search_engine_page/presentation/mod/my_text_field.dart';
-import 'package:nutrivita_demo_v2/pages/bb_search_engine_page/presentation/mod/search_success_widget.dart';
+import 'package:nutrivita_demo_v2/pages/bb_search/presentation/bloc/search_bloc.dart';
+import 'package:nutrivita_demo_v2/pages/bb_search/presentation/mod/my_text_field.dart';
+import 'package:nutrivita_demo_v2/pages/bb_search/presentation/mod/search_success_widget.dart';
 
 class SearchWidget extends StatelessWidget {
   const SearchWidget({super.key});

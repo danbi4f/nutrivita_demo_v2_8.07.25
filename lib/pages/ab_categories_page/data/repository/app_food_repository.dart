@@ -38,4 +38,7 @@ class AppFoodRepository {
   Future<List<CompleteFood>> getAllCompleteFoods() async {
     return await completeFoodRepository.getAllCompleteFoods();
   }
+  Future<List<CompleteFood>> searchFoods(String query) async {
+    return await completeFoodRepository.searchFoods(query);
+  }
 }

@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/foundation.dart';
 import 'package:nutrivita_demo_v2/pages/cb_fave/data/repository/in_memory_favorite_repository%20.dart';
 import 'package:nutrivita_demo_v2/shared/services/combined_data_service.dart';
 import 'package:nutrivita_demo_v2/shared/models/delayed_result.dart';
@@ -15,43 +16,57 @@ class FaveBloc extends Bloc<FaveEvent, FaveState> {
     : super(const FaveState(faves: [], loadingResult: DelayedResult.idle())) {
     inMemoryFavoriteRepository = combinedDataService.inMemoryFavoriteRepository;
 
-    on<LoadFaves>(_onLoadFavoritesFdcId);
-    on<AddFave>(_onAddFavoriteFoodFdcId);
-    on<RemoveFave>(_onRemoveFavoriteFoodFdcId);
-    
+    on<LoadFaves>(_onLoadFaves);
+    on<AddFave>(_onAddFave);
+    on<RemoveFave>(_onRemoveFave);
+    on<ClearError>(_onClearError);
   }
 
-  Future<void> _onLoadFavoritesFdcId(
-    LoadFaves event,
-    Emitter<FaveState> emit,
-  ) async {
+  Future<void> _onLoadFaves(LoadFaves event, Emitter<FaveState> emit) async {
     try {
       emit(state.copyWith(loadingResult: const DelayedResult.inProgress()));
       final List<int> faves = await inMemoryFavoriteRepository.favesFuture;
 
       emit(state.copyWith(faves: faves));
       emit(state.copyWith(loadingResult: const DelayedResult.idle()));
-
+      await emit.onEach(
+        inMemoryFavoriteRepository.favesStream,
+        onData: (favesList) {
+          emit(state.copyWith(faves: favesList));
+        },
+        onError: (error, stackTrace) {
+          if (kDebugMode) print('Error in favesStream: $error');
+        },
+      );
     } catch (e) {
       emit(
-        state.copyWith(loadingResult: DelayedResult.fromError(Exception(e.toString()))),
+        state.copyWith(
+          loadingResult: DelayedResult.fromError(Exception(e.toString())),
+        ),
       );
     }
   }
 
-  Future<void> _onAddFavoriteFoodFdcId(
-    AddFave event,
-    Emitter<FaveState> emit,
-  ) async {
-    await inMemoryFavoriteRepository.addFave(event.fdcId);
+  Future<void> _onAddFave(AddFave event, Emitter<FaveState> emit) async {
+    try {
+      emit(state.copyWith(loadingResult: const DelayedResult.inProgress()));
+      await inMemoryFavoriteRepository.addFave(event.fdcId);
+      emit(state.copyWith(loadingResult: const DelayedResult.idle()));
+    } on Exception catch (ex) {
+      emit(state.copyWith(loadingResult: DelayedResult.fromError(ex)));
+    }
   }
 
-  Future<void> _onRemoveFavoriteFoodFdcId(
-    RemoveFave event,
-    Emitter<FaveState> emit,
-  ) async {
-    await inMemoryFavoriteRepository.removeFave(event.fdcId);
+  Future<void> _onRemoveFave(RemoveFave event, Emitter<FaveState> emit) async {
+    try {
+      emit(state.copyWith(loadingResult: const DelayedResult.inProgress()));
+      await inMemoryFavoriteRepository.removeFave(event.fdcId);
+      emit(state.copyWith(loadingResult: const DelayedResult.idle()));
+    } on Exception catch (ex) {
+      emit(state.copyWith(loadingResult: DelayedResult.fromError(ex)));
+    }
   }
-
-
+    void _onClearError(ClearError event, Emitter emit) {
+    emit(state.copyWith(loadingResult: const DelayedResult.idle()));
+  }
 }

@@ -21,6 +21,7 @@ class InMemoryFavoriteRepository {
   Stream<List<int>> get favesStream => _favesController.stream;
 
   Future<List<int>> get favesFuture async => List.unmodifiable(_faves);
+  
 
   Future<List<int>> getFaves() async {
     _faves = await _dbService.getFavesFdcId();

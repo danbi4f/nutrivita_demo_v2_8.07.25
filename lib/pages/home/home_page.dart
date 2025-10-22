@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:nutrivita_demo_v2/pages/ab_categories_page/presentation/main/categories_page_v2.dart';
-import 'package:nutrivita_demo_v2/pages/bb_search_engine_page/presentation/main/search_widget.dart';
+import 'package:nutrivita_demo_v2/pages/bb_search/presentation/main/search_widget.dart';
 import 'package:nutrivita_demo_v2/pages/cb_fave/presentation/bloc/fave_bloc.dart';
 import 'package:nutrivita_demo_v2/pages/cb_fave/presentation/main/fave_widget.dart';
 import 'package:nutrivita_demo_v2/pages/d_meals/presentation/main/meals_foods_success_widget_v2.dart';

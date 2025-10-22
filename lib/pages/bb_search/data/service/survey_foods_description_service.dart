@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/services.dart' show rootBundle;
-import 'package:nutrivita_demo_v2/pages/bb_search_engine_page/domain/model/survey_foods_description.dart';
+import 'package:nutrivita_demo_v2/pages/bb_search/domain/model/survey_foods_description.dart';
 
 class SurveyFoodsDescriptionService {
   SurveyFoodsDescriptionService._internal();

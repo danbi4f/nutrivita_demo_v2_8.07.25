@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:nutrivita_demo_v2/shared/models/delayed_result.dart';
-import 'package:nutrivita_demo_v2/pages/bb_search_engine_page/domain/model/survey_foods_description.dart';
+import 'package:nutrivita_demo_v2/pages/bb_search/domain/model/survey_foods_description.dart';
 import 'package:nutrivita_demo_v2/shared/services/combined_data_service.dart';
 
 part 'search_event.dart';
@@ -50,12 +50,10 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
             }
           }
         }
-  // final isFavorite = await combinedDataService.inMemoryFavoriteRepository
-  //         .isFave(results.);
         emit(SearchState(
           result: results,
           loadingResult: DelayedResult.fromValue(results),
-          isFavorite:  false,
+          isFavorite:  isFavorite,
         ));
       } else if (delayed.isError) {
         emit(SearchState(

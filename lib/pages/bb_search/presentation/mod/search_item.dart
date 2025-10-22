@@ -4,7 +4,7 @@ import 'package:nutrivita_demo_v2/common/mod/custom_container.dart';
 import 'package:nutrivita_demo_v2/common/mod/view_food_with_nutrients.dart';
 import 'package:nutrivita_demo_v2/common/theme/app_text_style.dart';
 import 'package:nutrivita_demo_v2/pages/ab_categories_page/presentation/bloc/complete_food_bloc.dart';
-import 'package:nutrivita_demo_v2/pages/bb_search_engine_page/domain/model/survey_foods_description.dart';
+import 'package:nutrivita_demo_v2/pages/bb_search/domain/model/survey_foods_description.dart';
 import 'package:nutrivita_demo_v2/pages/cb_fave/presentation/bloc/fave_bloc.dart';
 
 class SearchItem extends StatelessWidget {

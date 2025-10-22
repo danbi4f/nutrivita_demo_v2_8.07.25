@@ -4,9 +4,9 @@ import 'package:nutrivita_demo_v2/pages/ab_categories_page/data/repository/compl
 import 'package:nutrivita_demo_v2/pages/ab_categories_page/data/repository/survey_foods_by_category_repository.dart';
 import 'package:nutrivita_demo_v2/pages/ab_categories_page/data/service/complete_foods_service.dart';
 import 'package:nutrivita_demo_v2/pages/ab_categories_page/data/service/survey_foods_by_category_service.dart';
-import 'package:nutrivita_demo_v2/pages/bb_search_engine_page/data/repository/app_search_engine_repository.dart';
-import 'package:nutrivita_demo_v2/pages/bb_search_engine_page/data/repository/survey_foods_description_repository.dart';
-import 'package:nutrivita_demo_v2/pages/bb_search_engine_page/data/service/survey_foods_description_service.dart';
+import 'package:nutrivita_demo_v2/pages/bb_search/data/repository/app_search_engine_repository.dart';
+import 'package:nutrivita_demo_v2/pages/bb_search/data/repository/survey_foods_description_repository.dart';
+import 'package:nutrivita_demo_v2/pages/bb_search/data/service/survey_foods_description_service.dart';
 import 'package:nutrivita_demo_v2/pages/cb_fave/data/repository/app_favorite_repository.dart';
 import 'package:nutrivita_demo_v2/pages/cb_fave/data/repository/in_memory_favorite_repository%20.dart';
 import 'package:nutrivita_demo_v2/shared/services/combined_data_service.dart';
