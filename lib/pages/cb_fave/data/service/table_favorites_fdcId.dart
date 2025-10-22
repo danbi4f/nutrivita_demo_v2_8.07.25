@@ -15,7 +15,7 @@ class FavoritesTableFdcId {
 
 extension FavoritesFdcIdCrud on DatabaseService {
   // INSERT
-  Future<int> insertFavoriteFdcId(int fdcId) async {
+  Future<int> addFaveFdcId(int fdcId) async {
     final db = await database;
     return await db.insert(
       FavoritesTableFdcId.tableNameFavoritesFdcId,
@@ -25,7 +25,7 @@ extension FavoritesFdcIdCrud on DatabaseService {
   }
 
   // GET ALL
-  Future<List<int>> getFavoritesFdcIds() async {
+  Future<List<int>> getFavesFdcId() async {
     final db = await database;
     final maps = await db.query(FavoritesTableFdcId.tableNameFavoritesFdcId);
     print('📦 DB zawartość (favorites): ${maps.length}'); // 👈 DODAJ TO
@@ -39,7 +39,7 @@ extension FavoritesFdcIdCrud on DatabaseService {
   }
 
   // DELETE
-  Future<int> deleteFavoriteFdcId(int fdcId) async {
+  Future<int> removeFaveFdcId(int fdcId) async {
     final db = await database;
     return await db.delete(
       FavoritesTableFdcId.tableNameFavoritesFdcId,
@@ -48,6 +48,4 @@ extension FavoritesFdcIdCrud on DatabaseService {
     );
   }
 
-  // UPDATE - w tym przypadku update nie jest potrzebny, bo mamy tylko fdcId
-  // jeśli chcesz, można użyć insert z ConflictAlgorithm.replace
 }

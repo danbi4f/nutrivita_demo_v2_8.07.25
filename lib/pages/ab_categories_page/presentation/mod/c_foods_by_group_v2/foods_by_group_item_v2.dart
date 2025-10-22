@@ -41,6 +41,7 @@ class _FoodsByGroupItemView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final _isFavorite = false;
     final item = context.select(
       (CompleteFoodBloc bloc) => bloc.state.completeFood,
     );
@@ -82,6 +83,22 @@ class _FoodsByGroupItemView extends StatelessWidget {
                           style: AppTextStyles.body(context),
                         ),
                       ],
+                    ),
+                  ),
+                  SizedBox(
+                    width: 60,
+                    child: Align(
+                      alignment: Alignment.centerRight,
+                      child: IconButton(
+                        onPressed: () {
+                          
+                        },
+                        icon: Icon(
+                          _isFavorite ? Icons.favorite : Icons.favorite_border,
+                          color: Colors.green,
+                          size: 30,
+                        ),
+                      ),
                     ),
                   ),
                 ],

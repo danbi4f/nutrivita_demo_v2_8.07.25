@@ -4,29 +4,29 @@ import 'package:nutrivita_demo_v2/shared/models/delayed_result.dart';
 import 'package:nutrivita_demo_v2/pages/bb_search_engine_page/domain/model/survey_foods_description.dart';
 import 'package:nutrivita_demo_v2/shared/services/combined_data_service.dart';
 
-part 'search_engine_v2_event.dart';
-part 'search_engine_v2_state.dart';
+part 'search_event.dart';
+part 'search_state.dart';
 
-class SearchEngineV2Bloc
-    extends Bloc<SearchEngineV2Event, SearchEngineV2State> {
+class SearchBloc extends Bloc<SearchEvent, SearchState> {
   final CombinedDataService combinedDataService;
 
-  SearchEngineV2Bloc({required this.combinedDataService})
-    : super(SearchEngineV2Initial()) {
-    on<SearchFoodsByPhrase>(_onSearchFoodsByPhrase);
+  SearchBloc({required this.combinedDataService})
+    : super(
+        SearchState(
+          result: [],
+          loadingResult: DelayedResult.idle(),
+          isFavorite: false,
+        ),
+      ) {
+    on<Search>(_onSearch);
   }
 
-  Future<void> _onSearchFoodsByPhrase(
-    SearchFoodsByPhrase event,
-    Emitter<SearchEngineV2State> emit,
-  ) async {
-    final query = event.phrase.trim();
+  Future<void> _onSearch(Search event, Emitter<SearchState> emit) async {
+    emit(state.copyWith(loadingResult: const DelayedResult.inProgress()));
+    final query = event.value.trim();
     if (query.isEmpty) {
-      emit(SearchEngineV2LoadSuccess(const DelayedResult.fromValue([])));
       return;
     }
-
-    emit(SearchEngineV2LoadInProgress());
 
     try {
       final delayed =
@@ -50,16 +50,34 @@ class SearchEngineV2Bloc
             }
           }
         }
-
-        emit(SearchEngineV2LoadSuccess(DelayedResult.fromValue(results)));
+  // final isFavorite = await combinedDataService.inMemoryFavoriteRepository
+  //         .isFave(results.);
+        emit(SearchState(
+          result: results,
+          loadingResult: DelayedResult.fromValue(results),
+          isFavorite:  false,
+        ));
       } else if (delayed.isError) {
-        emit(SearchEngineV2LoadFailure(delayed.error!));
+        emit(SearchState(
+          result: [],
+          loadingResult:
+              DelayedResult.fromError(Exception('Failed to load data')),
+          isFavorite: false,
+        ));
       } else {
         // np. idle (nie powinno się zdarzyć tutaj, ale dla pewności)
-        emit(const SearchEngineV2LoadSuccess(DelayedResult.fromValue([])));
+        emit(SearchState(
+          result: [],
+          loadingResult: DelayedResult.idle(),
+          isFavorite: false,
+        ));
       }
-    } catch (e, st) {
-      emit(SearchEngineV2LoadFailure(Exception('$e\n$st')));
+    } catch (e) {
+      emit(SearchState(
+        result: [],
+        loadingResult: DelayedResult.fromError(Exception(e.toString())),
+        isFavorite: false,
+      ));
     }
   }
 

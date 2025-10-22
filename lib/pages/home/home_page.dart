@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:nutrivita_demo_v2/pages/ab_categories_page/presentation/main/categories_page_v2.dart';
-import 'package:nutrivita_demo_v2/pages/bb_search_engine_page/presentation/main/search_engine_widget_v2.dart';
-import 'package:nutrivita_demo_v2/pages/cb_favorite_foods/presentation/bloc/favorite_foods_v2_bloc.dart';
-import 'package:nutrivita_demo_v2/pages/cb_favorite_foods/presentation/main/favorite_foods_widget_v2.dart';
+import 'package:nutrivita_demo_v2/pages/bb_search_engine_page/presentation/main/search_widget.dart';
+import 'package:nutrivita_demo_v2/pages/cb_fave/presentation/bloc/fave_bloc.dart';
+import 'package:nutrivita_demo_v2/pages/cb_fave/presentation/main/fave_widget.dart';
 import 'package:nutrivita_demo_v2/pages/d_meals/presentation/main/meals_foods_success_widget_v2.dart';
 
 class HomePage extends StatefulWidget {
@@ -14,11 +14,11 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 
   static Widget withBloc() {
-    return BlocProvider<FavoriteFoodsV2Bloc>(
+    return BlocProvider<FaveBloc>(
       create:
           (context) =>
-              FavoriteFoodsV2Bloc(combinedDataService: context.read())
-                ..add(LoadFavoritesFdcId()),
+              FaveBloc(combinedDataService: context.read())
+                ..add(LoadFaves()),
 
       child: const HomePage(),
     );
@@ -61,8 +61,8 @@ class _HomePageState extends State<HomePage> {
           index: currentIndex,
           children: [
             _buildNavigator(_navigatorKeys[0], const CategoriesPageV2()),
-            _buildNavigator(_navigatorKeys[1], SearchEngineWidgetV2.withBloc()),
-            _buildNavigator(_navigatorKeys[2], const FavoriteFoodsWidgetV2()),
+            _buildNavigator(_navigatorKeys[1], SearchWidget.withBloc()),
+            _buildNavigator(_navigatorKeys[2], const FaveWidget()),
             _buildNavigator(_navigatorKeys[3], MealsFoodsSuccessWidgetV2()),
           ],
         ),

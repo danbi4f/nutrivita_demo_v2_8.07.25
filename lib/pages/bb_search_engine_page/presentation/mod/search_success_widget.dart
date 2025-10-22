@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:nutrivita_demo_v2/common/theme/app_text_style.dart';
-import 'package:nutrivita_demo_v2/pages/bb_search_engine_page/presentation/mod/search_engine_success_widget_item_v2.dart';
+import 'package:nutrivita_demo_v2/pages/bb_search_engine_page/presentation/mod/search_item.dart';
 import 'package:nutrivita_demo_v2/pages/bb_search_engine_page/domain/model/survey_foods_description.dart';
 
-class SearchEngineSuccessWidgetV2 extends StatelessWidget {
-  const SearchEngineSuccessWidgetV2({super.key, required this.results});
+class SearchSuccessWidget extends StatelessWidget {
+  const SearchSuccessWidget({super.key, required this.results});
 
   final List<SurveyFoodsDescription> results;
 
@@ -27,7 +27,7 @@ class SearchEngineSuccessWidgetV2 extends StatelessWidget {
         print(
           '[DEBUG LIST] index=$index fdcId=${food.fdcId}, desc=${food.descriptionPL}',
         );
-        return SearchEngineSuccessWidgetItemV2(
+        return SearchItem(
           foodDescription: food,
           key: ValueKey(food.fdcId),
         );

@@ -5,10 +5,10 @@ import 'package:nutrivita_demo_v2/common/mod/view_food_with_nutrients.dart';
 import 'package:nutrivita_demo_v2/common/theme/app_text_style.dart';
 import 'package:nutrivita_demo_v2/pages/ab_categories_page/presentation/bloc/complete_food_bloc.dart';
 import 'package:nutrivita_demo_v2/pages/bb_search_engine_page/domain/model/survey_foods_description.dart';
-import 'package:nutrivita_demo_v2/pages/cb_favorite_foods/presentation/bloc/favorite_foods_v2_bloc.dart';
+import 'package:nutrivita_demo_v2/pages/cb_fave/presentation/bloc/fave_bloc.dart';
 
-class SearchEngineSuccessWidgetItemV2 extends StatelessWidget {
-  const SearchEngineSuccessWidgetItemV2({
+class SearchItem extends StatelessWidget {
+  const SearchItem({
     super.key,
     required this.foodDescription,
   });
@@ -20,7 +20,7 @@ class SearchEngineSuccessWidgetItemV2 extends StatelessWidget {
     return BlocProvider(
       create: (context) => CompleteFoodBloc(combinedDataService: context.read())
         ..add(LoadCompleteFoodByFdcId(foodDescription.fdcId)),
-      child: _SearchEngineSuccessWidgetItemV2(
+      child: _SearchItem(
         foodDescription: foodDescription,
         isFavorite: false,
       ),
@@ -28,8 +28,8 @@ class SearchEngineSuccessWidgetItemV2 extends StatelessWidget {
   }
 }
 
-class _SearchEngineSuccessWidgetItemV2 extends StatelessWidget {
-  const _SearchEngineSuccessWidgetItemV2({
+class _SearchItem extends StatefulWidget {
+  const _SearchItem({
     required this.foodDescription,
     bool? isFavorite,
   }) : _isFavorite = isFavorite ?? false;
@@ -37,12 +37,25 @@ class _SearchEngineSuccessWidgetItemV2 extends StatelessWidget {
   final SurveyFoodsDescription foodDescription;
   final bool? _isFavorite;
 
+  @override
+  State<_SearchItem> createState() => _SearchItemState();
+}
 
+class _SearchItemState extends State<_SearchItem> {
+  // late final ProductDetailsBloc _bloc;
+
+    @override
+  void initState() {
+    super.initState();
+    // _bloc = context.read();
+  }
+  
   @override
   Widget build(BuildContext context) {
         final item = context.select(
       (CompleteFoodBloc bloc) => bloc.state.completeFood,
     );
+
     return InkWell(
       onTap: () async {
         Navigator.push(
@@ -67,18 +80,18 @@ class _SearchEngineSuccessWidgetItemV2 extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
-                      foodDescription.descriptionPL,
+                      widget.foodDescription.descriptionPL,
                       textAlign: TextAlign.center,
                       style: AppTextStyles.subheading(context),
                     ),
                     const SizedBox(height: 10),
                     Text(
-                      foodDescription.description,
+                      widget.foodDescription.description,
                       textAlign: TextAlign.center,
                       style: AppTextStyles.body(context),
                     ),
                     Text(
-                      foodDescription.fdcId.toString(),
+                      widget.foodDescription.fdcId.toString(),
                       textAlign: TextAlign.center,
                       style: AppTextStyles.body(context),
                     ),
@@ -94,11 +107,11 @@ class _SearchEngineSuccessWidgetItemV2 extends StatelessWidget {
                   child: IconButton(
                     onPressed: () {
                       context
-                          .read<FavoriteFoodsV2Bloc>()
-                          .add(AddFavoriteFoodFdcId(foodDescription.fdcId));
+                          .read<FaveBloc>()
+                          .add(AddFave(widget.foodDescription.fdcId));
                     },
                     icon: Icon(
-                      _isFavorite! ? Icons.favorite : Icons.favorite_border,
+                      widget._isFavorite! ? Icons.favorite : Icons.favorite_border,
                       color: Colors.green,
                       size: 30,
                     ),
@@ -111,4 +124,5 @@ class _SearchEngineSuccessWidgetItemV2 extends StatelessWidget {
       ),
     );
   }
+  // void _toggleFavourite() => _bloc.add(const ToggleFavorite());
 }

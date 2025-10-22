@@ -1,16 +1,16 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:nutrivita_demo_v2/pages/bb_search_engine_page/presentation/bloc/search_engine_v2_bloc.dart';
+import 'package:nutrivita_demo_v2/pages/bb_search_engine_page/presentation/bloc/search_bloc.dart';
 
-class MyTextFieldV2 extends StatefulWidget {
-  const MyTextFieldV2({super.key});
+class MyTextField extends StatefulWidget {
+  const MyTextField({super.key});
 
   @override
-  State<MyTextFieldV2> createState() => _MyTextFieldState();
+  State<MyTextField> createState() => _MyTextFieldState();
 }
 
-class _MyTextFieldState extends State<MyTextFieldV2> {
+class _MyTextFieldState extends State<MyTextField> {
   Timer? _debounce;
   final _controller = TextEditingController();
 
@@ -20,7 +20,7 @@ class _MyTextFieldState extends State<MyTextFieldV2> {
     _debounce = Timer(const Duration(milliseconds: 600), () {
       final query = value.trim();
       // jeśli puste, emitujemy pustą listę
-      context.read<SearchEngineV2Bloc>().add(SearchFoodsByPhrase(query));
+      context.read<SearchBloc>().add(Search(query));
     });
   }
 

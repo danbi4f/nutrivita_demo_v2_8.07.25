@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nutrivita_demo_v2/common/mod/custom_container.dart';
 import 'package:nutrivita_demo_v2/common/theme/app_text_style.dart';
-import 'package:nutrivita_demo_v2/pages/cb_favorite_foods/presentation/bloc/favorite_foods_v2_bloc.dart';
-import 'package:nutrivita_demo_v2/pages/cb_favorite_foods/presentation/mod/favorite_foods_success_widget_v2.dart';
+import 'package:nutrivita_demo_v2/pages/cb_fave/presentation/bloc/fave_bloc.dart';
+import 'package:nutrivita_demo_v2/pages/cb_fave/presentation/mod/fave_success_widget.dart';
 import 'package:nutrivita_demo_v2/shared/models/delayed_result.dart';
 
-class FavoriteFoodsWidgetV2 extends StatelessWidget {
-  const FavoriteFoodsWidgetV2({super.key});
+class FaveWidget extends StatelessWidget {
+  const FaveWidget({super.key});
 
   // static Widget withBloc() {
   //   return BlocProvider(
@@ -23,17 +23,17 @@ class FavoriteFoodsWidgetV2 extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomContainer(
       isGradient: true,
-      child: BlocBuilder<FavoriteFoodsV2Bloc, FavoriteFoodsV2State>(
+      child: BlocBuilder<FaveBloc, FaveState>(
         builder: (context, state) {
-          final result = state.favorites;
+          final result = state;
 
-          if (result.isInProgress) {
+          if (result.loadingResult.isInProgress) {
             return const Center(child: CircularProgressIndicator());
-          } else if (result.isError) {
-            print(result.error);
-            return Center(child: Text('error: ${result.error}'));
-          } else if (result.isSuccessful) {
-            final list = result.valueOrNull ?? [];
+          } else if (result.loadingResult.isError) {
+            print(result.loadingResult.error);
+            return Center(child: Text('error: ${result.loadingResult.error}'));
+          } else if (result.loadingResult.isSuccessful) {
+            final list = result.faves;
 
             if (list.isEmpty) {
               return Center(
@@ -44,7 +44,7 @@ class FavoriteFoodsWidgetV2 extends StatelessWidget {
               );
             }
 
-            return FavoriteFoodsSuccessWidgetV2(list: list);
+            return FaveSuccessWidget(list: list);
           } else {
             return Center(
               child: Text(
