@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nutrivita_demo_v2/common/mod/food_details_layout.dart';
-import 'package:nutrivita_demo_v2/pages/ab_categories_page/domain/model/complet_foods.dart';
+import 'package:nutrivita_demo_v2/pages/a_categories_page/domain/model/complet_foods.dart';
 
 class ViewFoodWithNutrients extends StatelessWidget {
   final CompleteFood food;

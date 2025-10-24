@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:nutrivita_demo_v2/pages/ab_categories_page/domain/model/complet_foods.dart';
+import 'package:nutrivita_demo_v2/pages/a_categories_page/domain/model/complet_foods.dart';
 
 class Meal {
   final int? id;

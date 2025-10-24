@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nutrivita_demo_v2/pages/d_meals/presentation/bloc/meals_bloc.dart';
 import 'package:nutrivita_demo_v2/pages/d_meals/domain/model/meal.dart';
-import 'package:nutrivita_demo_v2/pages/ab_categories_page/domain/model/complet_foods.dart';
+import 'package:nutrivita_demo_v2/pages/a_categories_page/domain/model/complet_foods.dart';
 
 class NewRecipePage extends StatefulWidget {
   const NewRecipePage({super.key});

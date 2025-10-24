@@ -3,7 +3,7 @@ import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
 part 'tables/table_meals.dart';
-part '../../../pages/cb_fave/data/service/table_favorites_fdcId.dart';
+part '../../../pages/c_fave/data/service/table_favorites_fdcId.dart';
 part 'tables/table_favorite_food_with_nutrients.dart'; // 🔥 nowa tabela
 
 class DatabaseService {
