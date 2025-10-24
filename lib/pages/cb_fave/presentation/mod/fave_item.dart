@@ -30,9 +30,12 @@ class _FaveItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final item = context.select(
+    final food = context.select(
       (CompleteFoodBloc bloc) => bloc.state.completeFood,
     );
+    if (food.value == null) {
+  return const CircularProgressIndicator(); 
+}
     return Dismissible(
       key: UniqueKey(),
       direction: DismissDirection.horizontal,
@@ -67,7 +70,7 @@ class _FaveItem extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => ViewFoodWithNutrients(food: item.value!),
+              builder: (context) => ViewFoodWithNutrients(food: food.value!),
             ),
           );
         },
@@ -84,20 +87,20 @@ class _FaveItem extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        item.value!.descriptionPL,
+                        food.value!.descriptionPL,
                         style: AppTextStyles.subheading(context),
                         softWrap: true,
                       ),
                       const SizedBox(height: 10),
 
                       Text(
-                        item.value!.description,
+                        food.value!.description,
                         textAlign: TextAlign.start,
                         style: AppTextStyles.body(context),
                         softWrap: true,
                       ),
                       Text(
-                        item.value!.fdcId.toString(),
+                        food.value!.fdcId.toString(),
                         textAlign: TextAlign.start,
                         style: AppTextStyles.body(context),
                         softWrap: true,

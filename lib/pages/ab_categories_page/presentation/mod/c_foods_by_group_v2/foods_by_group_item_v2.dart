@@ -41,7 +41,7 @@ class _FoodsByGroupItemView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _isFavorite = false;
+    //final _isFavorite = false;
     final item = context.select(
       (CompleteFoodBloc bloc) => bloc.state.completeFood,
     );
@@ -93,8 +93,8 @@ class _FoodsByGroupItemView extends StatelessWidget {
                         onPressed: () {
                           
                         },
-                        icon: Icon(
-                          _isFavorite ? Icons.favorite : Icons.favorite_border,
+                        icon: Icon(Icons.favorite_border,
+                          //_isFavorite ? Icons.favorite : Icons.favorite_border,
                           color: Colors.green,
                           size: 30,
                         ),

@@ -5,7 +5,6 @@ import 'package:nutrivita_demo_v2/pages/ab_categories_page/presentation/main/com
 import 'package:nutrivita_demo_v2/pages/ab_categories_page/presentation/main/components/header_title_v2.dart';
 import 'package:nutrivita_demo_v2/pages/ab_categories_page/presentation/mod/a_category_group_v2/category_group_widget_v2.dart';
 part 'components/_main_app_bar_v2.dart';
-part 'components/_background_animated_v2.dart';
 
 class CategoriesPageV2 extends StatefulWidget {
   const CategoriesPageV2({super.key});

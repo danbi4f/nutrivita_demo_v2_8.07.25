@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:nutrivita_demo_v2/pages/ab_categories_page/presentation/main/categories_page_v2.dart';
-import 'package:nutrivita_demo_v2/pages/bb_search/presentation/main/search_widget.dart';
 import 'package:nutrivita_demo_v2/pages/cb_fave/presentation/bloc/fave_bloc.dart';
 import 'package:nutrivita_demo_v2/pages/cb_fave/presentation/main/fave_widget.dart';
 import 'package:nutrivita_demo_v2/pages/d_meals/presentation/main/meals_foods_success_widget_v2.dart';
+import 'package:nutrivita_demo_v2/pages/food/presentation/view/food_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -61,7 +61,7 @@ class _HomePageState extends State<HomePage> {
           index: currentIndex,
           children: [
             _buildNavigator(_navigatorKeys[0], const CategoriesPageV2()),
-            _buildNavigator(_navigatorKeys[1], SearchWidget.withBloc()),
+            _buildNavigator(_navigatorKeys[1], FoodPage()),
             _buildNavigator(_navigatorKeys[2], const FaveWidget()),
             _buildNavigator(_navigatorKeys[3], MealsFoodsSuccessWidgetV2()),
           ],
@@ -91,36 +91,3 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-
-//   // Funkcja otwierająca SelectNumber
-//   // callback openSelectNumber
-//   void openSelectNumber(CategoryGroup category) {
-//     setState(() {
-//       selectedPage = SelectNumber(
-//         category: category,
-//         onSelectNutrient: (nutrientNumber) {
-//           // Znajdź odpowiedni element w liście nutrientsGroup
-//           final nutrient = category.nutrientsGroup.firstWhere(
-//             (n) => n.number == nutrientNumber,
-//           );
-
-//           setState(() {
-//             selectedPage = CutSurveyByCategoryWidget(
-//               nutrientNumber: nutrient.number,
-//               nameRanking: nutrient.name, // <- tu masz teraz dostęp do name
-//               onBack: () {
-//                 // wracamy do SelectNumber
-//                 openSelectNumber(category);
-//               },
-//             );
-//           });
-//         },
-//         onBack: () {
-//           setState(() {
-//             selectedPage = null;
-//           });
-//         },
-//       );
-//     });
-//   }
-// }

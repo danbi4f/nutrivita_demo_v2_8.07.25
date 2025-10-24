@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:nutrivita_demo_v2/pages/bb_search/presentation/bloc/search_bloc.dart';
+import 'package:nutrivita_demo_v2/pages/food/presentation/bloc/food_bloc.dart';
 
 class MyTextField extends StatefulWidget {
   const MyTextField({super.key});
@@ -20,7 +20,7 @@ class _MyTextFieldState extends State<MyTextField> {
     _debounce = Timer(const Duration(milliseconds: 600), () {
       final query = value.trim();
       // jeśli puste, emitujemy pustą listę
-      context.read<SearchBloc>().add(Search(query));
+      context.read<FoodBloc>().add(SearchFoods(query));
     });
   }
 

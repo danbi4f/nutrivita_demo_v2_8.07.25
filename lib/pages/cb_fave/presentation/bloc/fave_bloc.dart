@@ -10,11 +10,11 @@ part 'fave_state.dart';
 
 class FaveBloc extends Bloc<FaveEvent, FaveState> {
   final CombinedDataService combinedDataService;
-  late final InMemoryFavoriteRepository inMemoryFavoriteRepository;
+  late final InMemoryFaveRepository inMemoryFaveRepository;
 
   FaveBloc({required this.combinedDataService})
     : super(const FaveState(faves: [], loadingResult: DelayedResult.idle())) {
-    inMemoryFavoriteRepository = combinedDataService.inMemoryFavoriteRepository;
+    inMemoryFaveRepository = combinedDataService.inMemoryFaveRepository;
 
     on<LoadFaves>(_onLoadFaves);
     on<AddFave>(_onAddFave);
@@ -25,13 +25,18 @@ class FaveBloc extends Bloc<FaveEvent, FaveState> {
   Future<void> _onLoadFaves(LoadFaves event, Emitter<FaveState> emit) async {
     try {
       emit(state.copyWith(loadingResult: const DelayedResult.inProgress()));
-      final List<int> faves = await inMemoryFavoriteRepository.favesFuture;
+      print('🚕🚕🚕loadingResult: const DelayedResult.inProgress()');
+      final List<int> faves = await inMemoryFaveRepository.favesFuture;
+      print('🚕🚕🚕faves loaded: $faves');
 
-      emit(state.copyWith(faves: faves));
-      emit(state.copyWith(loadingResult: const DelayedResult.idle()));
+      emit(
+        state.copyWith(faves: faves, loadingResult: const DelayedResult.idle()),
+      );
+
       await emit.onEach(
-        inMemoryFavoriteRepository.favesStream,
+        inMemoryFaveRepository.favesStream,
         onData: (favesList) {
+          print('🚕🚕🚕favesStream updated: $favesList');
           emit(state.copyWith(faves: favesList));
         },
         onError: (error, stackTrace) {
@@ -50,7 +55,7 @@ class FaveBloc extends Bloc<FaveEvent, FaveState> {
   Future<void> _onAddFave(AddFave event, Emitter<FaveState> emit) async {
     try {
       emit(state.copyWith(loadingResult: const DelayedResult.inProgress()));
-      await inMemoryFavoriteRepository.addFave(event.fdcId);
+      await inMemoryFaveRepository.addFave(event.fdcId);
       emit(state.copyWith(loadingResult: const DelayedResult.idle()));
     } on Exception catch (ex) {
       emit(state.copyWith(loadingResult: DelayedResult.fromError(ex)));
@@ -60,13 +65,14 @@ class FaveBloc extends Bloc<FaveEvent, FaveState> {
   Future<void> _onRemoveFave(RemoveFave event, Emitter<FaveState> emit) async {
     try {
       emit(state.copyWith(loadingResult: const DelayedResult.inProgress()));
-      await inMemoryFavoriteRepository.removeFave(event.fdcId);
+      await inMemoryFaveRepository.removeFave(event.fdcId);
       emit(state.copyWith(loadingResult: const DelayedResult.idle()));
     } on Exception catch (ex) {
       emit(state.copyWith(loadingResult: DelayedResult.fromError(ex)));
     }
   }
-    void _onClearError(ClearError event, Emitter emit) {
+
+  void _onClearError(ClearError event, Emitter emit) {
     emit(state.copyWith(loadingResult: const DelayedResult.idle()));
   }
 }

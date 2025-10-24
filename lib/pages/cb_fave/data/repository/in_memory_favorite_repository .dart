@@ -2,17 +2,17 @@ import 'dart:async';
 
 import 'package:nutrivita_demo_v2/shared/services/database_service/database_service.dart';
 
-class InMemoryFavoriteRepository {
+class InMemoryFaveRepository {
   List<int> _faves = [];
   final DatabaseService _dbService;
 
-  InMemoryFavoriteRepository({required DatabaseService dbService})
+  InMemoryFaveRepository({required DatabaseService dbService})
     : _dbService = dbService;
 
   Future<void> init() async {
     final faves = await _dbService.getFavesFdcId();
-    _favesController.add(List.unmodifiable(_faves));
     _faves.addAll(faves);
+    _favesController.add(List.unmodifiable(_faves));
   }
 
   final StreamController<List<int>> _favesController =

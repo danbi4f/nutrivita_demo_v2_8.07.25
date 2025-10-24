@@ -52,27 +52,29 @@ class CompleteFoodRepository {
   // ============================================================
   // 🔹 FUNKCJA URUCHAMIANA W ISOLATE
   // ============================================================
-  static List<CompleteFood> _search(Map<String, dynamic> data) {
-    final String query = data['query'] as String;
-    final List<CompleteFood> foods = List<CompleteFood>.from(data['foods']);
-    final q = query.toLowerCase();
+static List<CompleteFood> _search(Map<String, dynamic> data) {
+  final String query = data['query'] as String;
+  final List<CompleteFood> foods = List<CompleteFood>.from(data['foods']);
 
-    final filtered = foods.where((food) {
-      final name = food.description.toLowerCase();
-      final namePL = (food.descriptionPL ?? '').toLowerCase();
+  final normalizedQuery = _normalize(query);
 
-      if (name.contains(q) || namePL.contains(q)) {
-        return true;
-      }
+  final filtered = foods.where((food) {
+    final name = _normalize(food.description);
+    final namePL = _normalize(food.descriptionPL);
 
-      final nameDistance = _levenshteinDistance(name, q);
-      final namePLDistance = _levenshteinDistance(namePL, q);
+    if (name.contains(normalizedQuery) || namePL.contains(normalizedQuery)) {
+      return true;
+    }
 
-      return nameDistance <= 2 || namePLDistance <= 2;
-    }).toList();
+    final nameDistance = _levenshteinDistance(name, normalizedQuery);
+    final namePLDistance = _levenshteinDistance(namePL, normalizedQuery);
 
-    return filtered;
-  }
+    return nameDistance <= 2 || namePLDistance <= 2;
+  }).toList();
+
+  return filtered;
+}
+
 
   // ============================================================
   // 🔹 ALGORYTM LEVENSHTEINA
@@ -107,5 +109,22 @@ class CompleteFoodRepository {
 
   static int _min3(int a, int b, int c) =>
       (a < b) ? (a < c ? a : c) : (b < c ? b : c);
+
+
+      static String _normalize(String text) {
+  const polishChars = {
+    'ą': 'a', 'ć': 'c', 'ę': 'e', 'ł': 'l',
+    'ń': 'n', 'ó': 'o', 'ś': 's', 'ż': 'z', 'ź': 'z',
+  };
+
+  final lower = text.toLowerCase();
+  final noDiacritics =
+      lower.split('').map((char) => polishChars[char] ?? char).join();
+
+  return noDiacritics
+      .replaceAll(RegExp(r'[^\p{L}\p{N}]+', unicode: true), ' ')
+      .replaceAll(RegExp(r'\s+'), ' ')
+      .trim();
+}
 
 }
