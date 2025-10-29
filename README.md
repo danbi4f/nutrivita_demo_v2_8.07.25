@@ -2,4 +2,4 @@
 
 A new Flutter project.
 
-![Opis zdjęcia](assets/nutrivita.jpg)
+![Podgląd aplikacji](assets/nutrivita_demo.gif)

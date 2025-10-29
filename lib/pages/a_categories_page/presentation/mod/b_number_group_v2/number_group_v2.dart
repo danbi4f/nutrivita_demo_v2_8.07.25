@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nutrivita_demo_v2/common/mod/custom_container.dart';
+import 'package:nutrivita_demo_v2/common/widgets/custom_container.dart';
 import 'package:nutrivita_demo_v2/common/theme/app_text_style.dart';
 import 'package:nutrivita_demo_v2/pages/a_categories_page/presentation/mod/b_number_group_v2/number_group_item_v2.dart';
 import 'package:nutrivita_demo_v2/pages/a_categories_page/domain/model/survey_foods_by_category/survey_foods_by_category.dart';
@@ -19,7 +19,7 @@ class NumberGroupV2 extends StatelessWidget {
             Navigator.of(context).pop();
           },
         ),
-        backgroundColor: Theme.of(context).colorScheme.onSurfaceVariant,
+        backgroundColor: Colors.white,
         title: Text(
           item.category,
           style: AppTextStyles.heading(context, size: 40),
@@ -28,7 +28,14 @@ class NumberGroupV2 extends StatelessWidget {
       ),
       body: CustomContainer(
         isGradient: true,
-        child: ListView.builder(
+        child: GridView.builder(
+          padding: const EdgeInsets.all(12),
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,           // 2 columns
+            crossAxisSpacing: 12,        // spacing between columns
+            mainAxisSpacing: 12,         // spacing between rows
+            childAspectRatio: 3 / 2,     // adjust height based on content
+          ),
           itemCount: item.nutrients.length,
           itemBuilder: (context, index) {
             final nutrientsByGroup = item.nutrients[index];

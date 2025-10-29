@@ -11,7 +11,8 @@ class _MainAppBarV2 extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: Theme.of(context).colorScheme.onSurfaceVariant,
+      iconTheme: const IconThemeData(color: Colors.black),
+      backgroundColor: Colors.white,
       centerTitle: true,
       title: Text('NutriVita', style: AppTextStyles.heading(context, size: 40)),
       actions: [

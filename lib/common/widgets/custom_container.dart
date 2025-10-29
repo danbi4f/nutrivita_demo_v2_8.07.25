@@ -33,8 +33,10 @@ class CustomContainer extends StatelessWidget {
     return BoxDecoration(
       gradient: LinearGradient(
         colors: [
-          Colors.white.withOpacity(0.2),
-          theme.colorScheme.onPrimaryContainer.withOpacity(0.3),
+          Colors.white,
+          Colors.white,
+          //theme.colorScheme.onPrimaryContainer.withOpacity(0.3),
+          //Colors.green
         ],
         begin: Alignment.topLeft,
         end: Alignment.bottomRight,
@@ -48,24 +50,26 @@ class CustomContainer extends StatelessWidget {
     );
   }
 
-  BoxDecoration boxDecorationCard(BuildContext context) {
-    return BoxDecoration(
-      color: Colors.white70,
-      borderRadius: BorderRadius.circular(borderRadius),
-      boxShadow: [
-        BoxShadow(
-          color: Theme.of(context).colorScheme.surfaceContainerLowest,
-          offset: const Offset(7, 7),
-          blurRadius: 25,
-          spreadRadius: 2,
-        ),
-        BoxShadow(
-          color: Colors.white.withOpacity(0.4),
-          offset: const Offset(-4, -4),
-          blurRadius: 20,
-          spreadRadius: 0,
-        ),
-      ],
-    );
-  }
+BoxDecoration boxDecorationCard(BuildContext context) {
+  return BoxDecoration(
+    color: const Color(0xFFD9E5C4),
+    borderRadius: BorderRadius.circular(borderRadius),
+    boxShadow: [
+      // cień dolny (ciemniejszy, bardzo rozmyty)
+      BoxShadow(
+        color: const Color(0xFFB7CE9E),
+        offset: const Offset(6, 6),
+        blurRadius: 12,
+        spreadRadius: 1,
+      ),
+      // cień górny (jaśniejszy, miękki highlight)
+      BoxShadow(
+        color: Colors.white.withOpacity(0.8),
+        offset: const Offset(-4, -4),
+        blurRadius: 10,
+        spreadRadius: 0,
+      ),
+    ],
+  );
+}
 }

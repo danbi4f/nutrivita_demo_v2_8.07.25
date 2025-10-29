@@ -1,8 +1,6 @@
-import 'package:nutrivita_demo_v2/pages/d_meals/domain/model/meal.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
-part 'tables/table_meals.dart';
 part '../../../pages/c_fave/data/service/table_favorites_fdcId.dart';
 part 'tables/table_favorite_food_with_nutrients.dart'; // 🔥 nowa tabela
 
@@ -24,7 +22,7 @@ class DatabaseService {
 
     return openDatabase(
       path,
-      version: 3, // 🔥 podbijamy wersję
+      version: 3, 
       onCreate: _onCreate,
       onUpgrade: _onUpgrade,
     );
@@ -32,21 +30,19 @@ class DatabaseService {
 
   void _onCreate(Database db, int version) async {
     await db.execute(FavoritesTableFdcId.createTableFavoritesFdcId);
-    await db.execute(MealsTable.createTableMeals);
     await db.execute(
       FavoriteFoodWithNutrientsTable.createTableFavoriteFoodWithNutrients,
-    ); // 🔥 nowa
+    ); 
   }
 
   void _onUpgrade(Database db, int oldVersion, int newVersion) async {
     if (oldVersion < 2) {
-      await db.execute(MealsTable.createTableMeals);
       await db.execute(FavoritesTableFdcId.createTableFavoritesFdcId);
     }
     if (oldVersion < 3) {
       await db.execute(
         FavoriteFoodWithNutrientsTable.createTableFavoriteFoodWithNutrients,
-      ); // 🔥 migracja
+      ); 
     }
   }
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:nutrivita_demo_v2/common/mod/custom_container.dart';
-import 'package:nutrivita_demo_v2/common/mod/view_food_with_nutrients.dart';
+import 'package:nutrivita_demo_v2/common/widgets/custom_container.dart';
+import 'package:nutrivita_demo_v2/common/widgets/view_food_with_nutrients.dart';
 import 'package:nutrivita_demo_v2/common/theme/app_text_style.dart';
 import 'package:nutrivita_demo_v2/pages/a_categories_page/presentation/bloc/complete_food_bloc.dart';
 import 'package:nutrivita_demo_v2/pages/c_fave/presentation/bloc/fave_bloc.dart';
@@ -43,7 +43,7 @@ class _FaveItem extends StatelessWidget {
         context.read<FaveBloc>().add(RemoveFave(fdcId));
       },
 
-      // Swipe od lewej do prawej (ikonka po lewej)
+      // Swipe from left to right (icon on the left)
       background: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
@@ -54,7 +54,7 @@ class _FaveItem extends StatelessWidget {
         child: const Icon(Icons.delete, color: Colors.white),
       ),
 
-      // Swipe od prawej do lewej (ikonka po prawej)
+      // Swipe from right to left (icon on the right)
       secondaryBackground: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
@@ -81,26 +81,13 @@ class _FaveItem extends StatelessWidget {
                 const Icon(Icons.ads_click_rounded, color: Colors.grey),
                 const SizedBox(width: 10),
 
-                /// Kolumna z opisem i rankingiem
+                /// Description and ranking column
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        food.value!.descriptionPL,
-                        style: AppTextStyles.subheading(context),
-                        softWrap: true,
-                      ),
-                      const SizedBox(height: 10),
-
-                      Text(
                         food.value!.description,
-                        textAlign: TextAlign.start,
-                        style: AppTextStyles.body(context),
-                        softWrap: true,
-                      ),
-                      Text(
-                        food.value!.fdcId.toString(),
                         textAlign: TextAlign.start,
                         style: AppTextStyles.body(context),
                         softWrap: true,

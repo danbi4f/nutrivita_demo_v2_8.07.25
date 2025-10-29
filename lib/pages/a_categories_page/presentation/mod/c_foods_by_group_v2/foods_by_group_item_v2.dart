@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:nutrivita_demo_v2/common/mod/custom_container.dart';
-import 'package:nutrivita_demo_v2/common/mod/view_food_with_nutrients.dart';
+import 'package:nutrivita_demo_v2/common/widgets/view_food_with_nutrients.dart';
 import 'package:nutrivita_demo_v2/common/theme/app_text_style.dart';
 import 'package:nutrivita_demo_v2/pages/a_categories_page/domain/model/complet_foods.dart';
 import 'package:nutrivita_demo_v2/pages/a_categories_page/domain/model/survey_foods_by_category/mod/top_food.dart';
@@ -44,39 +43,36 @@ class _FoodsByGroupItemView extends StatelessWidget {
   final String unit;
 
   @override
-Widget build(BuildContext context) {
-  final foodState = context.select((CompleteFoodBloc bloc) => bloc.state.completeFood);
+  Widget build(BuildContext context) {
+    final foodState = context.select(
+      (CompleteFoodBloc bloc) => bloc.state.completeFood,
+    );
 
-  if (foodState.isInProgress) {
-    return const Center(child: CircularProgressIndicator());
+    if (foodState.isInProgress) {
+      return const Center(child: CircularProgressIndicator());
+    }
+
+    if (foodState.isError) {
+      return const Text("Error loading product");
+    }
+
+    final food = foodState.value;
+    if (food == null) {
+      return const Text("No product data available");
+    }
+
+    return InkWell(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ViewFoodWithNutrients(food: food),
+          ),
+        );
+      },
+      child: _CompleteFoodItem.withBloc(topFoodsByGroup, unit, food),
+    );
   }
-
-  if (foodState.isError) {
-    return const Text("Błąd wczytywania produktu");
-  }
-
-  final food = foodState.value;
-  if (food == null) {
-    return const Text("Brak danych o produkcie");
-  }
-
-  return InkWell(
-    onTap: () {
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => ViewFoodWithNutrients(food: food),
-        ),
-      );
-    },
-    child: _CompleteFoodItem.withBloc(
-      topFoodsByGroup,
-      unit,
-      food,
-    ),
-  );
-}
-
 }
 
 class _CompleteFoodItem extends StatefulWidget {
@@ -116,79 +112,91 @@ class _CompleteFoodItemState extends State<_CompleteFoodItem> {
   Widget build(BuildContext context) {
     return BlocBuilder<IsFaveBloc, IsFaveState>(
       builder: (context, state) {
-        return CustomContainer(
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(right: 8.0, left: 8.0, top: 8.0),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+        return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+          child: Container(
+            decoration: BoxDecoration(
+              color: const Color(0xFFD9E5C4),
+              borderRadius: BorderRadius.circular(12),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black12,
+                  blurRadius: 4,
+                  offset: Offset(0, 2),
+                ),
+              ],
+            ),
+            padding: const EdgeInsets.all(12),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                // Opis
+                Text(
+                  widget.topFoodsByGroup.description,
+                  textAlign: TextAlign.center,
+                  style: AppTextStyles.subheading(context),
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 2,
+                ),
+                const SizedBox(height: 10),
+
+                // Row with icons and values
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Icon(Icons.ads_click_rounded, color: Colors.grey),
-                    const SizedBox(width: 10),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text(
-                            widget.topFoodsByGroup.descriptionPL,
-                            textAlign: TextAlign.center,
-                            style: AppTextStyles.subheading(context),
-                          ),
-                          const SizedBox(height: 10),
-                          Text(
-                            widget.topFoodsByGroup.description,
-                            textAlign: TextAlign.center,
-                            style: AppTextStyles.body(context),
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      width: 60,
-                      child: Align(
-                        alignment: Alignment.centerRight,
-                        child: IconButton(
-                          onPressed: () {
-                            _toggleFavourite();
-                          },
+                    // Left part: icons
+                    Row(
+                      children: [
+                        Icon(Icons.ads_click_rounded, color: Colors.grey),
+                        const SizedBox(width: 8),
+                        IconButton(
+                          onPressed: _toggleFavourite,
                           icon: Icon(
                             state.isFave
                                 ? Icons.favorite
                                 : Icons.favorite_border,
                             color: Colors.green,
-                            size: 30,
                           ),
                         ),
+                      ],
+                    ),
+
+                    // Right part: ranking and values
+                    Expanded(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          CircleAvatar(
+                            radius: 14,
+                            backgroundColor: Colors.white,
+                            child: Text(
+                              "${widget.topFoodsByGroup.indexRanking}",
+                              style: AppTextStyles.body(context, isBold: true),
+                            ),
+                          ),
+                          const SizedBox(width: 8),
+                          Flexible(
+                            child: Text(
+                              widget.topFoodsByGroup.rankingName.length > 10
+                                  ? '${widget.topFoodsByGroup.rankingName.substring(0, 10)}…'
+                                  : widget.topFoodsByGroup.rankingName,
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 1,
+                              style: AppTextStyles.body(context, isBold: true),
+                            ),
+                          ),
+                          const SizedBox(width: 8),
+                          Text(
+                            '${widget.topFoodsByGroup.nutrientValue.toStringAsFixed(2)} ${widget.unit}',
+                            style: AppTextStyles.body(context),
+                          ),
+                        ],
                       ),
                     ),
                   ],
                 ),
-              ),
-              const SizedBox(height: 20),
-              Padding(
-                padding: const EdgeInsets.only(right: 20, bottom: 10, left: 20),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    CircleAvatar(
-                      backgroundColor: Colors.green[300],
-                      child: Text(
-                        "${widget.topFoodsByGroup.indexRanking}",
-                        style: AppTextStyles.body(context, isBold: true),
-                      ),
-                    ),
-                    const Spacer(),
-                    Text(
-                      '${widget.topFoodsByGroup.rankingName}    '
-                      '${widget.topFoodsByGroup.nutrientValue.toStringAsFixed(2)} '
-                      '${widget.unit}',
-                      style: AppTextStyles.body(context, isBold: true),
-                    ),
-                  ],
-                ),
-              ),
-            ],
+              ],
+            ),
           ),
         );
       },

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:nutrivita_demo_v2/common/mod/build_info_row.dart';
-import 'package:nutrivita_demo_v2/common/mod/custom_container.dart';
+import 'package:nutrivita_demo_v2/common/widgets/build_info_row.dart';
+import 'package:nutrivita_demo_v2/common/widgets/custom_container.dart';
 import 'package:nutrivita_demo_v2/common/theme/app_text_style.dart';
 
 class FoodDetailsLayout extends StatelessWidget {
@@ -22,7 +22,11 @@ class FoodDetailsLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text('Food Details', style: AppTextStyles.heading(context, size: 30)),
+        centerTitle: true,
+        backgroundColor: Colors.white,
+      ),
       body: CustomContainer(
         isGradient: true,
         child: Padding(
@@ -45,8 +49,6 @@ class FoodDetailsLayout extends StatelessWidget {
                   Text('100 g', style: AppTextStyles.body(context)),
                 ],
               ),
-              const SizedBox(height: 4),
-              Text(descriptionPL, style: AppTextStyles.body(context, size: 20)),
               const Divider(height: 24),
 
               // Informacje podstawowe

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:nutrivita_demo_v2/common/mod/custom_container.dart';
+import 'package:nutrivita_demo_v2/common/theme/app_text_style.dart';
+import 'package:nutrivita_demo_v2/common/widgets/custom_container.dart';
 import 'package:nutrivita_demo_v2/pages/b_food/presentation/bloc/food_bloc.dart';
 import 'package:nutrivita_demo_v2/pages/b_food/presentation/view/widget/complete_food_view.dart';
 import 'package:nutrivita_demo_v2/pages/b_food/presentation/view/widget/my_text_field.dart';
@@ -32,13 +33,16 @@ class _FoodPage extends StatelessWidget {
             .select((FoodBloc bloc) => bloc.state.loadingResult)
             .isInProgress;
     return Scaffold(
-      appBar: AppBar(title: const Text('Foods')),
+      appBar: AppBar(
+        title: Text('Foods', style: AppTextStyles.heading(context, size: 40)),
+        centerTitle: true,
+        backgroundColor: Colors.white,
+      ),
       body: CustomContainer(
         isGradient: true,
         child: Column(
           children: [
             const MyTextField(),
-            const SizedBox(height: 16),
             if (progress) const CircularProgressIndicator(),
             if (foods.isEmpty && !progress)
               const Text(
@@ -47,15 +51,27 @@ class _FoodPage extends StatelessWidget {
               ),
             if (!progress)
               Expanded(
-                child: ListView.builder(
-                  padding: const EdgeInsets.symmetric(vertical: 16),
+                child: GridView.builder(
+                  //padding: const EdgeInsets.all(12),
+                  gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                    maxCrossAxisExtent:
+                        300, // maksymalna szerokość jednej komórki
+                    // mainAxisSpacing: 12,
+                    // crossAxisSpacing: 12,
+                    childAspectRatio:
+                        1.5, // można dostosować dla dłuższych opisów
+                  ),
+        
                   itemCount: foods.length,
                   itemBuilder: (context, index) {
                     final food = foods[index];
                     return CompleteFoodView.withBloc(food);
                   },
+                  // shrinkWrap: true,
+                  // physics: BouncingScrollPhysics(),
                 ),
               ),
+              SizedBox(height: 30),
           ],
         ),
       ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nutrivita_demo_v2/common/mod/custom_container.dart';
+import 'package:nutrivita_demo_v2/common/widgets/custom_container.dart';
 import 'package:nutrivita_demo_v2/common/theme/app_text_style.dart';
 import 'package:nutrivita_demo_v2/shared/services/database_service/database_service.dart';
 
@@ -8,7 +8,6 @@ class SettingPage extends StatelessWidget {
 
   Future<void> resetDatabase(BuildContext context) async {
     final db = await DatabaseService.instance.database;
-    await db.delete(MealsTable.tableNameMeals);
     await db.delete(FavoritesTableFdcId.tableNameFavoritesFdcId);
 
     ScaffoldMessenger.of(

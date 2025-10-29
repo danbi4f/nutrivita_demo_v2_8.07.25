@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:nutrivita_demo_v2/common/mod/custom_container.dart';
-import 'package:nutrivita_demo_v2/common/mod/view_food_with_nutrients.dart';
+import 'package:nutrivita_demo_v2/common/widgets/custom_container.dart';
+import 'package:nutrivita_demo_v2/common/widgets/view_food_with_nutrients.dart';
 import 'package:nutrivita_demo_v2/common/theme/app_text_style.dart';
 import 'package:nutrivita_demo_v2/pages/a_categories_page/domain/model/complet_foods.dart';
 import 'package:nutrivita_demo_v2/pages/b_food/presentation/bloc/cubit/is_fave_bloc.dart';
@@ -23,19 +23,16 @@ class CompleteFoodView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomContainer(
-      isGradient: true,
-      child: InkWell(
-        onTap: () async {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => ViewFoodWithNutrients(food: food),
-            ),
-          );
-        },
-        child: _CompleteFoodItem(food: food),
-      ),
+    return InkWell(
+      onTap: () async {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ViewFoodWithNutrients(food: food),
+          ),
+        );
+      },
+      child: _CompleteFoodItem(food: food),
     );
   }
 }
@@ -62,58 +59,45 @@ class _CompleteFoodItemState extends State<_CompleteFoodItem> {
     return BlocBuilder<IsFaveBloc, IsFaveState>(
       builder: (context, state) {
         return CustomContainer(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Icon(Icons.ads_click_rounded, color: Colors.grey),
-                const SizedBox(width: 10),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // Left icon
+                  const Icon(Icons.ads_click_rounded, color: Colors.grey),
+                  const SizedBox(width: 10),
 
-                /// Teksty
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(
-                        widget.food.descriptionPL,
-                        textAlign: TextAlign.center,
-                        style: AppTextStyles.subheading(context),
-                      ),
-                      const SizedBox(height: 10),
-                      Text(
-                        widget.food.description,
-                        textAlign: TextAlign.center,
-                        style: AppTextStyles.body(context),
-                      ),
-                      Text(
-                        widget.food.fdcId.toString(),
-                        textAlign: TextAlign.center,
-                        style: AppTextStyles.body(context),
-                      ),
-                    ],
-                  ),
-                ),
+                  // Spacer to push heart to the right
+                  Expanded(child: Container()),
 
-                // Ikona serca
-                SizedBox(
-                  width: 60,
-                  child: Align(
-                    alignment: Alignment.centerRight,
-                    child: IconButton(
-                      onPressed: () {
-                        _toggleFavourite();
-                      },
-                      icon: Icon(
-                        state.isFave ? Icons.favorite : Icons.favorite_border,
-                        color: Colors.green,
-                        size: 30,
-                      ),
+                  // Heart icon
+                  IconButton(
+                    onPressed: _toggleFavourite,
+                    icon: Icon(
+                      state.isFave ? Icons.favorite : Icons.favorite_border,
+                      color: Colors.green,
+                      size: 30,
                     ),
                   ),
+                ],
+              ),
+
+              const SizedBox(height: 8),
+
+              // Text description with wrapping
+              Expanded(
+                child: Text(
+                  widget.food.description,
+                  textAlign: TextAlign.center,
+                  softWrap: true,
+                  maxLines: 2,
+                  style: AppTextStyles.body(context),
+                  overflow: TextOverflow.ellipsis,
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         );
       },

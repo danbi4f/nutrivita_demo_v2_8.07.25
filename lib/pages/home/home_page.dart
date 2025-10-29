@@ -4,7 +4,6 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:nutrivita_demo_v2/pages/a_categories_page/presentation/main/categories_page_v2.dart';
 import 'package:nutrivita_demo_v2/pages/c_fave/presentation/bloc/fave_bloc.dart';
 import 'package:nutrivita_demo_v2/pages/c_fave/presentation/main/fave_widget.dart';
-import 'package:nutrivita_demo_v2/pages/d_meals/presentation/main/meals_foods_success_widget_v2.dart';
 import 'package:nutrivita_demo_v2/pages/b_food/presentation/view/food_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -29,7 +28,6 @@ class _HomePageState extends State<HomePage> {
   int currentIndex = 0;
 
   final List<GlobalKey<NavigatorState>> _navigatorKeys = [
-    GlobalKey<NavigatorState>(),
     GlobalKey<NavigatorState>(),
     GlobalKey<NavigatorState>(),
     GlobalKey<NavigatorState>(),
@@ -63,17 +61,16 @@ class _HomePageState extends State<HomePage> {
             _buildNavigator(_navigatorKeys[0], const CategoriesPageV2()),
             _buildNavigator(_navigatorKeys[1], FoodPage()),
             _buildNavigator(_navigatorKeys[2], const FaveWidget()),
-            _buildNavigator(_navigatorKeys[3], MealsFoodsSuccessWidgetV2()),
           ],
         ),
         bottomNavigationBar: Container(
-          color: Theme.of(context).colorScheme.onSurfaceVariant,
+          color: const Color(0xFFD9E5C4),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: GNav(
-              gap: 4,
+              gap: 3,
               tabBorderRadius: 16,
-              backgroundColor: Theme.of(context).colorScheme.onSurfaceVariant,
+              backgroundColor: const Color(0xFFD9E5C4),
               color: Colors.black,
               activeColor: Colors.green[700],
               selectedIndex: currentIndex,
@@ -82,7 +79,6 @@ class _HomePageState extends State<HomePage> {
                 GButton(icon: Icons.category, text: 'Categories', iconSize: 25),
                 GButton(icon: Icons.restaurant, text: 'Food', iconSize: 25),
                 GButton(icon: Icons.favorite, text: 'Favorites', iconSize: 25),
-                GButton(icon: Icons.menu_book, text: 'Recipes', iconSize: 25),
               ],
             ),
           ),
