@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:nutrivita_demo_v2/common/theme/simple_theme.dart';
-import 'package:nutrivita_demo_v2/pages/home/home_page.dart';
+import 'package:nutrivita_demo_v2/config/theme/simple_theme.dart';
+import 'package:nutrivita_demo_v2/features/home/home_page.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

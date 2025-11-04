@@ -1,11 +1,11 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:nutrivita_demo_v2/pages/a_categories_page/presentation/bloc/survey_foods_by_category_bloc.dart';
-import 'package:nutrivita_demo_v2/shared/models/delayed_result.dart';
+import 'package:nutrivita_demo_v2/features/a_categories_page/presentation/bloc/survey_foods_by_category_bloc.dart';
+import 'package:nutrivita_demo_v2/core/utils/delayed_result.dart';
 import 'package:nutrivita_demo_v2/shared/services/combined_data_service.dart';
-import 'package:nutrivita_demo_v2/pages/a_categories_page/data/repository/app_food_repository.dart';
-import 'package:nutrivita_demo_v2/pages/a_categories_page/domain/model/survey_foods_by_category/survey_foods_by_category.dart';
+import 'package:nutrivita_demo_v2/features/a_categories_page/data/repositories/app_food_repository.dart';
+import 'package:nutrivita_demo_v2/features/a_categories_page/domain/model/survey_foods_by_category/survey_foods_by_category.dart';
 
 /// Mocki zależności
 class MockCombinedDataService extends Mock implements CombinedDataService {}

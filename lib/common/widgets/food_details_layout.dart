@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nutrivita_demo_v2/common/widgets/build_info_row.dart';
 import 'package:nutrivita_demo_v2/common/widgets/custom_container.dart';
-import 'package:nutrivita_demo_v2/common/theme/app_text_style.dart';
+import 'package:nutrivita_demo_v2/config/fonts/app_text_style.dart';
 
 class FoodDetailsLayout extends StatelessWidget {
   final String description;

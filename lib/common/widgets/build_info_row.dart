@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nutrivita_demo_v2/common/theme/app_text_style.dart';
+import 'package:nutrivita_demo_v2/config/fonts/app_text_style.dart';
 
 class BuildInfoRow extends StatelessWidget {
   const BuildInfoRow({
