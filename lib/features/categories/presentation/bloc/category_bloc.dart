@@ -1,16 +1,20 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:nutrivita_demo_v2/core/error/failures.dart';
+import 'package:nutrivita_demo_v2/core/usecases/usecase.dart';
 import 'package:nutrivita_demo_v2/features/categories/domain/entities/category_nutrient.dart';
 import 'package:nutrivita_demo_v2/core/utils/delayed_result.dart';
-import 'package:nutrivita_demo_v2/app/combined_data_service.dart';
+import 'package:nutrivita_demo_v2/features/categories/domain/usecases/get_all_categories.dart';
 
 part 'category_event.dart';
 part 'category_state.dart';
 
-class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
-  final CombinedDataService combinedDataService;
+const String CACHE_FAILURE_MESSAGE = 'Cache Failure';
 
-  CategoryBloc({required this.combinedDataService})
+class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
+  final GetAllCategories getAllCategories;
+
+  CategoryBloc({required this.getAllCategories})
     : super(const CategoryState()) {
     on<LoadCategory>(_onLoadCategory);
   }
@@ -20,11 +24,26 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
     Emitter<CategoryState> emit,
   ) async {
     emit(state.copyWith(result: const DelayedResult.inProgress()));
-    final List<CategoryNutrient> categories =
-        await combinedDataService.categoryRepository.getAllCategories();
+    final failureOrData = await getAllCategories(NoParams());
 
-    final result = DelayedResult.fromValue(categories);
+    failureOrData.fold(
+      (failure) => emit(
+        state.copyWith(
+          result: DelayedResult.fromError(
+            Exception(_mapFailureToMessage(failure)),
+          ),
+        ),
+      ),
+      (data) => emit(state.copyWith(result: DelayedResult.fromValue(data))),
+    );
+  }
 
-    emit(state.copyWith(result: result));
+  String _mapFailureToMessage(Failure failure) {
+    switch (failure.runtimeType) {
+      case CacheFailure _:
+        return CACHE_FAILURE_MESSAGE;
+      default:
+        return 'Unexpected error';
+    }
   }
 }

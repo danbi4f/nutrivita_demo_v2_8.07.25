@@ -7,22 +7,24 @@ import 'package:nutrivita_demo_v2/features/categories/data/models/category_nutri
 
 
 /// data they come form JSON files stored in assets and all 8 files come from one file from USDA - FDC Survey Foods (FNDDS)
- 
+ abstract class CategoryLocalDataSource {
+  Future <List<CategoryNutrientModel>> getCategories();
+ }
 
-class CategoryLocalDataSource {
-  CategoryLocalDataSource._internal();
+class CategoryLocalDataSourceImpl implements CategoryLocalDataSource {
+  CategoryLocalDataSourceImpl._internal();
 
-  static final CategoryLocalDataSource _instance =
-      CategoryLocalDataSource._internal();
+  static final CategoryLocalDataSourceImpl _instance =
+      CategoryLocalDataSourceImpl._internal();
 
-  factory CategoryLocalDataSource() => _instance;
+  factory CategoryLocalDataSourceImpl() => _instance;
 
   List<CategoryNutrientModel>? _categories;
 
 
   /// Async factory for initialization
-  static Future<CategoryLocalDataSource> init() async {
-    final service = CategoryLocalDataSource._instance;
+  static Future<CategoryLocalDataSourceImpl> init() async {
+    final service = CategoryLocalDataSourceImpl._instance;
     await service._loadData(); // load JSONs immediately
     return service;
   }
@@ -63,22 +65,7 @@ class CategoryLocalDataSource {
     return _categories!;
   }
 
-  // /// Supports list of fdcIds – returns topFoods belonging to these IDs
-  // Future<List<TopFoodModel>> getTopFoodsForFdcIds(List<int> fdcIds) async {
-  //   await _loadData();
-  //   final List<TopFoodModel> results = [];
-  //   final Set<int> fdcSet = fdcIds.toSet(); // faster search
 
-  //   for (var category in _categories!) {
-  //     for (var nutrient in category.nutrients) {
-  //       results.addAll(
-  //         nutrient.topFoods.where((tf) => fdcSet.contains(tf.fdcId)),
-  //       );
-  //     }
-  //   }
-
-  //   return results;
-  // }
 
 
 }
