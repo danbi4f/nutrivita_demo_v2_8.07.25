@@ -20,6 +20,7 @@ dependencies:
   path: ^1.9.1
   mocktail: ^1.0.4
   bloc_test: ^10.0.0
+  collection: ^1.19.1
 
 dev_dependencies:
   flutter_test:
@@ -32,7 +33,6 @@ flutter:
   assets:
     - assets/USDA3.png
     - assets/nutrivita.jpg
-    - assets/v2/category_group_v2.json
     - assets/v2/sorted_SF_by_category_desc_nolimit/carbohydrates.json
     - assets/v2/sorted_SF_by_category_desc_nolimit/energy.json
     - assets/v2/sorted_SF_by_category_desc_nolimit/fatty_acids.json
@@ -41,7 +41,6 @@ flutter:
     - assets/v2/sorted_SF_by_category_desc_nolimit/proteins.json
     - assets/v2/sorted_SF_by_category_desc_nolimit/sugars.json
     - assets/v2/sorted_SF_by_category_desc_nolimit/vitamins.json
-    - assets/v2/sorted_SF_by_category_desc_nolimit/fdc_ranking_map.json
-    - assets/v2/sorted_SF_by_category_desc_nolimit/foods_extracted_description.json
+
 
     

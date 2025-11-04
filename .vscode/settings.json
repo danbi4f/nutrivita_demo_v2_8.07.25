@@ -122,6 +122,127 @@
         {
             "folderPath": "nutrivita_demo_v2_8.07.25\\lib\\pages\\food\\",
             "color": "foldercolorizer.color_00cccc"
+        },
+        {
+            "folderPath": "nutrivita_demo_v2_8.07.25\\test\\",
+            "color": "foldercolorizer.color_333333"
+        },
+        {
+            "folderPath": "nutrivita_demo_v2_8.07.25\\lib\\features\\categories\\domain\\",
+            "color": "foldercolorizer.color_00cc00"
+        },
+        {
+            "folderPath": "nutrivita_demo_v2_8.07.25\\lib\\"
+        },
+        {
+            "folderPath": "nutrivita_demo_v2_8.07.25\\lib\\app\\"
+        },
+        {
+            "folderPath": "nutrivita_demo_v2_8.07.25\\lib\\app\\di\\"
+        },
+        {
+            "folderPath": "nutrivita_demo_v2_8.07.25\\lib\\app\\di\\injection_container.dart\\"
+        },
+        {
+            "folderPath": "nutrivita_demo_v2_8.07.25\\lib\\app\\home\\"
+        },
+        {
+            "folderPath": "nutrivita_demo_v2_8.07.25\\lib\\app\\my_app.dart\\"
+        },
+        {
+            "folderPath": "nutrivita_demo_v2_8.07.25\\lib\\common\\widgets\\"
+        },
+        {
+            "folderPath": "nutrivita_demo_v2_8.07.25\\lib\\common\\widgets\\build_info_row.dart\\"
+        },
+        {
+            "folderPath": "nutrivita_demo_v2_8.07.25\\lib\\common\\widgets\\custom_container.dart\\"
+        },
+        {
+            "folderPath": "nutrivita_demo_v2_8.07.25\\lib\\common\\widgets\\food_details_layout.dart\\"
+        },
+        {
+            "folderPath": "nutrivita_demo_v2_8.07.25\\lib\\common\\widgets\\view_food_with_nutrients.dart\\"
+        },
+        {
+            "folderPath": "nutrivita_demo_v2_8.07.25\\lib\\config\\"
+        },
+        {
+            "folderPath": "nutrivita_demo_v2_8.07.25\\lib\\core\\"
+        },
+        {
+            "folderPath": "nutrivita_demo_v2_8.07.25\\lib\\core\\usecases\\"
+        },
+        {
+            "folderPath": "nutrivita_demo_v2_8.07.25\\lib\\core\\utils\\"
+        },
+        {
+            "folderPath": "nutrivita_demo_v2_8.07.25\\lib\\core\\utils\\conversion_service.dart\\"
+        },
+        {
+            "folderPath": "nutrivita_demo_v2_8.07.25\\lib\\core\\utils\\delayed_result.dart\\"
+        },
+        {
+            "folderPath": "nutrivita_demo_v2_8.07.25\\lib\\features\\"
+        },
+        {
+            "folderPath": "nutrivita_demo_v2_8.07.25\\lib\\features\\categories\\",
+            "color": "foldercolorizer.color_00ccff"
+        },
+        {
+            "folderPath": "nutrivita_demo_v2_8.07.25\\lib\\features\\faves\\data\\"
+        },
+        {
+            "folderPath": "nutrivita_demo_v2_8.07.25\\lib\\features\\faves\\data\\model\\"
+        },
+        {
+            "folderPath": "nutrivita_demo_v2_8.07.25\\lib\\features\\faves\\data\\repository\\"
+        },
+        {
+            "folderPath": "nutrivita_demo_v2_8.07.25\\lib\\features\\faves\\data\\repository\\in_memory_favorite_repository .dart\\"
+        },
+        {
+            "folderPath": "nutrivita_demo_v2_8.07.25\\lib\\features\\faves\\data\\service\\"
+        },
+        {
+            "folderPath": "nutrivita_demo_v2_8.07.25\\lib\\features\\faves\\domain\\"
+        },
+        {
+            "folderPath": "nutrivita_demo_v2_8.07.25\\lib\\features\\faves\\presentation\\"
+        },
+        {
+            "folderPath": "nutrivita_demo_v2_8.07.25\\lib\\features\\faves\\presentation\\bloc\\"
+        },
+        {
+            "folderPath": "nutrivita_demo_v2_8.07.25\\lib\\features\\faves\\presentation\\pages\\"
+        },
+        {
+            "folderPath": "nutrivita_demo_v2_8.07.25\\lib\\features\\faves\\presentation\\widgets\\"
+        },
+        {
+            "folderPath": "nutrivita_demo_v2_8.07.25\\lib\\features\\faves\\presentation\\widgets\\fave_item.dart\\"
+        },
+        {
+            "folderPath": "nutrivita_demo_v2_8.07.25\\lib\\features\\faves\\presentation\\widgets\\fave_success_widget.dart\\"
+        },
+        {
+            "folderPath": "nutrivita_demo_v2_8.07.25\\lib\\features\\settings\\"
+        },
+        {
+            "folderPath": "nutrivita_demo_v2_8.07.25\\lib\\shared\\services\\"
+        },
+        {
+            "folderPath": "nutrivita_demo_v2_8.07.25\\lib\\shared\\services\\database_service\\"
+        },
+        {
+            "folderPath": "nutrivita_demo_v2_8.07.25\\lib\\shared\\services\\combined_data_service.dart\\"
+        },
+        {
+            "folderPath": "nutrivita_demo_v2_8.07.25\\lib\\main.dart\\"
+        },
+        {
+            "folderPath": "nutrivita_demo_v2_8.07.25\\lib\\features\\foods\\",
+            "color": "foldercolorizer.color_00cc00"
         }
     ]
 }
