@@ -1,23 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nutrivita_demo_v2/app/combined_data_service.dart';
-import 'package:nutrivita_demo_v2/features/categories/domain/usecases/get_all_categories.dart';
 import 'package:nutrivita_demo_v2/features/categories/presentation/bloc/category_bloc.dart';
-import 'package:nutrivita_demo_v2/features/categories/presentation/widgets/a_category_group_v2/category_group_Success_widget_v2.dart';
+import 'package:nutrivita_demo_v2/features/categories/presentation/widgets/category_group/category_group_Success_widget.dart';
 import 'package:nutrivita_demo_v2/core/utils/delayed_result.dart';
 
-class CategoryGroupWidgetV2 extends StatelessWidget {
-  const CategoryGroupWidgetV2({super.key});
+class CategoryGroupWidget extends StatelessWidget {
+  const CategoryGroupWidget({super.key});
 
   static Widget withBloc() {
     return BlocProvider(
       create:
           (context) => CategoryBloc(
-            getAllCategories: GetAllCategories(
-              context.read<CombinedDataService>().categoryRepository,
-            ),
+            getAllCategories:
+                context.read<CombinedDataService>().getAllCategories,
           )..add(LoadCategory()),
-      child: const CategoryGroupWidgetV2(),
+      child: const CategoryGroupWidget(),
     );
   }
 
@@ -42,7 +40,7 @@ class CategoryGroupWidgetV2 extends StatelessWidget {
           );
         } else if (result.isSuccessful) {
           final categories = result.valueOrNull ?? [];
-          return CategoryGroupSuccessWidgetV2(categories: categories);
+          return CategoryGroupSuccessWidget(categories: categories);
         } else {
           return const Center(child: Text('Brak danych'));
         }

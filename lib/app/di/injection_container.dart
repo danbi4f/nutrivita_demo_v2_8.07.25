@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nutrivita_demo_v2/features/categories/data/repositories/category_repository_impl.dart';
+import 'package:nutrivita_demo_v2/features/categories/domain/usecases/get_all_categories.dart';
 import 'package:nutrivita_demo_v2/features/faves/domain/usecases/add_fave.dart';
 import 'package:nutrivita_demo_v2/features/faves/domain/usecases/get_faves_future.dart';
 import 'package:nutrivita_demo_v2/features/faves/domain/usecases/get_faves_stream.dart';
@@ -10,7 +11,10 @@ import 'package:nutrivita_demo_v2/features/categories/data/datasources/category_
 import 'package:nutrivita_demo_v2/features/faves/data/repository/in_memory_favorite_repository%20.dart';
 import 'package:nutrivita_demo_v2/app/combined_data_service.dart';
 import 'package:nutrivita_demo_v2/features/faves/data/database/database_service.dart';
+import 'package:nutrivita_demo_v2/features/foods/domain/usecases/get_all_foods.dart';
 import 'package:nutrivita_demo_v2/features/foods/domain/usecases/get_food_by_fdcid.dart';
+import 'package:nutrivita_demo_v2/features/foods/domain/usecases/get_foods_by_fdcids.dart';
+import 'package:nutrivita_demo_v2/features/foods/domain/usecases/search_foods.dart';
 
 Future<List<RepositoryProvider>> buildRepositories({
   CategoryLocalDataSource? surveySvc,
@@ -42,8 +46,17 @@ Future<List<RepositoryProvider>> buildRepositories({
   final GetFavesStream favesStream = GetFavesStream(inMemoryFaveRepository);
   final AddToFaveUseCase addFave = AddToFaveUseCase(inMemoryFaveRepository);
   final RemoveFaveUseCase removeFave = RemoveFaveUseCase(inMemoryFaveRepository);
-  final GetFoodByFdcId getFoodByFdcId = GetFoodByFdcId(foodRepository);
 
+
+  //-----------------------------------------------------------------------------------
+  final GetFoodByFdcId getFoodByFdcId = GetFoodByFdcId(foodRepository);
+  final GetAllFoods getAllFoods = GetAllFoods(foodRepository);
+  final GetFoodsByFdcids getFoodsByFdcids = GetFoodsByFdcids(foodRepository);
+  final SearchFoodsUseCase searchFoodsUseCase = SearchFoodsUseCase(foodRepository);
+  
+//------------------------------------------------------------------------------------
+
+final GetAllCategories getAllCategories = GetAllCategories(categoryRepository);
 
 
   //-----------------------------------------------------------------------------------
@@ -56,6 +69,10 @@ Future<List<RepositoryProvider>> buildRepositories({
     favesFuture: favesFuture,
     favesStream: favesStream,
     getFoodByFdcId: getFoodByFdcId,
+    getAllFoods: getAllFoods,
+    getFoodsByFdcids: getFoodsByFdcids,
+    searchFoodsUseCase: searchFoodsUseCase,
+    getAllCategories: getAllCategories,
 
   );
 

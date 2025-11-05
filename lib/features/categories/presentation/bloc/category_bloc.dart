@@ -14,9 +14,11 @@ const String CACHE_FAILURE_MESSAGE = 'Cache Failure';
 class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
   final GetAllCategories getAllCategories;
 
-  CategoryBloc({required this.getAllCategories})
-    : super(const CategoryState()) {
+
+  CategoryBloc({required this.getAllCategories, })
+    : super(const CategoryState(result: DelayedResult.idle())) {
     on<LoadCategory>(_onLoadCategory);
+
   }
 
   Future<void> _onLoadCategory(
@@ -46,4 +48,6 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
         return 'Unexpected error';
     }
   }
+
+
 }

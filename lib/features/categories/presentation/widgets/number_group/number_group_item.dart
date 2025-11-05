@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nutrivita_demo_v2/config/fonts/app_text_style.dart';
 import 'package:nutrivita_demo_v2/common/widgets/custom_container.dart';
 import 'package:nutrivita_demo_v2/features/categories/domain/entities/nutrient_number.dart';
-import 'package:nutrivita_demo_v2/features/categories/presentation/widgets/c_foods_by_group_v2/foods_by_group_v2.dart';
+import 'package:nutrivita_demo_v2/features/categories/presentation/bloc/category_bloc.dart';
+import 'package:nutrivita_demo_v2/features/categories/presentation/widgets/foods_by_group/foods_by_group.dart';
 
-class NumberGroupItemV2 extends StatelessWidget {
+class NumberGroupItem extends StatelessWidget {
   final NutrientNumber nutrientByGroup;
 
-  const NumberGroupItemV2({super.key, required this.nutrientByGroup});
+  const NumberGroupItem({super.key, required this.nutrientByGroup});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +19,9 @@ class NumberGroupItemV2 extends StatelessWidget {
           context,
           MaterialPageRoute(
             builder:
-                (context) => FoodsByGroupV2(nutrientByGroup: nutrientByGroup),
+                (_) => BlocProvider.value(value: context.read<CategoryBloc>(),
+                  child: FoodsByGroup(nutrientByGroup: nutrientByGroup),
+                ),
           ),
         );
       },
@@ -34,7 +38,7 @@ class NumberGroupItemV2 extends StatelessWidget {
             ),
             const SizedBox(height: 6),
             Text(
-              nutrientByGroup.nutrientNumber,
+              'test1: ${nutrientByGroup.nutrientNumber}',
               style: AppTextStyles.subheading(context),
             ),
           ],

@@ -31,7 +31,7 @@ class IsFaveBloc extends Bloc<IsFaveEvent, IsFaveState> {
         add(_SyncIsFaveState(isNowFave)); // internal event, see below
       },
       onError: (error) {
-        debugPrint('❌ Błąd streamu ulubionych: $error');
+        debugPrint('❌ Favorites stream error: $error');
       },
     );
 

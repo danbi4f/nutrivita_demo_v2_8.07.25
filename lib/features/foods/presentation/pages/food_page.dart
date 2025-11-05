@@ -11,8 +11,7 @@ class FoodPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const _FoodPage();
-    
+    return  _FoodPage();
   }
 }
 
@@ -46,23 +45,22 @@ class _FoodPage extends StatelessWidget {
             if (!progress)
               Expanded(
                 child: GridView.builder(
-
                   gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                    maxCrossAxisExtent:
-                        300, // maximum width of one cell
+                    maxCrossAxisExtent: 300, // maximum width of one cell
 
                     childAspectRatio:
                         1.5, // can be adjusted for longer descriptions
                   ),
-        
+
                   itemCount: foods.length,
                   itemBuilder: (context, index) {
-                    final food = foods[index];
+                    final food = foods.elementAt(index);
+
                     return CompleteFoodView.withBloc(food);
                   },
                 ),
               ),
-              SizedBox(height: 30),
+            SizedBox(height: 30),
           ],
         ),
       ),

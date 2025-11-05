@@ -17,7 +17,7 @@ class FoodRepositoryImpl extends FoodRepository {
 
   /// Download all products (e.g. to cache or filter)
   @override
-  Future<List<FoodModel>> getAllCompleteFoods() async {
+  Future<List<FoodModel>> getAllFoods() async {
     if (_cachedFoods != null) return _cachedFoods!;
     final categories = await localDataSource.getCategories();
     _cachedFoods = conversionService.fromCategory(categories);
@@ -26,8 +26,8 @@ class FoodRepositoryImpl extends FoodRepository {
 
   /// Download the FoodWithNutrients list based on the fdcIds list
   @override
-  Future<List<FoodModel>> getCompleteFoodsByFdcIds(List<int> fdcIds) async {
-    final foods = await getAllCompleteFoods();
+  Future<List<FoodModel>> getFoodsByFdcIds(List<int> fdcIds) async {
+    final foods = await getAllFoods();
     final fdcSet = fdcIds.toSet();
     return foods.where((f) => fdcSet.contains(f.fdcId)).toList();
   }
@@ -35,7 +35,7 @@ class FoodRepositoryImpl extends FoodRepository {
   /// 🔹 NEW: Download single product based on single fdcId
 @override
 Future<FoodModel?> getFoodById(int fdcId) async {
-  final foods = await getAllCompleteFoods();
+  final foods = await getAllFoods();
   return foods.firstWhereOrNull((f) => f.fdcId == fdcId);
 }
 
@@ -44,7 +44,7 @@ Future<FoodModel?> getFoodById(int fdcId) async {
   // ============================================================
   @override
   Future<List<FoodModel>> searchFoods(String query) async {
-    final allFoods = await getAllCompleteFoods();
+    final allFoods = await getAllFoods();
 
     if (query.isEmpty) {
       return allFoods;

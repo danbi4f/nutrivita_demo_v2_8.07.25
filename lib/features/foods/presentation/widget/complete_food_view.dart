@@ -4,7 +4,7 @@ import 'package:nutrivita_demo_v2/common/widgets/custom_container.dart';
 import 'package:nutrivita_demo_v2/common/widgets/view_food_with_nutrients.dart';
 import 'package:nutrivita_demo_v2/config/fonts/app_text_style.dart';
 import 'package:nutrivita_demo_v2/features/foods/domain/entities/food.dart';
-import 'package:nutrivita_demo_v2/features/foods/presentation/bloc/cubit/is_fave_bloc.dart';
+import 'package:nutrivita_demo_v2/features/foods/presentation/bloc/is_fave_bloc.dart';
 import 'package:nutrivita_demo_v2/app/combined_data_service.dart';
 
 class CompleteFoodView extends StatelessWidget {

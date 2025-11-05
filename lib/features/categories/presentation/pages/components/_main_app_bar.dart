@@ -1,7 +1,7 @@
-part of '../categories_page_v2.dart';
+part of '../categories_page.dart';
 
-class _MainAppBarV2 extends StatelessWidget implements PreferredSizeWidget {
-  const _MainAppBarV2(
+class _MainAppBar extends StatelessWidget implements PreferredSizeWidget {
+  const _MainAppBar(
   );
 
 

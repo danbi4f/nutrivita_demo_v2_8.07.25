@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:nutrivita_demo_v2/common/widgets/custom_container.dart';
 import 'package:nutrivita_demo_v2/config/fonts/app_text_style.dart';
 import 'package:nutrivita_demo_v2/features/categories/domain/entities/category_nutrient.dart';
-import 'package:nutrivita_demo_v2/features/categories/presentation/widgets/b_number_group_v2/number_group_item_v2.dart';
+import 'package:nutrivita_demo_v2/features/categories/presentation/widgets/number_group/number_group_item.dart';
 
-class NumberGroupV2 extends StatelessWidget {
+class NumberGroup extends StatelessWidget {
   final CategoryNutrient item;
 
-  const NumberGroupV2({required this.item, super.key});
+  const NumberGroup({required this.item, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +39,7 @@ class NumberGroupV2 extends StatelessWidget {
           itemCount: item.nutrients.length,
           itemBuilder: (context, index) {
             final nutrientsByGroup = item.nutrients[index];
-            return NumberGroupItemV2(nutrientByGroup: nutrientsByGroup);
+            return NumberGroupItem(nutrientByGroup: nutrientsByGroup);
           },
         ),
       ),

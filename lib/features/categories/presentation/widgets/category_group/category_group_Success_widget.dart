@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:nutrivita_demo_v2/features/categories/domain/entities/category_nutrient.dart';
-import 'package:nutrivita_demo_v2/features/categories/presentation/widgets/a_category_group_v2/category_group_item_v2.dart';
+import 'package:nutrivita_demo_v2/features/categories/presentation/widgets/category_group/category_group_item.dart';
 
-class CategoryGroupSuccessWidgetV2 extends StatelessWidget {
+class CategoryGroupSuccessWidget extends StatelessWidget {
   final List<CategoryNutrient> categories;
 
-  const CategoryGroupSuccessWidgetV2({super.key, required this.categories});
+  const CategoryGroupSuccessWidget({super.key, required this.categories});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class CategoryGroupSuccessWidgetV2 extends StatelessWidget {
       padding: EdgeInsets.zero,
       itemBuilder: (context, index) {
         final category = categories[index];
-        return CategoryGroupItemV2(item: category);
+        return CategoryGroupItem(item: category);
       },
     );
   }

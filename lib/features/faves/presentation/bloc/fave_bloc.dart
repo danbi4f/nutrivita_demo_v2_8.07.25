@@ -77,7 +77,7 @@ class FaveBloc extends Bloc<FaveEvent, FaveState> {
 
   Future<void> _onAddFave(AddFave event, Emitter<FaveState> emit) async {
     emit(state.copyWith(loadingResult: const DelayedResult.inProgress()));
-    final failureOrData = await addFave(Params(fdcId: event.fdcId));
+    final failureOrData = await addFave(IdParams(fdcId: event.fdcId));
 
     failureOrData.fold(
       (failure) => emit(
@@ -91,7 +91,7 @@ class FaveBloc extends Bloc<FaveEvent, FaveState> {
 
   Future<void> _onRemoveFave(RemoveFave event, Emitter<FaveState> emit) async {
     emit(state.copyWith(loadingResult: const DelayedResult.inProgress()));
-    final failureOrData = await removeFave(Params(fdcId: event.fdcId));
+    final failureOrData = await removeFave(IdParams(fdcId: event.fdcId));
 
     failureOrData.fold(
       (failure) => emit(

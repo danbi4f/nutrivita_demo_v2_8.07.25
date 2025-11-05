@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:nutrivita_demo_v2/features/categories/presentation/pages/categories_page_v2.dart';
+import 'package:nutrivita_demo_v2/features/categories/presentation/pages/categories_page.dart';
 import 'package:nutrivita_demo_v2/features/faves/presentation/bloc/fave_bloc.dart';
 import 'package:nutrivita_demo_v2/features/faves/presentation/pages/fave_widget.dart';
 import 'package:nutrivita_demo_v2/features/foods/presentation/bloc/food_bloc.dart';
@@ -32,8 +32,9 @@ class HomePage extends StatefulWidget {
         BlocProvider(
           create:
               (context) => FoodBloc(
-                foodRepository:
-                    context.read<CombinedDataService>().foodRepository,
+                getAllFoods: context.read<CombinedDataService>().getAllFoods,
+                searchFoods:
+                    context.read<CombinedDataService>().searchFoodsUseCase,
               )..add(FetchFoods()),
         ),
       ],
@@ -76,7 +77,7 @@ class _HomePageState extends State<HomePage> {
         body: IndexedStack(
           index: currentIndex,
           children: [
-            _buildNavigator(_navigatorKeys[0], const CategoriesPageV2()),
+            _buildNavigator(_navigatorKeys[0], const CategoriesPage()),
             _buildNavigator(_navigatorKeys[1], FoodPage()),
             _buildNavigator(_navigatorKeys[2], const FaveWidget()),
           ],
