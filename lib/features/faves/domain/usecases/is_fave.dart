@@ -1,0 +1,22 @@
+import 'package:dartz/dartz.dart';
+import 'package:nutrivita_demo_v2/core/error/failures.dart';
+import 'package:nutrivita_demo_v2/core/usecases/usecase.dart';
+import 'package:nutrivita_demo_v2/features/faves/domain/repositories/faves_repository.dart';
+
+class IsFave implements UseCase<bool, Params> {
+  final FavesRepository repository;
+
+  IsFave(this.repository);
+
+  @override
+  Future<Either<Failure, bool>> call(Params params) async {
+    try {
+      final data = await repository.isFave(params.fdcId);
+      return Right(data);
+    } catch (_) {
+      return Left(DatabaseFailure());
+    }
+  }
+}
+
+

@@ -1,3 +1,4 @@
+import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
 import 'package:nutrivita_demo_v2/features/categories/data/datasources/category_local_data_source.dart';
 import 'package:nutrivita_demo_v2/features/foods/data/models/food_model.dart';
@@ -32,15 +33,11 @@ class FoodRepositoryImpl extends FoodRepository {
   }
 
   /// 🔹 NEW: Download single product based on single fdcId
-  @override
-  Future<FoodModel?> getCompleteFoodByFdcId(int fdcId) async {
-    final foods = await getAllCompleteFoods();
-    try {
-      return foods.firstWhere((f) => f.fdcId == fdcId);
-    } catch (e) {
-      return null;
-    }
-  }
+@override
+Future<FoodModel?> getFoodById(int fdcId) async {
+  final foods = await getAllCompleteFoods();
+  return foods.firstWhereOrNull((f) => f.fdcId == fdcId);
+}
 
   // ============================================================
   // 🔹 MAIN SEARCH METHOD

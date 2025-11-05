@@ -46,14 +46,13 @@ class _FoodPage extends StatelessWidget {
             if (!progress)
               Expanded(
                 child: GridView.builder(
-                  //padding: const EdgeInsets.all(12),
+
                   gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
                     maxCrossAxisExtent:
-                        300, // maksymalna szerokość jednej komórki
-                    // mainAxisSpacing: 12,
-                    // crossAxisSpacing: 12,
+                        300, // maximum width of one cell
+
                     childAspectRatio:
-                        1.5, // można dostosować dla dłuższych opisów
+                        1.5, // can be adjusted for longer descriptions
                   ),
         
                   itemCount: foods.length,
@@ -61,8 +60,6 @@ class _FoodPage extends StatelessWidget {
                     final food = foods[index];
                     return CompleteFoodView.withBloc(food);
                   },
-                  // shrinkWrap: true,
-                  // physics: BouncingScrollPhysics(),
                 ),
               ),
               SizedBox(height: 30),

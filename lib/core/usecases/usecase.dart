@@ -10,3 +10,17 @@ class NoParams extends Equatable {
   @override
   List<Object> get props => [];
 }
+
+abstract class StreamUseCase<Result, Params> {
+  Stream<Either<Failure, Result>> call(Params params);
+}
+
+
+class Params extends Equatable {
+  final int fdcId;
+
+  const Params({required this.fdcId});
+
+  @override
+  List<Object> get props => [fdcId];
+}

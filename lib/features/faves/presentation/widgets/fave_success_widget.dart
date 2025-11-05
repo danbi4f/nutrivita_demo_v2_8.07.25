@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nutrivita_demo_v2/features/faves/presentation/widgets/fave_item.dart';
-import 'package:nutrivita_demo_v2/features/foods/presentation/bloc/food_bloc.dart';
+import 'package:nutrivita_demo_v2/features/foods/domain/entities/food.dart';
 import 'package:collection/collection.dart';
 
 class FaveSuccessWidget extends StatelessWidget {
-  const FaveSuccessWidget({super.key, required this.list});
+  const FaveSuccessWidget({super.key, required this.listInt, required this.foods});
 
-  final List<int> list;
+  final List<int> listInt;
+  final List<Food> foods;
 
   @override
   Widget build(BuildContext context) {
-    final foods = context.select((FoodBloc bloc) => bloc.state);
+
     return ListView.builder(
-      itemCount: list.length,
+      itemCount: listInt.length,
       itemBuilder: (context, index) {
-        final fdcId = list[index];
-        final food = foods.foods.firstWhereOrNull((f) => f.fdcId == fdcId);
+        final fdcId = listInt[index];
+        final food = foods.firstWhereOrNull((food) => food.fdcId == fdcId);
         if (food == null) {
           return ListTile(
             title: Text('Food item with FDC ID $fdcId not found'),

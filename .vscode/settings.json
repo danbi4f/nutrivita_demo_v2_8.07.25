@@ -231,6 +231,25 @@
         },
         {
             "folderPath": "nutrivita_demo_v2_8.07.25\\lib\\main.dart\\"
+        },
+        {
+            "folderPath": "nutrivita_demo_v2_8.07.25\\test\\bloc\\",
+            "color": "foldercolorizer.color_eeeeee"
+        },
+        {
+            "folderPath": "nutrivita_demo_v2_8.07.25\\test\\bloc\\survey_foods_by_category_bloc_test.dart\\"
+        },
+        {
+            "folderPath": "nutrivita_demo_v2_8.07.25\\lib\\features\\categories\\",
+            "color": "foldercolorizer.color_00ccff"
+        },
+        {
+            "folderPath": "nutrivita_demo_v2_8.07.25\\lib\\features\\faves\\",
+            "color": "foldercolorizer.color_00cc33"
+        },
+        {
+            "folderPath": "nutrivita_demo_v2_8.07.25\\lib\\features\\foods\\",
+            "color": "foldercolorizer.color_ff00ff"
         }
     ]
 }

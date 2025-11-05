@@ -28,10 +28,12 @@ class FaveWidget extends StatelessWidget {
             }
           },
           builder: (context, state) {
-            final result = state.faves;
-            print('🚕🚕🚕FaveWidget rebuild with state: ${result.length}');
+            final resultInt = state.faves;
+            final resultFoods = state.foods;
+            print('🚕🚕🚕FaveWidget rebuild with resultInt: ${resultInt.length}');
+            print('🚕🚕🚕FaveWidget rebuild with resultFoods: ${resultFoods.length}');
       
-            if (result.isEmpty) {
+            if (resultInt.isEmpty) {
               return Center(
                 child: Text(
                   'No favorite products',
@@ -40,7 +42,7 @@ class FaveWidget extends StatelessWidget {
               );
             }
       
-            return FaveSuccessWidget(list: result);
+            return FaveSuccessWidget(listInt: resultInt, foods: resultFoods);
           },
         ),
       ),

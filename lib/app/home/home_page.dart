@@ -20,14 +20,20 @@ class HomePage extends StatefulWidget {
         BlocProvider<FaveBloc>(
           create:
               (context) => FaveBloc(
-                favesRepository:
-                    context.read<CombinedDataService>().inMemoryFaveRepository,
+                favesFuture: context.read<CombinedDataService>().favesFuture,
+                favesStream: context.read<CombinedDataService>().favesStream,
+                addFave: context.read<CombinedDataService>().addToFaveUseCase,
+                removeFave:
+                    context.read<CombinedDataService>().removeFaveUseCase,
+                getFoodByFdcId:
+                    context.read<CombinedDataService>().getFoodByFdcId,
               )..add(LoadFaves()),
         ),
         BlocProvider(
           create:
               (context) => FoodBloc(
-                foodRepository: context.read<CombinedDataService>().foodRepository,
+                foodRepository:
+                    context.read<CombinedDataService>().foodRepository,
               )..add(FetchFoods()),
         ),
       ],
