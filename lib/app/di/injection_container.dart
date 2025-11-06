@@ -4,6 +4,7 @@ import 'package:nutrivita_demo_v2/features/categories/domain/usecases/get_all_ca
 import 'package:nutrivita_demo_v2/features/faves/domain/usecases/add_fave.dart';
 import 'package:nutrivita_demo_v2/features/faves/domain/usecases/get_faves_future.dart';
 import 'package:nutrivita_demo_v2/features/faves/domain/usecases/get_faves_stream.dart';
+import 'package:nutrivita_demo_v2/features/faves/domain/usecases/is_fave.dart';
 import 'package:nutrivita_demo_v2/features/faves/domain/usecases/remove_fave.dart';
 import 'package:nutrivita_demo_v2/features/foods/data/repositories/food_repository_impl.dart';
 import 'package:nutrivita_demo_v2/core/utils/conversion_service.dart';
@@ -53,6 +54,7 @@ Future<List<RepositoryProvider>> buildRepositories({
   final GetAllFoods getAllFoods = GetAllFoods(foodRepository);
   final GetFoodsByFdcids getFoodsByFdcids = GetFoodsByFdcids(foodRepository);
   final SearchFoodsUseCase searchFoodsUseCase = SearchFoodsUseCase(foodRepository);
+  final IsFave isFave = IsFave(inMemoryFaveRepository);
   
 //------------------------------------------------------------------------------------
 
@@ -73,6 +75,7 @@ final GetAllCategories getAllCategories = GetAllCategories(categoryRepository);
     getFoodsByFdcids: getFoodsByFdcids,
     searchFoodsUseCase: searchFoodsUseCase,
     getAllCategories: getAllCategories,
+    isFave: isFave,
 
   );
 

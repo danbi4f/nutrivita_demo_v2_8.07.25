@@ -13,10 +13,11 @@ class CompleteFoodView extends StatelessWidget {
 
   static Widget withBloc(Food food) {
     return BlocProvider(
-      create:
-          (context) =>
-              IsFaveBloc(context.read<CombinedDataService>(), food: food)
-                ..add(LoadIsFave()),
+      create: (context) => IsFaveBloc(
+        getFavesStream: context.read<CombinedDataService>().favesStream,
+        addToFaveUseCase: context.read<CombinedDataService>().addToFaveUseCase,
+        removeFaveUseCase: context.read<CombinedDataService>().removeFaveUseCase,
+      ),
       child: CompleteFoodView(food: food),
     );
   }
@@ -58,6 +59,8 @@ class _CompleteFoodItemState extends State<_CompleteFoodItem> {
   Widget build(BuildContext context) {
     return BlocBuilder<IsFaveBloc, IsFaveState>(
       builder: (context, state) {
+        final isFave = state.faveIds.contains(widget.food.fdcId);
+
         return CustomContainer(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -65,18 +68,13 @@ class _CompleteFoodItemState extends State<_CompleteFoodItem> {
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Left icon
                   const Icon(Icons.ads_click_rounded, color: Colors.grey),
                   const SizedBox(width: 10),
-
-                  // Spacer to push heart to the right
                   Expanded(child: Container()),
-
-                  // Heart icon
                   IconButton(
                     onPressed: _toggleFavourite,
                     icon: Icon(
-                      state.isFave ? Icons.favorite : Icons.favorite_border,
+                      isFave ? Icons.favorite : Icons.favorite_border,
                       color: Colors.green,
                       size: 30,
                     ),
@@ -86,7 +84,6 @@ class _CompleteFoodItemState extends State<_CompleteFoodItem> {
 
               const SizedBox(height: 8),
 
-              // Text description with wrapping
               Expanded(
                 child: Text(
                   widget.food.description,
@@ -104,5 +101,6 @@ class _CompleteFoodItemState extends State<_CompleteFoodItem> {
     );
   }
 
-  void _toggleFavourite() => _bloc.add(const ToggleFave());
+  void _toggleFavourite() =>
+      _bloc.add(ToggleFavorite(widget.food.fdcId));
 }

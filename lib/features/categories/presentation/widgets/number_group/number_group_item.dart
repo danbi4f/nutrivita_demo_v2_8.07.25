@@ -20,7 +20,7 @@ class NumberGroupItem extends StatelessWidget {
           MaterialPageRoute(
             builder:
                 (_) => BlocProvider.value(value: context.read<CategoryBloc>(),
-                  child: FoodsByGroup(nutrientByGroup: nutrientByGroup),
+                  child: FoodsByGroup.withBloc( nutrientByGroup),
                 ),
           ),
         );

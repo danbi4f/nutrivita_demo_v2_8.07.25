@@ -1,16 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:nutrivita_demo_v2/app/combined_data_service.dart';
 import 'package:nutrivita_demo_v2/common/widgets/custom_container.dart';
 import 'package:nutrivita_demo_v2/config/fonts/app_text_style.dart';
 import 'package:nutrivita_demo_v2/features/categories/domain/entities/nutrient_number.dart';
 import 'package:nutrivita_demo_v2/features/categories/presentation/bloc/category_bloc.dart';
 import 'package:nutrivita_demo_v2/features/categories/presentation/widgets/foods_by_group/foods_by_group_item.dart';
 import 'package:nutrivita_demo_v2/features/foods/presentation/bloc/food_bloc.dart';
+import 'package:nutrivita_demo_v2/features/foods/presentation/bloc/is_fave_bloc.dart';
 
 class FoodsByGroup extends StatelessWidget {
   const FoodsByGroup({super.key, required this.nutrientByGroup});
 
   final NutrientNumber nutrientByGroup;
+
+  static Widget withBloc(NutrientNumber nutrientByGroup) {
+    return BlocProvider(
+      create:
+          (context) => IsFaveBloc(
+            getFavesStream: context.read<CombinedDataService>().favesStream,
+            addToFaveUseCase:
+                context.read<CombinedDataService>().addToFaveUseCase,
+            removeFaveUseCase:
+                context.read<CombinedDataService>().removeFaveUseCase,
+          ),
+          child: FoodsByGroup(nutrientByGroup: nutrientByGroup,),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -63,63 +79,3 @@ class FoodsByGroup extends StatelessWidget {
     );
   }
 }
-
-
-
-
-//===============================================================================
-
-
-// import 'package:flutter/material.dart';
-// import 'package:flutter_bloc/flutter_bloc.dart';
-// import 'package:nutrivita_demo_v2/common/widgets/custom_container.dart';
-// import 'package:nutrivita_demo_v2/config/fonts/app_text_style.dart';
-// import 'package:nutrivita_demo_v2/features/categories/domain/entities/nutrient_number.dart';
-// import 'package:nutrivita_demo_v2/features/categories/presentation/bloc/category_bloc.dart';
-// import 'package:nutrivita_demo_v2/features/categories/presentation/widgets/foods_by_group/foods_by_group_item.dart';
-
-// class FoodsByGroup extends StatelessWidget {
-//   const FoodsByGroup({super.key, required this.nutrientByGroup});
-
-//   final NutrientNumber nutrientByGroup;
-
-//   @override
-//   Widget build(BuildContext context) {
-
-//     return Scaffold(
-//       appBar: AppBar(
-//         leading: IconButton(
-//           icon: const Icon(Icons.arrow_back, color: Colors.black),
-//           onPressed: () {
-//             Navigator.of(context).pop();
-//           },
-//         ),
-//         backgroundColor: Colors.white,
-//         title: Text(
-//           nutrientByGroup.nutrientName,
-//           style: AppTextStyles.heading(context, size: 40),
-//         ),
-//         centerTitle: true,
-//       ),
-//       body: CustomContainer(
-//         isGradient: true,
-//         child: ListView.builder(
-//           itemCount: nutrientByGroup.topFoods.length,
-//           itemBuilder: (context, index) {
-//             // final status = foodState.loadingResult;
-//             // final food = foodState.foods[index];
-//             final topFoodsByGroup = nutrientByGroup.topFoods[index];
-//             final fdcId = topFoodsByGroup.fdcId;
-//             context.read<CategoryBloc>().add(LoadFoodForCategory(fdcId));
-//             return FoodsByGroupItem(
-//               topFoodsByGroup: topFoodsByGroup,
-//               unit: nutrientByGroup.unit,
-//               // food: food,
-//               // status: status,
-//             );
-//           },
-//         ),
-//       ),
-//     );
-//   }
-// }

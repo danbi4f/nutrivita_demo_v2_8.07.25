@@ -4,6 +4,7 @@ import 'package:nutrivita_demo_v2/features/faves/data/repository/in_memory_favor
 import 'package:nutrivita_demo_v2/features/faves/domain/usecases/add_fave.dart';
 import 'package:nutrivita_demo_v2/features/faves/domain/usecases/get_faves_future.dart';
 import 'package:nutrivita_demo_v2/features/faves/domain/usecases/get_faves_stream.dart';
+import 'package:nutrivita_demo_v2/features/faves/domain/usecases/is_fave.dart';
 import 'package:nutrivita_demo_v2/features/faves/domain/usecases/remove_fave.dart';
 import 'package:nutrivita_demo_v2/features/foods/domain/repositories/food_repository.dart';
 import 'package:nutrivita_demo_v2/features/foods/domain/usecases/get_all_foods.dart';
@@ -24,6 +25,7 @@ class CombinedDataService {
   GetFoodsByFdcids getFoodsByFdcids;
   SearchFoodsUseCase searchFoodsUseCase;
   GetAllCategories getAllCategories;
+  IsFave isFave;
 
   CombinedDataService({
     required this.categoryRepository,
@@ -38,5 +40,6 @@ class CombinedDataService {
     required this.getFoodsByFdcids,
     required this.searchFoodsUseCase,
     required this.getAllCategories,
+    required this.isFave,
   });
 }
