@@ -9,7 +9,7 @@ import 'package:nutrivita_demo_v2/features/faves/domain/usecases/remove_fave.dar
 import 'package:nutrivita_demo_v2/features/foods/data/repositories/food_repository_impl.dart';
 import 'package:nutrivita_demo_v2/core/utils/conversion_service.dart';
 import 'package:nutrivita_demo_v2/features/categories/data/datasources/category_local_data_source.dart';
-import 'package:nutrivita_demo_v2/features/faves/data/repository/in_memory_favorite_repository%20.dart';
+import 'package:nutrivita_demo_v2/features/faves/data/repository/in_memory_favorite_repository.dart';
 import 'package:nutrivita_demo_v2/app/combined_data_service.dart';
 import 'package:nutrivita_demo_v2/features/faves/data/database/database_service.dart';
 import 'package:nutrivita_demo_v2/features/foods/domain/usecases/get_all_foods.dart';

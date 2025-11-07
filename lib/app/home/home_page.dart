@@ -1,46 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:nutrivita_demo_v2/features/categories/presentation/pages/categories_page.dart';
-import 'package:nutrivita_demo_v2/features/faves/presentation/bloc/fave_bloc.dart';
+
 import 'package:nutrivita_demo_v2/features/faves/presentation/pages/fave_widget.dart';
-import 'package:nutrivita_demo_v2/features/foods/presentation/bloc/food_bloc.dart';
+
 import 'package:nutrivita_demo_v2/features/foods/presentation/pages/food_page.dart';
-import 'package:nutrivita_demo_v2/app/combined_data_service.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
-
-  static Widget withBloc() {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider<FaveBloc>(
-          create:
-              (context) => FaveBloc(
-                favesFuture: context.read<CombinedDataService>().favesFuture,
-                favesStream: context.read<CombinedDataService>().favesStream,
-                addFave: context.read<CombinedDataService>().addToFaveUseCase,
-                removeFave:
-                    context.read<CombinedDataService>().removeFaveUseCase,
-                getFoodByFdcId:
-                    context.read<CombinedDataService>().getFoodByFdcId,
-              )..add(LoadFaves()),
-        ),
-        BlocProvider(
-          create:
-              (context) => FoodBloc(
-                getAllFoods: context.read<CombinedDataService>().getAllFoods,
-                searchFoods:
-                    context.read<CombinedDataService>().searchFoodsUseCase,
-              )..add(FetchFoods()),
-        ),
-      ],
-      child: const HomePage(),
-    );
-  }
 }
 
 class _HomePageState extends State<HomePage> {

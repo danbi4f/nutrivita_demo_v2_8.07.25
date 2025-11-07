@@ -4,21 +4,19 @@ import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:nutrivita_demo_v2/core/error/failures.dart';
 import 'package:nutrivita_demo_v2/core/usecases/usecase.dart';
-import 'package:nutrivita_demo_v2/core/utils/delayed_result.dart';
 import 'package:nutrivita_demo_v2/features/faves/domain/usecases/add_fave.dart';
+import 'package:nutrivita_demo_v2/features/faves/domain/usecases/get_faves_future.dart';
 import 'package:nutrivita_demo_v2/features/faves/domain/usecases/get_faves_stream.dart';
-import 'package:nutrivita_demo_v2/features/faves/domain/usecases/is_fave.dart';
 import 'package:nutrivita_demo_v2/features/faves/domain/usecases/remove_fave.dart';
-import 'package:nutrivita_demo_v2/features/foods/domain/entities/food.dart';
 
 part 'is_fave_state.dart';
 part 'is_fave_event.dart';
-
 
 class IsFaveBloc extends Bloc<IsFaveEvent, IsFaveState> {
   final GetFavesStream getFavesStream;
   final AddToFaveUseCase addToFaveUseCase;
   final RemoveFaveUseCase removeFaveUseCase;
+  final GetFavesFuture getFavesFuture;
 
   StreamSubscription<Either<Failure, List<int>>>? _sub;
 
@@ -26,6 +24,7 @@ class IsFaveBloc extends Bloc<IsFaveEvent, IsFaveState> {
     required this.getFavesStream,
     required this.addToFaveUseCase,
     required this.removeFaveUseCase,
+    required this.getFavesFuture,
   }) : super(const IsFaveState(faveIds: [])) {
     on<_SyncFavs>(_onSyncFavs);
     on<ToggleFavorite>(_onToggle);
@@ -33,13 +32,23 @@ class IsFaveBloc extends Bloc<IsFaveEvent, IsFaveState> {
     _sub = getFavesStream(NoParams()).listen((either) {
       either.fold((_) {}, (list) => add(_SyncFavs(list)));
     });
+
+    _loadInitial();
+  }
+
+  Future<void> _loadInitial() async {
+    final either = await getFavesFuture(NoParams());
+    either.fold((_) {}, (list) => add(_SyncFavs(list)));
   }
 
   void _onSyncFavs(_SyncFavs event, Emitter<IsFaveState> emit) {
     emit(state.copyWith(faveIds: event.ids));
   }
 
-  Future<void> _onToggle(ToggleFavorite event, Emitter<IsFaveState> emit) async {
+  Future<void> _onToggle(
+    ToggleFavorite event,
+    Emitter<IsFaveState> emit,
+  ) async {
     final isFave = state.faveIds.contains(event.fdcId);
 
     if (isFave) {
@@ -47,7 +56,6 @@ class IsFaveBloc extends Bloc<IsFaveEvent, IsFaveState> {
     } else {
       await addToFaveUseCase(IdParams(fdcId: event.fdcId));
     }
-    // nie emitujesz nic – stream sam zsynchronizuje
   }
 
   @override
@@ -56,12 +64,6 @@ class IsFaveBloc extends Bloc<IsFaveEvent, IsFaveState> {
     return super.close();
   }
 }
-
-
-
-
-
-
 
 // class IsFaveBloc extends Bloc<IsFaveEvent, IsFaveState> {
 //   final GetFavesStream getFavesStream;

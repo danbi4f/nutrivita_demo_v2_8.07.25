@@ -11,11 +11,6 @@ class SearchFoodsUseCase implements UseCase<List<Food>, String> {
 
   @override
   Future<Either<Failure, List<Food>>> call(String query) async {
-    try {
-      final data = await repository.searchFoods(query);
-      return Right(data);
-    } catch (_) {
-      return Left(FoodNotFoundFailure());
-    }
-}
+    return await repository.searchFoods(query);
+  }
 }

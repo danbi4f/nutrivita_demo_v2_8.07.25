@@ -10,12 +10,6 @@ class RemoveFaveUseCase implements UseCase<void, IdParams> {
 
   @override
   Future<Either<Failure, void>> call(IdParams params) async {
-    try {
-      final data = await repository.removeFave(params.fdcId);
-      return Right(data);
-    } catch (_) {
-      return Left(DatabaseFailure());
-    }
+    return await repository.removeFave(params.fdcId);
   }
 }
-

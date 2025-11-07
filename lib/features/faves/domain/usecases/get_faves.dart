@@ -10,11 +10,8 @@ class GetFaves implements UseCase<List<int>, NoParams> {
 
   @override
   Future<Either<Failure, List<int>>> call(NoParams params) async {
-    try {
-      final data = await repository.getFaves();
-      return Right(data);
-    } catch (_) {
-      return Left(DatabaseFailure());
-    }
+      return await repository.getFaves();
+       
+
   }
 }

@@ -10,10 +10,6 @@ class GetFavesStream implements StreamUseCase<List<int>, NoParams> {
 
   @override
   Stream<Either<Failure, List<int>>> call(NoParams params) async* {
-    yield* repository.favesStream
-        .map<Either<Failure, List<int>>>(
-            (data) => Right<Failure, List<int>>(data),
-        )
-        .handleError((e) => Left(DatabaseFailure()));
+    yield* repository.favesStream;
   }
 }

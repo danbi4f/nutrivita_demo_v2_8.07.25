@@ -5,22 +5,12 @@ import 'package:nutrivita_demo_v2/common/widgets/view_food_with_nutrients.dart';
 import 'package:nutrivita_demo_v2/config/fonts/app_text_style.dart';
 import 'package:nutrivita_demo_v2/features/foods/domain/entities/food.dart';
 import 'package:nutrivita_demo_v2/features/foods/presentation/bloc/is_fave_bloc.dart';
-import 'package:nutrivita_demo_v2/app/combined_data_service.dart';
 
 class CompleteFoodView extends StatelessWidget {
   const CompleteFoodView({super.key, required this.food});
   final Food food;
 
-  static Widget withBloc(Food food) {
-    return BlocProvider(
-      create: (context) => IsFaveBloc(
-        getFavesStream: context.read<CombinedDataService>().favesStream,
-        addToFaveUseCase: context.read<CombinedDataService>().addToFaveUseCase,
-        removeFaveUseCase: context.read<CombinedDataService>().removeFaveUseCase,
-      ),
-      child: CompleteFoodView(food: food),
-    );
-  }
+
 
   @override
   Widget build(BuildContext context) {

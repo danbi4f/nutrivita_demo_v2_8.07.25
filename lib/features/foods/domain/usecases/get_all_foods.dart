@@ -11,11 +11,6 @@ class GetAllFoods implements UseCase<List<Food>, NoParams> {
 
   @override
   Future<Either<Failure, List<Food>>> call(NoParams params) async {
-    try {
-      final data = await repository.getAllFoods();
-      return Right(data);
-    } catch (_) {
-      return Left(FoodNotFoundFailure());
-    }
+    return await repository.getAllFoods();
   }
 }

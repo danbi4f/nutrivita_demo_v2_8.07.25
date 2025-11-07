@@ -5,6 +5,7 @@ import 'package:nutrivita_demo_v2/common/widgets/custom_container.dart';
 import 'package:nutrivita_demo_v2/features/categories/domain/entities/category_nutrient.dart';
 import 'package:nutrivita_demo_v2/features/categories/presentation/bloc/category_bloc.dart';
 import 'package:nutrivita_demo_v2/features/categories/presentation/widgets/number_group/number_group.dart';
+import 'package:nutrivita_demo_v2/features/foods/presentation/bloc/is_fave_bloc.dart';
 
 class CategoryGroupItem extends StatelessWidget {
   const CategoryGroupItem({super.key, required this.item});
@@ -17,8 +18,11 @@ class CategoryGroupItem extends StatelessWidget {
         context,
         MaterialPageRoute(
           builder:
-              (_) => BlocProvider.value(
-                value: context.read<CategoryBloc>(),
+              (_) => MultiBlocProvider(
+                providers: [
+                  BlocProvider.value(value: context.read<CategoryBloc>()),
+                  BlocProvider.value(value: context.read<IsFaveBloc>()),
+                ],
                 child: NumberGroup(item: item),
               ),
         ),

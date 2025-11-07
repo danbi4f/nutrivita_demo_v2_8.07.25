@@ -10,13 +10,6 @@ class AddToFaveUseCase implements UseCase<void, IdParams> {
 
   @override
   Future<Either<Failure, void>> call(IdParams params) async {
-    try {
-      final data = await repository.addFave(params.fdcId);
-      return Right(data);
-    } catch (_) {
-      return Left(DatabaseFailure());
-    }
+    return await repository.addFave(params.fdcId);
   }
 }
-
-

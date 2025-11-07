@@ -11,11 +11,6 @@ class GetFoodByFdcId implements UseCase<Food, int> {
 
   @override
   Future<Either<Failure, Food>> call(int fdcId) async {
-    final food = await repository.getFoodById(fdcId);
-
-    if (food == null) {
-      return Left(FoodNotFoundFailure());
-    }
-    return Right(food);
+    return await repository.getFoodById(fdcId);
   }
 }

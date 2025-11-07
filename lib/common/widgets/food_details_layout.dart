@@ -8,7 +8,7 @@ class FoodDetailsLayout extends StatelessWidget {
   final String descriptionPL;
   final String foodClass;
   final String fdcId;
-  final List<MapEntry<String, String>> nutrients; // lista klucz:wartość
+  final List<MapEntry<String, String>> nutrients; 
 
   const FoodDetailsLayout({
     super.key,
@@ -33,7 +33,6 @@ class FoodDetailsLayout extends StatelessWidget {
           padding: const EdgeInsets.all(16.0),
           child: ListView(
             children: [
-              // Opis główny
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -51,7 +50,6 @@ class FoodDetailsLayout extends StatelessWidget {
               ),
               const Divider(height: 24),
 
-              // Informacje podstawowe
               Text(
                 "Basic information",
                 style: AppTextStyles.subheading(context),
@@ -66,7 +64,6 @@ class FoodDetailsLayout extends StatelessWidget {
 
               const Divider(height: 24),
 
-              // Składniki odżywcze
               Text("Nutrients", style: AppTextStyles.subheading(context)),
               const SizedBox(height: 8),
               ...nutrients.map(

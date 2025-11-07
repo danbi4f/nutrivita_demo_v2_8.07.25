@@ -1,5 +1,7 @@
 import 'package:collection/collection.dart';
+import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
+import 'package:nutrivita_demo_v2/core/error/failures.dart';
 import 'package:nutrivita_demo_v2/features/categories/data/datasources/category_local_data_source.dart';
 import 'package:nutrivita_demo_v2/features/foods/data/models/food_model.dart';
 import 'package:nutrivita_demo_v2/core/utils/conversion_service.dart';
@@ -15,44 +17,79 @@ class FoodRepositoryImpl extends FoodRepository {
   final ConversionService conversionService;
   List<FoodModel>? _cachedFoods;
 
-  /// Download all products (e.g. to cache or filter)
+
   @override
-  Future<List<FoodModel>> getAllFoods() async {
-    if (_cachedFoods != null) return _cachedFoods!;
+Future<Either<Failure, List<FoodModel>>> getAllFoods() async {
+  try {
+    if (_cachedFoods != null) return Right(_cachedFoods!);
+
     final categories = await localDataSource.getCategories();
     _cachedFoods = conversionService.fromCategory(categories);
-    return _cachedFoods!;
-  }
 
-  /// Download the FoodWithNutrients list based on the fdcIds list
-  @override
-  Future<List<FoodModel>> getFoodsByFdcIds(List<int> fdcIds) async {
-    final foods = await getAllFoods();
-    final fdcSet = fdcIds.toSet();
-    return foods.where((f) => fdcSet.contains(f.fdcId)).toList();
+    return Right(_cachedFoods!);
+  } catch (e) {
+    return Left(CacheFailure()); 
   }
-
-  /// 🔹 NEW: Download single product based on single fdcId
-@override
-Future<FoodModel?> getFoodById(int fdcId) async {
-  final foods = await getAllFoods();
-  return foods.firstWhereOrNull((f) => f.fdcId == fdcId);
 }
 
-  // ============================================================
-  // 🔹 MAIN SEARCH METHOD
-  // ============================================================
+
   @override
-  Future<List<FoodModel>> searchFoods(String query) async {
-    final allFoods = await getAllFoods();
-
-    if (query.isEmpty) {
-      return allFoods;
-    }
-
-    // compute = runs in a separate isolate (does not block UI)
-    return compute(_search, {'query': query, 'foods': allFoods});
+Future<Either<Failure, List<FoodModel>>> getFoodsByFdcIds(List<int> fdcIds) async {
+  try {
+    final result = await getAllFoods();
+    return result.fold(
+      (failure) => Left(failure),
+      (foods) {
+        final fdcSet = fdcIds.toSet();
+        final filtered = foods.where((f) => fdcSet.contains(f.fdcId)).toList();
+        return Right(filtered);
+      },
+    );
+  } catch (_) {
+    return Left(CacheFailure());
   }
+}
+
+
+
+@override
+Future<Either<Failure, FoodModel>> getFoodById(int fdcId) async {
+  try {
+    final result = await getAllFoods();
+    return result.fold(
+      (failure) => Left(failure),
+      (foods) {
+        final food = foods.firstWhereOrNull((f) => f.fdcId == fdcId);
+        if (food == null) return Left(FoodNotFoundFailure());
+        return Right(food);
+      },
+    );
+  } catch (_) {
+    return Left(CacheFailure());
+  }
+}
+
+
+
+  @override
+Future<Either<Failure, List<FoodModel>>> searchFoods(String query) async {
+  try {
+    final result = await getAllFoods();
+    return result.fold(
+      (failure) => Left(failure),
+      (foods) async {
+        if (query.isEmpty) return Right(foods);
+        final filtered = await compute(
+          _search,
+          {'query': query, 'foods': foods},
+        );
+        return Right(filtered);
+      },
+    );
+  } catch (_) {
+    return Left(CacheFailure());
+  }
+}
 
   // ============================================================
   // 🔹 FUNCTION RUNNING IN ISOLATE

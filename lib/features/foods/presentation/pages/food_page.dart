@@ -9,6 +9,8 @@ import 'package:nutrivita_demo_v2/features/foods/presentation/widget/my_text_fie
 class FoodPage extends StatelessWidget {
   const FoodPage({super.key});
 
+
+
   @override
   Widget build(BuildContext context) {
     return  _FoodPage();
@@ -56,7 +58,7 @@ class _FoodPage extends StatelessWidget {
                   itemBuilder: (context, index) {
                     final food = foods.elementAt(index);
 
-                    return CompleteFoodView.withBloc(food);
+                    return CompleteFoodView(food: food);
                   },
                 ),
               ),

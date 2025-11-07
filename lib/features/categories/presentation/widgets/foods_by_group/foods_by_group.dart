@@ -1,32 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:nutrivita_demo_v2/app/combined_data_service.dart';
 import 'package:nutrivita_demo_v2/common/widgets/custom_container.dart';
 import 'package:nutrivita_demo_v2/config/fonts/app_text_style.dart';
 import 'package:nutrivita_demo_v2/features/categories/domain/entities/nutrient_number.dart';
 import 'package:nutrivita_demo_v2/features/categories/presentation/bloc/category_bloc.dart';
 import 'package:nutrivita_demo_v2/features/categories/presentation/widgets/foods_by_group/foods_by_group_item.dart';
 import 'package:nutrivita_demo_v2/features/foods/presentation/bloc/food_bloc.dart';
-import 'package:nutrivita_demo_v2/features/foods/presentation/bloc/is_fave_bloc.dart';
 
 class FoodsByGroup extends StatelessWidget {
   const FoodsByGroup({super.key, required this.nutrientByGroup});
 
   final NutrientNumber nutrientByGroup;
-
-  static Widget withBloc(NutrientNumber nutrientByGroup) {
-    return BlocProvider(
-      create:
-          (context) => IsFaveBloc(
-            getFavesStream: context.read<CombinedDataService>().favesStream,
-            addToFaveUseCase:
-                context.read<CombinedDataService>().addToFaveUseCase,
-            removeFaveUseCase:
-                context.read<CombinedDataService>().removeFaveUseCase,
-          ),
-          child: FoodsByGroup(nutrientByGroup: nutrientByGroup,),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
