@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nutrivita_demo_v2/features/categories/data/repositories/category_repository_impl.dart';
 import 'package:nutrivita_demo_v2/features/categories/domain/usecases/get_all_categories.dart';
+import 'package:nutrivita_demo_v2/features/faves/data/datasources/faves_local_data_source.dart';
 import 'package:nutrivita_demo_v2/features/faves/domain/usecases/add_fave.dart';
 import 'package:nutrivita_demo_v2/features/faves/domain/usecases/get_faves_future.dart';
 import 'package:nutrivita_demo_v2/features/faves/domain/usecases/get_faves_stream.dart';
@@ -29,6 +30,8 @@ Future<List<RepositoryProvider>> buildRepositories({
   final dbService = databaseService ?? DatabaseService.instance;
 
   //-----------------------------------------------------------------------------------
+  final foodLocalDataSource = FoodLocalDataSourceImpl(dbService: dbService);
+  
   final foodRepository = FoodRepositoryImpl(
     localDataSource: localDataSource,
     conversionService: conversionService,
@@ -39,7 +42,7 @@ Future<List<RepositoryProvider>> buildRepositories({
 
 
   final inMemoryFaveRepository = InMemoryFavesRepository(
-    dbService: dbService,
+    localDataSource: foodLocalDataSource
   );
   await inMemoryFaveRepository.init();
    //-----------------------------------------------------------------------------------

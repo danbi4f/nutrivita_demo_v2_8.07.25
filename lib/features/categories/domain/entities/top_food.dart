@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-class TopFood extends Equatable {
+class  TopFood extends Equatable {
   final int indexRanking;
   final String rankingName;
   final String description;

@@ -58,6 +58,7 @@ class CategoryLocalDataSourceImpl implements CategoryLocalDataSource {
   }
 
   /// Download all categories with their nutrients and topFoods
+  @override
   Future<List<CategoryNutrientModel>> getCategories() async {
     await Future.delayed(const Duration(seconds: 1)); // 🧱 test delay
 

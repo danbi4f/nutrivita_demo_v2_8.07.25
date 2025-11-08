@@ -2,23 +2,22 @@ import 'dart:async';
 import 'package:dartz/dartz.dart';
 import 'package:nutrivita_demo_v2/core/error/exceptions.dart';
 import 'package:nutrivita_demo_v2/core/error/failures.dart';
-import 'package:nutrivita_demo_v2/features/faves/data/database/database_service.dart';
+import 'package:nutrivita_demo_v2/features/faves/data/datasources/faves_local_data_source.dart';
 import 'package:nutrivita_demo_v2/features/faves/domain/repositories/faves_repository.dart';
 
 class InMemoryFavesRepository extends FavesRepository {
   List<int> _faves = [];
-  final DatabaseService _dbService;
+  final favesLocalDataSource localDataSource;
 
-  InMemoryFavesRepository({required DatabaseService dbService})
-    : _dbService = dbService {
+  InMemoryFavesRepository({required this.localDataSource}) {
     print('${_now()} InMemoryFavesRepository CREATED');
   }
 
   Future<void> init() async {
-    print('${_now()} init(): reading faves from DB...');
-    final faves = await _dbService.getFavesFdcId();
+    print('${_now()} init(): reading faves from DataSource...');
+    final faves = await localDataSource.getFaves();
     _faves = List.from(faves);
-    print('${_now()} init(): loaded from DB -> $_faves');
+    print('${_now()} init(): loaded -> $_faves');
     _favesController.add(List.unmodifiable(_faves));
     print('${_now()} init(): emitted initial snapshot to stream');
   }
@@ -41,7 +40,7 @@ class InMemoryFavesRepository extends FavesRepository {
 
   @override
   Future<Either<Failure, List<int>>> get favesFuture async {
-    print('${_now()} favesFuture getter called -> returning ${_faves}');
+    print('${_now()} favesFuture getter called -> returning $_faves');
     return Right(List.unmodifiable(_faves));
   }
 
@@ -49,19 +48,16 @@ class InMemoryFavesRepository extends FavesRepository {
 
   @override
   Future<Either<Failure, List<int>>> getFaves() async {
-    print('${_now()} getFaves(): reading from DB...');
+    print('${_now()} getFaves(): reading from DataSource...');
     try {
-      final f = await _dbService.getFavesFdcId();
+      final f = await localDataSource.getFaves();
       _faves = List.unmodifiable(f);
-      print('${_now()} getFaves(): backend returned -> $_faves');
+      print('${_now()} getFaves(): returned -> $_faves');
       _favesController.add(_faves);
-      print('${_now()} getFaves(): emitted snapshot -> $_faves');
       return Right(_faves);
-    } on CacheException catch (e) {
-      print('${_now()} getFaves(): CacheException -> $e');
+    } on CacheException catch (_) {
       return Left(CacheFailure());
-    } catch (e) {
-      print('${_now()} getFaves(): unexpected error -> $e');
+    } catch (_) {
       return Left(CacheFailure());
     }
   }
@@ -72,19 +68,13 @@ class InMemoryFavesRepository extends FavesRepository {
   Future<Either<Failure, void>> addFave(int fdcId) async {
     print('${_now()} addFave($fdcId) called; current -> $_faves');
     try {
-      // create new list copy (immutable pattern)
       _faves = List.from(_faves)..add(fdcId);
-      print('${_now()} addFave: local updated -> $_faves (before DB)');
       _favesController.add(List.unmodifiable(_faves));
-      print('${_now()} addFave: emitted snapshot -> $_faves (optimistic)');
-      await _dbService.addFaveFdcId(fdcId);
-      print('${_now()} addFave: DB updated for $fdcId');
+      await localDataSource.addFave(fdcId);
       return const Right(null);
-    } on CacheException catch (e) {
-      print('${_now()} addFave: CacheException -> $e');
+    } on CacheException catch (_) {
       return Left(CacheFailure());
-    } catch (e) {
-      print('${_now()} addFave: unexpected -> $e');
+    } catch (_) {
       return Left(CacheFailure());
     }
   }
@@ -95,19 +85,13 @@ class InMemoryFavesRepository extends FavesRepository {
   Future<Either<Failure, void>> removeFave(int fdcId) async {
     print('${_now()} removeFave($fdcId) called; current -> $_faves');
     try {
-      // remove in immutable style
       _faves = List.from(_faves)..remove(fdcId);
-      print('${_now()} removeFave: local updated -> $_faves (before DB)');
       _favesController.add(List.unmodifiable(_faves));
-      print('${_now()} removeFave: emitted snapshot -> $_faves (optimistic)');
-      await _dbService.removeFaveFdcId(fdcId);
-      print('${_now()} removeFave: DB removed $fdcId');
+      await localDataSource.removeFave(fdcId);
       return const Right(null);
-    } on CacheException catch (e) {
-      print('${_now()} removeFave: CacheException -> $e');
+    } on CacheException catch (_) {
       return Left(CacheFailure());
-    } catch (e) {
-      print('${_now()} removeFave: unexpected -> $e');
+    } catch (_) {
       return Left(CacheFailure());
     }
   }
@@ -119,13 +103,10 @@ class InMemoryFavesRepository extends FavesRepository {
     print('${_now()} isFave($fdcId) called; current -> $_faves');
     try {
       final contains = _faves.contains(fdcId);
-      print('${_now()} isFave: result -> $contains');
       return Right(contains);
-    } on CacheException catch (e) {
-      print('${_now()} isFave: CacheException -> $e');
+    } on CacheException catch (_) {
       return Left(CacheFailure());
-    } catch (e) {
-      print('${_now()} isFave: unexpected -> $e');
+    } catch (_) {
       return Left(CacheFailure());
     }
   }
@@ -137,7 +118,5 @@ class InMemoryFavesRepository extends FavesRepository {
     _favesController.close();
   }
 
-  // helper
   String _now() => DateTime.now().toIso8601String();
 }
-

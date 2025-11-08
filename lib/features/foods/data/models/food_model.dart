@@ -25,7 +25,12 @@ class FoodModel extends Food {
   }
 
   factory FoodModel.fromMap(Map<String, dynamic> map) {
-    final nutrientsJson = jsonDecode(map['nutrients']) as Map<String, dynamic>;
+    final raw = map['nutrients'];
+
+    final nutrientsJson =
+        raw is String
+            ? jsonDecode(raw) as Map<String, dynamic>
+            : raw as Map<String, dynamic>;
 
     return FoodModel(
       fdcId: map['fdcId'],
