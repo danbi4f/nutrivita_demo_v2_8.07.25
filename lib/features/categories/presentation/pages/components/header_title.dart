@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:nutrivita_demo_v2/i18n/strings.g.dart';
 
 class HeaderTitle extends StatelessWidget {
-  const HeaderTitle({super.key});
+  const HeaderTitle({super.key, required this.userName});
+  final String userName;
 
   @override
   Widget build(BuildContext context) {
+    final t = Translations.of(context);
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
@@ -14,7 +17,7 @@ class HeaderTitle extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(left: 20),
               child: Text(
-                'Welcome DanBi 👋',
+                t.welcome_user(name: userName),
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 28.0,
@@ -26,7 +29,7 @@ class HeaderTitle extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(left: 20),
               child: Text(
-                'What would you like to eat?  ',
+                t.prompt_food,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 18.0,

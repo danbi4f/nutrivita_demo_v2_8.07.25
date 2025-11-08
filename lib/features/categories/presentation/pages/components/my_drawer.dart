@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nutrivita_demo_v2/features/settings/setting_page.dart';
+import 'package:nutrivita_demo_v2/features/settings/widget/button_lang.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({super.key});
@@ -65,6 +66,7 @@ class MyDrawer extends StatelessWidget {
               text: "About the app",
               onTap: () {},
             ),
+            ButtonLang(),
 
             const Spacer(),
           ],

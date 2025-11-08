@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:nutrivita_demo_v2/common/widgets/custom_container.dart';
 import 'package:nutrivita_demo_v2/config/fonts/app_text_style.dart';
 import 'package:nutrivita_demo_v2/features/faves/data/database/database_service.dart';
+import 'package:nutrivita_demo_v2/features/settings/widget/button_lang.dart';
 
 class SettingPage extends StatelessWidget {
   const SettingPage({super.key});
@@ -72,9 +73,11 @@ class SettingPage extends StatelessWidget {
                 );
               },
             ),
+            ButtonLang(),
           ],
         ),
       ),
     );
   }
 }
+

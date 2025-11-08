@@ -22,6 +22,10 @@ dependencies:
   bloc_test: ^10.0.0
   collection: ^1.19.1
   dartz: ^0.10.1
+  slang_flutter: ^4.9.0
+  slang: ^4.9.2
+  flutter_localizations:
+    sdk: flutter
 
 
 dev_dependencies:

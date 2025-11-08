@@ -6,6 +6,8 @@ import 'package:nutrivita_demo_v2/app/home/home_page.dart';
 import 'package:nutrivita_demo_v2/features/faves/presentation/bloc/fave_bloc.dart';
 import 'package:nutrivita_demo_v2/features/foods/presentation/bloc/food_bloc.dart';
 import 'package:nutrivita_demo_v2/features/foods/presentation/bloc/is_fave_bloc.dart';
+import 'package:nutrivita_demo_v2/i18n/strings.g.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -47,6 +49,9 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp(
+        locale: TranslationProvider.of(context).flutterLocale,
+        supportedLocales: AppLocaleUtils.supportedLocales,
+        localizationsDelegates: [...GlobalMaterialLocalizations.delegates],
         theme: simpleTheme2,
         debugShowCheckedModeBanner: false,
         home: SafeArea(child: HomePage()),

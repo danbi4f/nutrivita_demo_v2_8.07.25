@@ -10,7 +10,7 @@ class CategoryGroupSuccessWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (categories.isEmpty) {
-      return const Center(child: Text("Brak kategorii do wyświetlenia"));
+      return const Center(child: Text("No categories to display"));
     }
 
     return GridView.builder(

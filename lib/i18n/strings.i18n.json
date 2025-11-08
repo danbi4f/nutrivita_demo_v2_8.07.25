@@ -1,0 +1,9 @@
+{
+  "app_title": "NutriVita",
+  "welcome_user": "Hello $name  👋",
+  "prompt_food": "What would you like to eat?",
+  "drawer_home": "Home",
+  "drawer_fave": "Fave",
+  "drawer_settings": "Settings",
+  "drawer_about": "About the app"
+}

@@ -24,8 +24,15 @@ Future<List<RepositoryProvider>> buildRepositories({
   DatabaseService? databaseService,
 }) async {
   //-----------------------------------------------------------------------------------
-  // If the test fails to provide a mock, use the default instances
-  final localDataSource =  surveySvc ?? await CategoryLocalDataSourceImpl.init();
+CategoryLocalDataSource localDataSource;
+
+try {
+  localDataSource = surveySvc ?? await CategoryLocalDataSourceImpl.init();
+} on Exception catch (e) {
+  print("Błąd CategoryLocalDataSource.init(): $e");
+  return [];
+}
+
   final conversionService = completeFoodService ?? ConversionService();
   final dbService = databaseService ?? DatabaseService.instance;
 

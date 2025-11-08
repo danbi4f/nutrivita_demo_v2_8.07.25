@@ -6,6 +6,7 @@ import 'package:nutrivita_demo_v2/features/categories/presentation/pages/categor
 import 'package:nutrivita_demo_v2/features/faves/presentation/pages/fave_widget.dart';
 
 import 'package:nutrivita_demo_v2/features/foods/presentation/pages/food_page.dart';
+import 'package:nutrivita_demo_v2/i18n/strings.g.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -16,6 +17,15 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int currentIndex = 0;
+
+  @override
+  void initState() {
+    super.initState();
+
+    LocaleSettings.getLocaleStream().listen((event) {
+      print('🍕🍕🍕☠️ locale changed: $event');
+    });
+  }
 
   final List<GlobalKey<NavigatorState>> _navigatorKeys = [
     GlobalKey<NavigatorState>(),
