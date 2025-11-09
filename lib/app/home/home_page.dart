@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:nutrivita_demo_v2/features/categories/presentation/pages/categories_page.dart';
-
 import 'package:nutrivita_demo_v2/features/faves/presentation/pages/fave_widget.dart';
-
 import 'package:nutrivita_demo_v2/features/foods/presentation/pages/food_page.dart';
 import 'package:nutrivita_demo_v2/i18n/strings.g.dart';
 
@@ -21,7 +18,6 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-
     LocaleSettings.getLocaleStream().listen((event) {
       print('🍕🍕🍕☠️ locale changed: $event');
     });
@@ -35,7 +31,6 @@ class _HomePageState extends State<HomePage> {
 
   void _selectTab(int index) {
     if (index == currentIndex) {
-      // If we click on the active tab again → return to its "root"
       _navigatorKeys[index].currentState!.popUntil((route) => route.isFirst);
     } else {
       setState(() => currentIndex = index);
@@ -53,8 +48,11 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final t = Translations.of(context);
     return SafeArea(
       child: Scaffold(
+        extendBody: true,
+        backgroundColor: Colors.white,
         body: IndexedStack(
           index: currentIndex,
           children: [
@@ -63,23 +61,39 @@ class _HomePageState extends State<HomePage> {
             _buildNavigator(_navigatorKeys[2], const FaveWidget()),
           ],
         ),
-        bottomNavigationBar: Container(
-          color: const Color(0xFFD9E5C4),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: GNav(
-              gap: 3,
-              tabBorderRadius: 16,
-              backgroundColor: const Color(0xFFD9E5C4),
-              color: Colors.black,
-              activeColor: Colors.green[700],
-              selectedIndex: currentIndex,
-              onTabChange: _selectTab,
-              tabs: const [
-                GButton(icon: Icons.category, text: 'Categories', iconSize: 25),
-                GButton(icon: Icons.restaurant, text: 'Food', iconSize: 25),
-                GButton(icon: Icons.favorite, text: 'Favorites', iconSize: 25),
+        bottomNavigationBar: SafeArea(
+          child: Container(
+            margin: const EdgeInsets.only(left: 20, right: 20, bottom: 30, top: 50),
+            decoration: BoxDecoration(
+              color: const Color(0xFFD9E5C4),
+              borderRadius: const BorderRadius.all(Radius.circular(100)),
+              boxShadow: [
+                BoxShadow(
+                  spreadRadius: -10,
+                  blurRadius: 60,
+                  color: Colors.black.withOpacity(.1),
+                  offset: const Offset(0, 25),
+                ),
               ],
+            ),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 3.0, vertical: 3),
+              child: GNav(
+                gap: 8,
+                activeColor: Colors.black,
+                iconSize: 24,
+                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                duration: const Duration(milliseconds: 400),
+                tabBackgroundColor: Colors.grey[100]!,
+                color: Colors.black,
+                selectedIndex: currentIndex,
+                onTabChange: _selectTab,
+                tabs:  [
+                  GButton(icon: Icons.category, text: t.home_page.categories),
+                  GButton(icon: Icons.restaurant, text: t.home_page.food),
+                  GButton(icon: Icons.favorite, text: t.home_page.faves),
+                ],
+              ),
             ),
           ),
         ),

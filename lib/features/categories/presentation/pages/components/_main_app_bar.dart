@@ -13,7 +13,7 @@ class _MainAppBar extends StatelessWidget implements PreferredSizeWidget {
       iconTheme: const IconThemeData(color: Colors.black),
       backgroundColor: Colors.white,
       centerTitle: true,
-      title: Text(t.app_title, style: AppTextStyles.heading(context, size: 40)),
+      title: Text(t.app_bar.app_title, style: AppTextStyles.heading(context, size: 40)),
       actions: [
         Padding(
           padding: const EdgeInsets.only(right: 12.0),

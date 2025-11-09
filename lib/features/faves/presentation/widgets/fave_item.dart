@@ -26,51 +26,24 @@ class _FaveItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Dismissible(
-      key: UniqueKey(),
-      direction: DismissDirection.horizontal,
-      onDismissed: (direction) {
-        context.read<FaveBloc>().add(RemoveFave(fdcId));
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ViewFoodWithNutrients(food: food),
+          ),
+        );
       },
-
-      // Swipe from left to right (icon on the left)
-      background: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12),
-          color: Colors.red,
-        ),
-        alignment: Alignment.centerLeft,
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: const Icon(Icons.delete, color: Colors.white),
-      ),
-
-      // Swipe from right to left (icon on the right)
-      secondaryBackground: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12),
-          color: Colors.red,
-        ),
-        alignment: Alignment.centerRight,
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: const Icon(Icons.delete, color: Colors.white),
-      ),
-
-      child: GestureDetector(
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => ViewFoodWithNutrients(food: food),
-            ),
-          );
-        },
+      child: SizedBox(
+        height: 80,
         child: CustomContainer(
           child: ListTile(
             title: Row(
               children: [
                 const Icon(Icons.ads_click_rounded, color: Colors.grey),
                 const SizedBox(width: 10),
-
+        
                 /// Description and ranking column
                 Expanded(
                   child: Column(
@@ -78,6 +51,8 @@ class _FaveItem extends StatelessWidget {
                     children: [
                       Text(
                         food.description,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
                         textAlign: TextAlign.start,
                         style: AppTextStyles.body(context),
                         softWrap: true,
@@ -85,13 +60,14 @@ class _FaveItem extends StatelessWidget {
                     ],
                   ),
                 ),
-
+        
                 const SizedBox(width: 10),
-                Row(
-                  children: const [
-                    Icon(Icons.delete, color: Colors.grey),
-                    Icon(Icons.play_arrow, color: Colors.grey),
-                  ],
+                /// Delete icon
+                IconButton(
+                  icon: const Icon(Icons.delete, color: Colors.red),
+                  onPressed: () {
+                    context.read<FaveBloc>().add(RemoveFave(fdcId));
+                  },
                 ),
               ],
             ),

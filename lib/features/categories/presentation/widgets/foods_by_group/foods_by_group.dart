@@ -6,6 +6,7 @@ import 'package:nutrivita_demo_v2/features/categories/domain/entities/nutrient_n
 import 'package:nutrivita_demo_v2/features/categories/presentation/bloc/category_bloc.dart';
 import 'package:nutrivita_demo_v2/features/categories/presentation/widgets/foods_by_group/foods_by_group_item.dart';
 import 'package:nutrivita_demo_v2/features/foods/presentation/bloc/food_bloc.dart';
+import 'package:nutrivita_demo_v2/i18n/strings.g.dart';
 
 class FoodsByGroup extends StatelessWidget {
   const FoodsByGroup({super.key, required this.nutrientByGroup});
@@ -14,6 +15,7 @@ class FoodsByGroup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = Translations.of(context);
     final foodState = context.select((FoodBloc bloc) => bloc.state);
 
     return Scaffold(
@@ -36,7 +38,7 @@ class FoodsByGroup extends StatelessWidget {
           }
 
           if (state.result.isError) {
-            return const Center(child: Text("Error loading food"));
+            return  Center(child: Text("${t.alerts.error}: messege error"));
           }
 
           return CustomContainer(

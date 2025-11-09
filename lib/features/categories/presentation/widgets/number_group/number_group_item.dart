@@ -41,11 +41,6 @@ class NumberGroupItem extends StatelessWidget {
               textAlign: TextAlign.center,
               softWrap: true, // wrap long names
             ),
-            const SizedBox(height: 6),
-            Text(
-              'test1: ${nutrientByGroup.nutrientNumber}',
-              style: AppTextStyles.subheading(context),
-            ),
           ],
         ),
       ),

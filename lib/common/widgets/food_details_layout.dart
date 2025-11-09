@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:nutrivita_demo_v2/common/widgets/build_info_row.dart';
 import 'package:nutrivita_demo_v2/common/widgets/custom_container.dart';
 import 'package:nutrivita_demo_v2/config/fonts/app_text_style.dart';
+import 'package:nutrivita_demo_v2/i18n/strings.g.dart';
 
 class FoodDetailsLayout extends StatelessWidget {
   final String description;
@@ -21,9 +22,10 @@ class FoodDetailsLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = Translations.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text('Food Details', style: AppTextStyles.heading(context, size: 30)),
+        title: Text(t.details_food.food_details, style: AppTextStyles.heading(context, size: 30)),
         centerTitle: true,
         backgroundColor: Colors.white,
       ),
@@ -45,26 +47,26 @@ class FoodDetailsLayout extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(width: 8),
-                  Text('100 g', style: AppTextStyles.body(context)),
+                  Text(t.details_food.k100G, style: AppTextStyles.body(context)),
                 ],
               ),
               const Divider(height: 24),
 
               Text(
-                "Basic information",
+                t.details_food.basic_information,
                 style: AppTextStyles.subheading(context),
               ),
               const SizedBox(height: 8),
               BuildInfoRow(
                 context: context,
-                label: "Food Class",
+                label: t.details_food.food_class,
                 value: foodClass,
               ),
-              BuildInfoRow(context: context, label: "FDC ID", value: fdcId),
+              BuildInfoRow(context: context, label: t.details_food.fdc_id, value: fdcId),
 
               const Divider(height: 24),
 
-              Text("Nutrients", style: AppTextStyles.subheading(context)),
+              Text(t.details_food.nutrients, style: AppTextStyles.subheading(context)),
               const SizedBox(height: 8),
               ...nutrients.map(
                 (entry) => BuildInfoRow(

@@ -7,7 +7,7 @@ import 'package:nutrivita_demo_v2/i18n/strings.g.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   //LocaleSettings.useDeviceLocale();
-  LocaleSettings.setLocale(AppLocale.pl);
+  LocaleSettings.setLocale(AppLocale.en);
 
   final repositories = await buildRepositories();
 

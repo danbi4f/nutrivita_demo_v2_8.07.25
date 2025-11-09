@@ -29,7 +29,7 @@ CategoryLocalDataSource localDataSource;
 try {
   localDataSource = surveySvc ?? await CategoryLocalDataSourceImpl.init();
 } on Exception catch (e) {
-  print("Błąd CategoryLocalDataSource.init(): $e");
+  print("Error CategoryLocalDataSource.init(): $e");
   return [];
 }
 

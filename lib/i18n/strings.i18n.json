@@ -1,9 +1,44 @@
 {
-  "app_title": "NutriVita",
-  "welcome_user": "Hello $name  👋",
+  "app_bar": {
+    "app_title": "NutriVita"
+  },
+  "welcome": {
+    "user_name": "Hello $name  👋",
+    "user_name_test": "DanBi",
+    "introduce_test": "Hello @:welcome.user_name_test  👋"
+  },
   "prompt_food": "What would you like to eat?",
-  "drawer_home": "Home",
-  "drawer_fave": "Fave",
-  "drawer_settings": "Settings",
-  "drawer_about": "About the app"
+  "drawer": {
+    "home": "Home",
+    "fave": "Fave",
+    "settings": "Settings",
+    "about": "About the app",
+    "language": "Language",
+    "select_lang": "Select language"
+  },
+  "button_action": {
+    "cancel": "Cancel",
+    "ok": "OK",
+    "submit": "Submit",
+    "delete": "Delete",
+    "confirm": "Confirm"
+  },
+  "alerts": {
+    "no_data": "no data",
+    "error": "error"
+  },
+  "home_page": {
+    "categories": "Categories",
+    "food": "food",
+    "faves": "faves"
+  },
+  "details_food": {
+    "rank": "rank",
+    "food_details": "Food details",
+    "100_g": "100 g",
+    "basic_information": "Basic information",
+    "food_class": "Food class",
+    "fdc_id": "FDC ID",
+    "nutrients": "Nutrients"
+  }
 }

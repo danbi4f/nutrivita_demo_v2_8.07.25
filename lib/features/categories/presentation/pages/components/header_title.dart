@@ -17,7 +17,7 @@ class HeaderTitle extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(left: 20),
               child: Text(
-                t.welcome_user(name: userName),
+                t.welcome.introduce_test,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 28.0,

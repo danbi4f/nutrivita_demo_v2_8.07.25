@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:nutrivita_demo_v2/features/settings/setting_page.dart';
-import 'package:nutrivita_demo_v2/features/settings/widget/button_lang.dart';
+import 'package:nutrivita_demo_v2/i18n/strings.g.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final t = Translations.of(context);
     return Drawer(
       width: 260,
       child: Container(
@@ -14,20 +15,18 @@ class MyDrawer extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Text.rich(TextSpan()),
             DrawerHeader(
               margin: EdgeInsets.zero,
               decoration: const BoxDecoration(
                 border: Border(
-                  bottom: BorderSide(
-                    color: Color(0xFFE0E0E0),
-                    width: 1,
-                  ),
+                  bottom: BorderSide(color: Color(0xFFE0E0E0), width: 1),
                 ),
               ),
               child: Align(
                 alignment: Alignment.bottomLeft,
                 child: Text(
-                  "DanBi",
+                  t.welcome.user_name_test,
                   style: TextStyle(
                     fontSize: 28, // larger title
                     fontWeight: FontWeight.bold,
@@ -40,12 +39,12 @@ class MyDrawer extends StatelessWidget {
             // 🔹 Main navigation items
             _drawerTile(
               icon: Icons.home_outlined,
-              text: "Home",
+              text: t.drawer.home,
               onTap: () => Navigator.pop(context),
             ),
             _drawerTile(
               icon: Icons.favorite_border,
-              text: "Fave",
+              text: t.drawer.fave,
               onTap: () => Navigator.pop(context),
             ),
 
@@ -54,19 +53,70 @@ class MyDrawer extends StatelessWidget {
             // ⚙️ System / settings section
             _drawerTile(
               icon: Icons.settings_outlined,
-              text: "Settings",
+              text: t.drawer.settings,
               onTap: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(builder: (_) => const SettingPage()),
-                );
+                Navigator.of(
+                  context,
+                ).push(MaterialPageRoute(builder: (_) => const SettingPage()));
               },
             ),
             _drawerTile(
               icon: Icons.info_outline,
-              text: "About the app",
+              text: t.drawer.about,
               onTap: () {},
             ),
-            ButtonLang(),
+            _drawerTile(
+              icon: Icons.language,
+              text: t.drawer.language,
+              onTap: () {
+                showDialog(
+                  context: context,
+                  builder:
+                      (context) => AlertDialog(
+                        title: Text(t.drawer.select_lang),
+                        content: StatefulBuilder(
+                          builder: (context, setState) {
+                            return DropdownButton<AppLocale>(
+                              // dropdownColor: Colors.white,
+                              style: TextStyle(color: Colors.white),
+                              value: LocaleSettings.currentLocale,
+                              items:
+                                  AppLocale.values.map((locale) {
+                                    return DropdownMenuItem<AppLocale>(
+                                      value: locale,
+                                      child: Text(
+                                        locale.languageTag,
+                                      ), // pl / en
+                                    );
+                                  }).toList(),
+                              onChanged: (locale) {
+                                if (locale != null) {
+                                  setState(() {
+                                    LocaleSettings.setLocale(locale);
+                                  });
+                                }
+                              },
+                            );
+                          },
+                        ),
+                        actions: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.of(context).pop(); // Close the dialog
+                            },
+                            child: Text(t.button_action.cancel),
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              Navigator.of(context).pop(); // Close the dialog
+                            },
+                            child: Text(t.button_action.confirm),
+                          ),
+                        ],
+                      ),
+                );
+              },
+            ),
 
             const Spacer(),
           ],
@@ -82,7 +132,11 @@ class MyDrawer extends StatelessWidget {
     required VoidCallback onTap,
   }) {
     return ListTile(
-      leading: Icon(icon, color: Colors.green.shade700, size: 28), // larger icon
+      leading: Icon(
+        icon,
+        color: Colors.green.shade700,
+        size: 28,
+      ), // larger icon
       title: Text(
         text,
         style: const TextStyle(

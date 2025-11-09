@@ -12,7 +12,7 @@ class ButtonLang extends StatelessWidget {
     return ListTile(
       leading: Icon(Icons.language, color: Colors.black, size: 30),
       title: Text(
-        'Language', // później podmienimy na t.settings.language
+        'Language',
         style: AppTextStyles.body(context, isBold: true),
       ),
       trailing: DropdownButton<AppLocale>(
