@@ -104,13 +104,13 @@ class MyDrawer extends StatelessWidget {
                             onPressed: () {
                               Navigator.of(context).pop(); // Close the dialog
                             },
-                            child: Text(t.button_action.cancel),
+                            child: Text(t.button.action.cancel),
                           ),
                           TextButton(
                             onPressed: () {
                               Navigator.of(context).pop(); // Close the dialog
                             },
-                            child: Text(t.button_action.confirm),
+                            child: Text(t.button.action.confirm),
                           ),
                         ],
                       ),

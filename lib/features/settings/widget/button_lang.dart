@@ -9,10 +9,11 @@ class ButtonLang extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = Translations.of(context);
     return ListTile(
       leading: Icon(Icons.language, color: Colors.black, size: 30),
       title: Text(
-        'Language',
+        t.button.title.language,
         style: AppTextStyles.body(context, isBold: true),
       ),
       trailing: DropdownButton<AppLocale>(

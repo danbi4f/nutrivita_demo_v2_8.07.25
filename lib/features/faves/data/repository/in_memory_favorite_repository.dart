@@ -7,7 +7,7 @@ import 'package:nutrivita_demo_v2/features/faves/domain/repositories/faves_repos
 
 class InMemoryFavesRepository extends FavesRepository {
   List<int> _faves = [];
-  final favesLocalDataSource localDataSource;
+  final FavesLocalDataSource localDataSource;
 
   InMemoryFavesRepository({required this.localDataSource}) {
     print('${_now()} InMemoryFavesRepository CREATED');

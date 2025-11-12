@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:nutrivita_demo_v2/app/combined_data_service.dart';
+import 'package:nutrivita_demo_v2/app/di/injection_container.dart';
 import 'package:nutrivita_demo_v2/config/theme/simple_theme.dart';
 import 'package:nutrivita_demo_v2/app/home/home_page.dart';
 import 'package:nutrivita_demo_v2/features/faves/presentation/bloc/fave_bloc.dart';
@@ -9,43 +9,25 @@ import 'package:nutrivita_demo_v2/features/foods/presentation/bloc/is_fave_bloc.
 import 'package:nutrivita_demo_v2/i18n/strings.g.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
+
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({super.key,});
+
 
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
         BlocProvider<FaveBloc>(
-          create:
-              (context) => FaveBloc(
-                favesFuture: context.read<CombinedDataService>().favesFuture,
-                favesStream: context.read<CombinedDataService>().favesStream,
-                addFave: context.read<CombinedDataService>().addToFaveUseCase,
-                removeFave:
-                    context.read<CombinedDataService>().removeFaveUseCase,
-                getFoodByFdcId:
-                    context.read<CombinedDataService>().getFoodByFdcId,
-              )..add(LoadFaves()),
+          create: (_) => sl<FaveBloc>()..add(LoadFaves()),
         ),
-        BlocProvider(
+        BlocProvider<FoodBloc>(
           create:
-              (context) => FoodBloc(
-                getAllFoods: context.read<CombinedDataService>().getAllFoods,
-                searchFoods:
-                    context.read<CombinedDataService>().searchFoodsUseCase,
-              )..add(FetchFoods()),
+              (context) => sl<FoodBloc>()..add(FetchFoods()),
         ),
-        BlocProvider(
+        BlocProvider<IsFaveBloc>(
           create:
-              (context) => IsFaveBloc(
-                getFavesStream: context.read<CombinedDataService>().favesStream,
-                addToFaveUseCase:
-                    context.read<CombinedDataService>().addToFaveUseCase,
-                removeFaveUseCase:
-                    context.read<CombinedDataService>().removeFaveUseCase,
-                getFavesFuture: context.read<CombinedDataService>().favesFuture,
-              ),
+              (context) => sl<IsFaveBloc>(),
         ),
       ],
       child: MaterialApp(

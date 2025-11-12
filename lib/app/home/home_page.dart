@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:nutrivita_demo_v2/core/key/app_scaffold_key.dart';
 import 'package:nutrivita_demo_v2/features/categories/presentation/pages/categories_page.dart';
+import 'package:nutrivita_demo_v2/app/home/my_drawer.dart';
+import 'package:nutrivita_demo_v2/features/faves/presentation/bloc/fave_bloc.dart';
 import 'package:nutrivita_demo_v2/features/faves/presentation/pages/fave_widget.dart';
 import 'package:nutrivita_demo_v2/features/foods/presentation/pages/food_page.dart';
 import 'package:nutrivita_demo_v2/i18n/strings.g.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+
+  const HomePage({super.key,});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -21,6 +26,7 @@ class _HomePageState extends State<HomePage> {
     LocaleSettings.getLocaleStream().listen((event) {
       print('🍕🍕🍕☠️ locale changed: $event');
     });
+    context.read<FaveBloc>().add(LoadFaves());
   }
 
   final List<GlobalKey<NavigatorState>> _navigatorKeys = [
@@ -51,6 +57,8 @@ class _HomePageState extends State<HomePage> {
     final t = Translations.of(context);
     return SafeArea(
       child: Scaffold(
+        key: rootScaffoldKey, 
+        drawer: MyDrawer(),
         extendBody: true,
         backgroundColor: Colors.white,
         body: IndexedStack(

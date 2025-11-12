@@ -46,10 +46,12 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	String get prompt_food => 'What would you like to eat?';
 
 	late final TranslationsDrawerEn drawer = TranslationsDrawerEn._(_root);
-	late final TranslationsButtonActionEn button_action = TranslationsButtonActionEn._(_root);
 	late final TranslationsAlertsEn alerts = TranslationsAlertsEn._(_root);
 	late final TranslationsHomePageEn home_page = TranslationsHomePageEn._(_root);
+	late final TranslationsSettingsPageEn settings_page = TranslationsSettingsPageEn._(_root);
 	late final TranslationsDetailsFoodEn details_food = TranslationsDetailsFoodEn._(_root);
+	late final TranslationsMyTextFieldEn my_text_field = TranslationsMyTextFieldEn._(_root);
+	late final TranslationsButtonEn button = TranslationsButtonEn._(_root);
 }
 
 // Path: app_bar
@@ -62,6 +64,12 @@ class TranslationsAppBarEn {
 
 	/// en: 'NutriVita'
 	String get app_title => 'NutriVita';
+
+	/// en: 'Food'
+	String get app_food => 'Food';
+
+	/// en: 'Faves'
+	String get app_faves => 'Faves';
 }
 
 // Path: welcome
@@ -109,30 +117,6 @@ class TranslationsDrawerEn {
 	String get select_lang => 'Select language';
 }
 
-// Path: button_action
-class TranslationsButtonActionEn {
-	TranslationsButtonActionEn._(this._root);
-
-	final Translations _root; // ignore: unused_field
-
-	// Translations
-
-	/// en: 'Cancel'
-	String get cancel => 'Cancel';
-
-	/// en: 'OK'
-	String get ok => 'OK';
-
-	/// en: 'Submit'
-	String get submit => 'Submit';
-
-	/// en: 'Delete'
-	String get delete => 'Delete';
-
-	/// en: 'Confirm'
-	String get confirm => 'Confirm';
-}
-
 // Path: alerts
 class TranslationsAlertsEn {
 	TranslationsAlertsEn._(this._root);
@@ -146,6 +130,18 @@ class TranslationsAlertsEn {
 
 	/// en: 'error'
 	String get error => 'error';
+
+	/// en: 'Failed to perform this action'
+	String get action_failed => 'Failed to perform this action';
+
+	/// en: 'Reset Database'
+	String get reset_db_window_title => 'Reset Database';
+
+	/// en: 'Are you sure you want to reset the database?'
+	String get question_db_reset => 'Are you sure you want to reset the database?';
+
+	/// en: 'Database has been reset'
+	String get confirm_reset_db => 'Database has been reset';
 }
 
 // Path: home_page
@@ -164,6 +160,24 @@ class TranslationsHomePageEn {
 
 	/// en: 'faves'
 	String get faves => 'faves';
+}
+
+// Path: settings_page
+class TranslationsSettingsPageEn {
+	TranslationsSettingsPageEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Settings Page'
+	String get app_bar => 'Settings Page';
+
+	/// en: 'Profile'
+	String get profile => 'Profile';
+
+	/// en: 'DataBase Restore'
+	String get db_restore_title => 'DataBase Restore';
 }
 
 // Path: details_food
@@ -196,6 +210,65 @@ class TranslationsDetailsFoodEn {
 	String get nutrients => 'Nutrients';
 }
 
+// Path: my_text_field
+class TranslationsMyTextFieldEn {
+	TranslationsMyTextFieldEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Search for foods...'
+	String get search_text => 'Search for foods...';
+}
+
+// Path: button
+class TranslationsButtonEn {
+	TranslationsButtonEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	late final TranslationsButtonTitleEn title = TranslationsButtonTitleEn._(_root);
+	late final TranslationsButtonActionEn action = TranslationsButtonActionEn._(_root);
+}
+
+// Path: button.title
+class TranslationsButtonTitleEn {
+	TranslationsButtonTitleEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Language'
+	String get language => 'Language';
+}
+
+// Path: button.action
+class TranslationsButtonActionEn {
+	TranslationsButtonActionEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Cancel'
+	String get cancel => 'Cancel';
+
+	/// en: 'OK'
+	String get ok => 'OK';
+
+	/// en: 'Submit'
+	String get submit => 'Submit';
+
+	/// en: 'Delete'
+	String get delete => 'Delete';
+
+	/// en: 'Confirm'
+	String get confirm => 'Confirm';
+}
+
 /// The flat map containing all translations for locale <en>.
 /// Only for edge cases! For simple maps, use the map function of this library.
 ///
@@ -209,6 +282,8 @@ extension on Translations {
 	dynamic _flatMapFunction$0(String path) {
 		switch (path) {
 			case 'app_bar.app_title': return 'NutriVita';
+			case 'app_bar.app_food': return 'Food';
+			case 'app_bar.app_faves': return 'Faves';
 			case 'welcome.user_name': return ({required Object name}) => 'Hello ${name}  👋';
 			case 'welcome.user_name_test': return 'DanBi';
 			case 'welcome.introduce_test': return 'Hello ${_root.welcome.user_name_test}  👋';
@@ -219,16 +294,18 @@ extension on Translations {
 			case 'drawer.about': return 'About the app';
 			case 'drawer.language': return 'Language';
 			case 'drawer.select_lang': return 'Select language';
-			case 'button_action.cancel': return 'Cancel';
-			case 'button_action.ok': return 'OK';
-			case 'button_action.submit': return 'Submit';
-			case 'button_action.delete': return 'Delete';
-			case 'button_action.confirm': return 'Confirm';
 			case 'alerts.no_data': return 'no data';
 			case 'alerts.error': return 'error';
+			case 'alerts.action_failed': return 'Failed to perform this action';
+			case 'alerts.reset_db_window_title': return 'Reset Database';
+			case 'alerts.question_db_reset': return 'Are you sure you want to reset the database?';
+			case 'alerts.confirm_reset_db': return 'Database has been reset';
 			case 'home_page.categories': return 'Categories';
 			case 'home_page.food': return 'food';
 			case 'home_page.faves': return 'faves';
+			case 'settings_page.app_bar': return 'Settings Page';
+			case 'settings_page.profile': return 'Profile';
+			case 'settings_page.db_restore_title': return 'DataBase Restore';
 			case 'details_food.rank': return 'rank';
 			case 'details_food.food_details': return 'Food details';
 			case 'details_food.k100G': return '100 g';
@@ -236,6 +313,13 @@ extension on Translations {
 			case 'details_food.food_class': return 'Food class';
 			case 'details_food.fdc_id': return 'FDC ID';
 			case 'details_food.nutrients': return 'Nutrients';
+			case 'my_text_field.search_text': return 'Search for foods...';
+			case 'button.title.language': return 'Language';
+			case 'button.action.cancel': return 'Cancel';
+			case 'button.action.ok': return 'OK';
+			case 'button.action.submit': return 'Submit';
+			case 'button.action.delete': return 'Delete';
+			case 'button.action.confirm': return 'Confirm';
 			default: return null;
 		}
 	}

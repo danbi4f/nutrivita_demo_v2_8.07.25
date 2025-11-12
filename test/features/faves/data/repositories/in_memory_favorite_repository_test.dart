@@ -8,7 +8,7 @@ import 'package:nutrivita_demo_v2/features/faves/data/datasources/faves_local_da
 import 'package:nutrivita_demo_v2/features/faves/data/repository/in_memory_favorite_repository.dart';
 
 // mock
-class MockFoodLocalDataSource extends Mock implements favesLocalDataSource {}
+class MockFoodLocalDataSource extends Mock implements FavesLocalDataSource {}
 
 void main() {
   late MockFoodLocalDataSource mockDataSource;

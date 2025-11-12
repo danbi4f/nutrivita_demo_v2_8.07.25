@@ -1,7 +1,7 @@
 part of '../categories_page.dart';
 
-class _MainAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const _MainAppBar();
+class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
+  const MyAppBar({super.key});
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
@@ -13,7 +13,16 @@ class _MainAppBar extends StatelessWidget implements PreferredSizeWidget {
       iconTheme: const IconThemeData(color: Colors.black),
       backgroundColor: Colors.white,
       centerTitle: true,
-      title: Text(t.app_bar.app_title, style: AppTextStyles.heading(context, size: 40)),
+      leading: IconButton(
+        icon: const Icon(Icons.menu, color: Colors.black),
+        onPressed: () {
+          rootScaffoldKey.currentState?.openDrawer();
+        },
+      ),
+      title: Text(
+        t.app_bar.app_title,
+        style: AppTextStyles.heading(context, size: 40),
+      ),
       actions: [
         Padding(
           padding: const EdgeInsets.only(right: 12.0),

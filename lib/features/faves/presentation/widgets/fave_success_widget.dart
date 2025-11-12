@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:nutrivita_demo_v2/features/faves/presentation/widgets/fave_item.dart';
+import 'package:nutrivita_demo_v2/common/widgets/food_grid_item.dart';
+import 'package:nutrivita_demo_v2/common/widgets/paged_grid_layout.dart';
 import 'package:nutrivita_demo_v2/features/foods/domain/entities/food.dart';
 import 'package:collection/collection.dart';
 
@@ -17,51 +18,26 @@ class FaveSuccessWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // we divide the list into pages
-    final pages = <List<int>>[];
-    for (var i = 0; i < listInt.length; i += itemsPerPage) {
-      pages.add(listInt.sublist(
-        i,
-        (i + itemsPerPage).clamp(0, listInt.length),
-      ));
-    }
-
-    final pageController = PageController(
-      viewportFraction: 0.91, // X% width for the page → X% visible on the right
-    );
+    // we map fdcId → Food (we skip not found)
+    final faveFoods =
+        listInt
+            .map(
+              (fdcId) => foods.firstWhereOrNull((food) => food.fdcId == fdcId),
+            )
+            .whereType<Food>()
+            .toList();
 
     return SafeArea(
       bottom: true,
-      child: PageView.builder(
-        controller: pageController,
-        itemCount: pages.length,
-        padEnds: false,
-        pageSnapping: true,
-        itemBuilder: (context, pageIndex) {
-          final pageItems = pages[pageIndex];
-
-          return Padding(
-            padding: EdgeInsets.only(
-              left: pageIndex == 0 ? 16 : 8, // first view at the left edge
-              right: 8,                        // space between pages
-            ),
-            child: Column(
-              children: pageItems.map((fdcId) {
-                final food = foods.firstWhereOrNull((food) => food.fdcId == fdcId);
-                if (food == null) {
-                  return const Padding(
-                    padding: EdgeInsets.symmetric(vertical: 4.0),
-                    child: ListTile(
-                      title: Text('Food item not found'),
-                    ),
-                  );
-                }
-                return Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 4.0),
-                  child: FaveItem(fdcId: fdcId, food: food),
-                );
-              }).toList(),
-            ),
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          return PagedGridLayout<Food>(
+            items: faveFoods,
+            itemsPerPage: 6,
+            columns: 2,
+            viewportFraction: 0.91,
+            dynamicAvailableHeight: constraints.maxHeight,
+            itemBuilder: (food) => FoodGridItem(food: food, isFaveItem: true),
           );
         },
       ),

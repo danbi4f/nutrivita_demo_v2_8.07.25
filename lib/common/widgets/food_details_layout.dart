@@ -9,7 +9,7 @@ class FoodDetailsLayout extends StatelessWidget {
   final String descriptionPL;
   final String foodClass;
   final String fdcId;
-  final List<MapEntry<String, String>> nutrients; 
+  final List<MapEntry<String, String>> nutrients;
 
   const FoodDetailsLayout({
     super.key,
@@ -25,7 +25,11 @@ class FoodDetailsLayout extends StatelessWidget {
     final t = Translations.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text(t.details_food.food_details, style: AppTextStyles.heading(context, size: 30)),
+        iconTheme: IconThemeData(color: Colors.black),
+        title: Text(
+          t.details_food.food_details,
+          style: AppTextStyles.heading(context, size: 30),
+        ),
         centerTitle: true,
         backgroundColor: Colors.white,
       ),
@@ -47,7 +51,10 @@ class FoodDetailsLayout extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(width: 8),
-                  Text(t.details_food.k100G, style: AppTextStyles.body(context)),
+                  Text(
+                    t.details_food.k100G,
+                    style: AppTextStyles.body(context),
+                  ),
                 ],
               ),
               const Divider(height: 24),
@@ -62,11 +69,18 @@ class FoodDetailsLayout extends StatelessWidget {
                 label: t.details_food.food_class,
                 value: foodClass,
               ),
-              BuildInfoRow(context: context, label: t.details_food.fdc_id, value: fdcId),
+              BuildInfoRow(
+                context: context,
+                label: t.details_food.fdc_id,
+                value: fdcId,
+              ),
 
               const Divider(height: 24),
 
-              Text(t.details_food.nutrients, style: AppTextStyles.subheading(context)),
+              Text(
+                t.details_food.nutrients,
+                style: AppTextStyles.subheading(context),
+              ),
               const SizedBox(height: 8),
               ...nutrients.map(
                 (entry) => BuildInfoRow(

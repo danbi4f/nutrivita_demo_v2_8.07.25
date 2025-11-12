@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:nutrivita_demo_v2/app/combined_data_service.dart';
+import 'package:nutrivita_demo_v2/app/di/injection_container.dart';
 import 'package:nutrivita_demo_v2/features/categories/presentation/bloc/category_bloc.dart';
 import 'package:nutrivita_demo_v2/features/categories/presentation/widgets/category_group/category_group_Success_widget.dart';
 import 'package:nutrivita_demo_v2/core/utils/delayed_result.dart';
@@ -12,10 +12,7 @@ class CategoryGroupWidget extends StatelessWidget {
   static Widget withBloc() {
     return BlocProvider(
       create:
-          (context) => CategoryBloc(
-            getAllCategories:
-                context.read<CombinedDataService>().getAllCategories,
-          )..add(LoadCategory()),
+          (context) => sl<CategoryBloc>()..add(LoadCategory()),
       child: const CategoryGroupWidget(),
     );
   }

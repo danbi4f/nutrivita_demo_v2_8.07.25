@@ -1,6 +1,8 @@
 {
   "app_bar": {
-    "app_title": "NutriVita"
+    "app_title": "NutriVita",
+    "app_food": "Food",
+    "app_faves": "Faves"
   },
   "welcome": {
     "user_name": "Hello $name  👋",
@@ -16,21 +18,23 @@
     "language": "Language",
     "select_lang": "Select language"
   },
-  "button_action": {
-    "cancel": "Cancel",
-    "ok": "OK",
-    "submit": "Submit",
-    "delete": "Delete",
-    "confirm": "Confirm"
-  },
   "alerts": {
     "no_data": "no data",
-    "error": "error"
+    "error": "error",
+    "action_failed": "Failed to perform this action",
+    "reset_db_window_title": "Reset Database",
+    "question_db_reset": "Are you sure you want to reset the database?",
+    "confirm_reset_db": "Database has been reset"
   },
   "home_page": {
     "categories": "Categories",
     "food": "food",
     "faves": "faves"
+  },
+  "settings_page": {
+    "app_bar": "Settings Page",
+    "profile": "Profile",
+    "db_restore_title": "DataBase Restore"
   },
   "details_food": {
     "rank": "rank",
@@ -40,5 +44,20 @@
     "food_class": "Food class",
     "fdc_id": "FDC ID",
     "nutrients": "Nutrients"
+  },
+  "my_text_field": {
+    "search_text": "Search for foods..."
+  },
+  "button": {
+    "title": {
+      "language": "Language"
+    },
+    "action": {
+      "cancel": "Cancel",
+      "ok": "OK",
+      "submit": "Submit",
+      "delete": "Delete",
+      "confirm": "Confirm"
+    }
   }
 }

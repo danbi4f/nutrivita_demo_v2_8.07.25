@@ -4,12 +4,10 @@ import 'package:flutter/services.dart' show rootBundle;
 import 'package:nutrivita_demo_v2/features/categories/data/models/nutrient_number_model.dart';
 import 'package:nutrivita_demo_v2/features/categories/data/models/category_nutrient_model.dart';
 
-
-
 /// data they come form JSON files stored in assets and all 8 files come from one file from USDA - FDC Survey Foods (FNDDS)
- abstract class CategoryLocalDataSource {
-  Future <List<CategoryNutrientModel>> getCategories();
- }
+abstract class CategoryLocalDataSource {
+  Future<List<CategoryNutrientModel>> getCategories();
+}
 
 class CategoryLocalDataSourceImpl implements CategoryLocalDataSource {
   CategoryLocalDataSourceImpl._internal();
@@ -20,7 +18,6 @@ class CategoryLocalDataSourceImpl implements CategoryLocalDataSource {
   factory CategoryLocalDataSourceImpl() => _instance;
 
   List<CategoryNutrientModel>? _categories;
-
 
   /// Async factory for initialization
   static Future<CategoryLocalDataSourceImpl> init() async {
@@ -33,6 +30,7 @@ class CategoryLocalDataSourceImpl implements CategoryLocalDataSource {
   Future<void> _loadData() async {
     if (_categories != null) return;
 
+    final stopwatch = Stopwatch()..start(); // ⏱ Start mierzenia czasu
 
     final List<String> files = [
       'assets/v2/sorted_SF_by_category_desc_nolimit/vitamins.json',
@@ -53,8 +51,9 @@ class CategoryLocalDataSourceImpl implements CategoryLocalDataSource {
       _categories!.add(category);
       debugPrint('🚕 ${_categories!.length} --SurveyFoodsByCategoryService');
     }
-
-
+        stopwatch.stop(); // ⏱ Zatrzymanie licznika
+    debugPrint('✅ Załadowano ${_categories!.length} kategorii (assets).');
+    debugPrint('⏱ Czas wczytania: ${stopwatch.elapsedMilliseconds} ms');
   }
 
   /// Download all categories with their nutrients and topFoods
@@ -65,10 +64,6 @@ class CategoryLocalDataSourceImpl implements CategoryLocalDataSource {
     await _loadData();
     return _categories!;
   }
-
-
-
-
 }
 
 // -----------------------------------------------------------------------------
@@ -85,5 +80,3 @@ CategoryNutrientModel _decodeCategoryFile(String jsonString) {
 
   return CategoryNutrientModel(category: categoryName, nutrients: nutrients);
 }
-
-

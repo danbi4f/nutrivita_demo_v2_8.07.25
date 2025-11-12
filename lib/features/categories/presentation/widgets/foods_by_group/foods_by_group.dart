@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:nutrivita_demo_v2/app/di/injection_container.dart';
 import 'package:nutrivita_demo_v2/common/widgets/custom_container.dart';
+import 'package:nutrivita_demo_v2/common/widgets/paged_grid_layout.dart';
 import 'package:nutrivita_demo_v2/config/fonts/app_text_style.dart';
 import 'package:nutrivita_demo_v2/features/categories/domain/entities/nutrient_number.dart';
 import 'package:nutrivita_demo_v2/features/categories/presentation/bloc/category_bloc.dart';
 import 'package:nutrivita_demo_v2/features/categories/presentation/widgets/foods_by_group/foods_by_group_item.dart';
+import 'package:nutrivita_demo_v2/features/foods/data/models/food_model.dart';
+import 'package:nutrivita_demo_v2/features/foods/domain/entities/food.dart';
 import 'package:nutrivita_demo_v2/features/foods/presentation/bloc/food_bloc.dart';
 import 'package:nutrivita_demo_v2/i18n/strings.g.dart';
 
@@ -16,7 +20,6 @@ class FoodsByGroup extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final t = Translations.of(context);
-    final foodState = context.select((FoodBloc bloc) => bloc.state);
 
     return Scaffold(
       appBar: AppBar(
@@ -32,33 +35,46 @@ class FoodsByGroup extends StatelessWidget {
         centerTitle: true,
       ),
       body: BlocBuilder<CategoryBloc, CategoryState>(
+        bloc: sl<CategoryBloc>(),
         builder: (context, state) {
           if (state.result.isInProgress) {
             return const Center(child: CircularProgressIndicator());
           }
 
           if (state.result.isError) {
-            return  Center(child: Text("${t.alerts.error}: messege error"));
+            return Center(child: Text(t.alerts.error));
           }
-
-          return CustomContainer(
-            isGradient: true,
-            child: ListView.builder(
-              itemCount: nutrientByGroup.topFoods.length,
-              itemBuilder: (context, index) {
-                final topFoodsByGroup = nutrientByGroup.topFoods[index];
-                final fdcId = nutrientByGroup.topFoods[index].fdcId;
-                final food = foodState.foods.firstWhere(
-                  (f) => f.fdcId == fdcId,
-                );
-
-                return FoodsByGroupItem(
-                  topFoodsByGroup: topFoodsByGroup,
-                  unit: nutrientByGroup.unit,
-                  food: food,
-                );
-              },
-            ),
+          return BlocSelector<FoodBloc, FoodState, List<Food>>(
+            bloc: sl<FoodBloc>(),
+            selector: (state) => state.foods,
+            builder: (context, foods) {
+              return CustomContainer(
+                isGradient: true,
+                child: PagedGridLayout(
+                  items: nutrientByGroup.topFoods,
+                  columns: 2,
+                  itemsPerPage: 6,
+                  itemBuilder: (item) {
+                    final tf = item;
+                    final food = foods.firstWhere(
+                      (f) => f.fdcId == tf.fdcId,
+                      orElse: () => FoodModel(
+                        fdcId: 1,
+                        description: 'no data',
+                        descriptionPL: 'no data',
+                        foodClass: 'no data',
+                        nutrients: {},
+                      ),
+                    );
+                    return FoodsByGroupItem(
+                      topFoodsByGroup: tf,
+                      unit: nutrientByGroup.unit,
+                      food: food,
+                    );
+                  },
+                ),
+              );
+            },
           );
         },
       ),

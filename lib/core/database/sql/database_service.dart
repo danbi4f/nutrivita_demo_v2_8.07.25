@@ -2,6 +2,7 @@ import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
 part 'table_favorites_fdcId.dart';
+part 'table_category_cache.dart';
 
 class DatabaseService {
   static Database? _db;
@@ -21,7 +22,7 @@ class DatabaseService {
 
     return openDatabase(
       path,
-      version: 2, 
+      version: 3, 
       onCreate: _onCreate,
       onUpgrade: _onUpgrade,
     );
@@ -30,12 +31,16 @@ class DatabaseService {
   void _onCreate(Database db, int version) async {
     await db.execute(FavoritesTableFdcId.createTableFavoritesFdcId);
 
+
   }
 
   void _onUpgrade(Database db, int oldVersion, int newVersion) async {
     if (oldVersion < 2) {
       await db.execute(FavoritesTableFdcId.createTableFavoritesFdcId);
     }
+      if (oldVersion < 3) {
+    await db.execute(CategoryCacheTable.createTable);
+  }
 
   }
 }

@@ -4,7 +4,7 @@ class AppTextStyles {
   static TextStyle title(
     BuildContext context, {
     double size = 28,
-    bool? isBold, // null = użyj domyślnego ustawienia
+    bool? isBold, // null = use default setting
   }) {
     return TextStyle(
       fontWeight: (isBold ?? true) ? FontWeight.bold : FontWeight.normal,
@@ -13,7 +13,7 @@ class AppTextStyles {
     );
   }
 
-  // Duży nagłówek, np. tytuły ekranów
+// Large header, e.g. screen titles
   static TextStyle heading(
     BuildContext context, {
     double size = 24,
@@ -26,7 +26,7 @@ class AppTextStyles {
     );
   }
 
-  // Średni nagłówek, np. sekcje
+  // Medium heading, e.g. sections
   static TextStyle subheading(
     BuildContext context, {
     double size = 20,
@@ -39,7 +39,7 @@ class AppTextStyles {
     );
   }
 
-  // Normalny tekst, np. paragrafy
+  // Normal text, e.g. paragraphs
   static TextStyle body(
     BuildContext context, {
     double size = 16,
@@ -52,7 +52,7 @@ class AppTextStyles {
     );
   }
 
-  // Mniejszy tekst, np. opisy, dopiski
+  // Smaller text, e.g. descriptions, notes
   static TextStyle caption(
     BuildContext context, {
     double size = 12,
@@ -65,7 +65,7 @@ class AppTextStyles {
     );
   }
 
-  // Mały, delikatny tekst, np. podpowiedzi, daty
+// Small, delicate text, e.g. tooltips, dates
   static TextStyle hint(
     BuildContext context, {
     double size = 10,
@@ -80,7 +80,7 @@ class AppTextStyles {
 }
 
 class AppColors {
-  // Centralny kolor tekstu
+  // Center text color
   static Color textSurfaceBright(BuildContext context) {
     return Theme.of(context).colorScheme.surfaceBright;
   }

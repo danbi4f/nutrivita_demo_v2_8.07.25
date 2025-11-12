@@ -10,9 +10,6 @@ class IsFave implements UseCase<bool, IdParams> {
 
   @override
   Future<Either<Failure, bool>> call(IdParams params) async {
-      return  await repository.isFave(params.fdcId);
-
+    return await repository.isFave(params.fdcId);
   }
 }
-
-

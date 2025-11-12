@@ -1,7 +1,7 @@
 import 'package:nutrivita_demo_v2/core/error/exceptions.dart';
-import 'package:nutrivita_demo_v2/features/faves/data/database/database_service.dart';
+import 'package:nutrivita_demo_v2/core/database/sql/database_service.dart';
 
-abstract class favesLocalDataSource {
+abstract class FavesLocalDataSource {
   Future<List<int>> getFaves();
   Future<void> addFave(int fdcId);
   Future<void> removeFave(int fdcId);
@@ -9,10 +9,10 @@ abstract class favesLocalDataSource {
 
 
 
-class FoodLocalDataSourceImpl implements favesLocalDataSource {
+class FavesLocalDataSourceImpl implements FavesLocalDataSource {
   final DatabaseService dbService;
 
-  FoodLocalDataSourceImpl({required this.dbService});
+  FavesLocalDataSourceImpl({required this.dbService});
 
   @override
   Future<List<int>> getFaves() async {

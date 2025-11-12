@@ -1,6 +1,7 @@
 import 'package:nutrivita_demo_v2/features/categories/data/models/nutrient_number_model.dart';
 import 'package:nutrivita_demo_v2/features/categories/domain/entities/category_nutrient.dart';
 
+
 class CategoryNutrientModel extends CategoryNutrient {
   const CategoryNutrientModel({
     required super.category,

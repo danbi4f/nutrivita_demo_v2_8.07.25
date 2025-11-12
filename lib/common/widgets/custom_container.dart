@@ -58,8 +58,8 @@ BoxDecoration boxDecorationCard(BuildContext context) {
       // cień dolny (ciemniejszy, bardzo rozmyty)
       BoxShadow(
         color: const Color(0xFFB7CE9E),
-        offset: const Offset(6, 6),
-        blurRadius: 12,
+        offset: const Offset(3, 3),
+        blurRadius: 3,
         spreadRadius: 1,
       ),
       // cień górny (jaśniejszy, miękki highlight)

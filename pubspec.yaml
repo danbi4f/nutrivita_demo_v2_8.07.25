@@ -26,6 +26,9 @@ dependencies:
   slang: ^4.9.2
   flutter_localizations:
     sdk: flutter
+  get_it: ^9.0.5
+  msgpack_dart: ^1.0.1
+
 
 
 dev_dependencies:

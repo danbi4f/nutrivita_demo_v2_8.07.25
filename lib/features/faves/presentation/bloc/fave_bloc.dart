@@ -47,6 +47,7 @@ class FaveBloc extends Bloc<FaveEvent, FaveState> {
 
     await failureOrIds.fold(
       (failure) async {
+        print('❌ favesFuture error: $failure');
         emit(state.copyWith(
           loadingResult: DelayedResult.fromError(
             Exception(failure.toString()),
@@ -112,7 +113,7 @@ class FaveBloc extends Bloc<FaveEvent, FaveState> {
   for (final fdcId in fdcIds) {
     final failureOrData = await getFoodByFdcId(fdcId);
     failureOrData.fold(
-      (_) => null, // we ignore mistakes
+      (failure) => print('❌ getFoodByFdcId failed for $fdcId: $failure'),
       (food) => foods.add(food),
     );
   }
