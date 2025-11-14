@@ -43,6 +43,9 @@ flutter:
   uses-material-design: true
   assets:
     - assets/USDA3.png
+    - assets/demo.jpg
+    - assets/demo.mp4
+    - assets/demo.gif
     - assets/nutrivita.jpg
     - assets/v2/sorted_SF_by_category_desc_nolimit/carbohydrates.json
     - assets/v2/sorted_SF_by_category_desc_nolimit/energy.json
